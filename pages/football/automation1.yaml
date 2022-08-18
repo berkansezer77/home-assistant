@@ -1,0 +1,41 @@
+alias: News Chip - Haberler 1
+description: ''
+trigger:
+  - platform: template
+    value_template: >-
+      {{ is_state('input_boolean.news_chip_trabzonspor', 'on') or
+      is_state('input_boolean.news_chip_besiktas', 'on') or
+      is_state('input_boolean.news_chip_fenerbahce', 'on') or
+      is_state('input_boolean.news_chip_haber', 'on') or
+      is_state('input_boolean.news_chip_galatasaray', 'on') }}
+    id: start-news
+  - platform: state
+    entity_id:
+      - timer.news_timer_5m
+    to: idle
+    id: timer-finished
+condition: []
+action:
+  - choose:
+      - conditions:
+          - condition: trigger
+            id: start-news
+        sequence:
+          - service: timer.start
+            data: {}
+            target:
+              entity_id: timer.news_timer_5m
+          - service: input_boolean.turn_on
+            data: {}
+            target:
+              entity_id: input_boolean.news_chip_all
+      - conditions:
+          - condition: trigger
+            id: timer-finished
+        sequence:
+          - service: input_boolean.turn_off
+            data: {}
+            target:
+              entity_id: input_boolean.news_chip_all
+    default: []
+mode: single

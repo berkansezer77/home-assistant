@@ -1,0 +1,127 @@
+alias: Mushroom - Football
+description: ''
+trigger:
+  - platform: calendar
+    event: start
+    offset: '-12:0:0'
+    id: besiktasmacvar
+    entity_id: calendar.besiktas
+  - platform: calendar
+    event: end
+    offset: '0:0:0'
+    entity_id: calendar.besiktas
+    id: besiktasmacson
+  - platform: calendar
+    event: start
+    offset: '-12:0:0'
+    entity_id: calendar.fenerbahce
+    id: fenerbahcemacvar
+  - platform: calendar
+    event: end
+    offset: '0:0:0'
+    entity_id: calendar.fenerbahce
+    id: fenerbahcemacbitti
+  - platform: calendar
+    event: start
+    offset: '-12:0:0'
+    entity_id: calendar.galatasaray
+    id: galatasaraymacvar
+  - platform: calendar
+    event: end
+    offset: '0:0:0'
+    entity_id: calendar.galatasaray
+    id: galatasaraymacbitti
+  - platform: calendar
+    event: start
+    offset: '-12:0:0'
+    entity_id: calendar.trabzonspor
+    id: trabzonspormacvar
+  - platform: calendar
+    event: end
+    offset: '0:0:0'
+    entity_id: calendar.trabzonspor
+    id: trabzonspormacbitti
+action:
+  - choose:
+      - conditions:
+          - condition: trigger
+            id: besiktasmacvar
+        sequence:
+          - service: input_boolean.turn_on
+            data: {}
+            target:
+              entity_id:
+                - input_boolean.futbol
+                - input_boolean.besiktas
+      - conditions:
+          - condition: trigger
+            id: besiktasmacson
+        sequence:
+          - service: input_boolean.turn_off
+            data: {}
+            target:
+              entity_id:
+                - input_boolean.futbol
+                - input_boolean.besiktas
+      - conditions:
+          - condition: trigger
+            id: fenerbahcemacvar
+        sequence:
+          - service: input_boolean.turn_on
+            data: {}
+            target:
+              entity_id:
+                - input_boolean.futbol
+                - input_boolean.fenerbahce
+      - conditions:
+          - condition: trigger
+            id: fenerbahcemacbitti
+        sequence:
+          - service: input_boolean.turn_off
+            data: {}
+            target:
+              entity_id:
+                - input_boolean.futbol
+                - input_boolean.fenerbahce
+      - conditions:
+          - condition: trigger
+            id: galatasaraymacvar
+        sequence:
+          - service: input_boolean.turn_on
+            data: {}
+            target:
+              entity_id:
+                - input_boolean.futbol
+                - input_boolean.galatasaray
+      - conditions:
+          - condition: trigger
+            id: galatasaraymacbitti
+        sequence:
+          - service: input_boolean.turn_off
+            data: {}
+            target:
+              entity_id:
+                - input_boolean.futbol
+                - input_boolean.galatasaray
+      - conditions:
+          - condition: trigger
+            id: trabzonspormacvar
+        sequence:
+          - service: input_boolean.turn_on
+            data: {}
+            target:
+              entity_id:
+                - input_boolean.futbol
+                - input_boolean.trabzonspor
+      - conditions:
+          - condition: trigger
+            id: trabzonspormacbitti
+        sequence:
+          - service: input_boolean.turn_off
+            data: {}
+            target:
+              entity_id:
+                - input_boolean.futbol
+                - input_boolean.trabzonspor
+    default: []
+mode: single

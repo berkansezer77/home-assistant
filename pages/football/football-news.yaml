@@ -1,0 +1,38 @@
+alias: Mushroom - Football News
+description: ''
+trigger:
+  - platform: template
+    value_template: >-
+      {{ is_state('input_boolean.besiktas', 'on')  or
+      is_state('input_boolean.fenerbahce', 'on')  or
+      is_state('input_boolean.galatasaray', 'on') or
+      is_state('input_boolean.trabzonspor', 'on') }}
+    id: 'on'
+  - platform: template
+    value_template: >-
+      {{ is_state('input_boolean.besiktas', 'off')  and
+      is_state('input_boolean.fenerbahce', 'off')  and
+      is_state('input_boolean.galatasaray', 'off') and
+      is_state('input_boolean.trabzonspor', 'off') }}
+    id: 'off'
+condition: []
+action:
+  - choose:
+      - conditions:
+          - condition: trigger
+            id: 'on'
+        sequence:
+          - service: input_boolean.turn_off
+            data: {}
+            target:
+              entity_id: input_boolean.futbol_haber
+      - conditions:
+          - condition: trigger
+            id: 'off'
+        sequence:
+          - service: input_boolean.turn_on
+            data: {}
+            target:
+              entity_id: input_boolean.futbol_haber
+    default: []
+mode: single

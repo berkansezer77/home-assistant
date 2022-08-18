@@ -1,0 +1,1663 @@
+type: custom:stack-in-card
+cards:
+  - type: grid
+    columns: 1
+    square: false
+    cards:
+      - type: custom:banner-card
+        color: white
+        entities: null
+        heading:
+          - Futbol
+        link: window.history.back()
+        alignment: end
+        style: |
+          ha-card  {
+            background: rgba(var(--rgb-primary-background-color), 0.5);
+            margin-top: 0px;
+            background: none;
+          }
+          ha-card .heading {
+            font-size: 3.5em;
+            margin: 30px;
+            color: black;
+            font-family: 'Amatic SC', cursive;
+          }
+          ha-card .overlay-strip {
+            font-size: 1em;
+            font-family: 'Roboto';
+            font-weight: 900;
+            background: none;
+          }
+      - type: custom:layout-card
+        layout: masonry
+        cards:
+          - square: false
+            columns: 1
+            type: grid
+            cards:
+              - type: custom:mushroom-chips-card
+                chips:
+                  - type: template
+                    icon: mdi:palette
+                    content: BJK
+                    icon_color: amber
+                    picture: /local/png/besiktas2.png
+                    tap_action:
+                      action: toggle
+                    entity: input_boolean.news_chip_besiktas
+                    card_mod:
+                      style: |
+                        ha-card {
+                          background: none;
+                          {{ 'filter: grayscale(100%);' if is_state('input_boolean.news_chip_besiktas', 'off') }}
+                        }
+                        :host {
+                          --ha-card-background: rgba(var(--rgb-primary-text-color), 0.025);
+                          --primary-text-color:  {{ 'rgb(var(--rgb-amber))' if not is_state('input_boolean.news_chip_besiktas', 'off') else 'rgb(var(--rgb-white))' }};
+                        }
+                  - type: template
+                    icon: mdi:palette
+                    content: FB
+                    icon_color: amber
+                    picture: /local/png/fenerbahce.png
+                    tap_action:
+                      action: toggle
+                    entity: input_boolean.news_chip_fenerbahce
+                    card_mod:
+                      style: |
+                        ha-card {
+                          background: none;
+                          {{ 'filter: grayscale(100%);' if is_state('input_boolean.news_chip_fenerbahce', 'off') }}
+                        }
+                        :host {
+                          --ha-card-background: rgba(var(--rgb-primary-text-color), 0.025);
+                          --primary-text-color:  {{ 'rgb(var(--rgb-amber))' if not is_state('input_boolean.news_chip_fenerbahce', 'off') else 'rgb(var(--rgb-white))' }};
+                        }
+                  - type: template
+                    icon: mdi:palette
+                    content: GS
+                    icon_color: amber
+                    picture: /local/png/galatasaray.png
+                    tap_action:
+                      action: toggle
+                    entity: input_boolean.news_chip_galatasaray
+                    card_mod:
+                      style: |
+                        ha-card {
+                          {{ 'filter: grayscale(100%);' if is_state('input_boolean.news_chip_galatasaray', 'off') }}
+                        }
+                        :host {
+                          --ha-card-background: rgba(var(--rgb-primary-text-color), 0.025);
+                          --primary-text-color:  {{ 'rgb(var(--rgb-amber))' if not is_state('input_boolean.news_chip_galatasaray', 'off') else 'rgb(var(--rgb-white))' }};
+                        }
+                  - type: template
+                    icon: mdi:palette
+                    content: TS
+                    icon_color: amber
+                    picture: local/png/trabzonspor.png
+                    tap_action:
+                      action: toggle
+                    entity: input_boolean.news_chip_trabzonspor
+                    card_mod:
+                      style: |
+                        ha-card {
+                          {{ 'filter: grayscale(100%);' if is_state('input_boolean.news_chip_trabzonspor', 'off') }}
+                        }
+                        :host {
+                          --ha-card-background: rgba(var(--rgb-primary-text-color), 0.025);
+                          --primary-text-color:  {{ 'rgb(var(--rgb-amber))' if not is_state('input_boolean.news_chip_trabzonspor', 'off') else 'rgb(var(--rgb-white))' }};
+                        }
+                  - type: template
+                    icon: mdi:palette
+                    content: HBR
+                    icon_color: amber
+                    picture: local/png/news7.png
+                    tap_action:
+                      action: toggle
+                    entity: input_boolean.news_chip_haber
+                    card_mod:
+                      style: |
+                        ha-card {
+                          {{ 'filter: grayscale(100%);' if is_state('input_boolean.news_chip_haber', 'off') }}
+                        }
+                        :host {
+                          --ha-card-background: rgba(var(--rgb-primary-text-color), 0.025);
+                          --primary-text-color:  {{ 'rgb(var(--rgb-amber))' if not is_state('input_boolean.news_chip_haber', 'off') else 'rgb(var(--rgb-white))' }};
+                        }
+                alignment: center
+                card_mod:
+                  style: |
+                    ha-card {
+                      --chip-icon-size: 22px;
+                      --chip-box-shadow: none;
+                      --chip-background: rgba(var(--rgb-primary-text-color), 0.025);
+                      --chip-spacing: 0px;
+                      --chip-padding: 10px;
+                      margin-left: auto;
+                      margin-bottom: -48px;
+                      margin-top: -20px;
+                    }
+  - type: conditional
+    conditions:
+      - entity: input_boolean.futbol_haber
+        state: 'on'
+      - entity: input_boolean.news_chip_all
+        state: 'off'
+    card:
+      type: custom:stack-in-card
+      layout_type: masonry
+      layout: {}
+      cards:
+        - square: false
+          columns: 1
+          type: grid
+          cards:
+            - type: custom:list-card
+              entity: sensor.futbol
+              title: ''
+              feed_attribute: entries
+              row_limit: 1
+              columns:
+                - title: ''
+                  type: image
+                  add_link: link
+                  field: image
+                  width: 350
+                  height: 220
+              card_mod:
+                style: |
+                  :host {
+                    --ha-card-background: transparent;
+                  }
+                      ha-card {
+                        margin-top: auto;
+                        margin-left: 1px;
+                        margin-right: 1px;
+                        margin-bottom: 5px;
+                        padding: 15px;
+                        width: auto;
+                      }
+            - type: custom:stack-in-card
+              cards:
+                - type: custom:mushroom-template-card
+                  primary: Süperlig
+                  secondary: Maç Programı
+                  picture: /local/png/futbol.png
+                  icon: mdi:weather-cloudy
+                  icon_color: blue
+                  card_mod:
+                    style: |
+                      :host([dark-mode]) {
+                        background: rgba(var(--rgb-primary-background-color), 0.2);
+                        --card-primary-font-size: 16px;
+                        --card-secondary-font-size: 13px
+                      } 
+                      :host {
+                        background: rgba(var(--rgb-primary-text-color), 0.025);
+                        --mush-icon-size: 53px;
+                        height: 76px;
+                        margin-left: 0px !important;
+                        margin-bottom: -10px !important;
+                      }
+                - type: custom:atomic-calendar-revive
+                  entities:
+                    - entity: calendar.trabzonspor
+                      blocklist: (word1)|(word2)
+                      name: Trabzonspor
+                    - entity: calendar.galatasaray
+                      blocklist: (word1)|(word2)
+                      name: Galatasaray
+                    - entity: calendar.fenerbahce
+                      blocklist: (word1)|(word2)
+                      name: Fenerbahçe
+                    - entity: calendar.besiktas
+                      blocklist: (word1)|(word2)
+                      name: Beşiktaş
+                  maxDaysToShow: 10
+                  firstDayOfWeek: 1
+                  refreshInterval: 600
+                  showMonth: true
+                  showCurrentEventLine: false
+                  showDate: false
+                  sortByStartTime: true
+                  showDeclined: true
+                  showRelativeTime: true
+                  showMultiDay: false
+                  showMultiDayEventParts: true
+                  hideDuplicates: false
+                  showLastCalendarWeek: false
+                  calShowDescription: true
+                  disableCalLink: false
+                  disableCalLocationLink: false
+                  disableCalEventLink: false
+                  dimFinishedEvents: false
+                  showProgressBar: false
+                  showDescription: false
+                  card_mod:
+                    style: |
+                      ha-card {
+                        background: transparent;
+                        font-size: 14px;
+              card_mod:
+                style: |
+                  ha-card {
+                    background: transparent;
+            - type: custom:stack-in-card
+              cards:
+                - type: custom:mushroom-template-card
+                  primary: Haberler
+                  picture: /local/png/news7.png
+                  icon: mdi:weather-cloudy
+                  icon_color: blue
+                  card_mod:
+                    style: |
+                      :host([dark-mode]) {
+                        background: rgba(var(--rgb-primary-background-color), 0.2);
+                        --card-primary-font-size: 18px;
+                        --card-secondary-font-size: 13px
+                      } 
+                      :host {
+                        background: rgba(var(--rgb-primary-text-color), 0.025);
+                        --mush-icon-size: 53px;
+                        height: 76px;
+                        margin-left: 0px !important;
+                        margin-bottom: -10px !important;
+                      }
+                - type: custom:list-card
+                  entity: sensor.futbol
+                  title: ''
+                  feed_attribute: entries
+                  row_limit: 15
+                  columns:
+                    - title: ''
+                      type: image
+                      add_link: link
+                      field: image
+                      width: 140
+                      height: 80
+                      card_mod:
+                        style: |
+                          ha-card {
+                            padding: 1px;
+                            background: rgba(var(--rgb-primary-background-color), 0.5);
+                            margin-bottom: -5px;
+                    - title: ''
+                      field: title
+                      add_link: link
+                      style:
+                        - white-space: wrap
+                  card_mod:
+                    style: |
+                      ha-card {
+                        padding: 1px;
+                        background: rgba(var(--rgb-primary-background-color), 0.5);
+                        margin-bottom: -5px;
+                        margin-right: -10px;
+                        margin-left: -10px;
+              card_mod:
+                style: |
+                  ha-card {
+                    background: transparent;
+      card_mod:
+        style: |
+          ha-card {
+            background: transparent;
+  - type: conditional
+    conditions:
+      - entity: input_boolean.fenerbahce
+        state: 'on'
+      - entity: input_boolean.news_chip_all
+        state: 'off'
+    card:
+      type: custom:stack-in-card
+      layout_type: masonry
+      layout: {}
+      cards:
+        - square: false
+          columns: 1
+          type: grid
+          cards:
+            - type: custom:list-card
+              entity: sensor.fenerbahce
+              title: ''
+              feed_attribute: entries
+              row_limit: 1
+              columns:
+                - title: ''
+                  type: image
+                  add_link: link
+                  field: image
+                  width: 350
+                  height: 220
+              card_mod:
+                style: |
+                  :host {
+                    --ha-card-background: transparent;
+                  }
+                      ha-card {
+                        margin-top: auto;
+                        margin-left: 1px;
+                        margin-right: 1px;
+                        margin-bottom: 5px;
+                        padding: 15px;
+                        width: auto;
+                      }
+            - type: custom:stack-in-card
+              cards:
+                - type: custom:mushroom-template-card
+                  primary: Fenerbahçe
+                  secondary: Maç Programı
+                  picture: /local/png/fenerbahce.png
+                  card_mod:
+                    style: |
+                      :host([dark-mode]) {
+                        background: rgba(var(--rgb-primary-background-color), 0.2);
+                        --card-primary-font-size: 16px;
+                        --card-secondary-font-size: 13px
+                      } 
+                      :host {
+                        background: rgba(var(--rgb-primary-text-color), 0.025);
+                        --mush-icon-size: 53px;
+                        height: 76px;
+                        margin-left: 0px !important;
+                        margin-bottom: -10px !important;
+                      }
+                - type: custom:atomic-calendar-revive
+                  entities:
+                    - entity: calendar.fenerbahce
+                      blocklist: (word1)|(word2)
+                      name: Fenerbahçe
+                  maxDaysToShow: 7
+                  firstDayOfWeek: 1
+                  refreshInterval: 600
+                  showMonth: true
+                  showCurrentEventLine: false
+                  showDate: false
+                  sortByStartTime: true
+                  showDeclined: true
+                  showRelativeTime: true
+                  showMultiDay: false
+                  showMultiDayEventParts: true
+                  hideDuplicates: false
+                  showLastCalendarWeek: false
+                  calShowDescription: true
+                  disableCalLink: false
+                  disableCalLocationLink: false
+                  disableCalEventLink: false
+                  dimFinishedEvents: false
+                  showProgressBar: false
+                  showDescription: false
+                  card_mod:
+                    style: |
+                      ha-card {
+                        background: transparent;
+                        font-size: 14px;
+              card_mod:
+                style: |
+                  ha-card {
+                    background: transparent;
+            - type: custom:stack-in-card
+              cards:
+                - type: custom:mushroom-template-card
+                  primary: Haberler
+                  picture: /local/png/news7.png
+                  card_mod:
+                    style: |
+                      :host([dark-mode]) {
+                        background: rgba(var(--rgb-primary-background-color), 0.2);
+                        --card-primary-font-size: 18px;
+                        --card-secondary-font-size: 13px
+                      } 
+                      :host {
+                        background: rgba(var(--rgb-primary-text-color), 0.025);
+                        --mush-icon-size: 53px;
+                        height: 76px;
+                        margin-left: 0px !important;
+                        margin-bottom: -10px !important;
+                      }
+                - type: custom:list-card
+                  entity: sensor.fenerbahce
+                  title: ''
+                  feed_attribute: entries
+                  row_limit: 15
+                  columns:
+                    - title: ''
+                      type: image
+                      add_link: link
+                      field: image
+                      width: 140
+                      height: 80
+                      card_mod:
+                        style: |
+                          ha-card {
+                            padding: 1px;
+                            background: rgba(var(--rgb-primary-background-color), 0.5);
+                            margin-bottom: -5px;
+                    - title: ''
+                      field: title
+                      add_link: link
+                      style:
+                        - white-space: wrap
+                  card_mod:
+                    style: |
+                      ha-card {
+                        padding: 1px;
+                        background: rgba(var(--rgb-primary-background-color), 0.5);
+                        margin-bottom: -5px;
+                        margin-right: -10px;
+                        margin-left: -10px;
+              card_mod:
+                style: |
+                  ha-card {
+                    background: transparent;
+      card_mod:
+        style: |
+          ha-card {
+            background: transparent;
+  - type: conditional
+    conditions:
+      - entity: input_boolean.besiktas
+        state: 'on'
+      - entity: input_boolean.news_chip_all
+        state: 'off'
+    card:
+      type: custom:stack-in-card
+      layout_type: masonry
+      layout: {}
+      cards:
+        - square: false
+          columns: 1
+          type: grid
+          cards:
+            - type: custom:list-card
+              entity: sensor.besiktas
+              title: ''
+              feed_attribute: entries
+              row_limit: 1
+              columns:
+                - title: ''
+                  type: image
+                  add_link: link
+                  field: image
+                  width: 350
+                  height: 220
+              card_mod:
+                style: |
+                  :host {
+                    --ha-card-background: transparent;
+                  }
+                      ha-card {
+                        margin-top: auto;
+                        margin-left: 1px;
+                        margin-right: 1px;
+                        margin-bottom: 5px;
+                        padding: 15px;
+                        width: auto;
+                      }
+            - type: custom:stack-in-card
+              cards:
+                - type: custom:mushroom-template-card
+                  primary: Beşiktaş
+                  secondary: Maç Programı
+                  picture: /local/png/besiktas2.png
+                  card_mod:
+                    style: |
+                      :host([dark-mode]) {
+                        background: rgba(var(--rgb-primary-background-color), 0.2);
+                        --card-primary-font-size: 16px;
+                        --card-secondary-font-size: 13px
+                      } 
+                      :host {
+                        background: rgba(var(--rgb-primary-text-color), 0.025);
+                        --mush-icon-size: 53px;
+                        height: 76px;
+                        margin-left: 0px !important;
+                        margin-bottom: -10px !important;
+                      }
+                - type: custom:atomic-calendar-revive
+                  entities:
+                    - entity: calendar.besiktas
+                      blocklist: (word1)|(word2)
+                      name: Beşiktaş
+                  maxDaysToShow: 10
+                  firstDayOfWeek: 1
+                  refreshInterval: 600
+                  showMonth: true
+                  showCurrentEventLine: false
+                  showDate: false
+                  sortByStartTime: true
+                  showDeclined: true
+                  showRelativeTime: true
+                  showMultiDay: false
+                  showMultiDayEventParts: true
+                  hideDuplicates: false
+                  showLastCalendarWeek: false
+                  calShowDescription: true
+                  disableCalLink: false
+                  disableCalLocationLink: false
+                  disableCalEventLink: false
+                  dimFinishedEvents: false
+                  showProgressBar: false
+                  showDescription: false
+              card_mod:
+                style: |
+                  ha-card {
+                    background: transparent;
+            - type: custom:stack-in-card
+              cards:
+                - type: custom:mushroom-template-card
+                  primary: Haberler
+                  picture: /local/png/news7.png
+                  card_mod:
+                    style: |
+                      :host([dark-mode]) {
+                        background: rgba(var(--rgb-primary-background-color), 0.2);
+                        --card-primary-font-size: 18px;
+                        --card-secondary-font-size: 13px
+                      } 
+                      :host {
+                        background: rgba(var(--rgb-primary-text-color), 0.025);
+                        --mush-icon-size: 53px;
+                        height: 76px;
+                        margin-left: 0px !important;
+                        margin-bottom: -10px !important;
+                      }
+                - type: custom:list-card
+                  entity: sensor.besiktas
+                  title: ''
+                  feed_attribute: entries
+                  row_limit: 15
+                  columns:
+                    - title: ''
+                      type: image
+                      add_link: link
+                      field: image
+                      width: 140
+                      height: 80
+                      card_mod:
+                        style: |
+                          ha-card {
+                            padding: 1px;
+                            background: rgba(var(--rgb-primary-background-color), 0.5);
+                            margin-bottom: -5px;
+                    - title: ''
+                      field: title
+                      add_link: link
+                      style:
+                        - white-space: wrap
+                  card_mod:
+                    style: |
+                      ha-card {
+                        padding: 1px;
+                        background: rgba(var(--rgb-primary-background-color), 0.5);
+                        margin-bottom: -5px;
+                        margin-right: -10px;
+                        margin-left: -10px;
+              card_mod:
+                style: |
+                  ha-card {
+                    background: transparent;
+      card_mod:
+        style: |
+          ha-card {
+            background: transparent;
+  - type: conditional
+    conditions:
+      - entity: input_boolean.galatasaray
+        state: 'on'
+      - entity: input_boolean.news_chip_all
+        state: 'off'
+    card:
+      type: custom:stack-in-card
+      layout_type: masonry
+      layout: {}
+      cards:
+        - square: false
+          columns: 1
+          type: grid
+          cards:
+            - type: custom:list-card
+              entity: sensor.galatasaray
+              title: ''
+              feed_attribute: entries
+              row_limit: 1
+              columns:
+                - title: ''
+                  type: image
+                  add_link: link
+                  field: image
+                  width: 350
+                  height: 220
+              card_mod:
+                style: |
+                  :host {
+                    --ha-card-background: transparent;
+                  }
+                      ha-card {
+                        margin-top: auto;
+                        margin-left: 1px;
+                        margin-right: 1px;
+                        margin-bottom: 5px;
+                        padding: 15px;
+                        width: auto;
+                      }
+            - type: custom:stack-in-card
+              cards:
+                - type: custom:mushroom-template-card
+                  primary: Galatasaray
+                  secondary: Maç Programı
+                  picture: /local/png/galatasaray.png
+                  card_mod:
+                    style: |
+                      :host([dark-mode]) {
+                        background: rgba(var(--rgb-primary-background-color), 0.2);
+                        --card-primary-font-size: 16px;
+                        --card-secondary-font-size: 13px
+                      } 
+                      :host {
+                        background: rgba(var(--rgb-primary-text-color), 0.025);
+                        --mush-icon-size: 53px;
+                        height: 76px;
+                        margin-left: 0px !important;
+                        margin-bottom: -10px !important;
+                      }
+                - type: custom:atomic-calendar-revive
+                  entities:
+                    - entity: calendar.galatasaray
+                      blocklist: (word1)|(word2)
+                      name: Galatasaray
+                  maxDaysToShow: 10
+                  firstDayOfWeek: 1
+                  refreshInterval: 600
+                  showMonth: true
+                  showCurrentEventLine: false
+                  showDate: false
+                  sortByStartTime: true
+                  showDeclined: true
+                  showRelativeTime: true
+                  showMultiDay: false
+                  showMultiDayEventParts: true
+                  hideDuplicates: false
+                  showLastCalendarWeek: false
+                  calShowDescription: true
+                  disableCalLink: false
+                  disableCalLocationLink: false
+                  disableCalEventLink: false
+                  dimFinishedEvents: false
+                  showProgressBar: false
+                  showDescription: false
+              card_mod:
+                style: |
+                  ha-card {
+                    background: transparent;
+            - type: custom:stack-in-card
+              cards:
+                - type: custom:mushroom-template-card
+                  primary: Haberler
+                  picture: /local/png/news7.png
+                  card_mod:
+                    style: |
+                      :host([dark-mode]) {
+                        background: rgba(var(--rgb-primary-background-color), 0.2);
+                        --card-primary-font-size: 18px;
+                        --card-secondary-font-size: 13px
+                      } 
+                      :host {
+                        background: rgba(var(--rgb-primary-text-color), 0.025);
+                        --mush-icon-size: 53px;
+                        height: 76px;
+                        margin-left: 0px !important;
+                        margin-bottom: -10px !important;
+                      }
+                - type: custom:list-card
+                  entity: sensor.galatasaray
+                  title: ''
+                  feed_attribute: entries
+                  row_limit: 15
+                  columns:
+                    - title: ''
+                      type: image
+                      add_link: link
+                      field: image
+                      width: 140
+                      height: 80
+                      card_mod:
+                        style: |
+                          ha-card {
+                            padding: 1px;
+                            background: rgba(var(--rgb-primary-background-color), 0.5);
+                            margin-bottom: -5px;
+                    - title: ''
+                      field: title
+                      add_link: link
+                      style:
+                        - white-space: wrap
+                  card_mod:
+                    style: |
+                      ha-card {
+                        padding: 1px;
+                        background: rgba(var(--rgb-primary-background-color), 0.5);
+                        margin-bottom: -5px;
+                        margin-right: -10px;
+                        margin-left: -10px;
+              card_mod:
+                style: |
+                  ha-card {
+                    background: transparent;
+      card_mod:
+        style: |
+          ha-card {
+            background: transparent;
+  - type: conditional
+    conditions:
+      - entity: input_boolean.trabzonspor
+        state: 'on'
+      - entity: input_boolean.news_chip_all
+        state: 'off'
+    card:
+      type: custom:stack-in-card
+      layout_type: masonry
+      layout: {}
+      cards:
+        - square: false
+          columns: 1
+          type: grid
+          cards:
+            - type: custom:list-card
+              entity: sensor.trabzonspor
+              title: ''
+              feed_attribute: entries
+              row_limit: 1
+              columns:
+                - title: ''
+                  type: image
+                  add_link: link
+                  field: image
+                  width: 350
+                  height: 220
+              card_mod:
+                style: |
+                  :host {
+                    --ha-card-background: transparent;
+                  }
+                      ha-card {
+                        margin-top: auto;
+                        margin-left: 1px;
+                        margin-right: 1px;
+                        margin-bottom: 5px;
+                        padding: 15px;
+                        width: auto;
+                      }
+            - type: custom:stack-in-card
+              cards:
+                - type: custom:mushroom-template-card
+                  primary: Trabzonspor
+                  secondary: Maç Programı
+                  picture: /local/png/trabzonspor.png
+                  card_mod:
+                    style: |
+                      :host([dark-mode]) {
+                        background: rgba(var(--rgb-primary-background-color), 0.2);
+                        --card-primary-font-size: 16px;
+                        --card-secondary-font-size: 13px
+                      } 
+                      :host {
+                        background: rgba(var(--rgb-primary-text-color), 0.025);
+                        --mush-icon-size: 53px;
+                        height: 76px;
+                        margin-left: 0px !important;
+                        margin-bottom: -10px !important;
+                      }
+                - type: custom:atomic-calendar-revive
+                  entities:
+                    - entity: calendar.trabzonspor
+                      blocklist: (word1)|(word2)
+                      name: Trabzonspor
+                  maxDaysToShow: 10
+                  firstDayOfWeek: 1
+                  refreshInterval: 600
+                  showMonth: true
+                  showCurrentEventLine: false
+                  showDate: false
+                  sortByStartTime: true
+                  showDeclined: true
+                  showRelativeTime: true
+                  showMultiDay: false
+                  showMultiDayEventParts: true
+                  hideDuplicates: false
+                  showLastCalendarWeek: false
+                  calShowDescription: true
+                  disableCalLink: false
+                  disableCalLocationLink: false
+                  disableCalEventLink: false
+                  dimFinishedEvents: false
+                  showProgressBar: false
+                  showDescription: false
+              card_mod:
+                style: |
+                  ha-card {
+                    background: transparent;
+            - type: custom:stack-in-card
+              cards:
+                - type: custom:mushroom-template-card
+                  primary: Haberler
+                  picture: /local/png/news7.png
+                  card_mod:
+                    style: |
+                      :host([dark-mode]) {
+                        background: rgba(var(--rgb-primary-background-color), 0.2);
+                        --card-primary-font-size: 18px;
+                        --card-secondary-font-size: 13px
+                      } 
+                      :host {
+                        background: rgba(var(--rgb-primary-text-color), 0.025);
+                        --mush-icon-size: 53px;
+                        height: 76px;
+                        margin-left: 0px !important;
+                        margin-bottom: -10px !important;
+                      }
+                - type: custom:list-card
+                  entity: sensor.trabzonspor
+                  title: ''
+                  feed_attribute: entries
+                  row_limit: 15
+                  columns:
+                    - title: ''
+                      type: image
+                      add_link: link
+                      field: image
+                      width: 140
+                      height: 80
+                      card_mod:
+                        style: |
+                          ha-card {
+                            padding: 1px;
+                            background: rgba(var(--rgb-primary-background-color), 0.5);
+                            margin-bottom: -5px;
+                    - title: ''
+                      field: title
+                      add_link: link
+                      style:
+                        - white-space: wrap
+                  card_mod:
+                    style: |
+                      ha-card {
+                        padding: 1px;
+                        background: rgba(var(--rgb-primary-background-color), 0.5);
+                        margin-bottom: -5px;
+                        margin-right: -10px;
+                        margin-left: -10px;
+              card_mod:
+                style: |
+                  ha-card {
+                    background: transparent;
+      card_mod:
+        style: |
+          ha-card {
+            background: transparent;
+  - type: conditional
+    conditions:
+      - entity: input_boolean.news_chip_haber
+        state: 'on'
+      - entity: input_boolean.news_chip_all
+        state: 'on'
+    card:
+      type: custom:stack-in-card
+      layout_type: masonry
+      layout: {}
+      cards:
+        - square: false
+          columns: 1
+          type: grid
+          cards:
+            - type: custom:list-card
+              entity: sensor.futbol
+              title: ''
+              feed_attribute: entries
+              row_limit: 1
+              columns:
+                - title: ''
+                  type: image
+                  add_link: link
+                  field: image
+                  width: 350
+                  height: 220
+              card_mod:
+                style: |
+                  :host {
+                    --ha-card-background: transparent;
+                  }
+                      ha-card {
+                        margin-top: auto;
+                        margin-left: 1px;
+                        margin-right: 1px;
+                        margin-bottom: 5px;
+                        padding: 15px;
+                        width: auto;
+                      }
+            - type: custom:stack-in-card
+              cards:
+                - type: custom:mushroom-template-card
+                  primary: Süperlig
+                  secondary: Maç Programı
+                  picture: /local/png/futbol.png
+                  icon: mdi:weather-cloudy
+                  icon_color: blue
+                  card_mod:
+                    style: |
+                      :host([dark-mode]) {
+                        background: rgba(var(--rgb-primary-background-color), 0.2);
+                        --card-primary-font-size: 16px;
+                        --card-secondary-font-size: 13px
+                      } 
+                      :host {
+                        background: rgba(var(--rgb-primary-text-color), 0.025);
+                        --mush-icon-size: 53px;
+                        height: 76px;
+                        margin-left: 0px !important;
+                        margin-bottom: -10px !important;
+                      }
+                - type: custom:atomic-calendar-revive
+                  entities:
+                    - entity: calendar.trabzonspor
+                      blocklist: (word1)|(word2)
+                      name: Trabzonspor
+                    - entity: calendar.galatasaray
+                      blocklist: (word1)|(word2)
+                      name: Galatasaray
+                    - entity: calendar.fenerbahce
+                      blocklist: (word1)|(word2)
+                      name: Fenerbahçe
+                    - entity: calendar.besiktas
+                      blocklist: (word1)|(word2)
+                      name: Beşiktaş
+                  maxDaysToShow: 10
+                  firstDayOfWeek: 1
+                  refreshInterval: 600
+                  showMonth: true
+                  showCurrentEventLine: false
+                  showDate: false
+                  sortByStartTime: true
+                  showDeclined: true
+                  showRelativeTime: true
+                  showMultiDay: false
+                  showMultiDayEventParts: true
+                  hideDuplicates: false
+                  showLastCalendarWeek: false
+                  calShowDescription: true
+                  disableCalLink: false
+                  disableCalLocationLink: false
+                  disableCalEventLink: false
+                  dimFinishedEvents: false
+                  showProgressBar: false
+                  showDescription: false
+                  card_mod:
+                    style: |
+                      ha-card {
+                        background: transparent;
+                        font-size: 14px;
+              card_mod:
+                style: |
+                  ha-card {
+                    background: transparent;
+            - type: custom:stack-in-card
+              cards:
+                - type: custom:mushroom-template-card
+                  primary: Haberler
+                  picture: /local/png/news7.png
+                  icon: mdi:weather-cloudy
+                  icon_color: blue
+                  card_mod:
+                    style: |
+                      :host([dark-mode]) {
+                        background: rgba(var(--rgb-primary-background-color), 0.2);
+                        --card-primary-font-size: 18px;
+                        --card-secondary-font-size: 13px
+                      } 
+                      :host {
+                        background: rgba(var(--rgb-primary-text-color), 0.025);
+                        --mush-icon-size: 53px;
+                        height: 76px;
+                        margin-left: 0px !important;
+                        margin-bottom: -10px !important;
+                      }
+                - type: custom:list-card
+                  entity: sensor.futbol
+                  title: ''
+                  feed_attribute: entries
+                  row_limit: 15
+                  columns:
+                    - title: ''
+                      type: image
+                      add_link: link
+                      field: image
+                      width: 140
+                      height: 80
+                      card_mod:
+                        style: |
+                          ha-card {
+                            padding: 1px;
+                            background: rgba(var(--rgb-primary-background-color), 0.5);
+                            margin-bottom: -5px;
+                    - title: ''
+                      field: title
+                      add_link: link
+                      style:
+                        - white-space: wrap
+                  card_mod:
+                    style: |
+                      ha-card {
+                        padding: 1px;
+                        background: rgba(var(--rgb-primary-background-color), 0.5);
+                        margin-bottom: -5px;
+                        margin-right: -10px;
+                        margin-left: -10px;
+              card_mod:
+                style: |
+                  ha-card {
+                    background: transparent;
+      card_mod:
+        style: |
+          ha-card {
+            background: transparent;
+  - type: conditional
+    conditions:
+      - entity: input_boolean.news_chip_fenerbahce
+        state: 'on'
+      - entity: input_boolean.news_chip_all
+        state: 'on'
+    card:
+      type: custom:stack-in-card
+      layout_type: masonry
+      layout: {}
+      cards:
+        - square: false
+          columns: 1
+          type: grid
+          cards:
+            - type: custom:list-card
+              entity: sensor.fenerbahce
+              title: ''
+              feed_attribute: entries
+              row_limit: 1
+              columns:
+                - title: ''
+                  type: image
+                  add_link: link
+                  field: image
+                  width: 350
+                  height: 220
+              card_mod:
+                style: |
+                  :host {
+                    --ha-card-background: transparent;
+                  }
+                      ha-card {
+                        margin-top: auto;
+                        margin-left: 1px;
+                        margin-right: 1px;
+                        margin-bottom: 5px;
+                        padding: 15px;
+                        width: auto;
+                      }
+            - type: custom:stack-in-card
+              cards:
+                - type: custom:mushroom-template-card
+                  primary: Fenerbahçe
+                  secondary: Maç Programı
+                  picture: /local/png/fenerbahce.png
+                  card_mod:
+                    style: |
+                      :host([dark-mode]) {
+                        background: rgba(var(--rgb-primary-background-color), 0.2);
+                        --card-primary-font-size: 16px;
+                        --card-secondary-font-size: 13px
+                      } 
+                      :host {
+                        background: rgba(var(--rgb-primary-text-color), 0.025);
+                        --mush-icon-size: 53px;
+                        height: 76px;
+                        margin-left: 0px !important;
+                        margin-bottom: -10px !important;
+                      }
+                - type: custom:atomic-calendar-revive
+                  entities:
+                    - entity: calendar.fenerbahce
+                      blocklist: (word1)|(word2)
+                      name: Fenerbahçe
+                  maxDaysToShow: 7
+                  firstDayOfWeek: 1
+                  refreshInterval: 600
+                  showMonth: true
+                  showCurrentEventLine: false
+                  showDate: false
+                  sortByStartTime: true
+                  showDeclined: true
+                  showRelativeTime: true
+                  showMultiDay: false
+                  showMultiDayEventParts: true
+                  hideDuplicates: false
+                  showLastCalendarWeek: false
+                  calShowDescription: true
+                  disableCalLink: false
+                  disableCalLocationLink: false
+                  disableCalEventLink: false
+                  dimFinishedEvents: false
+                  showProgressBar: false
+                  showDescription: false
+                  card_mod:
+                    style: |
+                      ha-card {
+                        background: transparent;
+                        font-size: 14px;
+              card_mod:
+                style: |
+                  ha-card {
+                    background: transparent;
+            - type: custom:stack-in-card
+              cards:
+                - type: custom:mushroom-template-card
+                  primary: Haberler
+                  picture: /local/png/news7.png
+                  card_mod:
+                    style: |
+                      :host([dark-mode]) {
+                        background: rgba(var(--rgb-primary-background-color), 0.2);
+                        --card-primary-font-size: 18px;
+                        --card-secondary-font-size: 13px
+                      } 
+                      :host {
+                        background: rgba(var(--rgb-primary-text-color), 0.025);
+                        --mush-icon-size: 53px;
+                        height: 76px;
+                        margin-left: 0px !important;
+                        margin-bottom: -10px !important;
+                      }
+                - type: custom:list-card
+                  entity: sensor.fenerbahce
+                  title: ''
+                  feed_attribute: entries
+                  row_limit: 15
+                  columns:
+                    - title: ''
+                      type: image
+                      add_link: link
+                      field: image
+                      width: 140
+                      height: 80
+                      card_mod:
+                        style: |
+                          ha-card {
+                            padding: 1px;
+                            background: rgba(var(--rgb-primary-background-color), 0.5);
+                            margin-bottom: -5px;
+                    - title: ''
+                      field: title
+                      add_link: link
+                      style:
+                        - white-space: wrap
+                  card_mod:
+                    style: |
+                      ha-card {
+                        padding: 1px;
+                        background: rgba(var(--rgb-primary-background-color), 0.5);
+                        margin-bottom: -5px;
+                        margin-right: -10px;
+                        margin-left: -10px;
+              card_mod:
+                style: |
+                  ha-card {
+                    background: transparent;
+      card_mod:
+        style: |
+          ha-card {
+            background: transparent;
+  - type: conditional
+    conditions:
+      - entity: input_boolean.news_chip_besiktas
+        state: 'on'
+      - entity: input_boolean.news_chip_all
+        state: 'on'
+    card:
+      type: custom:stack-in-card
+      layout_type: masonry
+      layout: {}
+      cards:
+        - square: false
+          columns: 1
+          type: grid
+          cards:
+            - type: custom:list-card
+              entity: sensor.besiktas
+              title: ''
+              feed_attribute: entries
+              row_limit: 1
+              columns:
+                - title: ''
+                  type: image
+                  add_link: link
+                  field: image
+                  width: 350
+                  height: 220
+              card_mod:
+                style: |
+                  :host {
+                    --ha-card-background: transparent;
+                  }
+                      ha-card {
+                        margin-top: auto;
+                        margin-left: 1px;
+                        margin-right: 1px;
+                        margin-bottom: 5px;
+                        padding: 15px;
+                        width: auto;
+                      }
+            - type: custom:stack-in-card
+              cards:
+                - type: custom:mushroom-template-card
+                  primary: Beşiktaş
+                  secondary: Maç Programı
+                  picture: /local/png/besiktas2.png
+                  card_mod:
+                    style: |
+                      :host([dark-mode]) {
+                        background: rgba(var(--rgb-primary-background-color), 0.2);
+                        --card-primary-font-size: 16px;
+                        --card-secondary-font-size: 13px
+                      } 
+                      :host {
+                        background: rgba(var(--rgb-primary-text-color), 0.025);
+                        --mush-icon-size: 53px;
+                        height: 76px;
+                        margin-left: 0px !important;
+                        margin-bottom: -10px !important;
+                      }
+                - type: custom:atomic-calendar-revive
+                  entities:
+                    - entity: calendar.besiktas
+                      blocklist: (word1)|(word2)
+                      name: Beşiktaş
+                  maxDaysToShow: 10
+                  firstDayOfWeek: 1
+                  refreshInterval: 600
+                  showMonth: true
+                  showCurrentEventLine: false
+                  showDate: false
+                  sortByStartTime: true
+                  showDeclined: true
+                  showRelativeTime: true
+                  showMultiDay: false
+                  showMultiDayEventParts: true
+                  hideDuplicates: false
+                  showLastCalendarWeek: false
+                  calShowDescription: true
+                  disableCalLink: false
+                  disableCalLocationLink: false
+                  disableCalEventLink: false
+                  dimFinishedEvents: false
+                  showProgressBar: false
+                  showDescription: false
+              card_mod:
+                style: |
+                  ha-card {
+                    background: transparent;
+            - type: custom:stack-in-card
+              cards:
+                - type: custom:mushroom-template-card
+                  primary: Haberler
+                  picture: /local/png/news7.png
+                  card_mod:
+                    style: |
+                      :host([dark-mode]) {
+                        background: rgba(var(--rgb-primary-background-color), 0.2);
+                        --card-primary-font-size: 18px;
+                        --card-secondary-font-size: 13px
+                      } 
+                      :host {
+                        background: rgba(var(--rgb-primary-text-color), 0.025);
+                        --mush-icon-size: 53px;
+                        height: 76px;
+                        margin-left: 0px !important;
+                        margin-bottom: -10px !important;
+                      }
+                - type: custom:list-card
+                  entity: sensor.besiktas
+                  title: ''
+                  feed_attribute: entries
+                  row_limit: 15
+                  columns:
+                    - title: ''
+                      type: image
+                      add_link: link
+                      field: image
+                      width: 140
+                      height: 80
+                      card_mod:
+                        style: |
+                          ha-card {
+                            padding: 1px;
+                            background: rgba(var(--rgb-primary-background-color), 0.5);
+                            margin-bottom: -5px;
+                    - title: ''
+                      field: title
+                      add_link: link
+                      style:
+                        - white-space: wrap
+                  card_mod:
+                    style: |
+                      ha-card {
+                        padding: 1px;
+                        background: rgba(var(--rgb-primary-background-color), 0.5);
+                        margin-bottom: -5px;
+                        margin-right: -10px;
+                        margin-left: -10px;
+              card_mod:
+                style: |
+                  ha-card {
+                    background: transparent;
+      card_mod:
+        style: |
+          ha-card {
+            background: transparent;
+  - type: conditional
+    conditions:
+      - entity: input_boolean.news_chip_galatasaray
+        state: 'on'
+      - entity: input_boolean.news_chip_all
+        state: 'on'
+    card:
+      type: custom:stack-in-card
+      layout_type: masonry
+      layout: {}
+      cards:
+        - square: false
+          columns: 1
+          type: grid
+          cards:
+            - type: custom:list-card
+              entity: sensor.galatasaray
+              title: ''
+              feed_attribute: entries
+              row_limit: 1
+              columns:
+                - title: ''
+                  type: image
+                  add_link: link
+                  field: image
+                  width: 350
+                  height: 220
+              card_mod:
+                style: |
+                  :host {
+                    --ha-card-background: transparent;
+                  }
+                      ha-card {
+                        margin-top: auto;
+                        margin-left: 1px;
+                        margin-right: 1px;
+                        margin-bottom: 5px;
+                        padding: 15px;
+                        width: auto;
+                      }
+            - type: custom:stack-in-card
+              cards:
+                - type: custom:mushroom-template-card
+                  primary: Galatasaray
+                  secondary: Maç Programı
+                  picture: /local/png/galatasaray.png
+                  card_mod:
+                    style: |
+                      :host([dark-mode]) {
+                        background: rgba(var(--rgb-primary-background-color), 0.2);
+                        --card-primary-font-size: 16px;
+                        --card-secondary-font-size: 13px
+                      } 
+                      :host {
+                        background: rgba(var(--rgb-primary-text-color), 0.025);
+                        --mush-icon-size: 53px;
+                        height: 76px;
+                        margin-left: 0px !important;
+                        margin-bottom: -10px !important;
+                      }
+                - type: custom:atomic-calendar-revive
+                  entities:
+                    - entity: calendar.galatasaray
+                      blocklist: (word1)|(word2)
+                      name: Galatasaray
+                  maxDaysToShow: 10
+                  firstDayOfWeek: 1
+                  refreshInterval: 600
+                  showMonth: true
+                  showCurrentEventLine: false
+                  showDate: false
+                  sortByStartTime: true
+                  showDeclined: true
+                  showRelativeTime: true
+                  showMultiDay: false
+                  showMultiDayEventParts: true
+                  hideDuplicates: false
+                  showLastCalendarWeek: false
+                  calShowDescription: true
+                  disableCalLink: false
+                  disableCalLocationLink: false
+                  disableCalEventLink: false
+                  dimFinishedEvents: false
+                  showProgressBar: false
+                  showDescription: false
+              card_mod:
+                style: |
+                  ha-card {
+                    background: transparent;
+            - type: custom:stack-in-card
+              cards:
+                - type: custom:mushroom-template-card
+                  primary: Haberler
+                  picture: /local/png/news7.png
+                  card_mod:
+                    style: |
+                      :host([dark-mode]) {
+                        background: rgba(var(--rgb-primary-background-color), 0.2);
+                        --card-primary-font-size: 18px;
+                        --card-secondary-font-size: 13px
+                      } 
+                      :host {
+                        background: rgba(var(--rgb-primary-text-color), 0.025);
+                        --mush-icon-size: 53px;
+                        height: 76px;
+                        margin-left: 0px !important;
+                        margin-bottom: -10px !important;
+                      }
+                - type: custom:list-card
+                  entity: sensor.galatasaray
+                  title: ''
+                  feed_attribute: entries
+                  row_limit: 15
+                  columns:
+                    - title: ''
+                      type: image
+                      add_link: link
+                      field: image
+                      width: 140
+                      height: 80
+                      card_mod:
+                        style: |
+                          ha-card {
+                            padding: 1px;
+                            background: rgba(var(--rgb-primary-background-color), 0.5);
+                            margin-bottom: -5px;
+                    - title: ''
+                      field: title
+                      add_link: link
+                      style:
+                        - white-space: wrap
+                  card_mod:
+                    style: |
+                      ha-card {
+                        padding: 1px;
+                        background: rgba(var(--rgb-primary-background-color), 0.5);
+                        margin-bottom: -5px;
+                        margin-right: -10px;
+                        margin-left: -10px;
+              card_mod:
+                style: |
+                  ha-card {
+                    background: transparent;
+      card_mod:
+        style: |
+          ha-card {
+            background: transparent;
+  - type: conditional
+    conditions:
+      - entity: input_boolean.news_chip_trabzonspor
+        state: 'on'
+      - entity: input_boolean.news_chip_all
+        state: 'on'
+    card:
+      type: custom:stack-in-card
+      layout_type: masonry
+      layout: {}
+      cards:
+        - square: false
+          columns: 1
+          type: grid
+          cards:
+            - type: custom:list-card
+              entity: sensor.trabzonspor
+              title: ''
+              feed_attribute: entries
+              row_limit: 1
+              columns:
+                - title: ''
+                  type: image
+                  add_link: link
+                  field: image
+                  width: 350
+                  height: 220
+              card_mod:
+                style: |
+                  :host {
+                    --ha-card-background: transparent;
+                  }
+                      ha-card {
+                        margin-top: auto;
+                        margin-left: 1px;
+                        margin-right: 1px;
+                        margin-bottom: 5px;
+                        padding: 15px;
+                        width: auto;
+                      }
+            - type: custom:stack-in-card
+              cards:
+                - type: custom:mushroom-template-card
+                  primary: Trabzonspor
+                  secondary: Maç Programı
+                  picture: /local/png/trabzonspor.png
+                  card_mod:
+                    style: |
+                      :host([dark-mode]) {
+                        background: rgba(var(--rgb-primary-background-color), 0.2);
+                        --card-primary-font-size: 16px;
+                        --card-secondary-font-size: 13px
+                      } 
+                      :host {
+                        background: rgba(var(--rgb-primary-text-color), 0.025);
+                        --mush-icon-size: 53px;
+                        height: 76px;
+                        margin-left: 0px !important;
+                        margin-bottom: -10px !important;
+                      }
+                - type: custom:atomic-calendar-revive
+                  entities:
+                    - entity: calendar.trabzonspor
+                      blocklist: (word1)|(word2)
+                      name: Galatasaray
+                  maxDaysToShow: 10
+                  firstDayOfWeek: 1
+                  refreshInterval: 600
+                  showMonth: true
+                  showCurrentEventLine: false
+                  showDate: false
+                  sortByStartTime: true
+                  showDeclined: true
+                  showRelativeTime: true
+                  showMultiDay: false
+                  showMultiDayEventParts: true
+                  hideDuplicates: false
+                  showLastCalendarWeek: false
+                  calShowDescription: true
+                  disableCalLink: false
+                  disableCalLocationLink: false
+                  disableCalEventLink: false
+                  dimFinishedEvents: false
+                  showProgressBar: false
+                  showDescription: false
+              card_mod:
+                style: |
+                  ha-card {
+                    background: transparent;
+            - type: custom:stack-in-card
+              cards:
+                - type: custom:mushroom-template-card
+                  primary: Haberler
+                  picture: /local/png/news7.png
+                  card_mod:
+                    style: |
+                      :host([dark-mode]) {
+                        background: rgba(var(--rgb-primary-background-color), 0.2);
+                        --card-primary-font-size: 18px;
+                        --card-secondary-font-size: 13px
+                      } 
+                      :host {
+                        background: rgba(var(--rgb-primary-text-color), 0.025);
+                        --mush-icon-size: 53px;
+                        height: 76px;
+                        margin-left: 0px !important;
+                        margin-bottom: -10px !important;
+                      }
+                - type: custom:list-card
+                  entity: sensor.trabzonspor
+                  title: ''
+                  feed_attribute: entries
+                  row_limit: 15
+                  columns:
+                    - title: ''
+                      type: image
+                      add_link: link
+                      field: image
+                      width: 140
+                      height: 80
+                      card_mod:
+                        style: |
+                          ha-card {
+                            padding: 1px;
+                            background: rgba(var(--rgb-primary-background-color), 0.5);
+                            margin-bottom: -5px;
+                    - title: ''
+                      field: title
+                      add_link: link
+                      style:
+                        - white-space: wrap
+                  card_mod:
+                    style: |
+                      ha-card {
+                        padding: 1px;
+                        background: rgba(var(--rgb-primary-background-color), 0.5);
+                        margin-bottom: -5px;
+                        margin-right: -10px;
+                        margin-left: -10px;
+              card_mod:
+                style: |
+                  ha-card {
+                    background: transparent;
+      card_mod:
+        style: |
+          ha-card {
+            background: transparent;
+card_mod:
+  style: |
+    ha-card {
+      background: url('/local/view.png');
+      margin-top: -12px;
+      box-shadow: none;
+    }

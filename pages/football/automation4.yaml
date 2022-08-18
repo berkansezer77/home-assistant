@@ -1,0 +1,19 @@
+alias: News Chip - Haberler 4
+description: ''
+trigger:
+  - platform: state
+    entity_id:
+      - input_boolean.news_chip_all
+    to: 'off'
+condition: []
+action:
+  - service: input_boolean.turn_off
+    data: {}
+    target:
+      entity_id:
+        - input_boolean.news_chip_besiktas
+        - input_boolean.news_chip_fenerbahce
+        - input_boolean.news_chip_galatasaray
+        - input_boolean.news_chip_trabzonspor
+        - input_boolean.news_chip_haber
+mode: single

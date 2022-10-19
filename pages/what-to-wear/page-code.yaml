@@ -1,0 +1,311 @@
+type: custom:stack-in-card
+cards:
+  - type: picture
+    show_state: false
+    show_name: false
+    image: /local/png/giyim/fireplace1.jpeg
+    tap_action:
+      action: navigate
+      navigation_path: home
+    hold_action:
+      action: none
+    theme: Mushroom
+    card_mod:
+      style: |
+        :host {
+          --ha-card-background: none;
+        }
+            ha-card {
+              margin-top: 0px;
+              margin-bottom: -100px;
+            }
+  - type: vertical-stack
+    cards:
+      - type: grid
+        columns: 1
+        square: false
+        cards:
+          - type: horizontal-stack
+            cards:
+              - type: picture-entity
+                entity: sensor.genel_sicaklik_kusuratsiz
+                show_state: false
+                show_name: false
+                state_image:
+                  '15': /local/png/giyim/parka2.png
+                  '16': /local/png/giyim/parka2.png
+                  '17': /local/png/giyim/parka2.png
+                  '18': /local/png/giyim/coat3.png
+                  '19': /local/png/giyim/coat3.png
+                  '20': /local/png/giyim/sweatshirt3.png
+                  '21': /local/png/giyim/sweatshirt3.png
+                  '22': /local/png/giyim/sweatshirt3.png
+                  '23': /local/png/giyim/sweatshirt.png
+                  '24': /local/png/giyim/sweatshirt.png
+                  '25': /local/png/giyim/tshirt3.png
+                  '26': /local/png/giyim/tshirt3.png
+                  '27': /local/png/giyim/tshirt3.png
+                  '28': /local/png/giyim/tshirt5.png
+                  '29': /local/png/giyim/tshirt5.png
+                  '30': /local/png/giyim/boxer8.png
+                  '31': /local/png/giyim/boxer8.png
+                  '32': /local/png/giyim/boxer8.png
+                  '33': /local/png/giyim/boxer8.png
+                tap_action:
+                  action: navigate
+                  navigation_path: home
+                hold_action:
+                  action: none
+                theme: Mushroom
+                card_mod:
+                  style: |
+                    :host {
+                      --ha-card-background: transparent;
+                    }
+                        ha-card {
+                          margin-top: auto;
+                          margin-left: 10px;
+                          margin-right: 10px;
+                          margin-bottom: 5px;
+                          padding: -25px;
+                          width: auto;
+                        }
+              - type: picture-entity
+                entity: sensor.genel_sicaklik_kusuratsiz
+                show_state: false
+                show_name: false
+                state_image:
+                  '15': /local/png/giyim/pants3.png
+                  '16': /local/png/giyim/pants3.png
+                  '17': /local/png/giyim/pants3.png
+                  '18': /local/png/giyim/pants4.png
+                  '19': /local/png/giyim/pants4.png
+                  '20': /local/png/giyim/pants3.png
+                  '21': /local/png/giyim/pants4.png
+                  '22': /local/png/giyim/pants3.png
+                  '23': /local/png/giyim/pants3.png
+                  '24': /local/png/giyim/pants3.png
+                  '25': /local/png/giyim/shorts2.png
+                  '26': /local/png/giyim/shorts2.png
+                  '27': /local/png/giyim/shorts2.png
+                  '28': /local/png/giyim/boxer7.png
+                  '29': /local/png/giyim/boxer3.png
+                  '30': /local/png/giyim/boxer7.png
+                  '31': /local/png/giyim/boxer7.png
+                  '32': /local/png/giyim/boxer7.png
+                  '33': /local/png/giyim/boxer7.png
+                tap_action:
+                  action: navigate
+                  navigation_path: home
+                hold_action:
+                  action: none
+                theme: Mushroom
+                card_mod:
+                  style: |
+                    :host {
+                      --ha-card-background: transparent;
+                    }
+                        ha-card {
+                          margin-top: auto;
+                          margin-left: 10px;
+                          margin-right: 10px;
+                          margin-bottom: 5px;
+                          padding: -25px;
+                          width: auto;
+                        }
+              - type: conditional
+                conditions:
+                  - entity: input_boolean.giyim
+                    state: 'on'
+                card:
+                  type: custom:layout-card
+                  layout: masonry
+                  cards:
+                    - type: picture-entity
+                      entity: sensor.genel_sicaklik_kusuratsiz
+                      show_state: false
+                      show_name: false
+                      state_image:
+                        '15': /local/png/giyim/blanket1.png
+                        '16': /local/png/giyim/blanket1.png
+                        '17': /local/png/giyim/blanket1.png
+                        '18': /local/png/giyim/blanket1.png
+                        '19': /local/png/giyim/blanket1.png
+                        '20': /local/png/giyim/socks5.png
+                        '21': /local/png/giyim/socks5.png
+                        '22': /local/png/giyim/socks5.png
+                        '23': /local/png/giyim/socks.png
+                        '24': /local/png/giyim/socks.png
+                        '25': /local/png/giyim/slipper2.png
+                        '26': /local/png/giyim/slipper2.png
+                        '27': /local/png/giyim/slipper2.png
+                        '28': /local/png/giyim/slipper1.png
+                        '29': /local/png/giyim/slipper2.png
+                        '30': /local/png/giyim/ac6.png
+                        '31': /local/png/giyim/ac6.png
+                        '32': /local/png/giyim/ac6.png
+                        '33': /local/png/giyim/ac6.png
+                      tap_action:
+                        action: navigate
+                        navigation_path: home
+                      hold_action:
+                        action: none
+                      theme: Mushroom
+                      card_mod:
+                        style: |
+                          :host {
+                            --ha-card-background: none;
+                          }
+                              ha-card {
+                                margin-top: auto;
+                                margin-left: 10px;
+                                margin-right: 10px;
+                                margin-bottom: 5px;
+                                padding: -25px;
+                                width: auto;
+                              }
+      - type: custom:layout-card
+        cards:
+          - type: grid
+            columns: 2
+            square: false
+            cards:
+              - type: custom:mushroom-title-card
+                title: Hangi kıyafet ?
+                card_mod:
+                  style: |
+                    :host {
+                      --ha-card-background: transparent;
+                    }
+                    ha-card {
+                      margin-top: 1px;
+                      margin-left: 10px;
+                      margin-right: 10px;
+                      margin-bottom: 0px;
+                    }
+              - type: custom:mushroom-template-card
+                icon: mdi
+                primary: null
+                secondary: More
+                entity: input_boolean.giyim
+                fill_container: false
+                multiline_secondary: false
+                layout: vertical
+                style: |
+                  mushroom-card {
+                    background:  url( '/local/png/giyim/parka.png' ) no-repeat center 0px;
+                    background-size: 42px 42px;
+                    {% if is_state('input_boolean.giyim', 'on') %}
+                    {% else %}
+                      filter: grayscale(100%);
+                    {% endif %} 
+                  }
+                  mushroom-shape-icon {
+                    --shape-color: none !important;
+                  }  
+                    ha-card { 
+                      background: rgba(230, 128, 39, 0.2);
+                    {% if is_state('input_boolean.giyim', 'on') %}
+                    {% else %}
+                      background: rgba(var(--rgb-primary-background-color), 0.3);
+                    {% endif %}    
+                      width: 66px;
+                      border-radius: 30px;
+                      margin-top: -10px;
+                      margin-left: 110px;
+                      margin-right: auto;
+                      margin-bottom: 1px;
+                    }
+                alignment: end
+      - type: custom:layout-card
+        cards:
+          - type: grid
+            columns: 3
+            square: false
+            cards:
+              - type: custom:mini-graph-card
+                entities:
+                  - sensor.hue_motion_temp_salon
+                line_color: blue
+                line_width: 8
+                font_size: 75
+              - type: custom:mini-graph-card
+                entities:
+                  - sensor.hue_motion_temp_mutfak
+                line_color: '#e74c3c'
+                line_width: 8
+                font_size: 75
+              - type: custom:mini-graph-card
+                entities:
+                  - sensor.hue_motion_antre
+                line_color: var(--accent-color)
+                line_width: 8
+                font_size: 75
+              - type: custom:mini-graph-card
+                entities:
+                  - sensor.hue_motion_temp_ofis
+                line_color: var(--accent-color)
+                line_width: 8
+                font_size: 75
+      - type: custom:layout-card
+        cards:
+          - type: grid
+            columns: 3
+            square: false
+            cards:
+              - type: custom:mini-graph-card
+                entities:
+                  - sensor.hue_motion_temp_yatak_odasi
+                line_color: blue
+                line_width: 8
+                font_size: 75
+              - type: custom:mini-graph-card
+                entities:
+                  - sensor.hue_motion_temp_soyunma_odasi
+                line_color: '#e74c3c'
+                line_width: 8
+                font_size: 75
+              - type: custom:mini-graph-card
+                entities:
+                  - sensor.hue_motion_temp_banyo
+                line_color: var(--accent-color)
+                line_width: 8
+                font_size: 75
+      - type: custom:mushroom-title-card
+        title: Dış Sıcaklık
+        card_mod:
+          style: |
+            :host {
+              --ha-card-background: transparent;
+            }
+            ha-card {
+              margin-top: 0px;
+              margin-left: 10px;
+              margin-right: 10px;
+              margin-bottom: 0px;
+            }
+      - type: custom:layout-card
+        cards:
+          - type: grid
+            columns: 3
+            square: false
+            cards:
+              - type: custom:mini-graph-card
+                entities:
+                  - sensor.lumi_lumi_weather_1063df07_temperature
+                line_color: blue
+                line_width: 8
+                font_size: 75
+              - type: custom:mini-graph-card
+                entities:
+                  - sensor.lumi_lumi_weather_1063df07_humidity
+                line_color: blue
+                line_width: 8
+                font_size: 75
+card_mod:
+  style: |
+    ha-card {
+      background: url('/local/view.png');
+      margin-top: -12px;
+      box-shadow: none;
+    }

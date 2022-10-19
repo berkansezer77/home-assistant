@@ -1,0 +1,8 @@
+- platform: template
+  sensors:
+    en_sicak_oda:
+      value_template: >-        
+        {% set x = expand('sensor.hue_motion_temp_salon', 'sensor.hue_motion_antre', 'sensor.hue_motion_temp_mutfak', 'sensor.hue_motion_temp_ofis', 'sensor.hue_motion_temp_banyo', 'sensor.hue_motion_temp_yatak_odasi', 'sensor.hue_motion_temp_soyunma_odasi') | list %}
+        {% for i in x if i.state|float(0) == x|map(attribute='state')|map('float', 0)|max %}
+         {{ i.name }}: ve {{ i.state }}
+        {% endfor %}

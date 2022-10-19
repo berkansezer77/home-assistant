@@ -1,0 +1,12 @@
+- platform: template
+  sensors:
+    genel_sicaklik_kusuratsiz:
+      value_template: >-
+        {% set livingroom = states('sensor.hue_motion_temp_salon') | float(0) %}
+        {% set kitchen = states('sensor.hue_motion_temp_mutfak') | float(0) %}
+        {% set bedroom = states('sensor.hue_motion_temp_yatak_odasi') | float(0) %}
+        {% set office = states('sensor.hue_motion_temp_ofis') | float(0) %}
+        {% set dressingroom = states('sensor.hue_motion_temp_soyunma_odasi') | float(0) %}
+        {% set bathroom = states('sensor.hue_motion_temp_banyo') | float(0) %}
+        {% set antre = states('sensor.hue_motion_antre') | float(0) %}        
+        {{ ((livingroom + kitchen + bedroom + office + dressingroom + bathroom + antre) / 7) | round(0, default=0) }}      

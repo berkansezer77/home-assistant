@@ -1,0 +1,265 @@
+alias: Bildirim - (Telegram) What to wear home arrival
+description: ''
+trigger:
+  - platform: zone
+    entity_id: person.berkan_sezer
+    zone: zone.home
+    event: enter
+    id: zone-enter
+condition: []
+action:
+  - choose:
+      - conditions:
+          - condition: trigger
+            id: zone-enter
+        sequence:
+          - if:
+              - condition: state
+                entity_id: sensor.genel_sicaklik_kusuratsiz
+                state: '18'
+            then:
+              - service: notify.colakgenel
+                data:
+                  title: Merhaba
+                  message: ''
+                  data:
+                    photo:
+                      - file: /config/www/png/giyim/coat3.png
+                      - file: /config/www/png/giyim/pants4.png
+                      - file: /config/www/png/giyim/blanket1.png
+                        caption: >-
+                          Merhaba! Eviniz şu an {% set state =
+                          states('sensor.genel_sicaklik') %}{{ state | float + 0
+                          if is_number(state) else "invalid temperature" }}°,
+                          Evde bunları giyebilirsiniz.
+              - delay:
+                  hours: 4
+                  minutes: 0
+                  seconds: 0
+                  milliseconds: 0
+      - conditions:
+          - condition: trigger
+            id: zone-enter
+        sequence:
+          - if:
+              - condition: state
+                entity_id: sensor.genel_sicaklik_kusuratsiz
+                state: '19'
+            then:
+              - service: notify.colakgenel
+                data:
+                  title: Merhaba
+                  message: ''
+                  data:
+                    photo:
+                      - file: /config/www/png/giyim/coat3.png
+                      - file: /config/www/png/giyim/pants4.png
+                      - file: /config/www/png/giyim/blanket1.png
+                        caption: >-
+                          Merhaba! Eviniz şu an {% set state =
+                          states('sensor.genel_sicaklik') %}{{ state | float + 0
+                          if is_number(state) else "invalid temperature" }}°,
+                          Evde bunları giyebilirsiniz.
+              - delay:
+                  hours: 4
+                  minutes: 0
+                  seconds: 0
+                  milliseconds: 0
+      - conditions:
+          - condition: trigger
+            id: zone-enter
+        sequence:
+          - if:
+              - condition: state
+                entity_id: sensor.genel_sicaklik_kusuratsiz
+                state: '20'
+            then:
+              - service: notify.colakgenel
+                data:
+                  title: Merhaba
+                  message: ''
+                  data:
+                    photo:
+                      - file: /config/www/png/giyim/sweatshirt3.png
+                      - file: /config/www/png/giyim/pants3.png
+                      - file: /config/www/png/giyim/sock5.png
+                        caption: >-
+                          Merhaba! Eviniz şu an {% set state =
+                          states('sensor.genel_sicaklik') %}{{ state | float + 0
+                          if is_number(state) else "invalid temperature" }}°,
+                          Evde bunları giyebilirsiniz.
+              - delay:
+                  hours: 4
+                  minutes: 0
+                  seconds: 0
+                  milliseconds: 0
+      - conditions:
+          - condition: trigger
+            id: zone-enter
+        sequence:
+          - if:
+              - condition: state
+                entity_id: sensor.genel_sicaklik_kusuratsiz
+                state: '21'
+            then:
+              - service: notify.colakgenel
+                data:
+                  title: Merhaba
+                  message: ''
+                  data:
+                    photo:
+                      - file: /config/www/png/giyim/sweatshirt3.png
+                      - file: /config/www/png/giyim/pants4.png
+                      - file: /config/www/png/giyim/sock5.png
+                        caption: >-
+                          Merhaba! Eviniz şu an {% set state =
+                          states('sensor.genel_sicaklik') %}{{ state | float + 0
+                          if is_number(state) else "invalid temperature" }}°,
+                          Evde bunları giyebilirsiniz.
+              - delay:
+                  hours: 4
+                  minutes: 0
+                  seconds: 0
+                  milliseconds: 0
+      - conditions:
+          - condition: trigger
+            id: zone-enter
+        sequence:
+          - if:
+              - condition: state
+                entity_id: sensor.genel_sicaklik_kusuratsiz
+                state: '22'
+            then:
+              - service: notify.colakgenel
+                data:
+                  title: Merhaba
+                  message: ''
+                  data:
+                    photo:
+                      - file: /config/www/png/giyim/sweatshirt3.png
+                      - file: /config/www/png/giyim/pants3.png
+                      - file: /config/www/png/giyim/sock5.png
+                        caption: >-
+                          Merhaba! Eviniz şu an {% set state =
+                          states('sensor.genel_sicaklik') %}{{ state | float + 0
+                          if is_number(state) else "invalid temperature" }}°,
+                          Evde  bunları giyebilirsiniz.
+              - delay:
+                  hours: 4
+                  minutes: 0
+                  seconds: 0
+                  milliseconds: 0
+      - conditions:
+          - condition: trigger
+            id: zone-enter
+        sequence:
+          - if:
+              - condition: state
+                entity_id: sensor.genel_sicaklik_kusuratsiz
+                state: '23'
+            then:
+              - service: notify.colakgenel
+                data:
+                  title: Merhaba
+                  message: ''
+                  data:
+                    photo:
+                      - file: /config/www/png/giyim/sweatshirt.png
+                      - file: /config/www/png/giyim/pants3.png
+                      - file: /config/www/png/giyim/sock5.png
+                        caption: >-
+                          Merhaba! Eviniz şu an {% set state =
+                          states('sensor.genel_sicaklik') %}{{ state | float + 0
+                          if is_number(state) else "invalid temperature" }}°,
+                          Evde bunları giyebilirsiniz.
+              - delay:
+                  hours: 4
+                  minutes: 0
+                  seconds: 0
+                  milliseconds: 0
+      - conditions:
+          - condition: trigger
+            id: zone-enter
+        sequence:
+          - if:
+              - condition: state
+                entity_id: sensor.genel_sicaklik_kusuratsiz
+                state: '24'
+            then:
+              - service: notify.colakgenel
+                data:
+                  title: Merhaba
+                  message: ''
+                  data:
+                    photo:
+                      - file: /config/www/png/giyim/sweatshirt.png
+                      - file: /config/www/png/giyim/pants3.png
+                      - file: /config/www/png/giyim/sock.png
+                        caption: >-
+                          Merhaba! Eviniz şu an {% set state =
+                          states('sensor.genel_sicaklik') %}{{ state | float + 0
+                          if is_number(state) else "invalid temperature" }}°,
+                          Evde bunları giyebilirsiniz.
+              - delay:
+                  hours: 4
+                  minutes: 0
+                  seconds: 0
+                  milliseconds: 0
+      - conditions:
+          - condition: trigger
+            id: zone-enter
+        sequence:
+          - if:
+              - condition: state
+                entity_id: sensor.genel_sicaklik_kusuratsiz
+                state: '25'
+            then:
+              - service: notify.colakgenel
+                data:
+                  title: Merhaba
+                  message: ''
+                  data:
+                    photo:
+                      - file: /config/www/png/giyim/tshirt3.png
+                      - file: /config/www/png/giyim/shorts2.png
+                      - file: /config/www/png/giyim/slipper2.png
+                        caption: >-
+                          Merhaba! Eviniz şu an {% set state =
+                          states('sensor.genel_sicaklik') %}{{ state | float + 0
+                          if is_number(state) else "invalid temperature" }}°,
+                          Evde bunları giyebilirsiniz.
+              - delay:
+                  hours: 4
+                  minutes: 0
+                  seconds: 0
+                  milliseconds: 0
+      - conditions:
+          - condition: trigger
+            id: zone-enter
+        sequence:
+          - if:
+              - condition: state
+                entity_id: sensor.genel_sicaklik_kusuratsiz
+                state: '26'
+            then:
+              - service: notify.colakgenel
+                data:
+                  title: Merhaba
+                  message: ''
+                  data:
+                    photo:
+                      - file: /config/www/png/giyim/tshirt3.png
+                      - file: /config/www/png/giyim/shorts2.png
+                      - file: /config/www/png/giyim/slipper2.png
+                        caption: >-
+                          Merhaba! Eviniz şu an {% set state =
+                          states('sensor.genel_sicaklik') %}{{ state | float + 0
+                          if is_number(state) else "invalid temperature" }}°,
+                          Evde bunları giyebilirsiniz.
+              - delay:
+                  hours: 4
+                  minutes: 0
+                  seconds: 0
+                  milliseconds: 0
+    default: []
+mode: single

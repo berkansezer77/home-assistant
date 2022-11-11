@@ -1,0 +1,35 @@
+alias: Spotify Page -Boolean - Automation media players turn on - off
+description: ''
+trigger:
+  - platform: state
+    entity_id:
+      - input_boolean.spotify_page_update_media_players
+    to: 'on'
+    id: media-players-on
+  - platform: state
+    entity_id:
+      - input_boolean.spotify_page_update_media_players
+    to: 'off'
+    id: media-players-off
+condition: []
+action:
+  - choose:
+      - conditions:
+          - condition: trigger
+            id: media-players-on
+        sequence:
+          - service: automation.turn_on
+            data: {}
+            target:
+              entity_id: automation.update_media_players
+      - conditions:
+          - condition: trigger
+            id: media-players-off
+        sequence:
+          - service: automation.turn_off
+            data:
+              stop_actions: false
+            target:
+              entity_id: automation.update_media_players
+    default: []
+mode: single

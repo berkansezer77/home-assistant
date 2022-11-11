@@ -1,0 +1,31 @@
+alias: Spotify Page - Update Media Players
+description: ''
+trigger:
+  - platform: time_pattern
+    seconds: /5
+    id: time
+  - platform: state
+    entity_id:
+      - input_boolean.spotify_page_update_media_players
+    to: 'on'
+    id: media-players-on
+condition: []
+action:
+  - choose:
+      - conditions:
+          - condition: trigger
+            id: time
+        sequence:
+          - service: homeassistant.update_entity
+            data: {}
+            target:
+              entity_id:
+                - media_player.bedroom_echo
+                - media_player.berkan_s_2nd_echo_dot
+                - media_player.berkan_s_echo_dot
+                - media_player.fire_tv_192_168_1_86
+                - media_player.office_dot
+                - media_player.everywhere
+                - media_player.spotify_berkan_sezer
+    default: []
+mode: single

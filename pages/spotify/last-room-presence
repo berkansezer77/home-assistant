@@ -1,0 +1,106 @@
+alias: Spotify - Play based on room presence
+description: ''
+trigger:
+  - platform: state
+    entity_id:
+      - input_boolean.spotify_play_last_motion_room
+    to: 'on'
+    id: 'on'
+condition: []
+action:
+  - choose:
+      - conditions:
+          - condition: and
+            conditions:
+              - condition: trigger
+                id: 'on'
+              - condition: state
+                state: Ofis Sensör Motion
+                entity_id: sensor.last_motion
+        sequence:
+          - service: media_player.play_media
+            data:
+              media_content_id: Play turkish playlist
+              media_content_type: custom
+            target:
+              entity_id:
+                - media_player.office_dot
+      - conditions:
+          - condition: and
+            conditions:
+              - condition: trigger
+                id: 'on'
+              - condition: state
+                entity_id: sensor.last_motion
+                state: Salon Sensör motion
+        sequence:
+          - service: scene.turn_on
+            data: {}
+            target:
+              entity_id: scene.anfi_ac
+          - service: media_player.play_media
+            data:
+              media_content_id: Play turkish playlist
+              media_content_type: custom
+            target:
+              entity_id:
+                - media_player.berkan_s_echo_dot
+      - conditions:
+          - condition: and
+            conditions:
+              - condition: trigger
+                id: 'on'
+              - condition: state
+                entity_id: sensor.last_motion
+                state: Mutfak Hareket Sensörü motion
+        sequence:
+          - service: scene.turn_on
+            data: {}
+            target:
+              entity_id: scene.anfi_ac
+          - service: media_player.play_media
+            data:
+              media_content_id: Play turkish playlist
+              media_content_type: custom
+            target:
+              entity_id: media_player.berkan_s_2nd_echo_dot
+      - conditions:
+          - condition: and
+            conditions:
+              - condition: trigger
+                id: 'on'
+              - condition: state
+                entity_id: sensor.last_motion
+                state: Yatak Odası Sensor Motion
+        sequence:
+          - service: scene.turn_on
+            data: {}
+            target:
+              entity_id: scene.anfi_ac
+          - service: media_player.play_media
+            data:
+              media_content_id: Play turkish playlist
+              media_content_type: custom
+            target:
+              entity_id: media_player.bedroom_echo
+      - conditions:
+          - condition: and
+            conditions:
+              - condition: trigger
+                id: 'on'
+              - condition: state
+                entity_id: sensor.last_motion
+                state: Yatak Odası Sensor Motion
+        sequence:
+          - service: scene.turn_on
+            data: {}
+            target:
+              entity_id: scene.anfi_ac
+          - service: media_player.play_media
+            data:
+              media_content_id: Play turkish playlist
+              media_content_type: custom
+            target:
+              entity_id: media_player.fire_tv_192_168_1_86
+    default: []
+mode: single

@@ -1,0 +1,33 @@
+alias: 'Spotify Page  - Everywhere Media Player idle or paused '
+description: ''
+trigger:
+  - platform: template
+    id: 'on'
+    value_template: '{{ is_state(''media_player.everywhere'', ''playing'') }}'
+  - platform: template
+    value_template: >-
+      {{ is_state('media_player.everywhere', 'idle') or
+      is_state('media_player.everywhere', 'paused') or
+      is_state('media_player.everywhere', 'standby') }}
+    id: 'off'
+condition: []
+action:
+  - choose:
+      - conditions:
+          - condition: trigger
+            id: 'on'
+        sequence:
+          - service: input_boolean.turn_on
+            data: {}
+            target:
+              entity_id: input_boolean.spotify_page_everywhere_media_player
+      - conditions:
+          - condition: trigger
+            id: 'off'
+        sequence:
+          - service: input_boolean.turn_off
+            data: {}
+            target:
+              entity_id: input_boolean.spotify_page_everywhere_media_player
+    default: []
+mode: single

@@ -1,0 +1,13 @@
+switch:
+  - platform: template
+    switches:
+      spotify_usage:
+        value_template: "{{ is_state('media_player.spotify_berkan_sezer', 'playing')  }}"
+        turn_on:
+          service: switch.turn_on
+          target:
+            entity_id: switch.target
+        turn_off:
+          service: switch.turn_off
+          target:
+            entity_id: switch.target   

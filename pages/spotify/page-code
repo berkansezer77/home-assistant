@@ -1,0 +1,1249 @@
+type: custom:stack-in-card
+layout_type: masonry
+layout: {}
+cards:
+  - type: conditional
+    conditions:
+      - entity: input_boolean.spotify_idle_or_paused
+        state: 'on'
+    card:
+      type: custom:mini-media-player
+      background: /local/view.png
+      entity: media_player.spotify_berkan_sezer
+      scale: '1'
+      artwork: full-cover
+      group: true
+      source: full
+      info: short
+    card_mod:
+      style: |
+        ha-card { 
+          background: rgba(var(--rgb-primary-text-color), 0.025);
+          border-radius: auto;
+          margin-left: autopx;
+          margin-right: auto;
+          margin-top: auto;
+          margin-bottom: auto;
+        }
+  - type: conditional
+    conditions:
+      - entity: input_boolean.spotify_idle_or_paused
+        state: 'off'
+    card:
+      type: custom:layout-card
+      cards:
+        - type: horizontal-stack
+          cards:
+            - type: markdown
+              content: Spotify
+              card_mod:
+                style: |
+                  ha-markdown {
+                    padding: 45px 50px 2px 10px !important;
+                    font-size: 25px !important;
+                    font-weight: normal !important;
+                    line-height: 1.2 !important;
+                  }
+                  ha-card {
+                    background: transparent;
+                    color: #e1e1e1;
+                    box-shadow: none !important;
+                    width: 300px;
+                    margin-top: 100px;
+                    margin-left: 0px;
+                    margin-right: 0px;
+                    margin-bottom: 0px;
+                    padding: 1px;
+                  }
+            - type: custom:button-card
+              color_type: blank-card
+              styles:
+                card:
+                  - width: 100px
+            - type: picture-entity
+              show_state: false
+              show_name: false
+              camera_view: auto
+              entity: switch.switch_bedroom
+              image: /local/png/spotify3.png
+              tap_action:
+                action: navigate
+                navigation_path: home
+              hold_action:
+                action: none
+              theme: Mushroom
+              card_mod:
+                style: |
+                  :host {
+                    --ha-card-background: rgba(var(--rgb-primary-text-color), 0.025);
+                  }
+                  ha-card {
+                    box-shadow: 1px 1px 1px 1px #3a1a1a;
+                    background: rgba(var(--rgb-primary-text-color), 0.025);
+                    margin-top: 40px;
+                    margin-left: 10px;
+                    margin-right: 10px;
+                    margin-bottom: 0px;
+                    padding: 15
+                    width: auto;
+                  }
+              alignment: end
+  - type: custom:mushroom-template-card
+    primary: Spotify
+    secondary: Bu ay toplamda {{ states('sensor.spotify_usage_aylik_convert_turkce')  }}
+    picture: /local/png/spotify1.png
+    entity: input_boolean.spotify_play_last_motion_room
+    double_tap_action:
+      action: navigate
+      navigation_path: music2
+    card_mod:
+      style: |
+        :host([dark-mode]) {
+          background: rgba(var(--rgb-primary-background-color), 0.2);
+          --card-primary-font-size: 16px;
+          --card-secondary-font-size: 13px
+        } 
+        :host {
+          background: rgba(var(--rgb-primary-background-color), 0.2);
+          --mush-icon-size: 53px;
+          height: 76px;
+          margin-left: 0px !important;
+          margin-bottom: 0px !important;
+        }
+  - type: custom:swipe-card
+    parameters: null
+    spaceBetween: 8
+    scrollbar: null
+    start_card: 1
+    hide: false
+    draggable: true
+    snapOnRelease: true
+    cards:
+      - type: horizontal-stack
+        cards:
+          - type: custom:mushroom-template-card
+            icon: mdi:bed
+            icon_color: |-
+              {% set state=states(entity) %}
+              {% if state=='playing' %}
+              amber
+              {% elif state=='on' %}
+              amber
+              {% else %}
+              grey
+              {% endif %}
+            primary: null
+            secondary: Bed
+            entity: media_player.bedroom_echo
+            fill_container: false
+            multiline_secondary: false
+            tap_action:
+              action: call-service
+              service: spotcast.start
+              data:
+                device_name: Bedroom Echo
+                force_playback: true
+            layout: vertical
+            style: |
+              mushroom-card 
+                background-size: 42px 32px;
+              mushroom-shape-icon {
+                --shape-color: none !important;
+              }  
+                ha-card { 
+                  background: #1a1a2a;, 1.25);
+                {% if is_state('media_player.bedroom_echo', 'playing') %}
+                {% else %}
+                  background: rgba(var(--rgb-primary-background-color), 0.3);
+                {% endif %}    
+                  width: 66px;
+                  border-radius: 30px;
+                  margin-top: 10px;
+                  margin-left: auto;
+                  margin-right: auto;
+                  margin-bottom: 20px;
+                }
+            card_mode:
+              style: |
+                :host {
+                  background: rgba(var(--rgb-primary-background-color), 0.5);
+                  border-radius: 50px;!important
+                } 
+            line_width: 8
+            line_color: '#FF6384'
+          - type: custom:mushroom-template-card
+            icon: mdi:laptop
+            icon_color: |-
+              {% set state=states(entity) %}
+              {% if state=='playing' %}
+              amber
+              {% elif state=='on' %}
+              amber
+              {% else %}
+              grey
+              {% endif %}
+            primary: null
+            secondary: Ofis
+            entity: media_player.office_dot
+            fill_container: false
+            multiline_secondary: false
+            tap_action:
+              action: call-service
+              service: spotcast.start
+              data:
+                device_name: Office Dot
+                force_playback: true
+            layout: vertical
+            style: |
+              mushroom-card 
+                background-size: 42px 32px;
+              mushroom-shape-icon {
+                --shape-color: none !important;
+              }  
+                ha-card { 
+                  background: #1a1a2a;, 1.25);
+                {% if is_state('media_player.office_dot', 'playing') %}
+                {% else %}
+                  background: rgba(var(--rgb-primary-background-color), 0.3);
+                {% endif %}    
+                  width: 66px;
+                  border-radius: 30px;
+                  margin-top: 10px;
+                  margin-left: auto;
+                  margin-right: auto;
+                  margin-bottom: 20px;
+                }
+            card_mode:
+              style: |
+                :host {
+                  background: rgba(var(--rgb-primary-background-color), 0.5);
+                  border-radius: 50px;!important
+                } 
+            line_width: 8
+            line_color: '#FF6384'
+          - type: custom:mushroom-template-card
+            icon: mdi:fridge
+            icon_color: |-
+              {% set state=states(entity) %}
+              {% if state=='playing' %}
+              amber
+              {% elif state=='on' %}
+              amber
+              {% else %}
+              grey
+              {% endif %}
+            primary: null
+            secondary: Mutfak
+            entity: media_player.berkan_s_2nd_echo_dot
+            fill_container: false
+            multiline_secondary: false
+            tap_action:
+              action: call-service
+              service: spotcast.start
+              data:
+                device_name: Kitchen Dot
+                force_playback: true
+            layout: vertical
+            style: |
+              mushroom-card 
+                background-size: 42px 32px;
+              mushroom-shape-icon {
+                --shape-color: none !important;
+              }  
+                ha-card { 
+                  background: #1a1a2a;, 1.25);
+                {% if is_state('media_player.berkan_s_2nd_echo_dot', 'playing') %}
+                {% else %}
+                  background: rgba(var(--rgb-primary-background-color), 0.3);
+                {% endif %}    
+                  width: 66px;
+                  border-radius: 30px;
+                  margin-top: 10px;
+                  margin-left: auto;
+                  margin-right: auto;
+                  margin-bottom: 20px;
+                }
+            card_mode:
+              style: |
+                :host {
+                  background: rgba(var(--rgb-primary-background-color), 0.5);
+                  border-radius: 50px;!important
+                } 
+            line_width: 8
+            line_color: '#FF6384'
+          - type: custom:mushroom-template-card
+            icon: mdi:television
+            icon_color: |-
+              {% set state=states(entity) %}
+              {% if state=='playing' %}
+              amber
+              {% elif state=='on' %}
+              amber
+              {% else %}
+              grey
+              {% endif %}
+            primary: null
+            secondary: FireTV
+            entity: input_boolean.spotify_page_firetv_artwork
+            fill_container: false
+            multiline_secondary: false
+            tap_action:
+              action: call-service
+              service: spotcast.start
+              data:
+                device_name: Berkan's Fire TV
+                force_playback: true
+            layout: vertical
+            style: |
+              mushroom-card 
+                background-size: 42px 32px;
+              mushroom-shape-icon {
+                --shape-color: none !important;
+              }  
+                ha-card { 
+                  background: #1a1a2a;, 1.25);
+                {% if is_state('input_boolean.spotify_page_firetv_artwork', 'on') %}
+                {% else %}
+                  background: rgba(var(--rgb-primary-background-color), 0.3);
+                {% endif %}    
+                  width: 66px;
+                  border-radius: 30px;
+                  margin-top: 10px;
+                  margin-left: auto;
+                  margin-right: auto;
+                  margin-bottom: 20px;
+                }
+            card_mode:
+              style: |
+                :host {
+                  background: rgba(var(--rgb-primary-background-color), 0.5);
+                  border-radius: 50px;!important
+                } 
+            line_width: 8
+            line_color: '#FF6384'
+          - type: custom:mushroom-template-card
+            icon: mdi:sofa
+            icon_color: |-
+              {% set state=states(entity) %}
+              {% if state=='playing' %}
+              amber
+              {% elif state=='on' %}
+              amber
+              {% else %}
+              grey
+              {% endif %}
+            primary: null
+            secondary: Salon
+            entity: media_player.berkan_s_echo_dot
+            fill_container: false
+            multiline_secondary: false
+            tap_action:
+              action: call-service
+              service: spotcast.start
+              data:
+                device_name: Berkan's Echo Dot
+                force_playback: true
+            layout: vertical
+            style: |
+              mushroom-card 
+                background-size: 42px 32px;
+              mushroom-shape-icon { 
+                --shape-color: none !important;
+              }  
+                ha-card { 
+                  background: #1a1a2a;, 1.25);
+                {% if is_state('media_player.berkan_s_echo_dot', 'playing') %}
+                {% else %}
+                  background: rgba(var(--rgb-primary-background-color), 0.3);
+                {% endif %}    
+                  width: 66px;
+                  border-radius: 30px; 
+                  margin-top: 10px;
+                  margin-left: auto;
+                  margin-right: auto;
+                  margin-bottom: 20px;
+                }
+            card_mode:
+              style: |
+                :host {
+                  background: rgba(var(--rgb-primary-background-color), 0.5);
+                  border-radius: 50px;!important
+                } 
+            line_width: 8
+            line_color: '#FF6384'
+      - type: horizontal-stack
+        cards:
+          - type: custom:mushroom-template-card
+            icon: mdi:music
+            icon_color: |-
+              {% set state=states(entity) %}
+              {% if state=='playing' %}
+              amber
+              {% elif state=='on' %}
+              amber
+              {% else %}
+              grey
+              {% endif %}
+            primary: null
+            secondary: Everywhere
+            entity: media_player.everywhere
+            fill_container: false
+            multiline_secondary: false
+            tap_action:
+              action: call-service
+              service: media_player.select_source
+              data:
+                source: Everywhere
+              target:
+                entity_id: media_player.spotify_berkan_sezer
+            layout: vertical
+            style: |
+              mushroom-card 
+                background-size: 42px 32px;
+              mushroom-shape-icon {
+                --shape-color: none !important;
+              }  
+                ha-card { 
+                  background: #1a1a2a;, 1.25);
+                {% if is_state('media_player.everywhere', 'playing') %}
+                {% else %}
+                  background: rgba(var(--rgb-primary-background-color), 0.3);
+                {% endif %}    
+                  width: 66px;
+                  border-radius: 30px;
+                  margin-top: 10px;
+                  margin-left: auto;
+                  margin-right: auto; 
+                  margin-bottom: 20px;
+                }
+            card_mode:
+              style: |
+                :host {
+                  background: rgba(var(--rgb-primary-background-color), 0.5);
+                  border-radius: 50px;!important
+                } 
+            line_width: 8
+            line_color: '#FF6384'
+            alignment: start
+          - type: custom:mushroom-template-card
+            icon: mdi
+            primary: null
+            secondary: Play
+            entity: input_boolean.spotify_play_last_motion_room
+            fill_container: false
+            multiline_secondary: false
+            layout: vertical
+            style: |
+              mushroom-card {
+                background:  url( '/local/png/play.png' ) no-repeat center 0px;
+                background-size: 42px 42px;
+                {% if is_state('media_player.spotify_berkan_sezer', 'playing') %}
+                {% else %}
+                  filter: grayscale(100%);
+                {% endif %} 
+              }
+              mushroom-shape-icon {
+                --shape-color: none !important;
+              }  
+                ha-card { 
+                  background: rgba(5,66,121, 0.2);
+                {% if is_state('media_player.spotify_berkan_sezer', 'playing') %}
+                {% else %}
+                  background: rgba(var(--rgb-primary-background-color), 0.3);
+                {% endif %}  
+                  width: 66px;
+                  border-radius: 30px;
+                  margin-top: 10px;
+                  margin-left: auto;
+                  margin-right: auto;
+                  margin-bottom: 10px;
+                }
+            card_mode:
+              style: |
+                :host {
+                  background: rgba(var(--rgb-primary-background-color), 0.5);
+                  border-radius: 50px;!important
+                } 
+            alignment: start
+          - type: custom:mushroom-template-card
+            icon: mdi
+            primary: null
+            secondary: Music
+            entity: input_boolean.notify_home7
+            fill_container: false
+            multiline_secondary: false
+            layout: vertical
+            style: |
+              mushroom-card {
+                background:  url( '/local/png/music3.png' ) no-repeat center 0px;
+                background-size: 42px 42px;
+                {% if is_state('input_boolean.notify_home7', 'on') %}
+                {% else %}
+                  filter: grayscale(100%);
+                {% endif %} 
+              }
+              mushroom-shape-icon {
+                --shape-color: none !important;
+              }  
+                ha-card { 
+                  background: rgba(230, 7, 103, 0.2);
+                {% if is_state('input_boolean.notify_home7', 'on') %}
+                {% else %}
+                  background: rgba(var(--rgb-primary-background-color), 0.3);
+                {% endif %}  
+                  width: 66px;
+                  border-radius: 30px;
+                  margin-top: 10px;
+                  margin-left: auto;
+                  margin-right: auto;
+                  margin-bottom: 10px;
+                }
+            card_mode:
+              style: |
+                :host {
+                  background: rgba(var(--rgb-primary-background-color), 0.5);
+                  border-radius: 50px;!important
+                } 
+            alignment: start
+          - type: custom:mushroom-template-card
+            icon: mdi
+            primary: null
+            secondary: Update
+            entity: input_boolean.spotify_page_update_media_players
+            fill_container: false
+            multiline_secondary: false
+            layout: vertical
+            style: |
+              mushroom-card {
+                background:  url( '/local/png/update2.png' ) no-repeat center 0px;
+                background-size: 42px 42px;
+                {% if is_state('input_boolean.spotify_page_update_media_players', 'on') %}
+                {% else %}
+                  filter: grayscale(100%);
+                {% endif %} 
+              }
+              mushroom-shape-icon {
+                --shape-color: none !important;
+              }  
+                ha-card { 
+                  background: rgba(230, 7, 103, 0.2);
+                {% if is_state('input_boolean.spotify_page_update_media_players', 'on') %}
+                {% else %}
+                  background: rgba(var(--rgb-primary-background-color), 0.3);
+                {% endif %}  
+                  width: 66px;
+                  border-radius: 30px;
+                  margin-top: 10px;
+                  margin-left: auto;
+                  margin-right: auto;
+                  margin-bottom: 10px;
+                }
+            card_mode:
+              style: |
+                :host {
+                  background: rgba(var(--rgb-primary-background-color), 0.5);
+                  border-radius: 50px;!important
+                } 
+            alignment: start
+  - type: custom:mushroom-media-player-card
+    entity: media_player.spotify_berkan_sezer
+    volume_controls:
+      - volume_mute
+      - volume_set
+    use_media_info: false
+    show_volume_level: false
+    media_controls:
+      - previous
+      - play_pause_stop
+      - next
+    collapsible_controls: false
+    fill_container: false
+    layout: default
+    name: Spotify
+    icon_type: entity-picture
+    card_mod:
+      style: |
+        ha-card {
+          {% if is_state('media_player.spotify_berkan_sezer', 'off') %}
+          {% else %}
+            background-image: url( '{{ state_attr( "media_player.spotify_berkan_sezer", "entity_picture" ) }}' );
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-color: rgba(var(--rgb-card-background-color), 0.5);
+            background-blend-mode: overlay;
+            position: relative;
+            margin-top: 20px;
+            margin-bottom: 30px;
+          {% endif %}  
+        }
+  - type: custom:spotify-card
+    limit: 8
+    display_style: Grid
+    grid_covers_per_row: 4
+    always_play_random_song: true
+    hide_warning: true
+    hide_currently_playing: true
+    hide_top_header: true
+    hide_playback_controls: true
+    card_mod:
+      style: |
+        ha-card { 
+          background: rgba(var(--rgb-primary-text-color), 0.025);
+          border-radius: 30px;
+          margin-left: auto; 
+          margin-right: auto;
+          margin-top: 0px;
+          margin-bottom: 20px;
+        }
+  - square: false
+    columns: 1
+    type: custom:stack-in-card
+    cards:
+      - type: custom:layout-card
+        layout_type: masonry
+        layout: null
+        cards: null
+      - square: false
+        columns: 7
+        type: grid
+        cards:
+          - type: custom:mushroom-chips-card
+            chips:
+              - type: conditional
+                conditions:
+                  - entity: input_boolean.amps_dropdown
+                    state: 'off'
+                chip:
+                  type: entity
+                  entity: scene.klima_ac
+                  name: Klima
+                  content_info: name
+                  use_entity_picture: true
+                  tap_action:
+                    action: more-info
+            card_mod:
+              style: |
+                ha-card {
+                  --chip-box-shadow: none;
+                  --chip-background: none;
+                  --chip-spacing: 0px;
+                  --chip-padding: 15px;
+                  margin-left: 5px;
+                  width: 400px;
+                }
+            alignment: start
+          - type: custom:mushroom-chips-card
+            chips:
+              - type: conditional
+                conditions:
+                  - entity: input_boolean.amps_dropdown
+                    state: 'off'
+                chip:
+                  type: action
+                  icon_color: amber
+                  tap_action:
+                    action: call-service
+                    service: scene.turn_on
+                    data: {}
+                    target:
+                      entity_id: scene.klima_ac
+                  icon: mdi:plus
+            card_mod:
+              style: |
+                ha-card {
+                  --chip-box-shadow: none;
+                  --chip-background: none;
+                  --chip-spacing: 0px;
+                  --chip-padding: 15px;
+                  margin-left: 30px;
+                  margin-bottom: -12px;
+                  width: 400px
+                }
+            alignment: start
+          - type: custom:mushroom-chips-card
+            chips:
+              - type: conditional
+                conditions:
+                  - entity: input_boolean.amps_dropdown
+                    state: 'off'
+                chip:
+                  type: action
+                  icon_color: amber
+                  tap_action:
+                    action: call-service
+                    service: scene.turn_on
+                    data: {}
+                    target:
+                      entity_id: scene.klima_kapat
+                  icon: mdi:minus
+            card_mod:
+              style: |
+                ha-card {
+                  --chip-box-shadow: none;
+                  --chip-background: none;
+                  --chip-spacing: 0px;
+                  --chip-padding: 15px;
+                  margin-left: 20px;
+                  margin-bottom: -12px;
+                  width: 400px
+                }
+            alignment: start
+          - type: custom:mushroom-chips-card
+            chips:
+              - type: conditional
+                conditions:
+                  - entity: input_boolean.amps_dropdown
+                    state: 'off'
+                chip:
+                  type: entity
+                  entity: scene.tv_ac
+                  name: TV
+                  content_info: name
+                  use_entity_picture: true
+                  tap_action:
+                    action: more-info
+            card_mod:
+              style: |
+                ha-card {
+                  --chip-box-shadow: none;
+                  --chip-background: none;
+                  --chip-spacing: 0px;
+                  --chip-padding: 10px;
+                  margin-left: 20px;
+                  width: 400px;
+                }
+            alignment: start
+          - type: custom:mushroom-chips-card
+            chips:
+              - type: conditional
+                conditions:
+                  - entity: input_boolean.amps_dropdown
+                    state: 'off'
+                chip:
+                  type: action
+                  icon_color: amber
+                  tap_action:
+                    action: call-service
+                    service: scene.turn_on
+                    data: {}
+                    target:
+                      entity_id: scene.tv_ac
+                  icon: mdi:plus
+            card_mod:
+              style: |
+                ha-card {
+                  --chip-box-shadow: none;
+                  --chip-background: none;
+                  --chip-spacing: 0px;
+                  --chip-padding: 15px;
+                  margin-left: 25px;
+                  margin-bottom: -12px;
+                  width: 400px
+                }
+            alignment: start
+          - type: custom:mushroom-chips-card
+            chips:
+              - type: conditional
+                conditions:
+                  - entity: input_boolean.amps_dropdown
+                    state: 'off'
+                chip:
+                  type: action
+                  icon_color: amber
+                  tap_action:
+                    action: call-service
+                    service: scene.turn_on
+                    data: {}
+                    target:
+                      entity_id: scene.tv_kapat
+                  icon: mdi:minus
+            card_mod:
+              style: |
+                ha-card {
+                  --chip-box-shadow: none;
+                  --chip-background: none;
+                  --chip-spacing: 0px;
+                  --chip-padding: 15px;
+                  margin-left: 10px;
+                  margin-bottom: -12px;
+                  width: 400px
+                }
+            alignment: start
+          - type: custom:mushroom-chips-card
+            chips:
+              - type: template
+                icon: |-
+                  {% if is_state(entity, 'off') %}
+                    mdi:chevron-down 
+                  {% elif is_state(entity, 'on') %}   
+                    mdi:chevron-up    
+                  {% endif %}
+                tap_action:
+                  action: toggle
+                entity: input_boolean.amps_dropdown
+                icon_color: disabled
+            card_mod:
+              style: |
+                ha-card {
+                  --chip-box-shadow: none;
+                  --chip-background: none;
+                  --chip-spacing: 0px;
+                  --chip-padding: 0px;
+                  --chip-icon-size: 20px;
+                  margin-right: -4px;
+                  margin-bottom: -12px;
+                }
+            alignment: end
+        card_mod:
+          style: |
+            ha-card {
+              --chip-box-shadow: none;
+              --chip-background: none;
+              --chip-spacing: 0px;
+              --chip-padding: 15px;
+              margin-left: -6px;
+              margin-bottom: -12px;
+              width: 400px
+            }
+          alignment: start
+      - type: custom:layout-card
+        layout_type: masonry
+        layout: {}
+        cards:
+          - type: horizontal-stack
+            cards:
+              - type: vertical-stack
+                cards:
+                  - type: conditional
+                    conditions:
+                      - entity: input_boolean.amps_dropdown
+                        state: 'on'
+                    card:
+                      type: custom:mushroom-entity-card
+                      entity: scene.klima_ac
+                      secondary_info: none
+                      layout: vertical
+                      primary_info: name
+                      name: Klima
+                      tap_action:
+                        action: none
+                      hold_action:
+                        action: none
+                      double_tap_action:
+                        action: none
+                      use_entity_picture: true
+                      card_mod:
+                        style: |
+                          ha-card {
+                            background: transparent;
+                          }
+                  - type: conditional
+                    conditions:
+                      - entity: input_boolean.amps_dropdown
+                        state: 'on'
+                    card:
+                      type: horizontal-stack
+                      cards:
+                        - type: custom:mushroom-entity-card
+                          entity: scene.klima_ac
+                          name: Aç
+                          secondary_info: none
+                          layout: vertical
+                          primary_info: name
+                          fill_container: false
+                          hide_icon: true
+                          tap_action:
+                            action: call-service
+                            service: scene.turn_on
+                            service_data: {}
+                            target:
+                              entity_id: scene.klima_ac
+                          card_mod:
+                            style: |
+                              ha-card {
+                                background: transparent;
+                              }
+                        - type: custom:mushroom-entity-card
+                          entity: scene.klima_kapat
+                          name: Kapat
+                          secondary_info: none
+                          layout: vertical
+                          primary_info: name
+                          fill_container: false
+                          hide_icon: true
+                          tap_action:
+                            action: call-service
+                            service: scene.turn_on
+                            service_data: {}
+                            target:
+                              entity_id: scene.klima_kapat
+                          card_mod:
+                            style: |
+                              ha-card {
+                                background: transparent;
+                              }
+              - type: vertical-stack
+                cards:
+                  - type: conditional
+                    conditions:
+                      - entity: input_boolean.amps_dropdown
+                        state: 'on'
+                    card:
+                      type: custom:mushroom-entity-card
+                      entity: scene.tv_ac
+                      secondary_info: none
+                      layout: vertical
+                      primary_info: name
+                      name: TV
+                      tap_action:
+                        action: none
+                      hold_action:
+                        action: none
+                      double_tap_action:
+                        action: none
+                      use_entity_picture: true
+                      card_mod:
+                        style: |
+                          ha-card {
+                            background: transparent;
+                          }
+                  - type: conditional
+                    conditions:
+                      - entity: input_boolean.amps_dropdown
+                        state: 'on'
+                    card:
+                      type: horizontal-stack
+                      cards:
+                        - type: custom:mushroom-entity-card
+                          entity: scene.tv_ac
+                          name: Aç
+                          secondary_info: none
+                          layout: vertical
+                          primary_info: name
+                          fill_container: false
+                          hide_icon: true
+                          tap_action:
+                            action: call-service
+                            service: scene.turn_on
+                            service_data: {}
+                            target:
+                              entity_id: scene.tv_ac
+                          card_mod:
+                            style: |
+                              ha-card {
+                                background: transparent;
+                              }
+                        - type: custom:mushroom-entity-card
+                          entity: scene.tv_kapat
+                          name: Kapat
+                          secondary_info: none
+                          layout: vertical
+                          primary_info: name
+                          fill_container: false
+                          hide_icon: true
+                          tap_action:
+                            action: call-service
+                            service: scene.turn_on
+                            service_data: {}
+                            target:
+                              entity_id: scene.tv_kapat
+                          card_mod:
+                            style: |
+                              ha-card {
+                                background: transparent;
+                              }
+              - type: vertical-stack
+                cards:
+                  - type: conditional
+                    conditions:
+                      - entity: input_boolean.amps_dropdown
+                        state: 'on'
+                    card:
+                      type: custom:mushroom-entity-card
+                      entity: scene.anfi_ac
+                      secondary_info: none
+                      layout: vertical
+                      primary_info: name
+                      name: Anfi
+                      tap_action:
+                        action: none
+                      hold_action:
+                        action: none
+                      double_tap_action:
+                        action: none
+                      use_entity_picture: true
+                      card_mod:
+                        style: |
+                          ha-card {
+                            background: transparent;
+                          }
+                  - type: conditional
+                    conditions:
+                      - entity: input_boolean.amps_dropdown
+                        state: 'on'
+                    card:
+                      type: horizontal-stack
+                      cards:
+                        - type: custom:mushroom-entity-card
+                          entity: scene.anfi_ac
+                          name: Aç
+                          secondary_info: none
+                          layout: vertical
+                          primary_info: name
+                          fill_container: false
+                          hide_icon: true
+                          tap_action:
+                            action: call-service
+                            service: scene.turn_on
+                            service_data: {}
+                            target:
+                              entity_id: scene.anfi_ac
+                          card_mod:
+                            style: |
+                              ha-card {
+                                background: transparent;
+                              }
+                        - type: custom:mushroom-entity-card
+                          entity: scene.anfi_kapat
+                          name: Kapat
+                          secondary_info: none
+                          layout: vertical
+                          primary_info: name
+                          fill_container: false
+                          hide_icon: true
+                          tap_action:
+                            action: call-service
+                            service: scene.turn_on
+                            service_data: {}
+                            target:
+                              entity_id: scene.anfi_kapat
+                          card_mod:
+                            style: |
+                              ha-card {
+                                background: transparent;
+                              }
+          - type: horizontal-stack
+            cards:
+              - type: vertical-stack
+                cards:
+                  - type: conditional
+                    conditions:
+                      - entity: input_boolean.amps_dropdown
+                        state: 'on'
+                    card:
+                      type: custom:mushroom-entity-card
+                      entity: scene.hdmi_1
+                      secondary_info: none
+                      layout: vertical
+                      primary_info: name
+                      name: HDMI
+                      tap_action:
+                        action: none
+                      hold_action:
+                        action: none
+                      double_tap_action:
+                        action: none
+                      use_entity_picture: true
+                      card_mod:
+                        style: |
+                          ha-card {
+                            background: transparent;
+                          }
+                  - type: conditional
+                    conditions:
+                      - entity: input_boolean.amps_dropdown
+                        state: 'on'
+                    card:
+                      type: horizontal-stack
+                      cards:
+                        - type: custom:mushroom-entity-card
+                          entity: scene.hdmi_1
+                          name: 1
+                          secondary_info: none
+                          layout: vertical
+                          primary_info: name
+                          fill_container: false
+                          hide_icon: true
+                          tap_action:
+                            action: call-service
+                            service: scene.turn_on
+                            service_data: {}
+                            target:
+                              entity_id: scene.hdmi_1
+                          card_mod:
+                            style: |
+                              ha-card {
+                                background: transparent;
+                              }
+                        - type: custom:mushroom-entity-card
+                          entity: scene.hdmi_2
+                          name: 2
+                          secondary_info: none
+                          layout: vertical
+                          primary_info: name
+                          fill_container: false
+                          hide_icon: true
+                          tap_action:
+                            action: call-service
+                            service: scene.turn_on
+                            service_data: {}
+                            target:
+                              entity_id: scene.hdmi_2
+                          card_mod:
+                            style: |
+                              ha-card {
+                                background: transparent;
+                              }
+              - type: vertical-stack
+                cards:
+                  - type: conditional
+                    conditions:
+                      - entity: input_boolean.amps_dropdown
+                        state: 'on'
+                    card:
+                      type: custom:mushroom-entity-card
+                      entity: scene.ses_yukselt
+                      secondary_info: none
+                      layout: vertical
+                      primary_info: name
+                      name: Ses
+                      tap_action:
+                        action: none
+                      hold_action:
+                        action: none
+                      double_tap_action:
+                        action: none
+                      use_entity_picture: true
+                      card_mod:
+                        style: |
+                          ha-card {
+                            background: transparent;
+                          }
+                  - type: conditional
+                    conditions:
+                      - entity: input_boolean.amps_dropdown
+                        state: 'on'
+                    card:
+                      type: horizontal-stack
+                      cards:
+                        - type: custom:mushroom-entity-card
+                          entity: scene.ses_yukselt
+                          name: +
+                          secondary_info: none
+                          layout: vertical
+                          primary_info: name
+                          fill_container: false
+                          hide_icon: true
+                          tap_action:
+                            action: call-service
+                            service: scene.turn_on
+                            service_data: {}
+                            target:
+                              entity_id: scene.ses_yukselt
+                          card_mod:
+                            style: |
+                              ha-card {
+                                background: transparent;
+                              }
+                        - type: custom:mushroom-entity-card
+                          entity: scene.ses_azalt
+                          name: '-'
+                          secondary_info: none
+                          layout: vertical
+                          primary_info: name
+                          fill_container: false
+                          hide_icon: true
+                          tap_action:
+                            action: call-service
+                            service: scene.turn_on
+                            service_data: {}
+                            target:
+                              entity_id: scene.ses_azalt
+                          card_mod:
+                            style: |
+                              ha-card {
+                                background: transparent;
+                              }
+              - type: vertical-stack
+                cards:
+                  - type: conditional
+                    conditions:
+                      - entity: input_boolean.amps_dropdown
+                        state: 'on'
+                    card:
+                      type: custom:mushroom-entity-card
+                      entity: light.star_projector
+                      secondary_info: none
+                      layout: vertical
+                      primary_info: name
+                      name: Star Projector
+                      tap_action:
+                        action: none
+                      hold_action:
+                        action: none
+                      double_tap_action:
+                        action: none
+                      use_entity_picture: true
+                      card_mod:
+                        style: |
+                          ha-card {
+                            background: transparent;
+                          }
+                  - type: conditional
+                    conditions:
+                      - entity: input_boolean.amps_dropdown
+                        state: 'on'
+                    card:
+                      type: horizontal-stack
+                      cards:
+                        - type: custom:mushroom-entity-card
+                          entity: light.star_projector
+                          name: Aç
+                          secondary_info: none
+                          layout: vertical
+                          primary_info: name
+                          fill_container: false
+                          hide_icon: true
+                          tap_action:
+                            action: call-service
+                            service: light.turn_on
+                            service_data: {}
+                            target:
+                              entity_id: light.star_projector
+                          card_mod:
+                            style: |
+                              ha-card {
+                                background: transparent;
+                              }
+                        - type: custom:mushroom-entity-card
+                          entity: light.star_projector
+                          name: Kapat
+                          secondary_info: none
+                          layout: vertical
+                          primary_info: name
+                          fill_container: false
+                          hide_icon: true
+                          tap_action:
+                            action: call-service
+                            service: light.turn_off
+                            service_data: {}
+                            target:
+                              entity_id: light.star_projector
+                          card_mod:
+                            style: |
+                              ha-card {
+                                background: transparent;
+                              }
+    card_mod:
+      style: |
+        ha-card {
+          margin-top: 15px;
+          padding: 10px;
+          background: transparent;
+        }
+card_mod:
+  style: |
+    ha-card {
+      background:#4a1a1a;
+    }

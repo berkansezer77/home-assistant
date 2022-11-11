@@ -1,0 +1,41 @@
+#Spotify Günlük
+- platform: history_stats
+  name: spotify_usage_gunluk
+  entity_id: switch.spotify_usage
+  state: "on"
+  type: time
+  start: "{{ now().replace(hour=0, minute=0, second=0) }}"
+  end: "{{ now() }}"
+- platform: template
+  sensors:
+    spotify_usage_gunluk_convert:
+      value_template: "{{ (states('sensor.spotify_usage_gunluk') | float * 3600)| timestamp_custom('%-H.%-M', false) }}"     
+#Spotify Haftalık
+- platform: history_stats
+  name: spotify_usage_haftalik
+  entity_id: switch.spotify_usage
+  state: "on"
+  type: time
+  start: "{{ as_timestamp( now().replace(hour=0, minute=0, second=0) ) - now().weekday() * 86400 }}"
+  end: "{{ now() }}"
+- platform: template
+  sensors:
+    spotify_usage_haftalik_convert:
+      value_template: "{{ (states('sensor.spotify_usage_haftalik') | float * 3600)| timestamp_custom('%-H.%-M', false) }}"       
+#Spotify Aylık
+- platform: history_stats
+  name: spotify_usage_aylik
+  entity_id: switch.spotify_usage
+  state: "on"
+  type: time
+  start: "{{ now().replace(day=1).replace(hour=0).replace(minute=0).replace(second=0) }}"
+  end: "{{ now() }}"
+- platform: template
+  sensors:
+    spotify_usage_aylik_convert:
+      value_template: "{{ (states('sensor.spotify_usage_aylik') | float * 3600)| timestamp_custom('%-H.%-M', false) }}"
+- platform: template
+  sensors:
+    spotify_usage_aylik_convert_turkce:
+      value_template: "{{ (states('sensor.spotify_usage_aylik') | float * 3600)| timestamp_custom('%-H saat %-M dakika', false) }}"     
+#TRV Günlük

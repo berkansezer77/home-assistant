@@ -1,0 +1,10 @@
+- platform: template
+  sensors:
+    last_motion:
+      friendly_name: 'Last Motion'
+      value_template: >    
+        {% set t = expand('binary_sensor.hue_motion_sensor') | map(attribute='last_changed') | max %}
+        {% set s = (expand('binary_sensor.hue_motion_sensor') | selectattr('last_changed', 'eq', t) | list)[0] %}
+        {% if( s | selectattr('state', 'eq', 'on') ) -%}
+        {{s.name}}
+        {%- endif %}

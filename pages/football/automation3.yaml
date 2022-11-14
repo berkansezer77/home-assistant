@@ -1,19 +1,26 @@
-alias: News Chip - Haberler 3
+alias: Football Page - Galatasaray
 description: ''
 trigger:
   - platform: state
     entity_id:
-      - timer.news_timer_5m
-    to: idle
-condition: []
+      - input_boolean.news_chip_besiktas
+      - input_boolean.news_chip_fenerbahce
+      - input_boolean.news_chip_galatasaray
+      - input_boolean.news_chip_trabzonspor
+      - input_boolean.news_chip_haber
+    to: 'on'
+condition:
+  - condition: state
+    entity_id: input_boolean.galatasaray
+    state: 'on'
 action:
-  - service: input_boolean.turn_off
+  - delay:
+      hours: 0
+      minutes: 1
+      seconds: 0
+      milliseconds: 0
+  - service: input_boolean.turn_on
     data: {}
     target:
-      entity_id:
-        - input_boolean.news_chip_galatasaray
-        - input_boolean.news_chip_fenerbahce
-        - input_boolean.news_chip_besiktas
-        - input_boolean.news_chip_haber
-        - input_boolean.news_chip_trabzonspor
+      entity_id: input_boolean.news_chip_galatasaray
 mode: single

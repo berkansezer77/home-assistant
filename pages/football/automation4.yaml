@@ -1,19 +1,26 @@
-alias: News Chip - Haberler 4
+alias: Football Page - Haber
 description: ''
 trigger:
   - platform: state
     entity_id:
-      - input_boolean.news_chip_all
-    to: 'off'
-condition: []
+      - input_boolean.news_chip_besiktas
+      - input_boolean.news_chip_fenerbahce
+      - input_boolean.news_chip_galatasaray
+      - input_boolean.news_chip_trabzonspor
+      - input_boolean.news_chip_haber
+    to: 'on'
+condition:
+  - condition: state
+    entity_id: group.news_chip_teams
+    state: 'off'
 action:
-  - service: input_boolean.turn_off
+  - delay:
+      hours: 0
+      minutes: 1
+      seconds: 0
+      milliseconds: 0
+  - service: input_boolean.turn_on
     data: {}
     target:
-      entity_id:
-        - input_boolean.news_chip_besiktas
-        - input_boolean.news_chip_fenerbahce
-        - input_boolean.news_chip_galatasaray
-        - input_boolean.news_chip_trabzonspor
-        - input_boolean.news_chip_haber
+      entity_id: input_boolean.news_chip_haber
 mode: single

@@ -1,41 +1,26 @@
-alias: News Chip - Haberler 1
+alias: Football Page - Beşiktaş
 description: ''
 trigger:
-  - platform: template
-    value_template: >-
-      {{ is_state('input_boolean.news_chip_trabzonspor', 'on') or
-      is_state('input_boolean.news_chip_besiktas', 'on') or
-      is_state('input_boolean.news_chip_fenerbahce', 'on') or
-      is_state('input_boolean.news_chip_haber', 'on') or
-      is_state('input_boolean.news_chip_galatasaray', 'on') }}
-    id: start-news
   - platform: state
     entity_id:
-      - timer.news_timer_5m
-    to: idle
-    id: timer-finished
-condition: []
+      - input_boolean.news_chip_besiktas
+      - input_boolean.news_chip_fenerbahce
+      - input_boolean.news_chip_galatasaray
+      - input_boolean.news_chip_trabzonspor
+      - input_boolean.news_chip_haber
+    to: 'on'
+condition:
+  - condition: state
+    entity_id: input_boolean.besiktas
+    state: 'on'
 action:
-  - choose:
-      - conditions:
-          - condition: trigger
-            id: start-news
-        sequence:
-          - service: timer.start
-            data: {}
-            target:
-              entity_id: timer.news_timer_5m
-          - service: input_boolean.turn_on
-            data: {}
-            target:
-              entity_id: input_boolean.news_chip_all
-      - conditions:
-          - condition: trigger
-            id: timer-finished
-        sequence:
-          - service: input_boolean.turn_off
-            data: {}
-            target:
-              entity_id: input_boolean.news_chip_all
-    default: []
+  - delay:
+      hours: 0
+      minutes: 1
+      seconds: 0
+      milliseconds: 0
+  - service: input_boolean.turn_on
+    data: {}
+    target:
+      entity_id: input_boolean.news_chip_besiktas
 mode: single

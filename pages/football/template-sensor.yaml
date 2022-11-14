@@ -1,14 +1,15 @@
-  - platform: feedparser
-    name: Beşiktaş
-    feed_url: 'https://www.aspor.com.tr/rss/besiktas.xml'
-    date_format: '%a, %d %b %Y %H:%M:%S %Z'
-    scan_interval:
-      minutes: 10
-    inclusions:
-      - title
-      - link
-      - description
-      - image
-      - pubDate
-    exclusions:
-      - language      
+#ASPOR Beşiktaş
+- platform: feedparser
+  name: besiktas1
+  feed_url: "https://www.aspor.com.tr/rss/besiktas.xml"
+  date_format: "%a, %d %b %Y %H:%M:%S %Z"
+  scan_interval:
+    minutes: 10
+  inclusions:
+    - title
+    - link
+    - description
+    - image
+    - pubDate
+  exclusions:
+    - language    

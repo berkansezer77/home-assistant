@@ -1,93 +1,26 @@
-alias: News Chip - Haberler 2
+alias: Football Page - Fenerbahçe
 description: ''
 trigger:
   - platform: state
     entity_id:
       - input_boolean.news_chip_besiktas
-    to: 'on'
-    id: besiktasnewschip-on
-  - platform: state
-    entity_id:
       - input_boolean.news_chip_fenerbahce
-    to: 'on'
-    id: fenerbahcenewschip-on
-  - platform: state
-    entity_id:
       - input_boolean.news_chip_galatasaray
-    to: 'on'
-    id: galatasaraynewschip-on
-  - platform: state
-    entity_id:
       - input_boolean.news_chip_trabzonspor
-    to: 'on'
-    id: trabzonspornewschip-on
-  - platform: state
-    entity_id:
       - input_boolean.news_chip_haber
     to: 'on'
-    id: habernewschip-on
-condition: []
+condition:
+  - condition: state
+    entity_id: input_boolean.fenerbahce
+    state: 'on'
 action:
-  - choose:
-      - conditions:
-          - condition: trigger
-            id: besiktasnewschip-on
-        sequence:
-          - service: input_boolean.turn_off
-            data: {}
-            target:
-              entity_id:
-                - input_boolean.news_chip_fenerbahce
-                - input_boolean.news_chip_galatasaray
-                - input_boolean.news_chip_trabzonspor
-                - input_boolean.news_chip_haber
-      - conditions:
-          - condition: trigger
-            id: fenerbahcenewschip-on
-        sequence:
-          - service: input_boolean.turn_off
-            data: {}
-            target:
-              entity_id:
-                - input_boolean.news_chip_besiktas
-                - input_boolean.news_chip_galatasaray
-                - input_boolean.news_chip_trabzonspor
-                - input_boolean.news_chip_haber
-      - conditions:
-          - condition: trigger
-            id: galatasaraynewschip-on
-        sequence:
-          - service: input_boolean.turn_off
-            data: {}
-            target:
-              entity_id:
-                - input_boolean.news_chip_besiktas
-                - input_boolean.news_chip_fenerbahce
-                - input_boolean.news_chip_trabzonspor
-                - input_boolean.news_chip_haber
-      - conditions:
-          - condition: trigger
-            id: trabzonspornewschip-on
-        sequence:
-          - service: input_boolean.turn_off
-            data: {}
-            target:
-              entity_id:
-                - input_boolean.news_chip_besiktas
-                - input_boolean.news_chip_fenerbahce
-                - input_boolean.news_chip_galatasaray
-                - input_boolean.news_chip_haber
-      - conditions:
-          - condition: trigger
-            id: habernewschip-on
-        sequence:
-          - service: input_boolean.turn_off
-            data: {}
-            target:
-              entity_id:
-                - input_boolean.news_chip_besiktas
-                - input_boolean.news_chip_fenerbahce
-                - input_boolean.news_chip_galatasaray
-                - input_boolean.news_chip_trabzonspor
-    default: []
+  - delay:
+      hours: 0
+      minutes: 1
+      seconds: 0
+      milliseconds: 0
+  - service: input_boolean.turn_on
+    data: {}
+    target:
+      entity_id: input_boolean.news_chip_fenerbahce
 mode: single

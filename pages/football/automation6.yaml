@@ -1,4 +1,4 @@
-alias: News Chip - Haberler 6
+alias: Football Page - Trabzonspor
 description: ''
 trigger:
   - platform: state
@@ -9,11 +9,18 @@ trigger:
       - input_boolean.news_chip_trabzonspor
       - input_boolean.news_chip_haber
     to: 'on'
-    from: 'off'
-condition: []
+condition:
+  - condition: state
+    entity_id: input_boolean.trabzonspor
+    state: 'on'
 action:
-  - service: timer.start
+  - delay:
+      hours: 0
+      minutes: 1
+      seconds: 0
+      milliseconds: 0
+  - service: input_boolean.turn_on
     data: {}
     target:
-      entity_id: timer.news_timer_5m
+      entity_id: input_boolean.news_chip_trabzonspor
 mode: single

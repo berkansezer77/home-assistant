@@ -1,0 +1,211 @@
+type: custom:stack-in-card
+layout_type: masonry
+layout: {}
+cards:
+  - type: custom:layout-card
+    cards:
+      - type: horizontal-stack
+        cards:
+          - type: markdown
+            content: Hava Durumu....
+            card_mod:
+              style: |
+                ha-markdown {
+                  padding: 45px 50px 2px 10px !important;
+                  font-size: 25px !important;
+                  font-weight: normal !important;
+                  line-height: 1.2 !important;
+                }
+                ha-card {
+                  background: transparent;
+                  color: #e1e1e1;
+                  box-shadow: 0px 0px;
+                  width: 300px;
+                  margin-top: 100px;
+                  margin-left: 0px;
+                  margin-right: 0px;
+                  margin-bottom: 0px;
+                  padding: 15
+                }
+          - type: custom:button-card
+            color_type: blank-card
+            styles:
+              card:
+                - width: 100px
+          - type: picture-entity
+            entity: weather.colak_ismail_2
+            show_state: false
+            show_name: false
+            state_image:
+              clear-night: /local/png2/weather/ikon/clearnight.png
+              cloudy: /local/png2/weather/ikon/cloudy2.png
+              partlycloudy: /local/png/hava/partlycloudy.png
+              exceptional: /local/png2/weather/ikon/exceptional.png
+              fog: /local/png2/weather/ikon/fogy2.ico
+              hail: /local/png2/weather/ikon/hail2.png
+              lightning: /local/png2/weather/ikon/lightning.png
+              lightning-rainy: /local/png2/weather/ikon/lightning-rainy.png
+              pouring: /local/png2/weather/ikon/pouring.png
+              rainy: /local/png2/weather/ikon/rainy.png
+              snowy: /local/png2/weather/ikon/snow.png
+              snowy-rainy: /local/png2/weather/ikon/snowy-rainy.png
+              sunny: /local/png2/weather/ikon/sunny2.png
+              windy: /local/png2/weather/ikon/windy.png
+              windy-variant: /local/png2/weather/ikon/windy.png
+            tap_action:
+              action: navigate
+              navigation_path: home
+            double_tap_action:
+              action: toggle
+            hold_action:
+              action: none
+            theme: Mushroom
+            card_mod:
+              style: |
+                :host {
+                  --ha-card-background: none;
+                }
+                ha-card {
+                  box-shadow: 0px 0px;
+                  background: none;
+                  margin-top: 40px;
+                  margin-left: 10px;
+                  margin-right: 10px;
+                  margin-bottom: 0px;
+                  padding: 15
+                  width: auto;
+                }
+            alignment: end
+  - type: custom:mushroom-template-card
+    primary: Suadiye
+    secondary: >-
+      Hava şu an {{ states('sensor.lumi_lumi_weather_1063df07_temperature')  }}
+      derece ve nem oranı {{
+      states('sensor.lumi_lumi_weather_1063df07_humidity')  }}
+    picture: /local/png/hava/weather.png
+    card_mod:
+      style: |
+        :host([dark-mode]) {
+          background: rgba(var(--rgb-primary-background-color), 0.2);
+          --card-primary-font-size: 16px;
+          --card-secondary-font-size: 13px
+        } 
+        :host {
+          background: rgba(var(--rgb-primary-background-color), 0.2);
+          --mush-icon-size: 53px;
+          height: 76px;
+          margin-left: 0px !important;
+          margin-bottom: 0px !important;
+        }
+  - type: custom:stack-in-card
+    cards:
+      - type: vertical-stack
+        cards:
+          - type: grid
+            columns: 1
+            square: false
+            cards:
+              - type: vertical-stack
+                cards:
+                  - type: picture-entity
+                    entity: weather.colak_ismail_2
+                    show_state: false
+                    show_name: false
+                    state_image:
+                      clear-night: /local/png2/weather/clear-night3.gif
+                      cloudy: /local/png2/weather/cloudy.gif
+                      exceptional: /local/png2/weather/exceptional.png
+                      fog: /local/png2/weather/fog3.gif
+                      hail: /local/png2/weather/hail2.gif
+                      lightning: /local/png2/weather/lightning3.gif
+                      lightning-rainy: /local/png2/weather/lightning-rainy.jpeg
+                      partlycloudy: /local/png2/weather/partly-cloudy.gif
+                      pouring: /local/png2/weather/pouring.gif
+                      rainy: /local/png2/weather/rainy.gif
+                      snowy: /local/png2/weather/snowy.gif
+                      snowy-rainy: /local/png2/weather/snowy-rainy.gif
+                      sunny: /local/png2/weather/sunny.gif
+                      windy: /local/png2/weather/windy.gif
+                      windy-variant: /local/png2/weather/windy.gif
+                    tap_action:
+                      action: navigate
+                      navigation_path: home
+                    hold_action:
+                      action: none
+                    theme: Mushroom
+                    card_mod:
+                      style: |
+                        :host {
+                          background: #0a0a0a;
+                        }
+                            ha-card {
+                              background:#0a0a0a;
+                              margin-top: auto;
+                              margin-left: 0px;
+                              margin-right: 0px;
+                              margin-bottom: 5px;
+                              padding: 15px;
+                              width: auto;
+                            }
+  - type: custom:platinum-weather-card
+    card_config_version: 4
+    entity_apparent_temp: sensor.openweathermap_feels_like_temperature
+    entity_current_conditions: weather.colak_ismail_2
+    entity_current_text: weather.colak_ismail_2
+    entity_daily_summary: sensor.lumi_lumi_weather_1063df07_temperature
+    entity_forecast_high_temp_1: weather.colak_ismail_2
+    entity_forecast_icon_1: weather.colak_ismail_2
+    entity_forecast_low_temp_1: weather.colak_ismail_2
+    entity_forecast_max: weather.colak_ismail_2
+    entity_forecast_min: weather.colak_ismail_2
+    entity_humidity: sensor.lumi_lumi_weather_1063df07_humidity
+    entity_pop: weather.colak_ismail_2
+    entity_possible_today: weather.colak_ismail_2
+    entity_pressure: sensor.lumi_lumi_weather_1063df07_pressure
+    entity_summary_1: weather.colak_ismail_2
+    entity_sun: sun.sun
+    entity_temperature: sensor.lumi_lumi_weather_1063df07_temperature
+    entity_uv_alert_summary: sensor.colak_ismail_uv_index
+    entity_wind_bearing: sensor.colak_ismail_wind
+    entity_wind_speed: sensor.openweathermap_forecast_wind_speed
+    extended_name_attr: unit_of_measurement
+    extended_use_attr: false
+    option_icon_set: hybrid
+    option_static_icons: false
+    option_time_format: 24hour
+    section_order:
+      - title
+      - overview
+      - extended
+      - slots
+      - daily_forecast
+    slot_l1: forecast_max
+    slot_l2: forecast_min
+    slot_l3: wind
+    slot_l4: pressure
+    slot_l5: remove
+    slot_l6: remove
+    slot_l7: remove
+    slot_l8: remove
+    slot_r1: popforecast
+    slot_r2: humidity
+    slot_r3: uv_summary
+    slot_r4: sun_following
+    slot_r5: remove
+    slot_r6: remove
+    slot_r7: remove
+    slot_r8: remove
+    card_mod:
+      style: |
+        ha-card {
+          background: rgba(var(--rgb-primary-background-color), 0.1);
+          --paper-item-icon-active-color: #2196f3;
+          --paper-item-icon-color: #6f6f6f;
+        }
+card_mod:
+  style: |
+    ha-card {
+      background: rgba(var(--rgb-primary-background-color), 0.5);
+      margin-top: -12px;
+      box-shadow: none;
+    }

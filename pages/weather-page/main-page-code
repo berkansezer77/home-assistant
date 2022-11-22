@@ -1,0 +1,44 @@
+type: custom:mushroom-chips-card
+chips:
+  - type: template
+    entity: sensor.dis_ortam_sicaklik
+    icon: mdi:weather-partly-cloud
+    picture: |
+      {% if is_state('weather.colak_ismail_2', 'clear-night') %}
+        /local/png2/weather/ikon/clearnight.png
+      {% elif is_state('weather.colak_ismail_2', 'cloudy') %}
+        /local/png2/weather/ikon/cloudy2.png
+      {% elif is_state('weather.colak_ismail_2', 'exceptional') %}
+        /local/png2/weather/ikon/exceptional.png
+      {% elif is_state('weather.colak_ismail_2', 'fog') %}
+        /local/png2/weather/ikon/fogy2.ico
+      {% elif is_state('weather.colak_ismail_2', 'hail') %}
+        /local/png2/weather/ikon/hail2.png
+      {% elif is_state('weather.colak_ismail_2', 'lightning') %}
+        /local/png2/weather/ikon/lightning.png
+      {% elif is_state('weather.colak_ismail_2', 'lightning-rainy') %}
+        /local/png2/weather/ikon/lightning-rainy.png
+      {% elif is_state('weather.colak_ismail_2', 'partlycloudy') %}
+        /local/png2/weather/ikon/partlycloudy2.png
+      {% elif is_state('weather.colak_ismail_2', 'pouring') %}
+        /local/png2/weather/ikon/pouring.png
+      {% elif is_state('weather.colak_ismail_2', 'rainy') %}
+        /local/png2/weather/ikon/rainy.png
+      {% elif is_state('weather.colak_ismail_2', 'snowy') %}
+        /local/png2/weather/ikon/snow.png
+      {% elif is_state('weather.colak_ismail_2', 'snowy-rainy') %}
+        /local/png2/weather/ikon/snowy-rainy.png
+      {% elif is_state('weather.colak_ismail_2', 'sunny') %}
+        /local/png2/weather/ikon/sunny2.png
+      {% elif is_state('weather.colak_ismail_2', 'windy') %}
+        /local/png2/weather/ikon/windy.png
+      {% elif is_state('weather.colak_ismail_2', 'windy-variant') %}
+        /local/png2/weather/ikon/windy.png
+      {% else %}
+        /local/png/futbol.png
+      {% endif %}
+    icon_color: amber
+    content: '{{ states(''sensor.dis_ortam_sicaklik'')  }}'
+    tap_action:
+      action: navigate
+      navigation_path: hava

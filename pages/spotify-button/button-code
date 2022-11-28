@@ -10,6 +10,12 @@ tap_action:
   data:
     device_name: Office Dot
     force_playback: true
+double_tap_action:
+  action: call-service
+  service: media_player.media_pause
+  data: {}
+  target:
+    entity_id: media_player.spotify_berkan_sezer
 layout: vertical
 picture: |
   {% if is_state('media_player.spotify_berkan_sezer', 'playing') %}

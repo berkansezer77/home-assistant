@@ -5,8 +5,11 @@ icon: mdi
 fill_container: false
 multiline_secondary: false
 tap_action:
-  action: navigate
-  navigation_path: spotify
+  action: call-service
+  service: spotcast.start
+  data:
+    device_name: Office Dot
+    force_playback: true
 layout: vertical
 picture: |
   {% if is_state('media_player.spotify_berkan_sezer', 'playing') %}

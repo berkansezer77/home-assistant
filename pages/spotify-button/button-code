@@ -1,0 +1,48 @@
+type: custom:mushroom-template-card
+secondary: '{{ states(''media_player.spotify_berkan_sezer'')  }}'
+primary: Spotify
+icon: mdi
+fill_container: false
+multiline_secondary: false
+tap_action:
+  action: navigate
+  navigation_path: spotify
+layout: vertical
+picture: |
+  {% if is_state('media_player.spotify_berkan_sezer', 'playing') %}
+    /local/png/dot.png
+  {% elif is_state('media_player.spotify_berkan_sezer', 'idle') %}
+    /local/png/spotify2.png
+  {% elif is_state('media_player.spotify_berkan_sezer', 'paused') %}
+    /local/png/spotify2.png
+  {% elif is_state('media_player.spotify_berkan_sezer', 'off') %}
+    /local/png/spotify2.png
+  {% else %}
+    /local/icons/klima.png
+  {% endif %}
+style: |
+  mushroom-card {
+    background-size: 42px 42px;
+  }
+  mushroom-shape-icon {
+    --shape-color: none !important;
+  }  
+    ha-card { 
+      background: #1a1a2a;, 1.25);
+      {% if is_state('media_player.spotify_berkan_sezer', 'off') or is_state('media_player.spotify_berkan_sezer', 'idle') or is_state('media_player.spotify_berkan_sezer', 'paused') %}
+      background: #1a1a2a;, 1.25);
+      {% else %}
+        background-image: url( '{{ state_attr( "media_player.spotify_berkan_sezer", "entity_picture" ) }}' );
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-color: rgba(var(--rgb-card-background-color), 0.5);
+        background-blend-mode: overlay;
+        position: relative;
+      {% endif %}  
+      margin-top: 10px;
+      margin-left: auto;
+      margin-right: auto;
+      margin-bottom: 20px;
+      width: 95px;
+    }

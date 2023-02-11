@@ -1184,7 +1184,7 @@ cards:
                                   --icon-size: 88px;
                                   background: none;
                                   background-size: 55px 40px;
-                                  {% if is_state('group.mutfak', 'on') %}
+                                  {% if is_state('group.mutfak', 'on') or is_state('switch.termosifon_socket', 'on')  %}
                                   {% else %}
                                     filter: grayscale(100%);
                                   {% endif %}      
@@ -1536,7 +1536,7 @@ cards:
                                   --icon-size: 88px;
                                   background: none;
                                   background-size: 55px 40px;
-                                  {% if is_state('group.office', 'on') %}
+                                  {% if is_state('group.office', 'on') or is_state('input_boolean.termosifon_dugme', 'on')%}
                                   {% else %}
                                     filter: grayscale(100%);
                                   {% endif %}      
@@ -2139,7 +2139,7 @@ cards:
                                   --icon-size: 88px;
                                   background: none;
                                   background-size: 55px 40px;
-                                  {% if is_state('group.yatak_odasi', 'on') %}
+                                  {% if is_state('group.yatak_odasi', 'on') or is_state('input_boolean.bedroom_klima', 'on') %}
                                   {% else %}
                                     filter: grayscale(100%);
                                   {% endif %}      
@@ -2314,28 +2314,28 @@ cards:
                                           animation: rotation linear infinite;
                                           animation-duration: 2s;
                                         }
-                                - type: conditional
-                                  conditions:
-                                    - entity: input_boolean.bedroom_klima
-                                      state: 'on'
-                                  chip:
-                                    type: template
-                                    icon_color: white
-                                    icon: mdi:snowflake-alert
-                                    card_mod:
-                                      style: |
-                                        @keyframes rotation {
-                                          0% {
-                                            transform: rotate(0deg);
-                                          }
-                                          100% {
-                                            transform: rotate(360deg);
-                                          }
-                                        }
-                                        ha-card {
-                                          animation: rotation linear infinite;
-                                          animation-duration: 2s;
-                                        }
+                            - type: conditional
+                              conditions:
+                                - entity: input_boolean.bedroom_klima
+                                  state: 'on'
+                              chip:
+                                type: template
+                                icon_color: white
+                                icon: mdi:snowflake-alert
+                                card_mod:
+                                  style: |
+                                    @keyframes rotation {
+                                      0% {
+                                        transform: rotate(0deg);
+                                      }
+                                      100% {
+                                        transform: rotate(360deg);
+                                      }
+                                    }
+                                    ha-card {
+                                      animation: rotation linear infinite;
+                                      animation-duration: 2s;
+                                    }
                           alignment: end
                           card_mod:
                             style: |

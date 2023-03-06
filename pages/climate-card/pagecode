@@ -1,1 +1,312 @@
+type: custom:vertical-stack-in-card
+square: false
+columns: 1
+cards:
+  - type: grid
+    columns: 1
+    square: false
+    cards:
+      - type: custom:vertical-stack-in-card
+        cards:
+          - type: horizontal-stack
+            cards:
+              - type: custom:mushroom-template-card
+                primary: Ev Genel
+                secondary: '{{ states(''sensor.genel_sicaklik'')  }} °C'
+                picture: /local/png/eskiler/guest1.png
+                card_mod:
+                  style: |
+                    ha-card {
+                      background: none; } 
+        card_mod:
+          style: |
+            ha-card {
+              background: none;
+              height: auto;
+              width: auto !important;
+              --primary-text-color: white;
+              --secondary-text-color: white; 
+              --card-secondary-font-weight: 300;
+              --card-secondary-font-size: 20px;
+              box-shadow: none !important;
+              margin-left: -5px;
+              margin-right: -5px;
+            } 
+  - type: grid
+    columns: 2
+    square: false
+    cards:
+      - type: custom:vertical-stack-in-card
+        cards:
+          - type: horizontal-stack
+            cards:
+              - type: custom:vertical-stack-in-card
+                cards:
+                  - type: horizontal-stack
+                    cards:
+                      - type: custom:mushroom-climate-card
+                        entity: climate.sokak_termostat
+                        show_temperature_control: true
+                        collapsible_controls: false
+                        tap_action:
+                          action: more-info
+                        layout: vertical
+                        name: Salon Arka Orta
+                        secondary_info: last-updated
+                        card_mod:
+                          style: |
+                            ha-card {
+                              background: none;
+                              height: 180px !important;
+                              width: auto !important;
+                            --primary-text-color: white;
+                              --secondary-text-color: white; 
+                              --card-primary-font-weight: 500;
+                              --card-primary-font-size: 18px;
+                              --card-secondary-font-weight: 300;
+                              --card-secondary-font-size: 15px;
+                              box-shadow: none !important;
+                              margin-left: -5px;
+                              margin-right: -5px;
+                            } 
+                card_mod:
+                  style: |
+                    ha-card {
+                      background: none;
+                      height: 180px !important;
+                      width: auto !important;
+                    --primary-text-color: white;
+                      --secondary-text-color: white; 
+                      --card-secondary-font-weight: 300;
+                      --card-secondary-font-size: 2px;
+                      box-shadow: none !important;
+                      margin-left: -5px;
+                      margin-right: -5px;
+                      margin-top: 20px !important;
+                    } 
+          - type: custom:swipe-card
+            parameters: null
+            spaceBetween: 8
+            scrollbar: null
+            hide: false
+            draggable: true
+            snapOnRelease: true
+            cards:
+              - type: horizontal-stack
+                cards:
+                  - type: custom:mushroom-template-card
+                    primary: |
+                      {{ states('sensor.hue_motion_temp_salon') }} °C
+                    picture: |
+                      {% if state_attr('climate.sokak_termostat',
+                        'temperature') | float > 5 and is_state('binary_sensor.salon_cam_sensor_cb529e23_ias_zone', 'on') %}
+                       /local/png/konum/window_open3.png
+                      {% else %}
+                       /local/png/konum/arka_orta.JPG
+                      {%- endif %}
+                    secondary: >
+                      {% if states('sensor.hue_motion_temp_salon') | float > 17
+                      and states('sensor.hue_motion_temp_salon') | float < 22 %}
+                       Cold
+                      {% elif states('sensor.hue_motion_temp_salon') | float >
+                      21 and states('sensor.hue_motion_temp_salon') | float < 23
+                      %}
+                       Getting cold
+                      {% elif states('sensor.hue_motion_temp_salon') | float >
+                      22 and states('sensor.hue_motion_temp_salon') | float < 24
+                      %}
+                       Not Bad
+                      {% elif states('sensor.hue_motion_temp_salon') | float >
+                      23 and states('sensor.hue_motion_temp_salon') | float < 25
+                      %}
+                       Warm
+                      {% elif states('sensor.hue_motion_temp_salon') | float >
+                      24 and states('sensor.hue_motion_temp_salon') | float < 35
+                      %}
+                       Turn it off
+                      {% else %}
+                       Off
+                      {%- endif %}
+                    alignment: center
+                    entity: entity.entity
+                    tap_action:
+                      action: toggle
+                    fill_container: false
+                    layout: horizontal
+                    multiline_secondary: true
+                    card_mod:
+                      style:
+                        .: |
+                          ha-card { 
+                            background: none;
+                            margin-left: auto;
+                            --icon-size: 90px;
+                          --primary-text-color: orange;
+                          --secondary-text-color: white; 
+                            --card-primary-font-weight: 500;
+                            --card-primary-font-size: 15px;
+                            --card-secondary-font-weight: 500;
+                            --card-secondary-font-size: 15px;
+                          } 
+        card_mod:
+          style: |
+            ha-card {                                 
+             {% if state_attr('climate.sokak_termostat',
+               'temperature') | float > 5 and is_state('binary_sensor.salon_cam_sensor_cb529e23_ias_zone', 'on') %}
+                background-color: rgba(40, 13, 12, 0.85); 
+                box-shadow: 0px 0px 38px 6px rgba(213, 245, 247,0.96) !important;
+                position: relative;
+             {% elif state_attr('climate.sokak_termostat',
+               'temperature') | float > 5 and is_state('binary_sensor.salon_cam_sensor_cb529e23_ias_zone', 'off') %}
+                background-color: rgba(40, 13, 12, 0.85); 
+                box-shadow: 0px 0px 38px 6px rgba(156,27,12,0.96) !important;
+                position: relative;
+              {% else %}  
+              background: #1a1a1a;
+              {% endif %} 
+              height: auto;
+              margin-top: 10px;
+              margin-left: 10px;
+              margin-bottom: 10px;
+              margin-right: 10px;
+              }
+               ha-card:active {
+                box-shadow: 0 0 90px red;
+              } 
+      - type: custom:vertical-stack-in-card
+        cards:
+          - type: horizontal-stack
+            cards:
+              - type: custom:vertical-stack-in-card
+                cards:
+                  - type: horizontal-stack
+                    cards:
+                      - type: custom:mushroom-climate-card
+                        entity: climate.salin_bilfen_thermostat
+                        show_temperature_control: true
+                        collapsible_controls: false
+                        tap_action:
+                          action: more-info
+                        layout: vertical
+                        name: Bilfen
+                        secondary_info: last-updated
+                        card_mod:
+                          style: |
+                            ha-card {
+                              background: none;
+                              height: 180px !important;
+                              width: auto !important;
+                            --primary-text-color: white;
+                              --secondary-text-color: white; 
+                              --card-primary-font-weight: 500;
+                              --card-primary-font-size: 18px;
+                              --card-secondary-font-weight: 300;
+                              --card-secondary-font-size: 15px;
+                              box-shadow: none !important;
+                              margin-left: -5px;
+                              margin-right: -5px;
+                            } 
+                card_mod:
+                  style: |
+                    ha-card {
+                      background: none;
+                      height: 180px !important;
+                      width: auto !important;
+                    --primary-text-color: white;
+                      --secondary-text-color: white; 
+                      --card-secondary-font-weight: 300;
+                      --card-secondary-font-size: 2px;
+                      box-shadow: none !important;
+                      margin-left: -5px;
+                      margin-right: -5px;
+                      margin-top: 20px !important;
+                    } 
+          - type: custom:swipe-card
+            parameters: null
+            spaceBetween: 8
+            scrollbar: null
+            hide: false
+            draggable: true
+            snapOnRelease: true
+            cards:
+              - type: horizontal-stack
+                cards:
+                  - type: custom:mushroom-template-card
+                    primary: |
+                      {{ states('sensor.hue_motion_temp_salon') }} °C
+                    picture: /local/png/konum/bilfen.JPG
+                    secondary: >
+                      {% if states('sensor.hue_motion_temp_salon') | float > 17
+                      and states('sensor.hue_motion_temp_salon') | float < 22 %}
+                       Cold
+                      {% elif states('sensor.hue_motion_temp_salon') | float >
+                      21 and states('sensor.hue_motion_temp_salon') | float < 23
+                      %}
+                       Getting cold
+                      {% elif states('sensor.hue_motion_temp_salon') | float >
+                      22 and states('sensor.hue_motion_temp_salon') | float < 24
+                      %}
+                       Not Bad
+                      {% elif states('sensor.hue_motion_temp_salon') | float >
+                      23 and states('sensor.hue_motion_temp_salon') | float < 25
+                      %}
+                       Warm
+                      {% elif states('sensor.hue_motion_temp_salon') | float >
+                      24 and states('sensor.hue_motion_temp_salon') | float < 35
+                      %}
+                       Turn it off
+                      {% else %}
+                       Off
+                      {%- endif %}
+                    alignment: center
+                    entity: entity.entity
+                    tap_action:
+                      action: toggle
+                    fill_container: false
+                    layout: horizontal
+                    multiline_secondary: true
+                    card_mod:
+                      style:
+                        .: |
+                          ha-card { 
+                            background: none;
+                            margin-left: auto;
+                            --icon-size: 90px;
+                          --primary-text-color: orange;
+                          --secondary-text-color: white; 
+                            --card-primary-font-weight: 500;
+                            --card-primary-font-size: 15px;
+                            --card-secondary-font-weight: 500;
+                            --card-secondary-font-size: 15px;
+                          } 
+        card_mod:
+          style: |
+            ha-card {                                 
+              {% if state_attr('climate.salin_bilfen_thermostat',
+              'temperature') | float > 5  %}
+                background-color: rgba(40, 13, 12, 0.85); 
+                box-shadow: 0px 0px 38px 6px rgba(156,27,12,0.96) !important;
+                position: relative;
+              {% else %}  
+              background: #1a1a1a;
+              {% endif %} 
+              height: auto;
+              margin-top: 10px;
+              margin-left: 10px;
+              margin-bottom: 10px;
+              margin-right: 10px;
+              }
+               ha-card:active {
+                box-shadow: 0 0 90px red;
+              } 
 
+card_mod:
+  style: |
+    ha-card {
+      background: none;
+      margin-top: px;
+      margin-left: 0px;
+      margin-right: 0px;
+      margin-bottom: 0px;
+      box-shadow: none;
+    }

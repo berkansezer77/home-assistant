@@ -20,18 +20,14 @@ cards:
           theme: Mushroom
           hold_action:
             action: none
-          style: |
-            ha-card {
-            margin-top: auto;
-            margin-left: 0px;
-            margin-right: 0px;
-            margin-bottom: 21px;  
-            box-shadow: 0px 0px 58px 6px rgba(202, 250, 243,0.96) !important;
+          style: >
+            ha-card { margin-top: auto; margin-left: 0px; margin-right: 0px;
+            margin-bottom: 21px;    box-shadow: 0px 0px 58px 6px rgba(255, 255,
+            255,2.96) !important;
       card_mod:
         style: |
           ha-card {
             background:  url( '/local/png/konum/tv6.png' ) no-repeat center 0px;
-
             background-position: center;
             background-repeat: no-repeat;
             background-size: 95%;
@@ -39,6 +35,7 @@ cards:
             position: relative; ) no-repeat center 0px;
             padding: 36px;
             width: auto;
+             --ha-card-border-width: 0;
           }
   - type: conditional
     conditions:
@@ -56,18 +53,14 @@ cards:
           theme: Mushroom
           hold_action:
             action: none
-          style: |
-            ha-card {
-            margin-top: auto;
-            margin-left: 0px;
-            margin-right: 0px;
-            margin-bottom: 21px;  
-            box-shadow: 0px 0px 58px 6px rgba(202, 250, 243,0.96) !important;
+          style: >
+            ha-card { margin-top: auto; margin-left: 0px; margin-right: 0px;
+            margin-bottom: 21px;   box-shadow: 0px 0px 58px 6px rgba(255, 255,
+            255,2.96) !important;
       card_mod:
         style: |
           ha-card {
             background:  url( '/local/png/konum/tv6.png' ) no-repeat center 0px;
-
             background-position: center;
             background-repeat: no-repeat;
             background-size: 95%;
@@ -75,6 +68,7 @@ cards:
             position: relative; ) no-repeat center 0px;
             padding: 36px;
             width: auto;
+            --ha-card-border-width: 0;
           }
   - type: conditional
     conditions:
@@ -83,7 +77,7 @@ cards:
       - entity: switch.netflix_on_menu
         state: 'off'
     card:
-      type: custom:stack-in-card
+      type: custom:vertical-stack-in-card
       cards:
         - type: picture-entity
           entity: media_player.fire_tv_192_168_1_86
@@ -94,25 +88,22 @@ cards:
           theme: Mushroom
           hold_action:
             action: none
-          card_mod:
-            style: |
-              :host {
-                background:  url( '/local/png/konum/tv6.png' ) no-repeat center 0px;
-                background-position: center;
-                background-repeat: no-repeat;
-                background-size: 90%;
-                background-color: black;
-                position: relative; ) no-repeat center 0px;
-              }
-              ha-card {
-                background:#0a0a0a;
-                margin-top: auto;
-                margin-left: 0px;
-                margin-right: 0px;
-                margin-bottom: 15px;
-                padding: 46px;
-                width: auto;
-              }
+          style: >
+            ha-card { margin-top: auto; margin-left: 0px; margin-right: 0px;
+            margin-bottom: 21px;   
+      card_mod:
+        style: |
+          ha-card {
+            background:  url( '/local/png/konum/tv6.png' ) no-repeat center 0px;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: 95%;
+            background-color: #0a0a0a;
+            position: relative; ) no-repeat center 0px;
+            padding: 36px;
+            width: auto;
+            --ha-card-border-width: 0;
+          }
   - type: custom:vertical-stack-in-card
     layout_type: masonry
     layout: {}
@@ -151,4 +142,5 @@ card_mod:
       background: #0a0a0a;
       margin-top: -12px;
       box-shadow: none;
+      --ha-card-border-width: 0;
     }

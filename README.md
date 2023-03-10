@@ -7,6 +7,14 @@ Welcome to my Home Assistant Custom Setup Page.
 
 On this page, you can find the links of the different Home Assistant pages that I have coded. On these pages you can find not only the necessary codes, but also all the extra software. Everything from necessary special codes to media download links is available. In summary, you can get everything you need here.
 
+# # Live TV with remote controller for Home Assistant
+
+<img src="https://user-images.githubusercontent.com/84282504/224300442-dbf770ea-8f72-466d-b318-ca9d4f4ab96d.png" width="450">
+
+Page Code: 
+
+[Live TV and Remote Control](https://github.com/berkansezer77/home-assistant/wiki/Live-TV-with-remote-controller-for-Home-Assistant)
+
 ***
 # # Modified Mushroom Climate Card
 

@@ -1,0 +1,175 @@
+type: custom:stack-in-card
+layout_type: masonry
+layout: {}
+cards:
+  - type: custom:layout-card
+    layout_type: masonry
+    layout: null
+    cards:
+      - type: custom:mushroom-chips-card
+        chips:
+          - type: action
+            icon_color: amber
+            icon: mdi:remote
+            tap_action:
+              action: fire-dom-event
+              browser_mod:
+                service: browser_mod.popup
+                data:
+                  title: Salon Fire TV
+                  content:
+                    type: custom:vertical-stack-in-card
+                    layout_type: masonry
+                    layout: {}
+                    cards:
+                      - type: conditional
+                        conditions:
+                          - entity: media_player.fire_tv_192_168_1_86
+                            state_not: 'off'
+                          - entity: switch.netflix_on_menu
+                            state: 'off'
+                        card:
+                          type: custom:vertical-stack-in-card
+                          cards:
+                            - type: picture-entity
+                              entity: media_player.fire_tv_192_168_1_86
+                              camera_image: camera.android_now_playing
+                              show_state: false
+                              show_name: false
+                              camera_view: auto
+                              theme: Mushroom
+                              hold_action:
+                                action: none
+                              style: >
+                                ha-card { margin-top: auto; margin-left: 0px; margin-right: 0px;
+                                margin-bottom: 21px;    box-shadow: 0px 0px 58px 6px rgba(255, 255,
+                                255,2.96) !important;
+                          card_mod:
+                            style: |
+                              ha-card {
+                                background:  url( '/local/png/konum/tv6.png' ) no-repeat center 0px;
+                                background-position: center;
+                                background-repeat: no-repeat;
+                                background-size: 95%;
+                                background-color: #0a0a0a;
+                                position: relative; ) no-repeat center 0px;
+                                padding: 36px;
+                                width: auto;
+                                 --ha-card-border-width: 0;
+                              }
+                      - type: conditional
+                        conditions:
+                          - entity: switch.netflix_on_menu
+                            state: 'on'
+                        card:
+                          type: custom:vertical-stack-in-card
+                          cards:
+                            - type: picture-entity
+                              entity: media_player.fire_tv_192_168_1_86
+                              image: /local/png/netflix10.png
+                              show_state: false
+                              show_name: false
+                              camera_view: auto
+                              theme: Mushroom
+                              hold_action:
+                                action: none
+                              style: >
+                                ha-card { margin-top: auto; margin-left: 0px; margin-right: 0px;
+                                margin-bottom: 21px;   box-shadow: 0px 0px 58px 6px rgba(255, 255,
+                                255,2.96) !important;
+                          card_mod:
+                            style: |
+                              ha-card {
+                                background:  url( '/local/png/konum/tv6.png' ) no-repeat center 0px;
+                                background-position: center;
+                                background-repeat: no-repeat;
+                                background-size: 95%;
+                                background-color: #0a0a0a;
+                                position: relative; ) no-repeat center 0px;
+                                padding: 36px;
+                                width: auto;
+                                --ha-card-border-width: 0;
+                              }
+                      - type: conditional
+                        conditions:
+                          - entity: media_player.fire_tv_192_168_1_86
+                            state: 'off'
+                          - entity: switch.netflix_on_menu
+                            state: 'off'
+                        card:
+                          type: custom:vertical-stack-in-card
+                          cards:
+                            - type: picture-entity
+                              entity: media_player.fire_tv_192_168_1_86
+                              image: /local/png/konum/off3.jpg
+                              show_state: false
+                              show_name: false
+                              camera_view: auto
+                              theme: Mushroom
+                              hold_action:
+                                action: none
+                              style: >
+                                ha-card { margin-top: auto; margin-left: 0px; margin-right: 0px;
+                                margin-bottom: 21px;   
+                          card_mod:
+                            style: |
+                              ha-card {
+                                background:  url( '/local/png/konum/tv6.png' ) no-repeat center 0px;
+                                background-position: center;
+                                background-repeat: no-repeat;
+                                background-size: 95%;
+                                background-color: #0a0a0a;
+                                position: relative; ) no-repeat center 0px;
+                                padding: 36px;
+                                width: auto;
+                                --ha-card-border-width: 0;
+                              }
+                      - type: custom:vertical-stack-in-card
+                        layout_type: masonry
+                        layout: {}
+                        cards:
+                          - type: custom:firemote-card
+                            entity: media_player.fire_tv_192_168_1_86
+                            device_type: fire_tv_stick_4k_max
+                            compatibility_mode: strong
+                            app_launch_1: prime-video
+                            app_launch_2: netflix
+                            app_launch_3: disney-plus
+                            app_launch_4: spotify
+                            app_launch_5: ''
+                            scale: '66'
+                            button_overrides:
+                              tv-button:
+                                script: start_tivimate
+                              mute-button:
+                                script: remote_mute
+                              volume-down-button:
+                                script: remote_volume_down
+                              volume-up-button:
+                                script: remote_volume_up
+                              power-button:
+                                script: remote_power
+                        card_mod:
+                          style: |
+                            ha-card {
+                              background: #0a0a0a;
+                              margin-top: 15px;
+                              box-shadow: none;
+                              margin-bottom: 20px;
+                            }
+                    card_mod:
+                      style: |
+                        ha-card {
+                          background: #0a0a0a;
+                          box-shadow: none;
+                          --ha-card-border-width: 0;
+                        }
+
+card_mod:
+  style: |
+    ha-card {
+      background: #000000;
+      margin-top: 5px;
+      box-shadow: none;
+     --ha-card-border-width: 0;
+    }

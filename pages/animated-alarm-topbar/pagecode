@@ -1,1 +1,73 @@
+type: custom:vertical-stack-in-card
+square: false
+columns: 1
+cards:
+  - type: vertical-stack
+    cards:
+      - type: custom:mushroom-chips-card
+        chips:
+          - type: template
+            icon_color: ''
+            icon: mdi:menu
+            tap_action:
+              action: call-service
+              service: input_boolean.turn_on
+              data: {}
+              target:
+                entity_id: input_boolean.kiosk_mode
+            double_tap_action:
+              action: call-service
+              service: input_boolean.turn_off
+              data: {}
+              target:
+                entity_id: input_boolean.kiosk_mode
+          - type: alarm-control-panel
+            entity: alarm_control_panel.ha_alarm
+          - type: light
+            entity: light.all_light_and_switches
+          - type: weather
+            entity: weather.colak_ismail_2
+          - type: entity
+            entity: person.berkan_sezer
+        alignment: justify
+        card_mod:
+          style: |
+            :host {
+              --ha-card-background: rgba(var(--rgb-primary-text-color), 0.025);
+            }
+                ha-card {
+                  --chip-icon-size: 22px;
+                 --chip-background: none;
+                 --chip-font-size: 12px;                         
+                  --chip-spacing: 2px;
+                  margin-top: 0px; 
+                  padding-right: auto;
+                  padding-top: 1px;
+                  padding-left: auto;
+                  padding-bottom: 1px; 
+                }           
+card_mod:
+  style: |
+    ha-card { 
+      {% if is_state('alarm_control_panel.ha_alarm', 'arming')  %}
+        background: url('/local/png/konum/alarm4.gif') center no-repeat;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-color: rgba(var(--rgb-card-background-color), 0.7);
+        background-blend-mode: overlay;
+        position: relative;
+      {%elif is_state('alarm_control_panel.ha_alarm', 'armed_away')  %}
+        box-shadow: 0px 0px 6px 6px rgba(156,27,12,0.46) !important;
+        background: rgba(150, 0, 25, 0.35);
+      {% else %}
+        background: rgba(var(--rgb-card-background-color), 0.5);
+        
 
+      {% endif %}  
+        margin-top: 5px;
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 0px; 
+        width: auto;
+        }

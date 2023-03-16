@@ -9,7 +9,7 @@ On this page, you can find the links of the different Home Assistant pages that 
 
 # Animated Alarm Control
 
-![image](https://user-images.githubusercontent.com/84282504/225628278-46d31255-912e-47cd-92bb-e0bb921a2e54.png)
+![1](https://user-images.githubusercontent.com/84282504/225629408-8cba065a-7c61-4b35-a5a4-a2ee19f34461.gif)
 
 Page Code: 
 

@@ -649,7 +649,7 @@ card_mod:
       width: 100%;
       {% if not is_state('media_player.spotify_berkan_sezer', 'idle') and not is_state('media_player.spotify_berkan_sezer', 'off') and not is_state('media_player.spotify_berkan_sezer', 'paused') %}
         background: url( '{{ state_attr('media_player.spotify_berkan_sezer', "entity_picture") }}' ) center no-repeat;
-        animation: Gradient 20s ease infinite;
+        animation: Gradient 12s linear infinite;
         box-shadow: none; 
         filter: blur(100px) saturate(200%);
         border: none !important;

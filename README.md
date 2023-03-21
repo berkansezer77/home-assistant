@@ -14,7 +14,7 @@ If you like anything here, be sure to 🌟 my repo!
 
 ## Code and the wiki: 
 
-[Minimalist Spotify Card for ](https://github.com/berkansezer77/home-assistant/wiki/Minimalist-Spotify-Card-for-Home-Assistant-with-Room-Presence-and-Ambilight---V2.0)
+[Minimalist Spotify Card Manual ](https://github.com/berkansezer77/home-assistant/wiki/Minimalist-Spotify-Card-for-Home-Assistant-with-Room-Presence-and-Ambilight---V2.0)
 
 # Animated Alarm Control
 

@@ -1,0 +1,13 @@
+alias: Update - Spotify
+description: ""
+trigger:
+  - platform: time_pattern
+    seconds: /5
+condition: []
+action:
+  - service: homeassistant.update_entity
+    data: {}
+    target:
+      entity_id:
+        - media_player.spotify_berkan_sezer
+mode: single

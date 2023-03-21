@@ -1,0 +1,37 @@
+alias: "Modern Dashboard  - Spotify Card - Update Entity Picture "
+description: ""
+trigger:
+  - platform: template
+    id: "on"
+    value_template: >-
+      {{ is_state('media_player.spotify_berkan_sezer', 'playing') or
+      is_state('media_player.spotify_berkan_sezer', 'paused') }}
+  - platform: template
+    value_template: >-
+      {{ is_state('media_player.spotify_berkan_sezer', 'idle') or
+      is_state('media_player.spotify_berkan_sezer', 'unavaliable') or
+      is_state('media_player.spotify_berkan_sezer', 'standby') }}
+    id: "off"
+condition: []
+action:
+  - choose:
+      - conditions:
+          - condition: trigger
+            id: "on"
+        sequence:
+          - service: input_boolean.turn_on
+            data: {}
+            target:
+              entity_id: >-
+                input_boolean.modern_dashboard_spotify_card_update_spotify_status
+      - conditions:
+          - condition: trigger
+            id: "off"
+        sequence:
+          - service: input_boolean.turn_off
+            data: {}
+            target:
+              entity_id: >-
+                input_boolean.modern_dashboard_spotify_card_update_spotify_status
+    default: []
+mode: single

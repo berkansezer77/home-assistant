@@ -9,8 +9,8 @@ On this page, you can find the links of the different Home Assistant pages that 
 
 # Minimalist Spotify Card for Home Assistant with Room Presence and Ambilight V2.0
 
-<img src="https://user-images.githubusercontent.com/84282504/226495334-d192e575-a72f-4218-a733-9d0714e11a46.png" width="450">
-<img src="https://user-images.githubusercontent.com/84282504/226495337-b787bd17-de30-48cf-a60b-0829c90062e1.png" width="350">
+<img src="https://user-images.githubusercontent.com/84282504/226495334-d192e575-a72f-4218-a733-9d0714e11a46.png" width="350">
+<img src="https://user-images.githubusercontent.com/84282504/226495337-b787bd17-de30-48cf-a60b-0829c90062e1.png" width="250">
 
 ## Code and the wiki: 
 

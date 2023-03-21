@@ -7,6 +7,15 @@ Welcome to my Home Assistant Custom Setup Page.
 
 On this page, you can find the links of the different Home Assistant pages that I have coded. On these pages you can find not only the necessary codes, but also all the extra software. Everything from necessary special codes to media download links is available. In summary, you can get everything you need here.
 
+# Minimalist Spotify Card for Home Assistant with Room Presence and Ambilight V2.0
+
+<img src="https://user-images.githubusercontent.com/84282504/226495334-d192e575-a72f-4218-a733-9d0714e11a46.png" width="450">
+<img src="https://user-images.githubusercontent.com/84282504/226495337-b787bd17-de30-48cf-a60b-0829c90062e1.png" width="350">
+
+## Code and the wiki: 
+
+[Minimalist Spotify Card for ](https://github.com/berkansezer77/home-assistant/wiki/Minimalist-Spotify-Card-for-Home-Assistant-with-Room-Presence-and-Ambilight---V2.0)
+
 # Animated Alarm Control
 
 ![1](https://user-images.githubusercontent.com/84282504/225629408-8cba065a-7c61-4b35-a5a4-a2ee19f34461.gif)

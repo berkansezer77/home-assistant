@@ -7,6 +7,7 @@ Welcome to my Home Assistant Custom Setup Page.
 
 On this page, you can find the links of the different Home Assistant pages that I have coded. On these pages you can find not only the necessary codes, but also all the extra software. Everything from necessary special codes to media download links is available. In summary, you can get everything you need here.
 
+If you like anything here, be sure to 🌟 my repo!
 # Minimalist Spotify Card for Home Assistant with Room Presence and Ambilight V2.0
 
 <img src="https://user-images.githubusercontent.com/84282504/226495334-d192e575-a72f-4218-a733-9d0714e11a46.png" width="350"><img src="https://user-images.githubusercontent.com/84282504/226495337-b787bd17-de30-48cf-a60b-0829c90062e1.png" width="250">

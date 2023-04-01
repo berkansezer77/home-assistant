@@ -1,0 +1,2091 @@
+type: custom:vertical-stack-in-card
+square: false
+columns: 1
+cards:
+  - type: custom:vertical-stack-in-card
+    cards:
+      - type: horizontal-stack
+        cards:
+          - type: custom:mushroom-title-card
+            title: Rooms
+            card_mod:
+              style:
+                mushroom-title-card$: |
+                  * {
+                      animation: scale-in 1s;
+                      transform-origin: 15%;
+                  }
+                  @keyframes scale-in {
+                    0% { transform: scale(0); opacity: 0; }
+                    100% { transform: scale(1); opacity: 1; }
+                  }
+          - type: custom:mushroom-chips-card
+            chips:
+              - type: template
+                entity: group.allhouse
+                content: |
+                  {{ states('sensor.ev_genel_cihazlar') }}
+                icon: |-
+                  {% set state=states(entity) %}
+                  {% if state=='off' %}
+                  mdi:lightbulb
+                  {% elif state=='on' %}
+                  mdi:lightbulb
+                  {% else %}
+                  mdi:door
+                  {% endif %}
+                icon_color: |-
+                  {% set state=states(entity) %}
+                  {% if state=='off' %}
+                  grey
+                  {% elif state=='on' %}
+                  amber
+                  {% else %}
+                  grey
+                  {% endif %}
+                tap_action:
+                  action: navigate
+                  navigation_path: devices
+                double_tap_action:
+                  action: call-service
+                  service: light.turn_off
+                  data: {}
+                  target:
+                    entity_id: light.all_house_lights
+              - type: template
+                entity: sensor.genel_lux
+                content: |
+                  {{ states('sensor.genel_lux') }}
+                icon: mdi:car-parking-lights
+                tap_action:
+                  action: toggle
+                icon_color: |-
+                  {% set state=states(entity) %}
+                  {% if state=='off' %}
+                  amber
+                  {% elif state=='on' %}
+                  amber
+                  {% else %}
+                  amber
+                  {% endif %}
+              - type: template
+                entity: input_boolean.mobile_w_dashboard_volume
+                icon: mdi:volume-equal
+                tap_action:
+                  action: toggle
+                icon_color: |-
+                  {% set state=states(entity) %}
+                  {% if state=='off' %}
+                  grey
+                  {% elif state=='on' %}
+                  amber
+                  {% else %}
+                  grey
+                  {% endif %}
+            card_mod:
+              style: |
+                :host {
+                  --ha-card-background: 1a1a1a;
+                }
+                ha-card {
+                  --chip-background: rgba(13, 13, 12, 0.3);
+                  --chip-icon-size: 25px;
+                  --chip-spacing: 2px;
+                  margin-top: 10px; 
+                  padding-right: auto;
+                  padding-top: 10px;
+                  padding-left: auto;
+                  padding-bottom: 1px;
+                  height: 50px;
+                }
+            alignment: end
+    card_mod:
+      style: |
+        ha-card {
+          background: transparent;
+          margin-top: 10px;
+          margin-bottom: 10px; 
+          box-shadow: none;
+        }
+  - type: conditional
+    conditions:
+      - entity: input_boolean.room_cards_3x
+        state: 'on'
+    card:
+      type: custom:layout-card
+      layout: masonry
+      cards:
+        - type: grid
+          columns: 2
+          square: false
+          cards:
+            - type: custom:vertical-stack-in-card
+              cards:
+                - type: horizontal-stack
+                  cards:
+                    - type: custom:vertical-stack-in-card
+                      cards:
+                        - type: horizontal-stack
+                          cards:
+                            - type: custom:mushroom-template-card
+                              primary: Salon
+                              picture: /local/room-cards/sofa.png
+                              secondary: >
+                                {{ states('sensor.hue_motion_temp_salon') }} °C
+
+                                💡{{ states('sensor.open_light_salon') }}  🔆 {{
+                                states('sensor.hue_motion_sensor_3_light_level_2')
+                                }}
+                              alignment: center
+                              entity: group.salon
+                              tap_action:
+                                action: toggle
+                              double_tap_action:
+                                action: call-service
+                                service: spotcast.start
+                                data:
+                                  device_name: Salon Dot
+                                  force_playback: true
+                              fill_container: false
+                              layout: horizontal
+                              multiline_secondary: true
+                              card_mod:
+                                style: |
+                                  ha-card { 
+                                    --icon-size: 88px;
+                                    background: none;
+                                    margin-left: 0px;
+                                    --icon-size: 98px;
+                                    --card-primary-font-weight: 500;
+                                    --card-primary-font-size: 14px;
+                                    --card-secondary-font-weight: 500;
+                                    --card-secondary-font-size: 12px;
+                                    {% if is_state('group.salon', 'on') %}
+                                    {% else %}
+                                      filter: grayscale(100%);
+                                    {% endif %}      
+                                  } 
+                        - type: horizontal-stack
+                          cards:
+                            - type: custom:gap-card
+                              size: 10
+                            - type: custom:mushroom-light-card
+                              entity: light.light_group_salon
+                              use_light_color: true
+                              show_brightness_control: true
+                              icon_type: none
+                              primary_info: none
+                              secondary_info: none
+                              layout: vertical
+                              style: |
+                                ha-card {
+                                  background: none; 
+                                  margin-top: -35px; 
+                                  margin-left: -20px; 
+                                  --mush-rgb-disabled: 189,189,189;
+                                  --mush-rgb-state-light: 255, 152, 0;
+                                  --control-height: 16px;
+                                  --control-top: 16px;
+                                  --control-border-radius: 5px;
+                      card_mod:
+                        style: |
+                          ha-card {
+                            background: rgba(var(--rgb-primary-background-color), 0.025);
+                            height: 120px !important;
+                            width: auto !important;
+                          --primary-text-color: white;
+                            --secondary-text-color: white; 
+                            --card-secondary-font-weight: 300;
+                            --card-secondary-font-size: 20px;
+                            box-shadow: none !important;
+                            margin-left: -5px;
+                            margin-right: -5px;
+                          } 
+                          :host {
+                            width: 100%;
+                            position: center;
+                            border-radius: 0px;
+                            border: 0px solid #73AD21;
+                            box-shadow: none !important;
+                            overflow: visible !important;
+                          }
+                - type: conditional
+                  conditions:
+                    - entity: input_boolean.mobile_w_dashboard_info
+                      state: 'on'
+                  card:
+                    type: custom:swipe-card
+                    parameters: null
+                    spaceBetween: 8
+                    scrollbar: null
+                    hide: false
+                    draggable: true
+                    snapOnRelease: true
+                    cards:
+                      - type: horizontal-stack
+                        cards:
+                          - type: custom:mushroom-chips-card
+                            chips:
+                              - type: conditional
+                                conditions:
+                                  - entity: binary_sensor.hue_motion_sensor_3_motion_2
+                                    state: 'on'
+                                chip:
+                                  type: template
+                                  icon_color: orange
+                                  icon: mdi:motion-sensor
+                              - type: conditional
+                                conditions:
+                                  - entity: switch.prime1_on_menu
+                                    state: 'on'
+                                chip:
+                                  type: template
+                                  picture: local/room-cards/prime1.png
+                                  icon_color: orange
+                                  icon: md
+                              - type: conditional
+                                conditions:
+                                  - entity: switch.tivimate_on_menu
+                                    state: 'on'
+                                chip:
+                                  type: template
+                                  picture: local/room-cards/tivimate.png
+                                  icon_color: orange
+                                  icon: mdi:netflix
+                              - type: conditional
+                                conditions:
+                                  - entity: switch.netflix_on_menu
+                                    state: 'on'
+                                chip:
+                                  type: template
+                                  icon_color: red
+                                  icon: mdi:netflix
+                              - type: conditional
+                                conditions:
+                                  - entity: switch.youtube_on_menu
+                                    state: 'on'
+                                chip:
+                                  type: template
+                                  icon_color: red
+                                  icon: mdi:youtube
+                              - type: conditional
+                                conditions:
+                                  - entity: media_player.berkan_s_echo_dot
+                                    state: playing
+                                chip:
+                                  type: template
+                                  icon_color: green
+                                  tap_action:
+                                    action: call-service
+                                    service: media_player.media_next_track
+                                    data: {}
+                                    target:
+                                      entity_id: media_player.berkan_s_echo_dot
+                                  double_tap_action:
+                                    action: call-service
+                                    service: media_player.media_pause
+                                    data: {}
+                                    target:
+                                      entity_id: media_player.berkan_s_echo_dot
+                                  icon: mdi:music
+                                  card_mod:
+                                    style: |
+                                      @keyframes rotation {
+                                        0% {
+                                          transform: rotate(0deg);
+                                        }
+                                        100% {
+                                          transform: rotate(360deg);
+                                        }
+                                      }
+                                      ha-card {
+                                        animation: rotation linear infinite;
+                                        animation-duration: 2s;
+                                      }
+                              - type: conditional
+                                conditions:
+                                  - entity: media_player.fire_tv_192_168_1_86
+                                    state: playing
+                                chip:
+                                  type: template
+                                  icon_color: white
+                                  icon: mdi:movie
+                                  card_mod:
+                                    style: |
+                                      @keyframes rotation {
+                                        0% {
+                                          transform: rotate(0deg);
+                                        }
+                                        100% {
+                                          transform: rotate(360deg);
+                                        }
+                                      }
+                                      ha-card {
+                                        animation: rotation linear infinite;
+                                        animation-duration: 2s;
+                                      }
+                              - type: conditional
+                                conditions:
+                                  - entity: >-
+                                      binary_sensor.salon_cam_sensor_cb529e23_ias_zone
+                                    state: 'on'
+                                chip:
+                                  type: template
+                                  icon_color: white
+                                  icon: mdi:window-open
+                            alignment: end
+                            card_mod:
+                              style: |
+                                ha-card {
+                                  background: none;
+                                  --chip-icon-size: 20px;
+                                  --chip-spacing: 2px;
+                                  --chip-box-shadow: none;
+                                  --chip-background: none;
+                                  --chip-spacing: 0;
+                                  height: 35px;
+                                }
+                                :host([dark-mode]) {
+                                  background: rgba(var(--rgb-primary-background-color), 0.025);
+                                } 
+                                :host {
+                                  background: rgba(var(--rgb-primary-text-color), 0.025);
+                                  --mush-icon-size: 62px;
+                                }
+                      - type: horizontal-stack
+                        cards:
+                          - type: custom:mushroom-chips-card
+                            chips:
+                              - type: action
+                                icon_color: purple
+                                icon: mdi:projector
+                                tap_action:
+                                  action: call-service
+                                  service: scene.turn_on
+                                  data: {}
+                                  target:
+                                    entity_id: scene.ambiance_2
+                              - type: action
+                                icon_color: yellow
+                                icon: mdi:chandelier
+                                tap_action:
+                                  action: call-service
+                                  service: scene.turn_on
+                                  data: {}
+                                  target:
+                                    entity_id: scene.full_bright_ha
+                                card_mod:
+                                  style: ''
+                              - type: action
+                                icon_color: indigo
+                                icon: mdi:movie
+                                tap_action:
+                                  action: call-service
+                                  service: scene.turn_on
+                                  data: {}
+                                  target:
+                                    entity_id: scene.movie_time
+                              - type: action
+                                icon_color: red
+                                icon: mdi:account
+                                tap_action:
+                                  action: call-service
+                                  service: scene.turn_on
+                                  data: {}
+                                  target:
+                                    entity_id: scene.red
+                            card_mod:
+                              style: |
+                                ha-card {
+                                  background: none;
+                                  margin-top: 0px; 
+                                  --chip-icon-size: 20px;
+                                  --chip-spacing: 2px;
+                                  --chip-box-shadow: none;
+                                  --chip-background: none;
+                                  --icon-size: 68px;
+                                  height: 35px;
+                                  background-size: 55px 40px;
+                                }
+                            alignment: center
+                  card_mod:
+                    style: |
+                      ha-card {
+                        background: none;
+                        box-shadow: 0px 0px;
+                        height: auto;
+                - type: custom:vertical-stack-in-card
+                  cards:
+                    - type: conditional
+                      conditions:
+                        - entity: input_boolean.mobile_w_dashboard_volume
+                          state: 'on'
+                      card:
+                        type: horizontal-stack
+                        cards:
+                          - type: custom:mushroom-media-player-card
+                            entity: media_player.berkan_s_echo_dot
+                            volume_controls:
+                              - volume_set
+                            use_media_info: false
+                            show_volume_level: false
+                            primary_info: none
+                            secondary_info: none
+                            icon_type: none
+                            card_mod:
+                              style: |
+                                ha-card {
+                                  background: rgba(var(--rgb-primary-background-color), 0.5);
+                                  padding: 0px 11px 11px;
+                  card_mod:
+                    style: |
+                      ha-card {
+                        background: none;
+                        box-shadow: 0px 0px;
+                        margin-left: 0px;
+                        height: auto;
+                        margin-right: 0px;
+              card_mod:
+                style: |
+                  ha-card:before {
+                    transform: translate3d(0,0,0);
+                    -webkit-transform: translate3d(0,0,0);
+                    content: "";
+                    position: absolute;
+                    height: 100%;
+                    width: 100%;
+                  {% if is_state('group.salon', 'on')  %}
+                    background: url('/local/png/art/.jpg') center no-repeat;
+                    animation: Gradient 20s linear infinite;
+                    background-color: rgba(17, 2, 59); 
+                    filter: blur(70px) saturate(200%);
+                    background-size: 100% 100%;
+                  {% elif states('sensor.hue_motion_temp_salon')|float < 21 and
+                  is_state('group.salon', 'off') %}
+                    background:  url( '/local/room-cards/coldanimation.gif' ) no-repeat center 0px;
+                    background-position: center;
+                    background-repeat: no-repeat;
+                    background-size: cover;
+                    background-color: rgba(var(--rgb-card-background-color), 0.6);
+                    background-blend-mode: overlay;
+                    position: relative;
+                  {% else %} 
+
+                    {% endif %} } 
+                    
+                  } @media (max-width: 600px) {
+                    ha-card:before {
+                      background-size: 150% 150%;
+                      filter: blur(70px) saturate(200%);
+                    }
+                  } ha-card {
+                    transform: translate3d(0,0,0);
+                    -webkit-transform: translate3d(0,0,0);
+                    border-radius: 0px;
+                    overflow: visible !important;
+                    background: transparent;
+                    border: none !important;
+                  } 
+            - type: custom:vertical-stack-in-card
+              cards:
+                - type: horizontal-stack
+                  cards:
+                    - type: custom:vertical-stack-in-card
+                      cards:
+                        - type: horizontal-stack
+                          cards:
+                            - type: custom:mushroom-template-card
+                              primary: Mutfak
+                              picture: >
+                                {% if is_state('group.mutfak', 'off') and
+                                is_state('switch.termosifon_socket', 'on') and
+                                is_state('input_boolean.termosifon_dugme',
+                                'off') %} 
+                                  /local/room-cards/waterheater.png
+                                {% elif is_state('group.mutfak', 'on') and
+                                is_state('input_boolean.termosifon_dugme', 'on')
+                                and is_state('switch.termosifon_socket', 'on')
+                                %}
+                                  /local/room-cards/waterheaterred.png
+                                {% elif is_state('group.mutfak', 'off') and
+                                is_state('input_boolean.termosifon_dugme', 'on')
+                                and is_state('switch.termosifon_socket', 'on')
+                                %}
+                                  /local/room-cards/waterheaterred.png
+                                {% else %}
+                                  /local/room-cards/fridge.png
+                                {% endif %}  
+                              secondary: >
+                                {{ states('sensor.hue_motion_temp_mutfak') }} °C
+
+                                💡{{ states('sensor.mutfak_cihazlar') }} 🔆 {{
+                                states('sensor.hue_motion_sensor_2_light_level')
+                                }} 
+                              alignment: center
+                              entity: light.mutfak_lights
+                              tap_action:
+                                action: toggle
+                              double_tap_action:
+                                action: call-service
+                                service: spotcast.start
+                                data:
+                                  device_name: Kitchen Dot
+                                  force_playback: true
+                              fill_container: false
+                              layout: horizontal
+                              multiline_secondary: true
+                              card_mod:
+                                style: |
+                                  ha-card { 
+                                    --icon-size: 88px;
+                                    background: none;
+                                    margin-left: 0px;
+                                    --icon-size: 98px;
+                                    --card-primary-font-weight: 500;
+                                    --card-primary-font-size: 14px;
+                                    --card-secondary-font-weight: 500;
+                                    --card-secondary-font-size: 12px;
+                                    {% if is_state('group.mutfak', 'on') or is_state('input_boolean.termosifon_dugme', 'on') %}
+                                    {% else %}
+                                      filter: grayscale(100%);
+                                    {% endif %}      
+                                  } 
+                        - type: horizontal-stack
+                          cards:
+                            - type: custom:gap-card
+                              size: 10
+                            - type: custom:mushroom-light-card
+                              entity: light.mutfak_lights
+                              use_light_color: true
+                              show_brightness_control: true
+                              icon_type: none
+                              primary_info: none
+                              secondary_info: none
+                              layout: vertical
+                              style: |
+                                ha-card {
+                                  background: none; 
+                                  margin-top: -35px; 
+                                  margin-left: -20px; 
+                                  --mush-rgb-disabled: 189,189,189;
+                                  --mush-rgb-state-light: 255, 152, 0;
+                                  --control-height: 16px;
+                                  --control-top: 16px;
+                                  --control-border-radius: 5px;
+                      card_mod:
+                        style: |
+                          ha-card {
+                            background: rgba(var(--rgb-primary-background-color), 0.025);
+                            height: 120px !important;
+                            width: auto !important;
+                          --primary-text-color: white;
+                            --secondary-text-color: white; 
+                            --card-secondary-font-weight: 300;
+                            --card-secondary-font-size: 20px;
+                            box-shadow: none !important;
+                            margin-left: -5px;
+                            margin-right: -5px;
+                          } 
+                          :host {
+                            width: 100%;
+                            position: center;
+                            border-radius: 0px;
+                            border: 0px solid #73AD21;
+                            box-shadow: none !important;
+                            overflow: visible !important;
+                          }
+                - type: conditional
+                  conditions:
+                    - entity: input_boolean.mobile_w_dashboard_info
+                      state: 'on'
+                  card:
+                    type: custom:swipe-card
+                    parameters: null
+                    spaceBetween: 8
+                    scrollbar: null
+                    hide: false
+                    draggable: true
+                    snapOnRelease: true
+                    cards:
+                      - type: horizontal-stack
+                        cards:
+                          - type: custom:mushroom-chips-card
+                            chips:
+                              - type: conditional
+                                conditions:
+                                  - entity: binary_sensor.hue_motion_sensor_2_motion
+                                    state: 'on'
+                                chip:
+                                  type: template
+                                  icon_color: orange
+                                  icon: mdi:motion-sensor
+                              - type: conditional
+                                conditions:
+                                  - entity: input_boolean.termosifon_dugme
+                                    state: 'on'
+                                chip:
+                                  type: template
+                                  icon_color: blue
+                                  icon: mdi:water-thermometer-outline
+                                  card_mod:
+                                    style: |
+                                      @keyframes rotation {
+                                        0% {
+                                          transform: rotate(0deg);
+                                        }
+                                        100% {
+                                          transform: rotate(360deg);
+                                        }
+                                      }
+                                      ha-card {
+                                        animation: rotation linear infinite;
+                                        animation-duration: 2s;
+                                      }
+                              - type: conditional
+                                conditions:
+                                  - entity: media_player.berkan_s_2nd_echo_dot
+                                    state: playing
+                                chip:
+                                  type: template
+                                  icon_color: green
+                                  tap_action:
+                                    action: call-service
+                                    service: media_player.media_next_track
+                                    data: {}
+                                    target:
+                                      entity_id: media_player.berkan_s_2nd_echo_dot
+                                  double_tap_action:
+                                    action: call-service
+                                    service: media_player.media_pause
+                                    data: {}
+                                    target:
+                                      entity_id: media_player.berkan_s_2nd_echo_dot
+                                  icon: mdi:music
+                                  card_mod:
+                                    style: |
+                                      @keyframes rotation {
+                                        0% {
+                                          transform: rotate(0deg);
+                                        }
+                                        100% {
+                                          transform: rotate(360deg);
+                                        }
+                                      }
+                                      ha-card {
+                                        animation: rotation linear infinite;
+                                        animation-duration: 2s;
+                                      }
+                            alignment: end
+                            card_mod:
+                              style: |
+                                ha-card {
+                                  background: none;
+                                  --chip-icon-size: 20px;
+                                  --chip-spacing: 2px;
+                                  --chip-box-shadow: none;
+                                  --chip-background: none;
+                                  --chip-spacing: 0;
+                                  height: 35px;
+                                }
+                                :host([dark-mode]) {
+                                  background: rgba(var(--rgb-primary-background-color), 0.025);
+                                } 
+                                :host {
+                                  background: rgba(var(--rgb-primary-text-color), 0.025);
+                                  --mush-icon-size: 62px;
+                                }
+                      - type: horizontal-stack
+                        cards:
+                          - type: custom:mushroom-chips-card
+                            chips:
+                              - type: action
+                                icon_color: purple
+                                icon: mdi:projector
+                                tap_action:
+                                  action: call-service
+                                  service: scene.turn_on
+                                  data: {}
+                                  target:
+                                    entity_id: scene.mutfak_beyaz
+                            card_mod:
+                              style: |
+                                ha-card {
+                                  background: none;
+                                  margin-top: 0px; 
+                                  --chip-icon-size: 20px;
+                                  --chip-spacing: 2px;
+                                  --chip-box-shadow: none;
+                                  --chip-background: none;
+                                  --icon-size: 68px;
+                                  height: 35px;
+                                  background-size: 55px 40px;
+                                }
+                            alignment: center
+                  card_mod:
+                    style: |
+                      ha-card {
+                        background: none;
+                        box-shadow: 0px 0px;
+                        height: auto;
+                - type: custom:vertical-stack-in-card
+                  cards:
+                    - type: conditional
+                      conditions:
+                        - entity: input_boolean.mobile_w_dashboard_volume
+                          state: 'on'
+                      card:
+                        type: horizontal-stack
+                        cards:
+                          - type: custom:mushroom-media-player-card
+                            entity: media_player.berkan_s_2nd_echo_dot
+                            volume_controls:
+                              - volume_set
+                            use_media_info: false
+                            show_volume_level: false
+                            primary_info: none
+                            secondary_info: none
+                            icon_type: none
+                            card_mod:
+                              style: |
+                                ha-card {
+                                  background: rgba(var(--rgb-primary-background-color), 0.5);
+                                  padding: 0px 11px 11px;
+                  card_mod:
+                    style: |
+                      ha-card {
+                        background: none;
+                        box-shadow: 0px 0px;
+                        margin-left: 0px;
+                        height: auto;
+                        margin-right: 0px;
+              card_mod:
+                style: |
+                  ha-card:before {
+                    transform: translate3d(0,0,0);
+                    -webkit-transform: translate3d(0,0,0);
+                    content: "";
+                    position: absolute;
+                    height: 100%;
+                    width: 100%;
+                  {% if is_state('group.mutfak', 'on')  %}
+                    background: url('/local/png/art/.jpg') center no-repeat;
+                    animation: Gradient 20s linear infinite;
+                    background-color: rgba(133, 4, 122, 2.85); 
+                    filter: blur(70px) saturate(200%);
+                    background-size: 100% 100%;
+                  {% elif states('sensor.hue_motion_temp_mutfak')|float < 21 and
+                  is_state('group.mutfak', 'off') %}
+                    background:  url( '/local/room-cards/coldanimation.gif' ) no-repeat center 0px;
+                    background-position: center;
+                    background-repeat: no-repeat;
+                    background-size: cover;
+                    background-color: rgba(var(--rgb-card-background-color), 0.6);
+                    background-blend-mode: overlay;
+                    position: relative;
+                  {% else %} 
+                    {% endif %} } 
+                    
+                  } @media (max-width: 600px) {
+                    ha-card:before {
+                      background-size: 150% 150%;
+                      filter: blur(70px) saturate(200%);
+                    }
+                  } ha-card {
+                    transform: translate3d(0,0,0);
+                    -webkit-transform: translate3d(0,0,0);
+                    border-radius: 0px;
+                    overflow: visible !important;
+                    background: transparent;
+                    border: none !important;
+                  } 
+            - type: custom:vertical-stack-in-card
+              cards:
+                - type: horizontal-stack
+                  cards:
+                    - type: custom:vertical-stack-in-card
+                      cards:
+                        - type: horizontal-stack
+                          cards:
+                            - type: custom:mushroom-template-card
+                              primary: Ofis
+                              picture: /local/room-cards/ofis2.png
+                              secondary: |
+                                {{ states('sensor.hue_motion_temp_ofis')
+                                  }} °C
+                                 💡{{ states('sensor.ofis_cihazlar') }} 🔆{{
+                                  states('sensor.hue_motion_sensor_3_light_level_3')
+                                  }} 
+                              alignment: center
+                              entity: group.office
+                              tap_action:
+                                action: toggle
+                              double_tap_action:
+                                action: call-service
+                                service: spotcast.start
+                                data:
+                                  device_name: Office Dot
+                                  force_playback: true
+                              fill_container: false
+                              layout: horizontal
+                              multiline_secondary: true
+                              card_mod:
+                                style: |
+                                  ha-card { 
+                                    --icon-size: 88px;
+                                    background: none;
+                                    margin-left: 0px;
+                                    --icon-size: 98px;
+                                    --card-primary-font-weight: 500;
+                                    --card-primary-font-size: 14px;
+                                    --card-secondary-font-weight: 500;
+                                    --card-secondary-font-size: 12px;
+                                    {% if is_state('group.office', 'on') %}
+                                    {% else %}
+                                      filter: grayscale(100%);
+                                    {% endif %}      
+                                  } 
+                        - type: horizontal-stack
+                          cards:
+                            - type: custom:gap-card
+                              size: 10
+                            - type: custom:mushroom-light-card
+                              entity: light.office
+                              use_light_color: true
+                              show_brightness_control: true
+                              icon_type: none
+                              primary_info: none
+                              secondary_info: none
+                              layout: vertical
+                              style: |
+                                ha-card {
+                                  background: none; 
+                                  margin-top: -35px; 
+                                  margin-left: -20px; 
+                                  --mush-rgb-disabled: 189,189,189;
+                                  --mush-rgb-state-light: 255, 152, 0;
+                                  --control-height: 16px;
+                                  --control-top: 16px;
+                                  --control-border-radius: 5px;
+                      card_mod:
+                        style: |
+                          ha-card {
+                            background: rgba(var(--rgb-primary-background-color), 0.025);
+                            height: 120px !important;
+                            width: auto !important;
+                          --primary-text-color: white;
+                            --secondary-text-color: white; 
+                            --card-secondary-font-weight: 300;
+                            --card-secondary-font-size: 20px;
+                            box-shadow: none !important;
+                            margin-left: -5px;
+                            margin-right: -5px;
+                          } 
+                          :host {
+                            width: 100%;
+                            position: center;
+                            border-radius: 0px;
+                            border: 0px solid #73AD21;
+                            box-shadow: none !important;
+                            overflow: visible !important;
+                          }
+                - type: conditional
+                  conditions:
+                    - entity: input_boolean.mobile_w_dashboard_info
+                      state: 'on'
+                  card:
+                    type: custom:swipe-card
+                    parameters: null
+                    spaceBetween: 8
+                    scrollbar: null
+                    hide: false
+                    draggable: true
+                    snapOnRelease: true
+                    cards:
+                      - type: horizontal-stack
+                        cards:
+                          - type: custom:mushroom-chips-card
+                            chips:
+                              - type: conditional
+                                conditions:
+                                  - entity: binary_sensor.hue_motion_sensor_3_motion_3
+                                    state: 'on'
+                                chip:
+                                  type: template
+                                  icon_color: orange
+                                  icon: mdi:motion-sensor
+                              - type: conditional
+                                conditions:
+                                  - entity: media_player.office_dot
+                                    state: playing
+                                chip:
+                                  type: template
+                                  icon_color: green
+                                  tap_action:
+                                    action: call-service
+                                    service: media_player.media_next_track
+                                    data: {}
+                                    target:
+                                      entity_id: media_player.office_dot
+                                  double_tap_action:
+                                    action: call-service
+                                    service: media_player.media_pause
+                                    data: {}
+                                    target:
+                                      entity_id: media_player.office_dot
+                                  icon: mdi:music
+                                  card_mod:
+                                    style: |
+                                      @keyframes rotation {
+                                        0% {
+                                          transform: rotate(0deg);
+                                        }
+                                        100% {
+                                          transform: rotate(360deg);
+                                        }
+                                      }
+                                      ha-card {
+                                        animation: rotation linear infinite;
+                                        animation-duration: 2s;
+                                      }
+                            alignment: end
+                            card_mod:
+                              style: |
+                                ha-card {
+                                  background: none;
+                                  --chip-icon-size: 20px;
+                                  --chip-spacing: 2px;
+                                  --chip-box-shadow: none;
+                                  --chip-background: none;
+                                  --chip-spacing: 0;
+                                  height: 35px;
+                                }
+                                :host([dark-mode]) {
+                                  background: rgba(var(--rgb-primary-background-color), 0.025);
+                                } 
+                                :host {
+                                  background: rgba(var(--rgb-primary-text-color), 0.025);
+                                  --mush-icon-size: 62px;
+                                }
+                      - type: horizontal-stack
+                        cards:
+                          - type: custom:mushroom-chips-card
+                            chips:
+                              - type: action
+                                icon_color: purple
+                                icon: mdi:projector
+                                tap_action:
+                                  action: call-service
+                                  service: scene.turn_on
+                                  data: {}
+                                  target:
+                                    entity_id: scene.ofis_relax
+                              - type: action
+                                icon_color: yellow
+                                icon: mdi:chandelier
+                                tap_action:
+                                  action: call-service
+                                  service: scene.turn_on
+                                  data: {}
+                                  target:
+                                    entity_id: scene.ofis_bright
+                                card_mod:
+                                  style: ''
+                              - type: action
+                                icon_color: indigo
+                                icon: mdi:movie
+                                tap_action:
+                                  action: call-service
+                                  service: scene.turn_on
+                                  data: {}
+                                  target:
+                                    entity_id: scene.ofis_normal
+                            card_mod:
+                              style: |
+                                ha-card {
+                                  background: none;
+                                  margin-top: 0px; 
+                                  --chip-icon-size: 20px;
+                                  --chip-spacing: 2px;
+                                  --chip-box-shadow: none;
+                                  --chip-background: none;
+                                  --icon-size: 68px;
+                                  height: 35px;
+                                  background-size: 55px 40px;
+                                }
+                            alignment: center
+                  card_mod:
+                    style: |
+                      ha-card {
+                        background: none;
+                        box-shadow: 0px 0px;
+                        height: auto;
+                - type: custom:vertical-stack-in-card
+                  cards:
+                    - type: conditional
+                      conditions:
+                        - entity: input_boolean.mobile_w_dashboard_volume
+                          state: 'on'
+                      card:
+                        type: horizontal-stack
+                        cards:
+                          - type: custom:mushroom-media-player-card
+                            entity: media_player.office_dot
+                            volume_controls:
+                              - volume_set
+                            use_media_info: false
+                            show_volume_level: false
+                            primary_info: none
+                            secondary_info: none
+                            icon_type: none
+                            card_mod:
+                              style: |
+                                ha-card {
+                                  background: rgba(var(--rgb-primary-background-color), 0.5);
+                                  padding: 0px 11px 11px;
+                  card_mod:
+                    style: |
+                      ha-card {
+                        background: none;
+                        box-shadow: 0px 0px;
+                        margin-left: 0px;
+                        height: auto;
+                        margin-right: 0px;
+              card_mod:
+                style: |
+                  ha-card:before {
+                    transform: translate3d(0,0,0);
+                    -webkit-transform: translate3d(0,0,0);
+                    content: "";
+                    position: absolute;
+                    height: 100%;
+                    width: 100%;
+                  {% if is_state('group.office', 'on')  %}
+                    background: url('/local/png/art/.jpg') center no-repeat;
+                    animation: Gradient 20s linear infinite;
+                    background-color: green;
+                    filter: blur(70px) saturate(200%);
+                    background-size: 100% 100%;
+                  {% elif states('sensor.hue_motion_temp_ofis')|float < 21 and
+                  is_state('group.office', 'off') %}
+                    background:  url( '/local/room-cards/coldanimation.gif' ) no-repeat center 0px;
+                    background-position: center;
+                    background-repeat: no-repeat;
+                    background-size: cover;
+                    background-color: rgba(var(--rgb-card-background-color), 0.6);
+                    background-blend-mode: overlay;
+                    position: relative;
+                  {% else %}
+                    {% endif %}
+                  } @media (max-width: 600px) {
+                    ha-card:before {
+                      background-size: 150% 150%;
+                      filter: blur(70px) saturate(200%);
+                    }
+                  } ha-card {
+                    transform: translate3d(0,0,0);
+                    -webkit-transform: translate3d(0,0,0);
+                    border-radius: 0px;
+                    overflow: visible !important;
+                    background: transparent;
+                    border: none !important;
+                  } 
+            - type: custom:vertical-stack-in-card
+              cards:
+                - type: horizontal-stack
+                  cards:
+                    - type: custom:vertical-stack-in-card
+                      cards:
+                        - type: horizontal-stack
+                          cards:
+                            - type: custom:mushroom-template-card
+                              primary: Bedroom
+                              picture: /local/room-cards/bedroom6.png
+                              secondary: >
+                                {{ states('sensor.hue_motion_temp_yatak_odasi')
+                                }}°C
+                                   💡{{ states('sensor.bedroom_cihazlar') }} 🔆 {{
+                                   states('sensor.light_level_2') }} 
+                              alignment: center
+                              entity: group.yatak_odasi
+                              tap_action:
+                                action: toggle
+                              double_tap_action:
+                                action: call-service
+                                service: spotcast.start
+                                data:
+                                  device_name: Bedroom Echo
+                                  force_playback: true
+                              fill_container: false
+                              layout: horizontal
+                              multiline_secondary: true
+                              card_mod:
+                                style: |
+                                  ha-card { 
+                                    --icon-size: 88px;
+                                    background: none;
+                                    margin-left: 0px;
+                                    --icon-size: 98px;
+                                    --card-primary-font-weight: 500;
+                                    --card-primary-font-size: 14px;
+                                    --card-secondary-font-weight: 500;
+                                    --card-secondary-font-size: 12px;
+                                    {% if is_state('group.yatak_odasi', 'on') %}
+                                    {% else %}
+                                      filter: grayscale(100%);
+                                    {% endif %}      
+                                  } 
+                        - type: horizontal-stack
+                          cards:
+                            - type: custom:gap-card
+                              size: 10
+                            - type: custom:mushroom-light-card
+                              entity: light.yatak_odasi_2
+                              use_light_color: true
+                              show_brightness_control: true
+                              icon_type: none
+                              primary_info: none
+                              secondary_info: none
+                              layout: vertical
+                              style: |
+                                ha-card {
+                                  background: none; 
+                                  margin-top: -35px; 
+                                  margin-left: -20px; 
+                                  --mush-rgb-disabled: 189,189,189;
+                                  --mush-rgb-state-light: 255, 152, 0;
+                                  --control-height: 16px;
+                                  --control-top: 16px;
+                                  --control-border-radius: 5px;
+                      card_mod:
+                        style: |
+                          ha-card {
+                            background: rgba(var(--rgb-primary-background-color), 0.025);
+                            height: 120px !important;
+                            width: auto !important;
+                          --primary-text-color: white;
+                            --secondary-text-color: white; 
+                            --card-secondary-font-weight: 300;
+                            --card-secondary-font-size: 20px;
+                            box-shadow: none !important;
+                            margin-left: -5px;
+                            margin-right: -5px;
+                          } 
+                          :host {
+                            width: 100%;
+                            position: center;
+                            border-radius: 0px;
+                            border: 0px solid #73AD21;
+                            box-shadow: none !important;
+                            overflow: visible !important;
+                          }
+                - type: conditional
+                  conditions:
+                    - entity: input_boolean.mobile_w_dashboard_info
+                      state: 'on'
+                  card:
+                    type: custom:swipe-card
+                    parameters: null
+                    spaceBetween: 8
+                    scrollbar: null
+                    hide: false
+                    draggable: true
+                    snapOnRelease: true
+                    cards:
+                      - type: horizontal-stack
+                        cards:
+                          - type: custom:mushroom-chips-card
+                            chips:
+                              - type: conditional
+                                conditions:
+                                  - entity: binary_sensor.motion_2
+                                    state: 'on'
+                                chip:
+                                  type: template
+                                  icon_color: amber
+                                  icon: mdi:motion-sensor
+                              - type: conditional
+                                conditions:
+                                  - entity: media_player.bedroom_echo
+                                    state: playing
+                                chip:
+                                  type: template
+                                  icon_color: green
+                                tap_action:
+                                  action: call-service
+                                  service: media_player.media_next_track
+                                  data: {}
+                                  target:
+                                    entity_id: media_player.bedroom_echo
+                                double_tap_action:
+                                  action: call-service
+                                  service: media_player.media_pause
+                                  data: {}
+                                  target:
+                                    entity_id: media_player.bedroom_echo
+                                  icon: mdi:music
+                                  card_mod:
+                                    style: |
+                                      @keyframes rotation {
+                                        0% {
+                                          transform: rotate(0deg);
+                                        }
+                                        100% {
+                                          transform: rotate(360deg);
+                                        }
+                                      }
+                                      ha-card {
+                                        animation: rotation linear infinite;
+                                        animation-duration: 2s;
+                                      }
+                              - type: conditional
+                                conditions:
+                                  - entity: input_boolean.bedroom_klima
+                                    state: 'on'
+                                chip:
+                                  type: template
+                                  icon_color: white
+                                  icon: mdi:snowflake-alert
+                                  card_mod:
+                                    style: |
+                                      @keyframes rotation {
+                                        0% {
+                                          transform: rotate(0deg);
+                                        }
+                                        100% {
+                                          transform: rotate(360deg);
+                                        }
+                                      }
+                                      ha-card {
+                                        animation: rotation linear infinite;
+                                        animation-duration: 2s;
+                                      }
+                            alignment: end
+                            card_mod:
+                              style: |
+                                ha-card {
+                                  background: none;
+                                  --chip-icon-size: 20px;
+                                  --chip-spacing: 2px;
+                                  --chip-box-shadow: none;
+                                  --chip-background: none;
+                                  --chip-spacing: 0;
+                                  height: 35px;
+                                }
+                                :host([dark-mode]) {
+                                  background: rgba(var(--rgb-primary-background-color), 0.025);
+                                } 
+                                :host {
+                                  background: rgba(var(--rgb-primary-text-color), 0.025);
+                                  --mush-icon-size: 62px;
+                                }
+                      - type: horizontal-stack
+                        cards:
+                          - type: custom:mushroom-chips-card
+                            chips:
+                              - type: action
+                                icon_color: yellow
+                                icon: mdi:projector
+                                tap_action:
+                                  action: call-service
+                                  service: scene.turn_on
+                                  data: {}
+                                  target:
+                                    entity_id: scene.bedside_bright
+                              - type: action
+                                icon_color: red
+                                icon: mdi:chandelier
+                                tap_action:
+                                  action: call-service
+                                  service: script.turn_on
+                                  data: {}
+                                  target: null
+                            card_mod:
+                              style: |
+                                ha-card {
+                                  background: none;
+                                  margin-top: 0px; 
+                                  --chip-icon-size: 20px;
+                                  --chip-spacing: 2px;
+                                  --chip-box-shadow: none;
+                                  --chip-background: none;
+                                  --icon-size: 68px;
+                                  height: 35px;
+                                  background-size: 55px 40px;
+                                }
+                            alignment: center
+                  card_mod:
+                    style: |
+                      ha-card {
+                        background: none;
+                        box-shadow: 0px 0px;
+                        height: auto;
+                - type: custom:vertical-stack-in-card
+                  cards:
+                    - type: conditional
+                      conditions:
+                        - entity: input_boolean.mobile_w_dashboard_volume
+                          state: 'on'
+                      card:
+                        type: horizontal-stack
+                        cards:
+                          - type: custom:mushroom-media-player-card
+                            entity: media_player.bedroom_echo
+                            volume_controls:
+                              - volume_set
+                            use_media_info: false
+                            show_volume_level: false
+                            primary_info: none
+                            secondary_info: none
+                            icon_type: none
+                            card_mod:
+                              style: |
+                                ha-card {
+                                  background: rgba(var(--rgb-primary-background-color), 0.5);
+                                  padding: 0px 11px 11px;
+                  card_mod:
+                    style: |
+                      ha-card {
+                        background: none;
+                        box-shadow: 0px 0px;
+                        margin-left: 0px;
+                        height: auto;
+                        margin-right: 0px;
+              card_mod:
+                style: |
+                  ha-card:before {
+                    transform: translate3d(0,0,0);
+                    -webkit-transform: translate3d(0,0,0);
+                    content: "";
+                    position: absolute;
+                    height: 100%;
+                    width: 100%;
+                  {% if is_state('group.yatak_odasi', 'on')  %}
+                    background: url('/local/png/art/.jpg') center no-repeat;
+                    animation: Gradient 20s linear infinite;
+                    background-color: rgba(138, 3, 41, 2.85); 
+                    filter: blur(70px) saturate(200%);
+                    background-size: 100% 100%;
+                  {% elif states('sensor.hue_motion_temp_yatak_odasi')|float <
+                  21 and is_state('group.yatak_odasi', 'off') %}
+                    background:  url( '/local/room-cards/coldanimation.gif' ) no-repeat center 0px;
+                    background-position: center;
+                    background-repeat: no-repeat;
+                    background-size: cover;
+                    background-color: rgba(var(--rgb-card-background-color), 0.6);
+                    background-blend-mode: overlay;
+                    position: relative;
+                  {% else %}
+                    {% endif %}
+                  } @media (max-width: 600px) {
+                    ha-card:before {
+                      background-size: 150% 150%;
+                      filter: blur(70px) saturate(200%);
+                    }
+                  } ha-card {
+                    transform: translate3d(0,0,0);
+                    -webkit-transform: translate3d(0,0,0);
+                    border-radius: 0px;
+                    overflow: visible !important;
+                    background: transparent;
+                    border: none !important;
+            - type: custom:vertical-stack-in-card
+              cards:
+                - type: horizontal-stack
+                  cards:
+                    - type: custom:vertical-stack-in-card
+                      cards:
+                        - type: horizontal-stack
+                          cards:
+                            - type: custom:mushroom-template-card
+                              primary: Antre
+                              picture: /local/room-cards/door-closed2.png
+                              secondary: >
+                                {{ states('sensor.hue_motion_antre') }} °C
+
+                                💡{{ states('sensor.antre_cihazlar') }} 🔆 {{
+                                states('sensor.hue_motion_sensor_3_illuminance_2')
+                                }} 
+                              alignment: center
+                              entity: group.antre
+                              tap_action:
+                                action: toggle
+                              fill_container: false
+                              layout: horizontal
+                              multiline_secondary: true
+                              card_mod:
+                                style: |
+                                  ha-card { 
+                                    --icon-size: 88px;
+                                    background: none;
+                                    margin-left: 0px;
+                                    --icon-size: 98px;
+                                    --card-primary-font-weight: 500;
+                                    --card-primary-font-size: 14px;
+                                    --card-secondary-font-weight: 500;
+                                    --card-secondary-font-size: 12px;
+                                    {% if is_state('group.antre', 'on') %}
+                                    {% else %}
+                                      filter: grayscale(100%);
+                                    {% endif %}      
+                                  } 
+                        - type: horizontal-stack
+                          cards:
+                            - type: custom:gap-card
+                              size: 10
+                            - type: custom:mushroom-light-card
+                              entity: light.antre_isik
+                              use_light_color: true
+                              show_brightness_control: true
+                              icon_type: none
+                              primary_info: none
+                              secondary_info: none
+                              layout: vertical
+                              style: |
+                                ha-card {
+                                  background: none; 
+                                  margin-top: -35px; 
+                                  margin-left: -20px; 
+                                  --mush-rgb-disabled: 189,189,189;
+                                  --mush-rgb-state-light: 255, 152, 0;
+                                  --control-height: 16px;
+                                  --control-top: 16px;
+                                  --control-border-radius: 5px;
+                      card_mod:
+                        style: |
+                          ha-card {
+                            background: rgba(var(--rgb-primary-background-color), 0.025);
+                            height: 120px !important;
+                            width: auto !important;
+                          --primary-text-color: white;
+                            --secondary-text-color: white; 
+                            --card-secondary-font-weight: 300;
+                            --card-secondary-font-size: 20px;
+                            box-shadow: none !important;
+                            margin-left: -5px;
+                            margin-right: -5px;
+                          } 
+                          :host {
+                            width: 100%;
+                            position: center;
+                            border-radius: 0px;
+                            border: 0px solid #73AD21;
+                            box-shadow: none !important;
+                            overflow: visible !important;
+                          }
+                - type: conditional
+                  conditions:
+                    - entity: input_boolean.mobile_w_dashboard_info
+                      state: 'on'
+                  card:
+                    type: custom:swipe-card
+                    parameters: null
+                    spaceBetween: 8
+                    scrollbar: null
+                    hide: false
+                    draggable: true
+                    snapOnRelease: true
+                    cards:
+                      - type: horizontal-stack
+                        cards:
+                          - type: custom:mushroom-chips-card
+                            chips:
+                              - type: conditional
+                                conditions:
+                                  - entity: binary_sensor.antre
+                                    state: 'on'
+                                chip:
+                                  type: template
+                                  icon_color: orange
+                                  icon: mdi:motion-sensor
+                              - type: conditional
+                                conditions:
+                                  - entity: >-
+                                      binary_sensor.ewelink_ds01_19b22025_ias_zone
+                                    state: 'on'
+                                chip:
+                                  type: template
+                                  icon_color: white
+                                  icon: mdi:window-open
+                            alignment: end
+                            card_mod:
+                              style: |
+                                ha-card {
+                                  background: none;
+                                  --chip-icon-size: 20px;
+                                  --chip-spacing: 2px;
+                                  --chip-box-shadow: none;
+                                  --chip-background: none;
+                                  --chip-spacing: 0;
+                                  height: 35px;
+                                }
+                                :host([dark-mode]) {
+                                  background: rgba(var(--rgb-primary-background-color), 0.025);
+                                } 
+                                :host {
+                                  background: rgba(var(--rgb-primary-text-color), 0.025);
+                                  --mush-icon-size: 62px;
+                                }
+                      - type: horizontal-stack
+                        cards:
+                          - type: custom:mushroom-chips-card
+                            chips:
+                              - type: action
+                                icon_color: amber
+                                icon: mdi:globe-light
+                                tap_action:
+                                  action: call-service
+                                  service: scene.turn_on
+                                  data: {}
+                                  target:
+                                    entity_id: scene.antre_amber
+                            card_mod:
+                              style: |
+                                ha-card {
+                                  background: none;
+                                  margin-top: 0px; 
+                                  --chip-icon-size: 20px;
+                                  --chip-spacing: 2px;
+                                  --chip-box-shadow: none;
+                                  --chip-background: none;
+                                  --icon-size: 68px;
+                                  height: 35px;
+                                  background-size: 55px 40px;
+                                }
+                            alignment: center
+                  card_mod:
+                    style: |
+                      ha-card {
+                        background: none;
+                        box-shadow: 0px 0px;
+                        height: auto;
+              card_mod:
+                style: >
+                  ha-card:before {
+                    transform: translate3d(0,0,0);
+                    -webkit-transform: translate3d(0,0,0);
+                    content: "";
+                    position: absolute;
+                    height: 100%;
+                    width: 100%;
+                  {% if is_state('group.antre', 'on')  %}
+                    background: url('/local/png/art/.jpg') center no-repeat;
+                    animation: Gradient 20s linear infinite;
+                    background-color: rgba(138, 84, 3, 2.85);
+                    filter: blur(70px) saturate(200%);
+                    background-size: 100% 100%;
+                  {% elif states('sensor.hue_motion_antre')|float < 21 and
+                  is_state('group.antre', 'off') %}
+                    background:  url( '/local/room-cards/coldanimation.gif' ) no-repeat center 0px;
+                    background-position: center;
+                    background-repeat: no-repeat;
+                    background-size: cover;
+                    background-color: rgba(var(--rgb-card-background-color), 0.6);
+                    background-blend-mode: overlay;
+                    position: relative; 
+                  {% else %}
+                    {% endif %}
+                  } @media (max-width: 600px) {
+                    ha-card:before {
+                      background-size: 150% 150%;
+                      filter: blur(70px) saturate(200%);
+                    }
+                  } ha-card {
+                    transform: translate3d(0,0,0);
+                    -webkit-transform: translate3d(0,0,0);
+                    border-radius: 0px;
+                    overflow: visible !important;
+                    background: transparent;
+                    border: none !important;
+            - type: custom:vertical-stack-in-card
+              cards:
+                - type: horizontal-stack
+                  cards:
+                    - type: custom:vertical-stack-in-card
+                      cards:
+                        - type: horizontal-stack
+                          cards:
+                            - type: custom:mushroom-template-card
+                              primary: Banyo
+                              picture: /local/room-cards/banyo2.png
+                              secondary: >
+                                {{ states('sensor.hue_motion_temp_banyo') }} °C
+
+                                💡{{ states('sensor.banyo_cihazlar') }} 🔆 {{
+                                states('sensor.hue_motion_sensor_4_illuminance')
+                                }}
+                              alignment: center
+                              entity: group.banyo
+                              tap_action:
+                                action: toggle
+                              double_tap_action:
+                                action: call-service
+                                service: spotcast.start
+                                data:
+                                  device_name: Bathroom Dot
+                                  force_playback: true
+                              fill_container: false
+                              layout: horizontal
+                              multiline_secondary: true
+                              card_mod:
+                                style: |
+                                  ha-card { 
+                                    --icon-size: 88px;
+                                    background: none;
+                                    margin-left: 0px;
+                                    --icon-size: 98px;
+                                    --card-primary-font-weight: 500;
+                                    --card-primary-font-size: 14px;
+                                    --card-secondary-font-weight: 500;
+                                    --card-secondary-font-size: 12px;
+                                    {% if is_state('group.banyo', 'on') %}
+                                    {% else %}
+                                      filter: grayscale(100%);
+                                    {% endif %}      
+                                  } 
+                      card_mod:
+                        style: |
+                          ha-card {
+                            background: rgba(var(--rgb-primary-background-color), 0.025);
+                            height: 120px !important;
+                            width: auto !important;
+                          --primary-text-color: white;
+                            --secondary-text-color: white; 
+                            --card-secondary-font-weight: 300;
+                            --card-secondary-font-size: 20px;
+                            box-shadow: none !important;
+                            margin-left: -5px;
+                            margin-right: -5px;
+                          } 
+                          :host {
+                            width: 100%;
+                            position: center;
+                            border-radius: 0px;
+                            border: 0px solid #73AD21;
+                            box-shadow: none !important;
+                            overflow: visible !important;
+                          }
+                - type: conditional
+                  conditions:
+                    - entity: input_boolean.mobile_w_dashboard_info
+                      state: 'on'
+                  card:
+                    type: custom:swipe-card
+                    parameters: null
+                    spaceBetween: 8
+                    scrollbar: null
+                    hide: false
+                    draggable: true
+                    snapOnRelease: true
+                    cards:
+                      - type: horizontal-stack
+                        cards:
+                          - type: custom:mushroom-chips-card
+                            chips:
+                              - type: conditional
+                                conditions:
+                                  - entity: binary_sensor.motion
+                                    state: 'on'
+                                chip:
+                                  type: template
+                                  icon_color: orange
+                                  icon: mdi:motion-sensor
+                              - type: conditional
+                                conditions:
+                                  - entity: >-
+                                      binary_sensor.ewelink_ds01_c9f89d23_ias_zone
+                                    state: 'on'
+                                chip:
+                                  type: template
+                                  icon_color: blue
+                                  icon: mdi:door-open
+                            alignment: end
+                            card_mod:
+                              style: |
+                                ha-card {
+                                  background: none;
+                                  --chip-icon-size: 20px;
+                                  --chip-spacing: 2px;
+                                  --chip-box-shadow: none;
+                                  --chip-background: none;
+                                  --chip-spacing: 0;
+                                  height: 35px;
+                                }
+                                :host([dark-mode]) {
+                                  background: rgba(var(--rgb-primary-background-color), 0.025);
+                                } 
+                                :host {
+                                  background: rgba(var(--rgb-primary-text-color), 0.025);
+                                  --mush-icon-size: 62px;
+                                }
+                  card_mod:
+                    style: |
+                      ha-card { 
+                        background: none;
+                        box-shadow: 0px 0px;
+                        height: auto;
+                - type: custom:vertical-stack-in-card
+                  cards:
+                    - type: conditional
+                      conditions:
+                        - entity: input_boolean.mobile_w_dashboard_volume
+                          state: 'on'
+                      card:
+                        type: horizontal-stack
+                        cards:
+                          - type: custom:mushroom-media-player-card
+                            entity: media_player.bathroom_dot
+                            volume_controls:
+                              - volume_set
+                            use_media_info: false
+                            show_volume_level: false
+                            primary_info: none
+                            secondary_info: none
+                            icon_type: none
+                            card_mod:
+                              style: |
+                                ha-card {
+                                  background: rgba(var(--rgb-primary-background-color), 0.5);
+                                  padding: 0px 11px 11px;
+                  card_mod:
+                    style: |
+                      ha-card {
+                        background: none;
+                        box-shadow: 0px 0px;
+                        margin-left: 0px;
+                        height: auto;
+                        margin-right: 0px;
+              card_mod:
+                style: >
+                  ha-card:before {
+                    transform: translate3d(0,0,0);
+                    -webkit-transform: translate3d(0,0,0);
+                    content: "";
+                    position: absolute;
+                    height: 100%;
+                    width: 100%;
+                  {% if is_state('group.banyo', 'on')  %}
+                    background: url('/local/png/art/.jpg') center no-repeat;
+                    animation: Gradient 20s linear infinite;
+                    background-color: olive; 
+                    filter: blur(70px) saturate(200%);
+                    background-size: 100% 100%;
+                  {% elif states('sensor.hue_motion_temp_banyo')|float < 21 and
+                  is_state('group.banyo', 'off') %}
+                    background:  url( '/local/room-cards/coldanimation.gif' ) no-repeat center 0px;
+                    background-position: center;
+                    background-repeat: no-repeat;
+                    background-size: cover;
+                    background-color: rgba(var(--rgb-card-background-color), 0.6);
+                    background-blend-mode: overlay;
+                    position: relative;
+                  {% else %}
+                    {% endif %}
+                  } @media (max-width: 600px) {
+                    ha-card:before {
+                      background-size: 150% 150%;
+                      filter: blur(70px) saturate(200%);
+                    }
+                  } ha-card {
+                    transform: translate3d(0,0,0);
+                    -webkit-transform: translate3d(0,0,0);
+                    border-radius: 0px;
+                    overflow: visible !important;
+                    background: transparent;
+                    border: none !important;
+            - type: custom:vertical-stack-in-card
+              cards:
+                - type: horizontal-stack
+                  cards:
+                    - type: custom:vertical-stack-in-card
+                      cards:
+                        - type: horizontal-stack
+                          cards:
+                            - type: custom:mushroom-template-card
+                              primary: Giysi
+                              picture: /local/room-cards/giysi9.png
+                              secondary: >
+                                {{
+                                states('sensor.hue_motion_temp_soyunma_odasi')
+                                }} °C
+
+                                💡{{ states('sensor.giysi_cihazlar') }} 🔆 {{
+                                states('sensor.hue_motion_sensor_1_illuminance')
+                                }} 
+                              alignment: center
+                              entity: group.dressingroom
+                              tap_action:
+                                action: toggle
+                              fill_container: false
+                              layout: horizontal
+                              multiline_secondary: true
+                              card_mod:
+                                style: |
+                                  ha-card { 
+                                    --icon-size: 88px;
+                                    background: none;
+                                    margin-left: 0px;
+                                    --icon-size: 98px;
+                                    --card-primary-font-weight: 500;
+                                    --card-primary-font-size: 14px;
+                                    --card-secondary-font-weight: 500;
+                                    --card-secondary-font-size: 12px;
+                                    {% if is_state('group.dressingroom', 'on') %}
+                                    {% else %}
+                                      filter: grayscale(100%);
+                                    {% endif %}      
+                                  } 
+                      card_mod:
+                        style: |
+                          ha-card {
+                            background: rgba(var(--rgb-primary-background-color), 0.025);
+                            height: 120px !important;
+                            width: auto !important;
+                          --primary-text-color: white;
+                            --secondary-text-color: white; 
+                            --card-secondary-font-weight: 300;
+                            --card-secondary-font-size: 20px;
+                            box-shadow: none !important;
+                            margin-left: -5px;
+                            margin-right: -5px;
+                          } 
+                          :host {
+                            width: 100%;
+                            position: center;
+                            border-radius: 0px;
+                            border: 0px solid #73AD21;
+                            box-shadow: none !important;
+                            overflow: visible !important;
+                          }
+                - type: conditional
+                  conditions:
+                    - entity: input_boolean.mobile_w_dashboard_info
+                      state: 'on'
+                  card:
+                    type: custom:swipe-card
+                    parameters: null
+                    spaceBetween: 8
+                    scrollbar: null
+                    hide: false
+                    draggable: true
+                    snapOnRelease: true
+                    cards:
+                      - type: horizontal-stack
+                        cards:
+                          - type: custom:mushroom-chips-card
+                            chips:
+                              - type: conditional
+                                conditions:
+                                  - entity: binary_sensor.hue_motion_sensor_3_motion
+                                    state: 'on'
+                                chip:
+                                  type: template
+                                  icon_color: orange
+                                  icon: mdi:motion-sensor
+                            alignment: end
+                            card_mod:
+                              style: |
+                                ha-card {
+                                  background: none;
+                                  --chip-icon-size: 20px;
+                                  --chip-spacing: 2px;
+                                  --chip-box-shadow: none;
+                                  --chip-background: none;
+                                  --chip-spacing: 0;
+                                  height: 35px;
+                                }
+                                :host([dark-mode]) {
+                                  background: rgba(var(--rgb-primary-background-color), 0.025);
+                                } 
+                                :host {
+                                  background: rgba(var(--rgb-primary-text-color), 0.025);
+                                  --mush-icon-size: 62px;
+                                }
+                  card_mod:
+                    style: |
+                      ha-card {
+                        background: none;
+                        box-shadow: 0px 0px;
+                        height: auto;
+              card_mod:
+                style: >
+                  ha-card:before {
+                    transform: translate3d(0,0,0);
+                    -webkit-transform: translate3d(0,0,0);
+                    content: "";
+                    position: absolute;
+                    height: 100%;
+                    width: 100%;
+                  {% if is_state('group.dressingroom', 'on')  %}
+                    background: url('/local/png/art/.jpg') center no-repeat;
+                    animation: Gradient 20s linear infinite;
+                    background-color: rgba(61, 23, 1, 2.85);  
+                    margin-top: 30px;
+                    filter: blur(70px) saturate(200%);
+                    background-size: 100% 100%;
+                  {% elif states('sensor.hue_motion_temp_soyunma_odasi')|float <
+                  21 and is_state('group.dressingroom', 'off') %}
+                    background:  url( '/local/room-cards/coldanimation.gif' ) no-repeat center 0px;
+                    background-position: center;
+                    background-repeat: no-repeat;
+                    background-size: cover;
+                    background-color: rgba(var(--rgb-card-background-color), 0.6);
+                    background-blend-mode: overlay;
+                    position: relative;
+                    {% else %}
+                    {% endif %}
+                  } @media (max-width: 600px) {
+                    ha-card:before {
+                      background-size: 150% 150%;
+                      filter: blur(70px) saturate(200%);
+                    }
+                  } ha-card {
+                    transform: translate3d(0,0,0);
+                    -webkit-transform: translate3d(0,0,0);
+                    border-radius: 0px;
+                    overflow: visible !important;
+                    background: transparent;
+                    border: none !important;
+            - type: custom:vertical-stack-in-card
+              cards:
+                - type: horizontal-stack
+                  cards:
+                    - type: custom:vertical-stack-in-card
+                      cards:
+                        - type: horizontal-stack
+                          cards:
+                            - type: custom:mushroom-template-card
+                              primary: Koridor
+                              picture: /local/room-cards/hall4.png
+                              secondary: |
+                                .
+                                💡{{ states('sensor.koridor_cihazlar') }}
+                              alignment: center
+                              entity: group.koridor
+                              tap_action:
+                                action: toggle
+                              fill_container: false
+                              layout: horizontal
+                              multiline_secondary: true
+                              card_mod:
+                                style: |
+                                  ha-card { 
+                                    --icon-size: 88px;
+                                    background: none;
+                                    margin-left: 0px;
+                                    --icon-size: 98px;
+                                    --card-primary-font-weight: 500;
+                                    --card-primary-font-size: 14px;
+                                    --card-secondary-font-weight: 500;
+                                    --card-secondary-font-size: 12px;
+                                    {% if is_state('group.koridor', 'on') %}
+                                    {% else %}
+                                      filter: grayscale(100%);
+                                    {% endif %}      
+                                  }  
+                      card_mod:
+                        style: |
+                          ha-card {
+                            background: rgba(var(--rgb-primary-background-color), 0.025);
+                            height: 120px !important;
+                            width: auto !important;
+                          --primary-text-color: white;
+                            --secondary-text-color: white; 
+                            --card-secondary-font-weight: 300;
+                            --card-secondary-font-size: 20px;
+                            box-shadow: none !important;
+                            margin-left: -5px;
+                            margin-right: -5px;
+                          } 
+                          :host {
+                            width: 100%;
+                            position: center;
+                            border-radius: 0px;
+                            border: 0px solid #73AD21;
+                            box-shadow: none !important;
+                            overflow: visible !important;
+                          }
+                - type: conditional
+                  conditions:
+                    - entity: input_boolean.mobile_w_dashboard_info
+                      state: 'on'
+                  card:
+                    type: custom:swipe-card
+                    parameters: null
+                    spaceBetween: 8
+                    scrollbar: null
+                    hide: false
+                    draggable: true
+                    snapOnRelease: true
+                    cards:
+                      - type: horizontal-stack
+                        cards:
+                          - type: custom:mushroom-chips-card
+                            chips:
+                              - type: conditional
+                                conditions:
+                                  type: custom:mushroom-title-card
+                                  title: ''
+                            alignment: end
+                            card_mod:
+                              style: |
+                                ha-card {
+                                  background: none;
+                                  --chip-icon-size: 20px;
+                                  --chip-spacing: 2px;
+                                  --chip-box-shadow: none;
+                                  --chip-background: none;
+                                  --chip-spacing: 0;
+                                  height: 35px;
+                                }
+                                :host([dark-mode]) {
+                                  background: rgba(var(--rgb-primary-background-color), 0.025);
+                                } 
+                                :host {
+                                  background: rgba(var(--rgb-primary-text-color), 0.025);
+                                  --mush-icon-size: 62px;
+                                }
+                  card_mod:
+                    style: |
+                      ha-card {
+                        background: none;
+                        box-shadow: 0px 0px;
+                        height: auto;
+              card_mod:
+                style: |
+                  ha-card:before {
+                    transform: translate3d(0,0,0);
+                    -webkit-transform: translate3d(0,0,0);
+                    content: "";
+                    position: absolute;
+                    height: 100%;
+                    width: 100%;
+                  {% if is_state('group.koridor', 'on')  %}
+                    background: url('/local/png/art/.jpg') center no-repeat;
+                    animation: Gradient 20s linear infinite;
+                    background-color: rgba(34, 73, 117, 2.85); 
+                    filter: blur(70px) saturate(200%);
+                    background-size: 100% 100%;
+                  {% else %}
+                    {% endif %}
+                  } @media (max-width: 600px) {
+                    ha-card:before {
+                      background-size: 150% 150%;
+                      filter: blur(70px) saturate(200%);
+                    }
+                  } ha-card {
+                    transform: translate3d(0,0,0);
+                    -webkit-transform: translate3d(0,0,0);
+                    border-radius: 0px;
+                    overflow: visible !important;
+                    background: transparent;
+                    border: none !important;
+card_mod:
+  style: |
+    ha-card {
+      background: rgba(var(--rgb-primary-background-color), 0.5);
+      margin-top: -12px;
+      margin-left: 0px;
+      margin-right: 0px;
+      margin-bottom: 0px;
+      box-shadow: none;
+    }

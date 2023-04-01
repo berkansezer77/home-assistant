@@ -1,0 +1,1394 @@
+type: custom:vertical-stack-in-card
+cards:
+  - type: custom:stack-in-card
+    cards:
+      - type: conditional
+        conditions:
+          - entity: >-
+              input_boolean.modern_dashboard_simple_version_spotify_update_status
+            state: 'off'
+          - entity: input_boolean.modern_dashboard_spotify
+            state: 'on'
+        card:
+          type: custom:mushroom-template-card
+          secondary: null
+          primary: null
+          icon: mdi
+          fill_container: false
+          multiline_secondary: false
+          tap_action:
+            action: navigate
+            navigation_path: /dashboard-backup
+          layout: vertical
+          picture: /local/png/md-lite/spotify3.png
+          card_mod:
+            style: |
+              ha-card:before {
+                transform: translate3d(0,0,0);
+                -webkit-transform: translate3d(0,0,0);
+                content: "";
+                position: absolute;
+                height: 90%;
+                width: 90%; 
+                background: url('/local/png/md-lite/red.jpg') center no-repeat; 
+                animation: Gradient 20s linear infinite;
+                filter: blur(100px) saturate(200%);
+                background-size: 100% 50%;
+                }
+                ha-card { 
+                  height: 320px !important;
+                  margin-left: auto;
+                  margin-top: 50px;
+                  margin-right: auto;
+                  margin-bottom: 0px; 
+                  --icon-size: 400px;
+                  position: relative; 
+                  box-shadow: none;
+                  background-color: transparent;
+                --primary-text-color: white;
+                --secondary-text-color: white; 
+                --card-primary-font-size: 29px;
+                --card-primary-font-weight: 550;
+                --card-primary-line-height: 1.9; 
+                --card-secondary-font-weight: 300;
+                --card-secondary-font-size: 15px;
+                  } 
+              @media (max-width: 600px) {
+                ha-card:before {
+                  background-size: 100% 1000%;
+                  filter: blur(70px) saturate(200%);
+                }
+              }
+              @keyframes Gradient {
+                0% {
+                  background-position: 0% 50%;
+                }
+                25% {
+                  background-position: 50% 0%;
+                }
+                50% {
+                  background-position: 100% 50%;
+                }
+                75% {
+                  background-position: 50% 100%;
+                }
+                100% {
+                  background-position: 0% 50%;
+                }
+      - type: conditional
+        conditions:
+          - entity: input_boolean.modern_dashboard_spotify_card
+            state: 'off'
+          - entity: >-
+              input_boolean.modern_dashboard_simple_version_spotify_update_status
+            state: 'off'
+          - entity: input_boolean.modern_dashboard_spotify
+            state: 'on'
+        card:
+          type: custom:mushroom-chips-card
+          chips:
+            - type: template
+              entity: input_button.modern_dashboard_spotify_last_room_music
+              icon_color: red
+              picture: /local/png/md-lite/play1.png
+              content: null
+              name: null
+              card_mod:
+                style: |
+                  ha-card {
+                    background: n; 
+                    margin-bottom: 5px; 
+                    --chip-font-size: 13px;
+                    --chip-height: 73px;
+                    --chip-spacing: 0px;
+                    --chip-background: none;
+                    --chip-border-radius: 20px;   
+                    --chip-box-shadow: none;
+                    border-radius: 30px;
+                    box-shadow: none;
+                    margin-top: -0px;
+                  }
+          alignment: center
+      - type: conditional
+        conditions:
+          - entity: >-
+              input_boolean.modern_dashboard_simple_version_spotify_update_status
+            state: 'on'
+          - entity: input_boolean.modern_dashboard_spotify
+            state: 'on'
+        card:
+          type: custom:mushroom-media-player-card
+          entity: media_player.spotify_berkan_sezer
+          icon: mdi:music
+          double_tap_action:
+            action: call-service
+            service: input_boolean.toggle
+            data: {}
+            target:
+              entity_id: input_boolean.modern_dashboard_spotify_card_hide_media_players
+          use_media_info: true
+          use_media_artwork: false
+          show_volume_level: false
+          show_icon: false
+          media_controls:
+            - play_pause_stop
+            - previous
+            - next
+          volume_controls:
+            - volume_buttons
+            - volume_set
+          fill_container: false
+          card_mod:
+            style:
+              mushroom-state-info$: |
+                .primary {
+                  white-space: normal !important;
+                  font-size: 18px !important;
+                  font-weight: 200;
+                }
+                .secondary {
+                  white-space: normal !important;
+                  font-size: 15px !important;
+                  font-weight: 200;
+                }
+              .: |
+                mushroom-shape-icon {
+                  display: none;
+                }
+                ha-card {
+                  --ha-card-border-width: 0;
+                  --control-icon-size: 32px;
+                  background-color: transparent;
+                  margin-top: 122px;
+                   box-shadow: none;
+                }
+                ha-card:before {
+                  transform: translate3d(0,0,0);
+                  -webkit-transform: translate3d(0,0,0);
+                  content: "";
+
+                  {% if not is_state(config.entity, 'off') %}
+                    background: url( '{{ state_attr(config.entity, "entity_picture") }}') center no-repeat;
+                  {% else %}
+                    background: url('/local/png/md-lite/spotify3.png') center no-repeat;
+                  {% endif %}
+                  background-size: contain;
+                  width: 20rem;
+                  align-self: center;
+                  margin: 40px 40px 28px;
+                  filter: drop-shadow(4px 4px 6px rgba(0, 0, 0, 0));
+                  border-radius: 30px;
+
+                  {% set media_type = state_attr(config.entity, 'media_content_type') %}
+                  {% if media_type == 'tvshow' %}
+                    aspect-ratio: 16 / 9;
+                  {% elif media_type == 'movie' %}
+                    aspect-ratio: 2 / 3;
+                  {% else %}
+                    aspect-ratio: 1 / 1;
+                  {% endif %}
+                }
+                mushroom-state-item {
+                  text-align: center;
+                  margin-left: -10px;
+                }
+                .actions {
+                  --rgb-primary-text-color: var(--album-art-color);
+                  --primary-text-color: rgb(var(--album-art-color));
+                  {% if state_attr(config.entity, 'media_duration') %}
+                    margin-top: 55px;
+                  {% else %}
+                    margin-top: 20px;
+                  {% endif %}
+                  margin-left: -20px; 
+                  width: 80%;
+                  align-self: center;
+                }
+      - type: conditional
+        conditions:
+          - entity: media_player.spotify_berkan_sezer
+            state: playing
+          - entity: input_boolean.modern_dashboard_spotify
+            state: 'on'
+        card:
+          entity: media_player.spotify_berkan_sezer
+          hide:
+            icon: true
+            name: true
+            runtime: true
+            source: true
+            power: true
+            state_label: true
+            volume: true
+            info: true
+            progress: false
+            controls: true
+          more_info: false
+          type: custom:mini-media-player
+          toggle_power: false
+          group: true
+          card_mod:
+            style:
+              mmp-progress$: |
+                paper-progress {
+                  {% if is_state(config.entity, 'playing') %}
+                    --paper-progress-container-color: amber ;
+                  {% endif %}
+                }
+              .: |
+                ha-card {
+                  width: 60%;
+                  align-self: center;
+                  margin: -98px auto auto;
+                  --mmp-progress-height: 12px !important;
+                  height: var(--mmp-progress-height);
+                  --mmp-accent-color: white;
+                  --mmp-border-radius: 12px !important;
+                  --ha-card-border-width: 0;
+                  background-color: transparent !important;
+                }
+      - type: conditional
+        conditions:
+          - entity: input_boolean.modern_dashboard_spotify_card
+            state: 'on'
+          - entity: input_boolean.modern_dashboard_spotify
+            state: 'on'
+        card:
+          type: custom:spotify-card
+          limit: 12
+          display_style: Grid
+          grid_covers_per_row: 4
+          always_play_random_song: true
+          hide_warning: true
+          hide_currently_playing: true
+          hide_top_header: true
+          hide_playback_controls: true
+          card_mod:
+            style: |
+              ha-card { 
+                background: none;
+                border-radius: 0px;
+                margin-left: auto; 
+                margin-right: auto;
+                margin-top: 80px;
+                margin-bottom: 20px;
+                height: 420px !important;
+                width: auto !important;
+                --ha-card-border-width: 0;
+                box-shadow: none;
+              }
+                mushroom-shape-icon {
+                  display: none;
+                }
+    card_mod:
+      style: |
+        ha-card:before {
+          transform: translate3d(0,0,0);
+          -webkit-transform: translate3d(0,0,0);
+          content: "";
+          position: absolute;
+          height: 100%;
+          width: 100%;
+          {% if not is_state('media_player.spotify_berkan_sezer', 'idle') and not is_state('media_player.spotify_berkan_sezer', 'off') and not is_state('media_player.spotify_berkan_sezer', 'paused') %}
+            background: url( '{{ state_attr('media_player.spotify_berkan_sezer', "entity_picture") }}' ) center no-repeat;
+            animation: Gradient 12s linear infinite;
+            box-shadow: none; 
+            filter: blur(100px) saturate(200%);
+            border: none !important;
+          background-size: 60% 60%;
+          {% else %}
+            background: url('/local/png/md-lite/art/2.png') center no-repeat;
+            animation: Gradient 12s linear infinite;
+          filter: blur(100px) saturate(250%);
+          box-shadow: none; 
+          border: none !important;
+          {% endif %}
+        }
+        @media (max-width: 600px) {
+          ha-card:before {
+            background-size: 70% 70%;
+            filter: blur(70px) saturate(200%);
+          }
+        }
+        @keyframes Gradient {
+          0% {
+            background-position: 0% 50%;
+          }
+          25% {
+            background-position: 50% 0%;
+          }
+          50% {
+            background-position: 100% 50%;
+          }
+          75% {
+            background-position: 50% 100%;
+          }
+          100% {
+            background-position: 0% 50%;
+          }
+        } 
+        ha-card {
+          transform: translate3d(0,0,0);
+          -webkit-transform: translate3d(0,0,0);
+          border-radius: 30px;
+          overflow: visible !important;
+          background-color: transparent;
+          border: none !important;
+          --ha-card-border-width: 0;
+          box-shadow: none;
+        }
+        @media (min-width: 1200px) {
+          ha-card {
+            margin-top: 0px;
+          }
+          }
+        :host {
+          margin-top: 50px !important;
+          --album-art-color:      
+          {% if not is_state('media_player.spotify_berkan_sezer', 'idle') and not is_state('media_player.spotify_berkan_sezer', 'off') %}
+          {% else %}
+            var(--rgb-indigo-color)
+          {% endif %};
+        }
+  - type: conditional
+    conditions:
+      - entity: input_boolean.modern_dashboard_spotify
+        state: 'on'
+    card:
+      type: custom:swipe-card
+      start_card: 2
+      reset_after: 10
+      parameters:
+        autoHeight: true
+        speed: 35
+        slidesPerView: auto
+        spaceBetween: 1
+        threshold: 1
+        effect: slide
+        direction: vertical
+      cards:
+        - type: horizontal-stack
+          cards:
+            - type: custom:mushroom-chips-card
+              chips:
+                - type: template
+                  entity: input_boolean.modern_dashboard_spotify
+                  picture: /local/png/md-lite/spotify1.png
+                  content: Spotify
+                  name: null
+                  tap_action:
+                    action: call-service
+                    service: input_boolean.turn_on
+                    data: {}
+                    target:
+                      entity_id: input_boolean.modern_dashboard_spotify
+                  card_mod:
+                    style: >
+                      ha-card {
+                        margin-bottom: 5px; 
+                        --chip-font-size: 13px;
+                        --chip-height: 43px;
+                        --chip-spacing: 0px;
+                        --chip-border-radius: 20px;
+                        --chip-background: rgba(5,5,1, 0.85);            
+                      {% if is_state('input_boolean.modern_dashboard_spotify',
+                      'on') %} 
+                       --chip-background: black;                             
+                      {% else %}
+                       --chip-background: none;   
+                       --chip-box-shadow: none;
+                      {% endif %}            
+                        border-radius: 30px;
+                        box-shadow: none;
+                        margin-top: 10px;
+                      } ha-card:hover {
+                        transform: scale(1.2);
+                        transform-origin: top center;
+                        z-index: 1;
+                        transition: all 1s;
+                      }
+                - type: template
+                  entity: input_boolean.modern_dashboard_tv
+                  picture: /local/png/md-lite/tv4.png
+                  content: TV
+                  name: null
+                  tap_action:
+                    action: call-service
+                    service: input_boolean.turn_on
+                    data: {}
+                    target:
+                      entity_id: input_boolean.modern_dashboard_tv
+                  card_mod:
+                    style: >
+                      ha-card {
+                        margin-bottom: 5px; 
+                        --chip-font-size: 13px;
+                        --chip-height: 43px;
+                        --chip-spacing: 0px;
+                        --chip-border-radius: 20px;
+                        --chip-background: rgba(5,5,1, 0.85);            
+                      {% if is_state('input_boolean.modern_dashboard_tv', 'on')
+                      %} 
+                       --chip-background: black;                             
+                      {% else %}
+                       --chip-background: none;   
+                       --chip-box-shadow: none;
+                      {% endif %}            
+                        border-radius: 30px;
+                        box-shadow: none;
+                        margin-top: 10px;
+                      } ha-card:hover {
+                        transform: scale(1.2);
+                        transform-origin: top center;
+                        z-index: 1;
+                        transition: all 1s;
+                      }
+              alignment: center
+              card_mod:
+                style: |
+                  ha-card {
+                  background: transparent;
+                    background-color: none;
+                    box-shadow: 0px 0px;
+                    border-radius: 0px;
+                    height: 60px; }
+        - type: horizontal-stack
+          cards:
+            - type: custom:vertical-stack-in-card
+              cards:
+                - type: custom:swipe-card
+                  slideToClickedSlide: false
+                  parameters:
+                    roundLengths: false
+                    effect: slide
+                    speed: 350
+                    spaceBetween: 20
+                    threshold: 7
+                    autoHeight: true
+                    allowSlidePrev: true
+                    preventClicks: true
+                  spaceBetween: 8
+                  scrollbar: null
+                  hide: false
+                  snapOnRelease: false
+                  cards:
+                    - type: horizontal-stack
+                      cards:
+                        - type: custom:mushroom-chips-card
+                          chips:
+                            - type: conditional
+                              conditions:
+                                - entity: >-
+                                    input_boolean.modern_dashboard_spotify_card_hide_media_players
+                                  state: 'on'
+                                - entity: input_boolean.modern_dashboard_spotify
+                                  state: 'on'
+                              chip:
+                                type: template
+                                entity: input_boolean.modern_dashboard_spotify_card
+                                picture: /local/png/md-lite/spotify.png
+                                content: Playlist
+                                name: null
+                                tap_action:
+                                  action: call-service
+                                  service: input_boolean.toggle
+                                  data: {}
+                                  target:
+                                    entity_id: >-
+                                      input_boolean.modern_dashboard_spotify_card
+                                double_tap_action:
+                                  action: call-service
+                                  service: input_boolean.toggle
+                                  data: {}
+                                  target:
+                                    entity_id: >-
+                                      input_boolean.modern_dashboard_spotify_card_hide_media_players
+                                card_mod:
+                                  style: >
+                                    ha-card {
+                                      margin-bottom: 5px; 
+                                      --chip-font-size: 13px;
+                                      --chip-height: 43px;
+                                      --chip-spacing: 0px;
+                                      --chip-border-radius: 20px;
+                                      --chip-background: rgba(5,5,1, 0.85);            
+                                    {% if
+                                    is_state('input_boolean.modern_dashboard_spotify_card',
+                                    'on') %} {% else %}
+                                     --chip-background: none;
+                                     --chip-box-shadow: none;
+                                    {% endif %}            
+                                      border-radius: 30px;
+                                      box-shadow: none;
+                                      margin-top: 10px;
+                                    }
+                            - type: conditional
+                              conditions:
+                                - entity: >-
+                                    input_boolean.modern_dashboard_spotify_card_hide_media_players
+                                  state: 'on'
+                                - entity: input_boolean.modern_dashboard_spotify
+                                  state: 'on'
+                              chip:
+                                type: template
+                                entity: media_player.berkan_s_echo_dot
+                                picture: /local/png/md-lite/sofa.png
+                                content: Salon
+                                name: null
+                                tap_action:
+                                  action: call-service
+                                  service: spotcast.start
+                                  data:
+                                    device_name: Salon Dot
+                                    force_playback: true
+                                double_tap_action:
+                                  action: call-service
+                                  service: media_player.media_stop
+                                  data: {}
+                                  target:
+                                    entity_id: media_player.berkan_s_echo_dot
+                                card_mod:
+                                  style: >
+                                    ha-card {
+                                      margin-bottom: 5px; 
+                                      --chip-font-size: 13px;
+                                      --chip-height: 43px;
+                                      --chip-spacing: 0px;
+                                      --chip-border-radius: 20px;
+                                      --chip-background: rgba(5,5,1, 0.85);            
+                                    {% if
+                                    is_state('media_player.berkan_s_echo_dot',
+                                    'playing') %} 
+                                     --chip-box-shadow: 0px 0px 9px red;
+                                     --chip-background: black;   
+                                     --chip-height: 42px;
+                                    {% else %}
+                                     --chip-background: none;
+                                     --chip-box-shadow: none;
+                                    {% endif %}            
+                                      border-radius: 30px;
+                                      box-shadow: none;
+                                      margin-top: 10px;
+                                    }
+                            - type: conditional
+                              conditions:
+                                - entity: >-
+                                    input_boolean.modern_dashboard_spotify_card_hide_media_players
+                                  state: 'on'
+                                - entity: input_boolean.modern_dashboard_spotify
+                                  state: 'on'
+                              chip:
+                                type: template
+                                entity: media_player.office_dot
+                                icon_color: red
+                                picture: /local/png/md-lite/ofis2.png
+                                content: Ofis
+                                name: null
+                                tap_action:
+                                  action: call-service
+                                  service: spotcast.start
+                                  data:
+                                    device_name: Office Dot
+                                    force_playback: true
+                                double_tap_action:
+                                  action: call-service
+                                  service: media_player.media_stop
+                                  data: {}
+                                  target:
+                                    entity_id: media_player.office_dot
+                                card_mod:
+                                  style: >
+                                    ha-card {
+                                      margin-bottom: 5px; 
+                                      --chip-font-size: 13px;
+                                      --chip-height: 43px;
+                                      --chip-spacing: 0px;
+                                      --chip-border-radius: 20px;        
+                                    {% if is_state('media_player.office_dot',
+                                    'playing') %} 
+                                     --chip-box-shadow: 0px 0px 9px red;
+                                     --chip-background: black;   
+                                     --chip-height: 42px;
+                                    {% else %}
+                                     --chip-background: none;
+                                     --chip-box-shadow: none;
+                                    {% endif %}            
+                                      border-radius: 30px;
+                                      box-shadow: none;
+                                      margin-top: 10px;
+                                    }
+                            - type: conditional
+                              conditions:
+                                - entity: >-
+                                    input_boolean.modern_dashboard_spotify_card_hide_media_players
+                                  state: 'on'
+                                - entity: input_boolean.modern_dashboard_spotify
+                                  state: 'on'
+                              chip:
+                                type: template
+                                entity: media_player.bedroom_echo
+                                picture: /local/png/md-lite/bedroom6.png
+                                content: Bedroom
+                                name: null
+                                tap_action:
+                                  action: call-service
+                                  service: spotcast.start
+                                  data:
+                                    device_name: Bedroom Echo
+                                    force_playback: true
+                                double_tap_action:
+                                  action: call-service
+                                  service: media_player.media_stop
+                                  data: {}
+                                  target:
+                                    entity_id: media_player.bedroom_echo
+                                card_mod:
+                                  style: >
+                                    ha-card {
+                                      margin-bottom: 5px; 
+                                      --chip-font-size: 13px;
+                                      --chip-height: 43px;
+                                      --chip-spacing: 0px;
+                                      --chip-border-radius: 20px;        
+                                    {% if is_state('media_player.bedroom_echo',
+                                    'playing') %} 
+                                     --chip-box-shadow: 0px 0px 9px red;
+                                     --chip-background: black;   
+                                     --chip-height: 42px;
+                                    {% else %}
+                                     --chip-background: none;
+                                     --chip-box-shadow: none;
+                                    {% endif %}            
+                                      border-radius: 30px;
+                                      box-shadow: none;
+                                      margin-top: 10px;
+                                    }
+                          alignment: center
+                    - type: horizontal-stack
+                      cards:
+                        - type: custom:mushroom-chips-card
+                          chips:
+                            - type: conditional
+                              conditions:
+                                - entity: >-
+                                    input_boolean.modern_dashboard_spotify_card_hide_media_players
+                                  state: 'on'
+                                - entity: input_boolean.modern_dashboard_spotify
+                                  state: 'on'
+                              chip:
+                                type: template
+                                entity: media_player.berkan_s_2nd_echo_dot
+                                icon_color: red
+                                picture: /local/png/md-lite/fridge.png
+                                content: Mutfak
+                                name: null
+                                tap_action:
+                                  action: call-service
+                                  service: spotcast.start
+                                  data:
+                                    device_name: Kitchen Dot
+                                    force_playback: true
+                                double_tap_action:
+                                  action: call-service
+                                  service: media_player.media_stop
+                                  data: {}
+                                  target:
+                                    entity_id: media_player.berkan_s_2nd_echo_dot
+                                card_mod:
+                                  style: >
+                                    ha-card {
+                                      background: rgba(250,148,123, 0.85); 
+                                      margin-bottom: 5px; 
+                                      --chip-font-size: 13px;
+                                      --chip-height: 43px;
+                                      --chip-spacing: 0px;
+                                      --chip-border-radius: 20px;        
+                                    {% if
+                                    is_state('media_player.berkan_s_2nd_echo_dot',
+                                    'playing') %} 
+                                     --chip-box-shadow: 0px 0px 9px red;
+                                     --chip-background: black;     
+                                     --chip-height: 42px;
+                                    {% else %}
+                                     --chip-background: none;
+                                     --chip-box-shadow: none;
+                                    {% endif %}            
+                                      border-radius: 30px;
+                                      box-shadow: none;
+                                      margin-top: 10px;
+                                    }
+                            - type: conditional
+                              conditions:
+                                - entity: >-
+                                    input_boolean.modern_dashboard_spotify_card_hide_media_players
+                                  state: 'on'
+                                - entity: input_boolean.modern_dashboard_spotify
+                                  state: 'on'
+                              chip:
+                                type: template
+                                entity: media_player.bathroom_dot
+                                picture: /local/png/md-lite/banyo6.png
+                                content: Banyo
+                                name: null
+                                tap_action:
+                                  action: call-service
+                                  service: spotcast.start
+                                  data:
+                                    device_name: Bathroom Dot
+                                    force_playback: true
+                                double_tap_action:
+                                  action: call-service
+                                  service: media_player.media_stop
+                                  data: {}
+                                  target:
+                                    entity_id: media_player.bathroom_dot
+                                card_mod:
+                                  style: >
+                                    ha-card {
+                                      margin-bottom: 5px; 
+                                      --chip-font-size: 13px;
+                                      --chip-height: 43px;
+                                      --chip-spacing: 0px;
+                                      --chip-border-radius: 20px;        
+                                    {% if is_state('media_player.bathroom_dot',
+                                    'playing') %} 
+                                     --chip-box-shadow: 0px 0px 9px red;
+                                     --chip-background: black;    
+                                     --chip-height: 42px;
+                                    {% else %}
+                                     --chip-background: none;
+                                     --chip-box-shadow: none;
+                                    {% endif %}            
+                                      border-radius: 30px;
+                                      box-shadow: none;
+                                      margin-top: 10px;
+                                    }
+                            - type: conditional
+                              conditions:
+                                - entity: >-
+                                    input_boolean.modern_dashboard_spotify_card_hide_media_players
+                                  state: 'on'
+                                - entity: input_boolean.modern_dashboard_spotify
+                                  state: 'on'
+                              chip:
+                                type: template
+                                entity: media_player.everywhere
+                                icon_color: red
+                                picture: /local/png/md-lite/alexa.png
+                                content: Everywhere
+                                name: null
+                                tap_action:
+                                  action: call-service
+                                  service: spotcast.start
+                                  data:
+                                    device_name: Everywhere
+                                    force_playback: true
+                                double_tap_action:
+                                  action: call-service
+                                  service: media_player.media_stop
+                                  data: {}
+                                  target:
+                                    entity_id: media_player.everywhere
+                                card_mod:
+                                  style: >
+                                    ha-card {
+                                      margin-bottom: 5px; 
+                                      --chip-font-size: 13px;
+                                      --chip-height: 43px;
+                                      --chip-spacing: 0px;
+                                      --chip-border-radius: 20px;        
+                                    {% if is_state('media_player.everywhere',
+                                    'playing') %} 
+                                     --chip-box-shadow: 0px 0px 9px red;
+                                     --chip-background: black;   
+                                     --chip-height: 42px;
+                                    {% else %}
+                                     --chip-background: none;
+                                     --chip-box-shadow: none;
+                                    {% endif %}            
+                                      border-radius: 30px;
+                                      box-shadow: none;
+                                      margin-top: 10px;
+                                    }
+                          alignment: center
+              card_mod:
+                style: |
+                  ha-card {
+                  background: transparent;
+                    background-color: none;
+                    box-shadow: 0px 0px;
+                    border-radius: 0px;
+                    height: auto; }
+  - type: conditional
+    conditions:
+      - entity: input_boolean.modern_dashboard_tv
+        state: 'on'
+    card:
+      type: custom:stack-in-card
+      layout_type: masonry
+      layout: {}
+      cards:
+        - type: conditional
+          conditions:
+            - entity: media_player.fire_tv_192_168_1_86
+              state_not: 'off'
+            - entity: switch.netflix_on_menu
+              state: 'off'
+          card:
+            type: custom:stack-in-card
+            cards:
+              - type: picture-entity
+                entity: media_player.fire_tv_192_168_1_86
+                camera_image: camera.android_now_playing
+                show_state: false
+                show_name: false
+                tap_action:
+                  action: call-service
+                  service: input_boolean.toggle
+                  data: {}
+                  target:
+                    entity_id: input_boolean.modern_dashboard_tv_menu
+                camera_view: auto
+                theme: Mushroom
+                hold_action:
+                  action: none
+                style: |
+                  ha-card {
+                    margin-top: auto;
+                    margin-left: 0px;
+                    margin-right: 0px;
+                    margin-bottom: 21px;  
+            card_mod:
+              style: |
+                ha-card {
+                  background: url( '/local/png/md-lite/tv6.png' ) no-repeat center 0px;
+                  border-radius: 0px;
+                  background-position: center;
+                  background-repeat: no-repeat;
+                  background-size: 95%;
+                  background-color: none;
+                  position: relative; ) no-repeat center 0px;
+                  padding: 36px;
+                  width: auto;
+                }
+        - type: conditional
+          conditions:
+            - entity: switch.netflix_on_menu
+              state: 'on'
+          card:
+            type: custom:stack-in-card
+            cards:
+              - type: picture-entity
+                entity: media_player.fire_tv_192_168_1_86
+                image: /local/png/md-lite/netflix10.png
+                show_state: false
+                show_name: false
+                tap_action:
+                  action: call-service
+                  service: input_boolean.toggle
+                  data: {}
+                  target:
+                    entity_id: input_boolean.modern_dashboard_tv_menu
+                camera_view: auto
+                theme: Mushroom
+                hold_action:
+                  action: none
+                style: |
+                  ha-card {
+                    margin-top: auto;
+                    margin-left: 0px;
+                    margin-right: 0px;
+                    margin-bottom: 21px;  
+            card_mod:
+              style: |
+                ha-card {
+                  background: url( '/local/png/md-lite/tv6.png' ) no-repeat center 0px;
+                  border-radius: 0px;
+                  background-position: center;
+                  background-repeat: no-repeat;
+                  background-size: 95%;
+                  background-color: none;
+                  position: relative; ) no-repeat center 0px;
+                  padding: 36px;
+                  width: auto;
+                }
+        - type: conditional
+          conditions:
+            - entity: media_player.fire_tv_192_168_1_86
+              state: 'off'
+            - entity: switch.netflix_on_menu
+              state: 'off'
+          card:
+            type: custom:stack-in-card
+            cards:
+              - type: picture-entity
+                entity: media_player.fire_tv_192_168_1_86
+                image: /local/png/md-lite/off3.jpg
+                show_state: false
+                show_name: false
+                tap_action:
+                  action: call-service
+                  service: input_boolean.toggle
+                  data: {}
+                  target:
+                    entity_id: input_boolean.modern_dashboard_tv_menu
+                camera_view: auto
+                theme: Mushroom
+                hold_action:
+                  action: none
+                style: |
+                  ha-card {
+                    margin-top: auto;
+                    margin-left: 0px;
+                    margin-right: 0px;
+                    margin-bottom: 21px;  
+            card_mod:
+              style: |
+                ha-card {
+                  background: url( '/local/png/md-lite/tv6.png' ) no-repeat center 0px;
+                  border-radius: 0px;
+                  background-position: center;
+                  background-repeat: no-repeat;
+                  background-size: 95%;
+                  background-color: none;
+                  position: relative; ) no-repeat center 0px;
+                  padding: 31px;
+                  width: auto;
+                }
+      card_mod:
+        style: |
+          ha-card {
+            background: none;
+            border-radius: 0px;
+            margin-top: -12px;
+            box-shadow: none;
+          }
+  - type: conditional
+    conditions:
+      - entity: input_boolean.modern_dashboard_tv
+        state: 'on'
+    card:
+      type: custom:swipe-card
+      start_card: 2
+      reset_after: 10
+      parameters:
+        autoHeight: true
+        speed: 350
+        slidesPerView: auto
+        spaceBetween: 1
+        threshold: 1
+        effect: slide
+        direction: vertical
+      cards:
+        - type: horizontal-stack
+          cards:
+            - type: custom:mushroom-chips-card
+              chips:
+                - type: template
+                  entity: input_boolean.modern_dashboard_spotify
+                  picture: /local/png/md-lite/spotify1.png
+                  content: Spotify
+                  name: null
+                  tap_action:
+                    action: call-service
+                    service: input_boolean.turn_on
+                    data: {}
+                    target:
+                      entity_id: input_boolean.modern_dashboard_spotify
+                  card_mod:
+                    style: >
+                      ha-card {
+                        margin-bottom: 5px; 
+                        --chip-font-size: 13px;
+                        --chip-height: 43px;
+                        --chip-spacing: 0px;
+                        --chip-border-radius: 20px;
+                        --chip-background: rgba(5,5,1, 0.85);            
+                      {% if is_state('input_boolean.modern_dashboard_spotify',
+                      'on') %} 
+                       --chip-background: black;                             
+                      {% else %}
+                       --chip-background: none;   
+                       --chip-box-shadow: none;
+                      {% endif %}            
+                        border-radius: 30px;
+                        box-shadow: none;
+                        margin-top: 10px;
+                      } ha-card:hover {
+                        transform: scale(1.2);
+                        transform-origin: top center;
+                        z-index: 1;
+                        transition: all 1s;
+                      }
+                - type: template
+                  entity: input_boolean.modern_dashboard_tv
+                  picture: /local/png/md-lite/tv4.png
+                  content: TV
+                  name: null
+                  tap_action:
+                    action: call-service
+                    service: input_boolean.turn_on
+                    data: {}
+                    target:
+                      entity_id: input_boolean.modern_dashboard_tv
+                  card_mod:
+                    style: >
+                      ha-card {
+                        margin-bottom: 5px; 
+                        --chip-font-size: 13px;
+                        --chip-height: 43px;
+                        --chip-spacing: 0px;
+                        --chip-border-radius: 20px;
+                        --chip-background: rgba(5,5,1, 0.85);            
+                      {% if is_state('input_boolean.modern_dashboard_tv', 'on')
+                      %} 
+                       --chip-background: black;                             
+                      {% else %}
+                       --chip-background: none;   
+                       --chip-box-shadow: none;
+                      {% endif %}            
+                        border-radius: 30px;
+                        box-shadow: none;
+                        margin-top: 10px;
+                      } ha-card:hover {
+                        transform: scale(1.2);
+                        transform-origin: top center;
+                        z-index: 1;
+                        transition: all 1s;
+                      }
+              alignment: center
+              card_mod:
+                style: |
+                  ha-card {
+                  background: transparent;
+                    background-color: none;
+                    box-shadow: 0px 0px;
+                    border-radius: 0px;
+                    height: 60px; }
+        - type: horizontal-stack
+          cards:
+            - type: custom:vertical-stack-in-card
+              cards:
+                - type: custom:swipe-card
+                  parameters:
+                    allowTouchMove: true
+                    autoHeight: true
+                    speed: 350
+                    slidesPerView: auto
+                    spaceBetween: 120
+                    threshold: 5
+                    effect: slide
+                    direction: horizontal
+                  cards:
+                    - type: horizontal-stack
+                      cards:
+                        - type: custom:mushroom-chips-card
+                          chips:
+                            - type: template
+                              entity: entity.entity
+                              picture: /local/png/md-lite/netflix6.png
+                              content: Netflix
+                              name: null
+                              tap_action:
+                                action: call-service
+                                service: script.turn_on
+                                data: {}
+                                target:
+                                  entity_id: script.start_netflix
+                              card_mod:
+                                style: >
+                                  ha-card {
+                                    margin-bottom: 5px; 
+                                    --chip-font-size: 13px;
+                                    --chip-height: 43px;
+                                    --chip-spacing: 0px;
+                                    --chip-border-radius: 20px;
+                                    --chip-background: rgba(5,5,1, 0.85);            
+                                  {% if is_state('switch.netflix_on_menu', 'on')
+                                  %} 
+                                   --chip-background: black;                             
+                                  {% else %}
+                                   --chip-background: none;   
+                                   --chip-box-shadow: none;
+                                  {% endif %}            
+                                    border-radius: 30px;
+                                    box-shadow: none;
+                                    margin-top: 10px;
+                                  } ha-card:hover {
+                                    transform: scale(1.2);
+                                    transform-origin: top center;
+                                    z-index: 1;
+                                    transition: all 1s;
+                                  }
+                            - type: template
+                              entity: entity.entity
+                              picture: /local/png/md-lite/tivimate.png
+                              content: Tivimate
+                              name: null
+                              tap_action:
+                                action: call-service
+                                service: script.turn_on
+                                data: {}
+                                target:
+                                  entity_id: script.start_tivimate
+                              card_mod:
+                                style: >
+                                  ha-card {
+                                    margin-bottom: 5px; 
+                                    --chip-font-size: 13px;
+                                    --chip-height: 43px;
+                                    --chip-spacing: 0px;
+                                    --chip-border-radius: 20px;
+                                    --chip-background: rgba(5,5,1, 0.85);            
+                                  {% if is_state('switch.tivimate_on_menu',
+                                  'on') %} 
+                                   --chip-background: black;                             
+                                  {% else %}
+                                   --chip-background: none;   
+                                   --chip-box-shadow: none;
+                                  {% endif %}            
+                                    border-radius: 30px;
+                                    box-shadow: none;
+                                    margin-top: 10px;
+                                  } ha-card:hover {
+                                    transform: scale(1.2);
+                                    transform-origin: top center;
+                                    z-index: 1;
+                                    transition: all 1s;
+                                  }
+                            - type: template
+                              entity: entity.entity
+                              picture: /local/png/md-lite/disneyplus3.png
+                              content: Disney
+                              name: null
+                              tap_action:
+                                action: call-service
+                                service: script.turn_on
+                                data: {}
+                                target:
+                                  entity_id: script.start_disney_plus
+                              card_mod:
+                                style: >
+                                  ha-card {
+                                    margin-bottom: 5px; 
+                                    --chip-font-size: 13px;
+                                    --chip-height: 43px;
+                                    --chip-spacing: 0px;
+                                    --chip-border-radius: 20px;
+                                    --chip-background: rgba(5,5,1, 0.85);            
+                                  {% if is_state('switch.disney_on_menu', 'on')
+                                  %} 
+                                   --chip-background: black;                             
+                                  {% else %}
+                                   --chip-background: none;   
+                                   --chip-box-shadow: none;
+                                  {% endif %}            
+                                    border-radius: 30px;
+                                    box-shadow: none;
+                                    margin-top: 10px;
+                                  } ha-card:hover {
+                                    transform: scale(1.2);
+                                    transform-origin: top center;
+                                    z-index: 1;
+                                    transition: all 1s;
+                                  }
+                          alignment: center
+                    - type: horizontal-stack
+                      cards:
+                        - type: custom:mushroom-chips-card
+                          chips:
+                            - type: template
+                              entity: entity.entity
+                              picture: /local/png/md-lite/primevideo4.png
+                              content: Prime
+                              name: null
+                              tap_action:
+                                action: call-service
+                                service: script.turn_on
+                                data: {}
+                                target:
+                                  entity_id: script.start_amazon_prime_2
+                              card_mod:
+                                style: >
+                                  ha-card {
+                                    margin-bottom: 5px; 
+                                    --chip-font-size: 13px;
+                                    --chip-height: 43px;
+                                    --chip-spacing: 0px;
+                                    --chip-border-radius: 20px;
+                                    --chip-background: rgba(5,5,1, 0.85);            
+                                  {% if is_state('switch.prime1_on_menu', 'on')
+                                  %} 
+                                   --chip-background: black;                             
+                                  {% else %}
+                                   --chip-background: none;   
+                                   --chip-box-shadow: none;
+                                  {% endif %}            
+                                    border-radius: 30px;
+                                    box-shadow: none;
+                                    margin-top: 10px;
+                                  } ha-card:hover {
+                                    transform: scale(1.2);
+                                    transform-origin: top center;
+                                    z-index: 1;
+                                    transition: all 1s;
+                                  }
+                            - type: template
+                              entity: entity.entity
+                              picture: /local/png/md-lite/youtube3.png
+                              content: Prime
+                              name: null
+                              tap_action:
+                                action: call-service
+                                service: script.turn_on
+                                data: {}
+                                target:
+                                  entity_id: script.start_youtube
+                              card_mod:
+                                style: >
+                                  ha-card {
+                                    margin-bottom: 5px; 
+                                    --chip-font-size: 13px;
+                                    --chip-height: 43px;
+                                    --chip-spacing: 0px;
+                                    --chip-border-radius: 20px;
+                                    --chip-background: rgba(5,5,1, 0.85);            
+                                  {% if is_state('switch.youtube_usage', 'on')
+                                  %} 
+                                   --chip-background: black;                             
+                                  {% else %}
+                                   --chip-background: none;   
+                                   --chip-box-shadow: none;
+                                  {% endif %}            
+                                    border-radius: 30px;
+                                    box-shadow: none;
+                                    margin-top: 10px;
+                                  } ha-card:hover {
+                                    transform: scale(1.2);
+                                    transform-origin: top center;
+                                    z-index: 1;
+                                    transition: all 1s;
+                                  }
+                          alignment: center
+                    - type: horizontal-stack
+                      cards:
+                        - type: custom:vertical-stack-in-card
+                          layout_type: masonry
+                          layout: {}
+                          cards:
+                            - type: custom:firemote-card
+                              entity: media_player.fire_tv_192_168_1_86
+                              device_type: fire_tv_stick_4k_max
+                              compatibility_mode: strong
+                              app_launch_1: prime-video
+                              app_launch_2: netflix
+                              app_launch_3: disney-plus
+                              app_launch_4: spotify
+                              app_launch_5: ''
+                              scale: '66'
+                              button_overrides:
+                                tv-button:
+                                  script: start_tivimate
+                                mute-button:
+                                  script: remote_mute
+                                volume-down-button:
+                                  script: remote_volume_down
+                                volume-up-button:
+                                  script: remote_volume_up
+                                power-button:
+                                  script: remote_power
+                          card_mod:
+                            style: |
+                              ha-card {
+                                background:none;
+                                margin-top: 15px;
+                                box-shadow: none;
+                                --ha-card-border-width: 0;
+                              }
+              card_mod:
+                style: |
+                  ha-card {
+                  background: transparent;
+                    background-color: none;
+                    box-shadow: 0px 0px;
+                    border-radius: 0px;
+                    height: auto; }
+card_mod:
+  style: |
+
+    ha-card:before {
+      transform: translate3d(0,0,0);
+      -webkit-transform: translate3d(0,0,0);
+      content: "";
+      position: absolute;
+      height: 100%;
+      width: 100%;
+      {% if is_state('media_player.spotify_berkan_sezer', 'playing')  %}
+        background: url( '{{ state_attr('media_player.spotify_berkan_sezer', "entity_picture") }}' ) center no-repeat;
+        animation: Gradient 20s linear infinite;
+        margin-top: 30px;
+      filter: blur(70px) saturate(200%);
+      background-size: 100% 100%;
+      {% elif is_state('media_player.fire_tv_192_168_1_86', 'standby') or is_state('media_player.fire_tv_192_168_1_86', 'idle') or is_state('media_player.fire_tv_192_168_1_86', 'paused')   %} 
+        background: url('/local/png/md-lite/art/1.png') center no-repeat;
+        margin-top: 30px;
+      filter: blur(70px) saturate(200%);
+      background-size: 100% 100%;
+      {% elif is_state('media_player.fire_tv_192_168_1_86', 'playing')   %} 
+        background: url('/local/png/md-lite/art/1.png') center no-repeat;
+        animation: Gradient 20s linear infinite;
+        margin-top: 30px;
+      filter: blur(70px) saturate(200%);
+      background-size: 100% 100%;
+      {% else %}
+      {% endif %}
+    }
+    @media (max-width: 600px) {
+      ha-card:before {
+        background-size: 150% 150%;
+        filter: blur(70px) saturate(200%);
+      }
+    }
+    @keyframes Gradient {
+      0% {
+        background-position: 0% 50%;
+      }
+      25% {
+        background-position: 50% 0%;
+      }
+      50% {
+        background-position: 100% 50%;
+      }
+      75% {
+        background-position: 50% 100%;
+      }
+      100% {
+        background-position: 0% 50%;
+      }
+    } 
+    ha-card {
+      transform: translate3d(0,0,0);
+      -webkit-transform: translate3d(0,0,0);
+      border-radius: 0px;
+      overflow: visible !important;
+      background-color: transparent;
+      background: transparent;
+      border: none !important;
+     {% if is_state('media_player.spotify_berkan_sezer', 'playing')  %}
+      margin-top: 20px;
+    {% else %}
+    background: none;
+    {% endif %} 
+     }
+    @media (min-width: 1200px) {
+      ha-card {
+      }
+    }
+    :host {
+      --album-art-color:      
+      {% if not is_state('media_player.spotify_berkan_sezer', 'idle') and not is_state('media_player.spotify_berkan_sezer', 'off') %}
+        {{ states('sensor.hue_motion_antre') }}
+      {% else %}
+        var(--rgb-indigo-color)
+      {% endif %};
+    }

@@ -1772,8 +1772,8 @@ cards:
                     secondary: null
                     primary: >
                       {% if is_state('calendar.dogum_gunleri', 'off') %} DGY {%
-                      elif is_state('calendar.dogum_gunleri', 'on') %} DG {%
-                      else %} HATA {% endif %}
+                      elif is_state('calendar.dogum_gunleri', 'on') %} Birthday
+                      {% else %} HATA {% endif %}
                     entity: input_boolean.notify_home3
                     icon: mdi
                     fill_container: false
@@ -2027,302 +2027,222 @@ cards:
                       /local/png/md-lite/birthday2.png {% elif
                       is_state('calendar.dogum_gunleri', 'on') %}
                       /local/png/md-lite/dot2.png {% else %} HATA {% endif %}
-                    card_mod:
-                      style: >
-                        ha-card {    {% if is_state('sensor.dogum_gunleri',
-                        'Cenk Alabalık adlı kişinin doğum günü')  %}
-                          background:  url( '/local/birthday/cenkalabalik.png' ) no-repeat center 0px;
-                          background-position: center;
-                          background-repeat: no-repeat;
-                          background-size: cover;
-                          background-color: rgba(var(--rgb-card-background-color), 0.5);
-                          background-blend-mode: overlay;
-                          position: relative;
-                        {%elif is_state('sensor.dogum_gunleri', 'Korhan Göğüş
-                        adlı kişinin doğum günü')  %}
-                          background:  url( '/local/birthday/korhan.png' ) no-repeat center 0px;
-                          background-position: center;
-                          background-repeat: no-repeat;
-                          background-size: cover;
-                          background-color: rgba(var(--rgb-card-background-color), 0.5);
-                          background-blend-mode: overlay;
-                        {%elif is_state('sensor.dogum_gunleri', 'Gizem Tank adlı
-                        kişinin doğum günü')  %}
-                          background:  url( '/local/birthday/gizem.png' ) no-repeat center 0px;
-                          background-position: center;
-                          background-repeat: no-repeat;
-                          background-size: cover;
-                          background-color: rgba(var(--rgb-card-background-color), 0.5);
-                          background-blend-mode: overlay;
-                          position: relative;
-                        {%elif is_state('sensor.dogum_gunleri', 'Gizem Tank adlı
-                        kişinin doğum günü')  %}
-                          background:  url( '/local/birthday/gizem.png' ) no-repeat center 0px;
-                          background-position: center;
-                          background-repeat: no-repeat;
-                          background-size: cover;
-                          background-color: rgba(var(--rgb-card-background-color), 0.5);
-                          background-blend-mode: overlay;
-                          position: relative;
-                        {%elif is_state('sensor.dogum_gunleri', 'Nilay Serakibi
-                        adlı kişinin doğum günü')  %}
-                          background:  url( '/local/birthday/nilay.png' ) no-repeat center 0px;
-                          background-position: center;
-                          background-repeat: no-repeat;
-                          background-size: cover;
-                          background-color: rgba(var(--rgb-card-background-color), 0.5);
-                          background-blend-mode: overlay;
-                          position: relative;
-                        {%elif is_state('sensor.dogum_gunleri', 'Alper Tez adlı
-                        kişinin doğum günü')  %}
-                          background:  url( '/local/birthday/alper.png' ) no-repeat center 0px;
-                          background-position: center;
-                          background-repeat: no-repeat;
-                          background-size: cover;
-                          background-color: rgba(var(--rgb-card-background-color), 0.5);
-                          background-blend-mode: overlay;
-                          position: relative;
-                        {%elif is_state('sensor.dogum_gunleri', ' Eren Atalayer
-                        adlı kişinin doğum günü')  %}
-                          background:  url( ' /local/birthday/eren.png' ) no-repeat center 0px;
-                          background-position: center;
-                          background-repeat: no-repeat;
-                          background-size: cover;
-                          background-color: rgba(var(--rgb-card-background-color), 0.5);
-                          background-blend-mode: overlay;
-                          position: relative;
-                        {%elif is_state('sensor.dogum_gunleri', 'Kayra Hamzaoğlu
-                        adlı kişinin doğum günü')  %}
-                          background:  url( ' /local/birthday/kayra.png' ) no-repeat center 0px;
-                          background-position: center;
-                          background-repeat: no-repeat;
-                          background-size: cover;
-                          background-color: rgba(var(--rgb-card-background-color), 0.5);
-                          background-blend-mode: overlay;
-                          position: relative;
-                        {%elif is_state('sensor.dogum_gunleri', 'Ali Altıner
-                        adlı kişinin doğum günü')  %}
-                          background:  url( ' /local/birthday/ali.png' ) no-repeat center 0px;
-                          background-position: center;
-                          background-repeat: no-repeat;
-                          background-size: cover;
-                          background-color: rgba(var(--rgb-card-background-color), 0.5);
-                          background-blend-mode: overlay;
-                          position: relative;
-                        {%elif is_state('sensor.dogum_gunleri', 'Mehtap Altıner
-                        adlı kişinin doğum günü')  %}
-                          background:  url( ' /local/birthday/mehtap.png' ) no-repeat center 0px;
-                          background-position: center;
-                          background-repeat: no-repeat;
-                          background-size: cover;
-                          background-color: rgba(var(--rgb-card-background-color), 0.5);
-                          background-blend-mode: overlay;
-                          position: relative;
-                        {%elif is_state('sensor.dogum_gunleri', 'Engin Uluğ adlı
-                        kişinin doğum günü')  %}
-                          background:  url( ' /local/birthday/enginulug.png' ) no-repeat center 0px;
-                          background-position: center;
-                          background-repeat: no-repeat;
-                          background-size: cover;
-                          background-color: rgba(var(--rgb-card-background-color), 0.5);
-                          background-blend-mode: overlay;
-                          position: relative;
-                        {%elif is_state('sensor.dogum_gunleri', 'Volkan Aksoy
-                        adlı kişinin doğum günü')  %}
-                          background:  url( ' /local/birthday/volkanaksoy.png' ) no-repeat center 0px;
-                          background-position: center;
-                          background-repeat: no-repeat;
-                          background-size: cover;
-                          background-color: rgba(var(--rgb-card-background-color), 0.5);
-                          background-blend-mode: overlay;
-                          position: relative;
-                        {%elif is_state('sensor.dogum_gunleri', 'Hatice Çiftçi
-                        adlı kişinin doğum günü')  %}
-                          background:  url( ' /local/birthday/haticeciftci.png' ) no-repeat center 0px;
-                          background-position: center;
-                          background-repeat: no-repeat;
-                          background-size: cover;
-                          background-color: rgba(var(--rgb-card-background-color), 0.5);
-                          background-blend-mode: overlay;
-                          position: relative;
-                        {%elif is_state('sensor.dogum_gunleri', 'Sevgi Genyılmaz
-                        adlı kişinin doğum günü')  %}
-                          background:  url( ' /local/birthday/sevgigenyilmaz.png' ) no-repeat center 0px;
-                          background-position: center;
-                          background-repeat: no-repeat;
-                          background-size: cover;
-                          background-color: rgba(var(--rgb-card-background-color), 0.5);
-                          background-blend-mode: overlay;
-                          position: relative;
-                        {%elif is_state('sensor.dogum_gunleri', 'Servet
-                        Evliyazade adlı kişinin doğum günü')  %}
-                          background:  url( ' /local/birthday/servetevliyizade.png' ) no-repeat center 0px;
-                          background-position: center;
-                          background-repeat: no-repeat;
-                          background-size: cover;
-                          background-color: rgba(var(--rgb-card-background-color), 0.5);
-                          background-blend-mode: overlay;
-                          position: relative;
-                        {%elif is_state('sensor.dogum_gunleri', 'Angela Scheel
-                        adlı kişinin doğum günü')  %}
-                          background:  url( '/local/birthday/angelascheel.png' ) no-repeat center 0px;
-                          background-position: center;
-                          background-repeat: no-repeat;
-                          background-size: cover;
-                          background-color: rgba(var(--rgb-card-background-color), 0.5);
-                          background-blend-mode: overlay;
-                          position: relative;
-                        {%elif is_state('sensor.dogum_gunleri', 'Emir Hoşver
-                        adlı kişinin doğum günü')  %}
-                          background:  url( '/local/birthday/emirhosver.png' ) no-repeat center 0px;
-                          background-position: center;
-                          background-repeat: no-repeat;
-                          background-size: cover;
-                          background-color: rgba(var(--rgb-card-background-color), 0.5);
-                          background-blend-mode: overlay;
-                          position: relative;
-                        {%elif is_state('sensor.dogum_gunleri', 'Umut Özçelik
-                        adlı kişinin doğum günü')  %}
-                          background:  url( '/local/birthday/umutozcelik.png' ) no-repeat center 0px;
-                          background-position: center;
-                          background-repeat: no-repeat;
-                          background-size: cover;
-                          background-color: rgba(var(--rgb-card-background-color), 0.5);
-                          background-blend-mode: overlay;
-                          position: relative;
-                        {%elif is_state('sensor.dogum_gunleri', 'Mutlu
-                        Odabaşıoğlu adlı kişinin doğum günü')  %}
-                          background:  url( '/local/birthday/mutluodabasioglu.png' ) no-repeat center 0px;
-                          background-position: center;
-                          background-repeat: no-repeat;
-                          background-size: cover;
-                          background-color: rgba(var(--rgb-card-background-color), 0.5);
-                          background-blend-mode: overlay;
-                          position: relative;
-                        {%elif is_state('sensor.dogum_gunleri', 'Kadir Toprak
-                        adlı kişinin doğum günü')  %}
-                          background:  url( '/local/birthday/kadirtoprak.png' ) no-repeat center 0px;
-                          background-position: center;
-                          background-repeat: no-repeat;
-                          background-size: cover;
-                          background-color: rgba(var(--rgb-card-background-color), 0.5);
-                          background-blend-mode: overlay;
-                          position: relative;
-                        {%elif is_state('sensor.dogum_gunleri', 'Serkan Sezer
-                        adlı kişinin doğum günü')  %}
-                          background:  url( '/local/birthday/serkansezer.png' ) no-repeat center 0px;
-                          background-position: center;
-                          background-repeat: no-repeat;
-                          background-size: cover;
-                          background-color: rgba(var(--rgb-card-background-color), 0.5);
-                          background-blend-mode: overlay;
-                          position: relative;
-                        {%elif is_state('sensor.dogum_gunleri', 'Aslı Alabalık
-                        adlı kişinin doğum günü')  %}
-                          background:  url( '/local/birthday/aslialabalik.png' ) no-repeat center 0px;
-                          background-position: center;
-                          background-repeat: no-repeat;
-                          background-size: cover;
-                          background-color: rgba(var(--rgb-card-background-color), 0.5);
-                          background-blend-mode: overlay;
-                          position: relative;
-                        {%elif is_state('sensor.dogum_gunleri', 'Sinem Ural adlı
-                        kişinin doğum günü')  %}
-                          background:  url( '/local/birthday/sinemural.png' ) no-repeat center 0px;
-                          background-position: center;
-                          background-repeat: no-repeat;
-                          background-size: cover;
-                          background-color: rgba(var(--rgb-card-background-color), 0.5);
-                          background-blend-mode: overlay;
-                          position: relative;
-                        {%elif is_state('sensor.dogum_gunleri', 'Mert Karakaş
-                        adlı kişinin doğum günü')  %}
-                          background:  url( '/local/birthday/mertkarakas.png' ) no-repeat center 0px;
-                          background-position: center;
-                          background-repeat: no-repeat;
-                          background-size: cover;
-                          background-color: rgba(var(--rgb-card-background-color), 0.5);
-                          background-blend-mode: overlay;
-                          position: relative;
-                        {%elif is_state('sensor.dogum_gunleri', 'Alkan Çelik
-                        adlı kişinin doğum günü')  %}
-                          background:  url( '/local/birthday/alkancelik.png' ) no-repeat center 0px;
-                          background-position: center;
-                          background-repeat: no-repeat;
-                          background-size: cover;
-                          background-color: rgba(var(--rgb-card-background-color), 0.5);
-                          background-blend-mode: overlay;
-                          position: relative;
-                        {%elif is_state('sensor.dogum_gunleri', 'Sarp Çiftçi
-                        adlı kişinin doğum günü')  %}
-                          background:  url( '/local/birthday/sarpciftci.png' ) no-repeat center 0px;
-                          background-position: center;
-                          background-repeat: no-repeat;
-                          background-size: cover;
-                          background-color: rgba(var(--rgb-card-background-color), 0.5);
-                          background-blend-mode: overlay;
-                          position: relative;
-                        {%elif is_state('sensor.dogum_gunleri', 'Emre Unal adlı
-                        kişinin doğum günü')  %}
-                          background:  url( '/local/birthday/emreunal.png' ) no-repeat center 0px;
-                          background-position: center;
-                          background-repeat: no-repeat;
-                          background-size: cover;
-                          background-color: rgba(var(--rgb-card-background-color), 0.5);
-                          background-blend-mode: overlay;
-                          position: relative;
-                        {%elif is_state('sensor.dogum_gunleri', 'Avukat Ünsal
-                        adlı kişinin doğum günü')  %}
-                          background:  url( '/local/birthday/unsalozmestik.png' ) no-repeat center 0px;
-                          background-position: center;
-                          background-repeat: no-repeat;
-                          background-size: cover;
-                          background-color: rgba(var(--rgb-card-background-color), 0.5);
-                          background-blend-mode: overlay;
-                          position: relative;
-                        {%elif is_state('sensor.dogum_gunleri', 'Cem Alabalık
-                        adlı kişinin doğum günü')  %}
-                          background:  url( '/local/birthday/cemalabalik.png' ) no-repeat center 0px;
-                          background-position: center;
-                          background-repeat: no-repeat;
-                          background-size: cover;
-                          background-color: rgba(var(--rgb-card-background-color), 0.5);
-                          background-blend-mode: overlay;
-                          position: relative;
-                        {%elif is_state('sensor.dogum_gunleri', 'Sancer adlı
-                        kişinin doğum günü')  %}
-                          background:  url( '/local/birthday/Sancar.png' ) no-repeat center 0px;
-                          background-position: center;
-                          background-repeat: no-repeat;
-                          background-size: cover;
-                          background-color: rgba(var(--rgb-card-background-color), 0.5);
-                          background-blend-mode: overlay;
-                          position: relative;
-                         {% else %}
-                          background: none;
-                        {% endif %} 
-                          position: relative;
-                          margin-top: 0px;
-                          margin-left: 0px;
-                          box-shadow: 10px 10px;
-                          --primary-text-color: white;
-                          --secondary-text-color: white; 
-                          --card-primary-font-size: 16px;
-                          --card-primary-font-weight: 550;
-                          --card-secondary-font-weight: 300;
-                          --card-secondary-font-size: 15px;
-                          height: 120px !important;
-                          background: none;
-                        } :host {
-                          --mush-icon-size: 65px;
-                        }
-                          }
                 card_mod:
                   style: |
-                    ha-card {
-                      background: rgba(252, 212, 108, 0.85);
+                    ha-card {      
+                    {% if is_state('sensor.dogum_gunleri',
+                      'Cenk Alabalık adlı kişinin doğum günü')  %}
+                        background:  url( '/local/birthday/cenkalabalik.png' ) no-repeat center 0px;
+                        background-size: cover;
+                        background-color: rgba(var(--rgb-card-background-color), 0.2);
+                        background-blend-mode: overlay;
+                      {%elif is_state('sensor.dogum_gunleri', 'Korhan Göğüş adlı kişinin doğum günü')  %}
+                        background:  url( '/local/birthday/korhan.png' ) no-repeat center 0px;
+                        background-size: cover;
+                        background-color: rgba(var(--rgb-card-background-color), 0.2);
+                        background-blend-mode: overlay;
+                      {%elif is_state('sensor.dogum_gunleri', 'Gizem Tank adlı
+                      kişinin doğum günü')  %}
+                        background:  url( '/local/birthday/gizem.png' ) no-repeat center 0px;
+                        background-size: cover;
+                        background-color: rgba(var(--rgb-card-background-color), 0.2);
+                        background-blend-mode: overlay;
+                        position: relative;
+                      {%elif is_state('sensor.dogum_gunleri', 'Gizem Tank adlı
+                      kişinin doğum günü')  %}
+                        background:  url( '/local/birthday/gizem.png' ) no-repeat center 0px;
+                        background-size: cover;
+                        background-color: rgba(var(--rgb-card-background-color), 0.2);
+                        background-blend-mode: overlay;
+                      {%elif is_state('sensor.dogum_gunleri', 'Nilay Serakibi
+                      adlı kişinin doğum günü')  %}
+                        background:  url( '/local/birthday/nilay.png' ) no-repeat center 0px;
+                        background-size: cover;
+                        background-color: rgba(var(--rgb-card-background-color), 0.2);
+                        background-blend-mode: overlay;
+                      {%elif is_state('sensor.dogum_gunleri', 'Alper Tez adlı
+                      kişinin doğum günü')  %}
+                        background:  url( '/local/birthday/alper.png' ) no-repeat center 0px;
+                        background-size: cover;
+                        background-color: rgba(var(--rgb-card-background-color), 0.2);
+                        background-blend-mode: overlay;
+                      {%elif is_state('sensor.dogum_gunleri', ' Eren Atalayer
+                      adlı kişinin doğum günü')  %}
+                        background:  url( ' /local/birthday/eren.png' ) no-repeat center 0px;
+                        background-size: cover;
+                        background-color: rgba(var(--rgb-card-background-color), 0.2);
+                        background-blend-mode: overlay;
+                      {%elif is_state('sensor.dogum_gunleri', 'Kayra Hamzaoğlu
+                      adlı kişinin doğum günü')  %}
+                        background:  url( ' /local/birthday/kayra.png' ) no-repeat center 0px;
+                        background-size: cover;
+                        background-color: rgba(var(--rgb-card-background-color), 0.2);
+                        background-blend-mode: overlay;
+                      {%elif is_state('sensor.dogum_gunleri', 'Ali Altıner
+                      adlı kişinin doğum günü')  %}
+                        background:  url( ' /local/birthday/ali.png' ) no-repeat center 0px;
+                        background-size: cover;
+                        background-color: rgba(var(--rgb-card-background-color), 0.2);
+                        background-blend-mode: overlay;
+                      {%elif is_state('sensor.dogum_gunleri', 'Mehtap Altıner
+                      adlı kişinin doğum günü')  %}
+                        background:  url( ' /local/birthday/mehtap.png' ) no-repeat center 0px;
+                        background-size: cover;
+                        background-color: rgba(var(--rgb-card-background-color), 0.2);
+                        background-blend-mode: overlay;
+                      {%elif is_state('sensor.dogum_gunleri', 'Engin Uluğ adlı
+                      kişinin doğum günü')  %}
+                        background:  url( ' /local/birthday/enginulug.png' ) no-repeat center 0px;
+                        background-size: cover;
+                        background-color: rgba(var(--rgb-card-background-color), 0.2);
+                        background-blend-mode: overlay;
+                      {%elif is_state('sensor.dogum_gunleri', 'Volkan Aksoy
+                      adlı kişinin doğum günü')  %}
+                        background:  url( ' /local/birthday/volkanaksoy.png' ) no-repeat center 0px;
+                        background-size: cover;
+                        background-color: rgba(var(--rgb-card-background-color), 0.2);
+                        background-blend-mode: overlay;
+                      {%elif is_state('sensor.dogum_gunleri', 'Hatice Çiftçi
+                      adlı kişinin doğum günü')  %}
+                        background:  url( ' /local/birthday/haticeciftci.png' ) no-repeat center 0px;
+                        background-size: cover;
+                        background-color: rgba(var(--rgb-card-background-color), 0.2);
+                        background-blend-mode: overlay;
+                      {%elif is_state('sensor.dogum_gunleri', 'Sevgi Genyılmaz
+                      adlı kişinin doğum günü')  %}
+                        background:  url( ' /local/birthday/sevgigenyilmaz.png' ) no-repeat center 0px;
+                        background-size: cover;
+                        background-color: rgba(var(--rgb-card-background-color), 0.2);
+                        background-blend-mode: overlay;
+                      {%elif is_state('sensor.dogum_gunleri', 'Servet
+                      Evliyazade adlı kişinin doğum günü')  %}
+                        background:  url( ' /local/birthday/servetevliyizade.png' ) no-repeat center 0px;
+                        background-size: cover;
+                        background-color: rgba(var(--rgb-card-background-color), 0.2);
+                        background-blend-mode: overlay;
+                      {%elif is_state('sensor.dogum_gunleri', 'Angela Scheel
+                      adlı kişinin doğum günü')  %}
+                        background:  url( '/local/birthday/angelascheel.png' ) no-repeat center 0px;
+                        background-size: cover;
+                        background-color: rgba(var(--rgb-card-background-color), 0.2);
+                        background-blend-mode: overlay;
+                      {%elif is_state('sensor.dogum_gunleri', 'Emir Hoşver
+                      adlı kişinin doğum günü')  %}
+                        background:  url( '/local/birthday/emirhosver.png' ) no-repeat center 0px;
+                        background-size: cover;
+                        background-color: rgba(var(--rgb-card-background-color), 0.2);
+                        background-blend-mode: overlay;
+                      {%elif is_state('sensor.dogum_gunleri', 'Umut Özçelik
+                      adlı kişinin doğum günü')  %}
+                        background:  url( '/local/birthday/umutozcelik.png' ) no-repeat center 0px;
+                        background-size: cover;
+                        background-color: rgba(var(--rgb-card-background-color), 0.2);
+                        background-blend-mode: overlay;
+                      {%elif is_state('sensor.dogum_gunleri', 'Mutlu
+                      Odabaşıoğlu adlı kişinin doğum günü')  %}
+                        background:  url( '/local/birthday/mutluodabasioglu.png' ) no-repeat center 0px;
+                        background-size: cover;
+                        background-color: rgba(var(--rgb-card-background-color), 0.2);
+                        background-blend-mode: overlay;
+                      {%elif is_state('sensor.dogum_gunleri', 'Kadir Toprak
+                      adlı kişinin doğum günü')  %}
+                        background:  url( '/local/birthday/kadirtoprak.png' ) no-repeat center 0px;
+                        background-size: cover;
+                        background-color: rgba(var(--rgb-card-background-color), 0.2);
+                        background-blend-mode: overlay;
+                      {%elif is_state('sensor.dogum_gunleri', 'Serkan Sezer
+                      adlı kişinin doğum günü')  %}
+                        background:  url( '/local/birthday/serkansezer.png' ) no-repeat center 0px;
+                        background-size: cover;
+                        background-color: rgba(var(--rgb-card-background-color), 0.2);
+                        background-blend-mode: overlay;
+                      {%elif is_state('sensor.dogum_gunleri', 'Aslı Alabalık
+                      adlı kişinin doğum günü')  %}
+                        background:  url( '/local/birthday/aslialabalik.png' ) no-repeat center 0px;
+                        background-size: cover;
+                        background-color: rgba(var(--rgb-card-background-color), 0.2);
+                        background-blend-mode: overlay;
+                      {%elif is_state('sensor.dogum_gunleri', 'Sinem Ural adlı
+                      kişinin doğum günü')  %}
+                        background:  url( '/local/birthday/sinemural.png' ) no-repeat center 0px;
+                        background-size: cover;
+                        background-color: rgba(var(--rgb-card-background-color), 0.2);
+                        background-blend-mode: overlay;
+                      {%elif is_state('sensor.dogum_gunleri', 'Mert Karakaş
+                      adlı kişinin doğum günü')  %}
+                        background:  url( '/local/birthday/mertkarakas.png' ) no-repeat center 0px;
+                        background-size: cover;
+                        background-color: rgba(var(--rgb-card-background-color), 0.2);
+                        background-blend-mode: overlay;
+                      {%elif is_state('sensor.dogum_gunleri', 'Alkan Çelik
+                      adlı kişinin doğum günü')  %}
+                        background:  url( '/local/birthday/alkancelik.png' ) no-repeat center 0px;
+                        background-size: cover;
+                        background-color: rgba(var(--rgb-card-background-color), 0.2);
+                        background-blend-mode: overlay;
+                      {%elif is_state('sensor.dogum_gunleri', 'Sarp Çiftçi
+                      adlı kişinin doğum günü')  %}
+                        background:  url( '/local/birthday/sarpciftci.png' ) no-repeat center 0px;
+                        background-size: cover;
+                        background-color: rgba(var(--rgb-card-background-color), 0.2);
+                        background-blend-mode: overlay;
+                      {%elif is_state('sensor.dogum_gunleri', 'Emre Unal adlı
+                      kişinin doğum günü')  %}
+                        background:  url( '/local/birthday/emreunal.png' ) no-repeat center 0px;
+                        background-size: cover;
+                        background-color: rgba(var(--rgb-card-background-color), 0.2);
+                        background-blend-mode: overlay;
+                      {%elif is_state('sensor.dogum_gunleri', 'Avukat Ünsal
+                      adlı kişinin doğum günü')  %}
+                        background:  url( '/local/birthday/unsalozmestik.png' ) no-repeat center 0px;
+                        background-size: cover;
+                        background-color: rgba(var(--rgb-card-background-color), 0.2);
+                        background-blend-mode: overlay;
+                      {%elif is_state('sensor.dogum_gunleri', 'Cem Alabalık
+                      adlı kişinin doğum günü')  %}
+                        background:  url( '/local/birthday/cemalabalik.png' ) no-repeat center 0px;
+                        background-size: cover;
+                        background-color: rgba(var(--rgb-card-background-color), 0.2);
+                        background-blend-mode: overlay;
+                      {%elif is_state('sensor.dogum_gunleri', 'Sancer adlı
+                      kişinin doğum günü')  %}
+                        background:  url( '/local/birthday/Sancar.png' ) no-repeat center 0px;
+                        background-size: cover;
+                        background-color: rgba(var(--rgb-card-background-color), 0.2);
+                        background-blend-mode: overlay;
+                        position: relative;
+                      {%elif is_state('sensor.dogum_gunleri', 'Tuğçe Sevimli adlı kişinin doğum günü')  %}
+                        background:  url( '/local/birthday/tugce.png' ) no-repeat center 0px;
+                        background-size: cover;
+                        background-color: rgba(var(--rgb-card-background-color), 0.2);
+                        background-blend-mode: overlay;
+                      {%elif is_state('sensor.dogum_gunleri', 'Aylin Ergenç adlı kişinin doğum günü')  %}
+                        background:  url( '/local/birthday/aylin.png' ) no-repeat center 0px;
+                        background-size: cover;
+                        background-color: rgba(var(--rgb-card-background-color), 0.2);
+                        background-blend-mode: overlay;
+                      {%elif is_state('sensor.dogum_gunleri', 'Tolga Kıskaç adlı kişinin doğum günü')  %}
+                        background:  url( '/local/birthday/tolga.png' ) no-repeat center 0px;
+                        background-size: cover;
+                        background-color: rgba(var(--rgb-card-background-color), 0.2);
+                        background-blend-mode: overlay;
+                       {% else %}
+                         background: rgba(252, 212, 108, 0.85);
+                      {% endif %} 
+                      --primary-text-color: white;
+                      --secondary-text-color: white; 
+                      --card-primary-font-size: 15px;
+                      --card-primary-font-weight: 550;
+                      --card-secondary-font-weight: 300;
+                      --card-secondary-font-size: 15px;
                       height: 120px !important;
+                      position: relative;
+                      margin-top: 0px;
+                      margin-left: 0px;
+                      border-shadow: 0px;
                       border-radius: 10px;
+                    }  :host {
+                      --mush-icon-size: 70px;
                     }
           - type: custom:vertical-stack-in-card
             cards:
@@ -2331,7 +2251,7 @@ cards:
                   - type: custom:vertical-stack-in-card
                     cards:
                       - type: custom:mushroom-template-card
-                        secondary: '{{ states(''media_player.spotify_berkan_sezer'')  }}'
+                        secondary: null
                         primary: >
                           {% if is_state('media_player.spotify_berkan_sezer',
                           'playing') %}
@@ -2470,13 +2390,13 @@ cards:
                         picture: >
                           {% if is_state('media_player.spotify_berkan_sezer',
                           'playing') %}
-                            /local/png/md-lite/dot2.png
+                            /local/png/dot2.png
                           {% elif not
                           is_state('media_player.spotify_berkan_sezer', 'off')
                           %}
-                            /local/png/md-lite/calendar3.png
+                            /local/png/calendar3.png
                           {% else %}
-                            /local/png/md-lite/calendar3.png
+                            /local/png/calendar3.png
                           {% endif %}
                         card_mod:
                           style: |
@@ -2493,12 +2413,12 @@ cards:
                                 background-blend-mode: overlay;
                                 position: relative;
                               {% endif %}  
-                                margin-top: 10px;
+                                margin-top: 30px;
                                 margin-left: auto;
                                 margin-right: auto;
                                 margin-bottom: 20px;
                                 width: auto;
-                                --icon-size: 100px;
+                                --icon-size: 80px;
                                 position: relative;
                                 background: none;
                                 background-size: 55px 40px;
@@ -2526,7 +2446,9 @@ cards:
                           background-blend-mode: overlay;
                           position: relative;
                         {% else %}
-                          background:rgba(250,148,123, 0.85);
+                          background: url('/local/png/md-lite/onoff5.gif') center no-repeat;
+                          filter: saturate(200%);
+                          background-size: 100% 100%;
                         {% endif %} 
                           font-size: 14px !important;
                           height: 250px; 
@@ -2539,23 +2461,60 @@ cards:
             cards:
               - type: horizontal-stack
                 cards:
-                  - type: custom:frigate-card
-                    cameras:
-                      - camera_entity: camera.ev_kamera_hd_stream
-                      - camera_entity: camera.tapo_c200_sd_stream
-                    live:
-                      transition_effect: slide
-                      layout:
-                        fit: fill
-                      preload: true
-                    media_viewer:
-                      draggable: true
-                      lazy_load: false
+                  - type: picture-entity
+                    show_state: false
+                    show_name: false
+                    camera_view: live
+                    entity: camera.ev_kamera_sd_stream
+                    image: >-
+                      https://cdn.bolgegundem.com/d/other/2022/02/11/depophotos-14570929-1.jpg
+                    camera_image: camera.ev_kamera_sd
+                    theme: Mushroom
+                    tap_action:
+                      action: call-service
+                      service: input_boolean.toggle
+                      data: {}
+                      target:
+                        entity_id: input_boolean.ana_sayfa_kamera_ev
                     card_mod:
                       style: |
                         ha-card {
-                          background: none;
-                          height: auto;
+                          border-radius: 30px;
+                          margin-left: 10px;
+                          margin-right: autopx;
+                          margin-top: 4px;
+                          margin-bottom: 0px;
+                        }
+      - type: horizontal-stack
+        cards:
+          - type: custom:vertical-stack-in-card
+            cards:
+              - type: horizontal-stack
+                cards:
+                  - type: picture-entity
+                    show_state: false
+                    show_name: false
+                    camera_view: live
+                    entity: camera.tapo_ofis_sd
+                    image: >-
+                      https://cdn.bolgegundem.com/d/other/2022/02/11/depophotos-14570929-1.jpg
+                    camera_image: camera.tapo_c200_sd_2
+                    theme: Mushroom
+                    tap_action:
+                      action: call-service
+                      service: input_boolean.toggle
+                      data: {}
+                      target:
+                        entity_id: input_boolean.ana_sayfa_kamera_ofis
+                    card_mod:
+                      style: |
+                        ha-card {
+                          background: #1a1a1a;
+                          border-radius: 30px;
+                          margin-left: auto;
+                          margin-right: 10px;
+                          margin-top: 4px;
+                          margin-bottom: 0px;
                         }
     card_mod:
       style: |

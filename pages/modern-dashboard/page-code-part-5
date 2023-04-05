@@ -152,7 +152,6 @@ cards:
                               card_mod:
                                 style: |
                                   ha-card { 
-                                    --icon-size: 88px;
                                     background: none;
                                     margin-left: 0px;
                                     --icon-size: 98px;
@@ -537,7 +536,6 @@ cards:
                               card_mod:
                                 style: |
                                   ha-card { 
-                                    --icon-size: 88px;
                                     background: none;
                                     margin-left: 0px;
                                     --icon-size: 98px;
@@ -831,7 +829,6 @@ cards:
                               card_mod:
                                 style: |
                                   ha-card { 
-                                    --icon-size: 88px;
                                     background: none;
                                     margin-left: 0px;
                                     --icon-size: 98px;
@@ -1121,14 +1118,14 @@ cards:
                               card_mod:
                                 style: |
                                   ha-card { 
-                                    --icon-size: 88px;
                                     background: none;
                                     margin-left: 0px;
-                                    --icon-size: 98px;
+                                    --icon-size: 88px;
                                     --card-primary-font-weight: 500;
                                     --card-primary-font-size: 14px;
                                     --card-secondary-font-weight: 500;
                                     --card-secondary-font-size: 12px;
+                                    box-shadow: none !important;
                                     {% if is_state('group.yatak_odasi', 'on') %}
                                     {% else %}
                                       filter: grayscale(100%);
@@ -1151,6 +1148,7 @@ cards:
                                   background: none; 
                                   margin-top: -35px; 
                                   margin-left: -20px; 
+                                  box-shadow: none !important;
                                   --mush-rgb-disabled: 189,189,189;
                                   --mush-rgb-state-light: 255, 152, 0;
                                   --control-height: 16px;
@@ -1415,7 +1413,6 @@ cards:
                               card_mod:
                                 style: |
                                   ha-card { 
-                                    --icon-size: 88px;
                                     background: none;
                                     margin-left: 0px;
                                     --icon-size: 98px;
@@ -1596,6 +1593,7 @@ cards:
                     overflow: visible !important;
                     background: transparent;
                     border: none !important;
+                    box-shadow: none !important;
             - type: custom:vertical-stack-in-card
               cards:
                 - type: horizontal-stack
@@ -1629,10 +1627,10 @@ cards:
                               card_mod:
                                 style: |
                                   ha-card { 
-                                    --icon-size: 88px;
                                     background: none;
                                     margin-left: 0px;
-                                    --icon-size: 98px;
+                                    box-shadow: none !important;
+                                    --icon-size: 88px;
                                     --card-primary-font-weight: 500;
                                     --card-primary-font-size: 14px;
                                     --card-secondary-font-weight: 500;
@@ -1769,6 +1767,7 @@ cards:
                     background-color: olive; 
                     filter: blur(70px) saturate(200%);
                     background-size: 100% 100%;
+                    box-shadow: none !important;
                   {% elif states('sensor.hue_motion_temp_banyo')|float < 21 and
                   is_state('group.banyo', 'off') %}
                     background:  url( '/local/room-cards/coldanimation.gif' ) no-repeat center 0px;
@@ -1777,6 +1776,7 @@ cards:
                     background-size: cover;
                     background-color: rgba(var(--rgb-card-background-color), 0.6);
                     background-blend-mode: overlay;
+                    box-shadow: none !important;
                     position: relative;
                   {% else %}
                     {% endif %}
@@ -1792,6 +1792,7 @@ cards:
                     overflow: visible !important;
                     background: transparent;
                     border: none !important;
+                    box-shadow: none !important;
             - type: custom:vertical-stack-in-card
               cards:
                 - type: horizontal-stack
@@ -1821,7 +1822,6 @@ cards:
                               card_mod:
                                 style: |
                                   ha-card { 
-                                    --icon-size: 88px;
                                     background: none;
                                     margin-left: 0px;
                                     --icon-size: 98px;

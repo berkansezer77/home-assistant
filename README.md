@@ -16,7 +16,7 @@ On this page, you can find the links of the different Home Assistant pages that 
 
 ## Code and the wiki: 
 
-[Link:](https://github.com/berkansezer77/home-assistant/wiki/Modern-Dashboard-Lite-Version))
+- [Modern Dashboard Lite Version](https://github.com/berkansezer77/home-assistant/wiki/Modern-Dashboard-Lite-Version)
 
 
 # Minimalist Spotify Card for Home Assistant with Room Presence and Ambilight V2.0

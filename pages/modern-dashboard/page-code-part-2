@@ -302,7 +302,7 @@ cards:
           {% elif is_state('alarm_control_panel.ha_alarm', 'arming') or is_state('alarm_control_panel.ha_alarm', 'armed_away')  %}
             background: none;
           {% elif is_state('input_boolean.modern_dashboard_vitrin_motion_gif', 'on') and is_state('sensor.recent_motion1', 'Ofis Sensör Motion') %}
-            background: url('/local/png/art/ofis.JPG') center no-repeat; 
+            background: url('/local/png/md-lite/art/ofis.JPG') center no-repeat; 
             animation: Gradient 12s linear infinite;
             box-shadow: none; 
             filter: blur(70px) saturate(200%);
@@ -310,7 +310,7 @@ cards:
             background-size: 80% 80%;
             position: absolute;
           {% elif is_state('input_boolean.modern_dashboard_vitrin_motion_gif', 'on') and is_state('sensor.recent_motion1', 'Salon Sensör motion') %}
-            background: url('/local/png/art/salon.JPG') center no-repeat; 
+            background: url('/local/png/md-lite/art/salon1.JPG') center no-repeat; 
             animation: Gradient 12s linear infinite;
             box-shadow: none; 
             filter: blur(0px) saturate(400%);
@@ -318,7 +318,7 @@ cards:
             background-size: 80% 80%;
             position: absolute;
           {% elif is_state('input_boolean.modern_dashboard_vitrin_motion_gif', 'on') and is_state('sensor.recent_motion1', 'Mutfak Hareket Sensörü motion') %}
-            background: url('/local/png/art/mutfak.JPG') center no-repeat; 
+            background: url('/local/png/md-lite/art/mutfak.jpg') center no-repeat; 
             animation: Gradient 12s linear infinite;
             box-shadow: none; 
             filter: blur(100px) saturate(400%);
@@ -326,7 +326,7 @@ cards:
             background-size: 80% 80%;
             position: absolute;
           {% elif is_state('input_boolean.modern_dashboard_vitrin_motion_gif', 'on') and is_state('sensor.recent_motion1', 'Yatak Odası Sensor Motion') %}
-            background: url('/local/png/art/yatak.JPG') center no-repeat; 
+            background: url('/local/png/md-lite/art/yatak.JPG') center no-repeat; 
             animation: Gradient 12s linear infinite;
             box-shadow: none; 
             filter: blur(100px) saturate(400%);
@@ -334,7 +334,7 @@ cards:
             background-size: 80% 80%;
             position: absolute;
           {% elif is_state('input_boolean.modern_dashboard_vitrin_motion_gif', 'on') and is_state('sensor.recent_motion1', 'Banyo Sensor Motion') %}
-            background: url('/local/png/art/banyo.JPG') center no-repeat; 
+            background: url('/local/png/md-lite/art/banyo.jpg') center no-repeat; 
             animation: Gradient 12s linear infinite;
             box-shadow: none; 
             filter: blur(100px) saturate(400%);
@@ -342,7 +342,7 @@ cards:
             background-size: 80% 80%;
             position: absolute;
           {% elif is_state('input_boolean.modern_dashboard_vitrin_motion_gif', 'on') and is_state('sensor.recent_motion1', 'Soyunma Odası Sensor Motion') %}
-            background: url('/local/png/art/giysi.JPG') center no-repeat; 
+            background: url('/local/png/md-lite/art/giysi.jpg') center no-repeat; 
             animation: Gradient 12s linear infinite;
             box-shadow: none; 
             filter: blur(100px) saturate(400%);
@@ -350,7 +350,7 @@ cards:
             background-size: 80% 80%;
             position: absolute;
           {% elif is_state('input_boolean.modern_dashboard_vitrin_motion_gif', 'on') and is_state('sensor.recent_motion1', 'Antre Hue Hareket Sensörü') %}
-            background: url('/local/png/art/antre.JPG') center no-repeat; 
+            background: url('/local/png/md-lite/art/antre.JPG') center no-repeat; 
             animation: Gradient 12s linear infinite;
             box-shadow: none; 
             filter: blur(100px) saturate(400%);

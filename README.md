@@ -16,7 +16,8 @@ On this page, you can find the links of the different Home Assistant pages that 
 
 ## Code and the wiki: 
 
-- [Modern Dashboard Lite]([https://github.com/Makin-Things/platinum-weather-card](https://github.com/berkansezer77/home-assistant/wiki/Modern-Dashboard-Lite-Version))
+[Link:]([https://github.com/berkansezer77/home-assistant/wiki/Animated-Alarm-Control](https://github.com/berkansezer77/home-assistant/wiki/Modern-Dashboard-Lite-Version))
+
 
 # Minimalist Spotify Card for Home Assistant with Room Presence and Ambilight V2.0
 

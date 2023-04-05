@@ -1,0 +1,517 @@
+type: grid
+columns: 1
+square: false
+cards:
+  - type: custom:vertical-stack-in-card
+    cards:
+      - type: custom:swipe-card
+        parameters: null
+        spaceBetween: 8
+        scrollbar: null
+        start_card: 1
+        hide: false
+        draggable: true
+        snapOnRelease: true
+        cards:
+          - type: horizontal-stack
+            cards:
+              - type: custom:mushroom-template-card
+                icon: mdi:bed-clock
+                picture: /local/png/md-lite/sleep.png
+                primary: null
+                icon_color: amber
+                secondary: null
+                entity: input_boolean.notify_home3
+                fill_container: false
+                multiline_secondary: false
+                layout: vertical
+                style: |
+                  mushroom-card {
+                   ;
+                    background-size: 42px 42px;
+                    {% if is_state('input_boolean.notify_home3', 'on') %}
+                    {% else %}
+                      filter: grayscale(100%);
+                    {% endif %} 
+                  }
+                  ha-card:active {
+                    box-shadow: 20px 40px 90px red;
+                  }
+                  mushroom-shape-icon {
+                    --shape-color: none !important;
+                  }  
+                    ha-card { 
+                    {% if is_state('input_boolean.notify_home3', 'on') %}
+                      background: rgba(156, 27, 12, 0.2);
+                      box-shadow: 0px 0px 4px 2px rgba(245,162,7,0.96) !important;
+                    {% else %}
+                    background: rgba(156, 27, 12, 0.2);
+                    {% endif %}  
+                      width: 76px;
+                      border-radius: 15px;
+                      margin-top: 10px;
+                      margin-left: auto;
+                      margin-right: auto;
+                      margin-bottom: 10px;
+                    }
+              - type: custom:mushroom-template-card
+                icon: mdi:movie
+                icon_color: amber
+                picture: /local/png/md-lite/movie2.png
+                primary: null
+                secondary: null
+                entity: input_boolean.notify_home
+                fill_container: false
+                multiline_secondary: false
+                layout: vertical
+                style: |
+                  mushroom-card {
+                   ;
+                    background-size: 42px 42px;
+                    {% if is_state('input_boolean.notify_home', 'on') %}
+                    {% else %}
+                      filter: grayscale(100%);
+                    {% endif %} 
+                  }
+                  ha-card:active {
+                    box-shadow: 20px 40px 90px red;
+                  }
+                  mushroom-shape-icon {
+                    --shape-color: none !important;
+                  }  
+                    ha-card { 
+                    {% if is_state('input_boolean.notify_home', 'on') %}
+                      background: rgba(217,254,150, 0.5);
+                      box-shadow: 0px 0px 4px 2px rgba(245,162,7,0.96) !important;
+                    {% else %}
+                    background: rgba(217,254,150, 0.5);
+                    {% endif %}  
+                      width: 76px;
+                      border-radius: 15px;
+                      margin-top: 10px;
+                      margin-left: auto;
+                      margin-right: auto;
+                      margin-bottom: 10px;
+                    }
+              - type: custom:mushroom-template-card
+                icon: mdi:radiator
+                icon_color: amber
+                primary: null
+                secondary: null
+                picture: /local/png/md-lite/trv.png
+                entity: input_boolean.trv_close_open
+                fill_container: false
+                multiline_secondary: false
+                layout: vertical
+                style: |
+                  mushroom-card {
+                   ;
+                    background-size: 42px 42px;
+                    {% if is_state('input_boolean.trv_close_open', 'on') %}
+                    {% else %}
+                      filter: grayscale(100%);
+                    {% endif %} 
+                  }
+                  mushroom-shape-icon {
+                    --shape-color: none !important;
+                  }  
+                    ha-card { 
+                    {% if is_state('input_boolean.trv_close_open', 'on') %}
+                      background: rgba(245, 162, 7, 0.2);
+                      box-shadow: 0px 0px 4px 2px rgba(245,162,7,0.96) !important;
+                    {% else %}
+                    background: rgba(245, 162, 7, 0.2);
+                    {% endif %}  
+                      width: 76px;
+                      border-radius: 15px;
+                      margin-top: 10px;
+                      margin-left: auto;
+                      margin-right: auto;
+                      margin-bottom: 10px;
+                    }
+                  ha-card:active {
+                    box-shadow: 0 0 90px red;
+                  }
+                card_mode:
+                  style: |
+                    :host {
+                      background: rgba(var(--rgb-primary-background-color), 0.5);
+                      border-radius: 0px;!important
+                    } 
+              - type: custom:mushroom-template-card
+                icon: mdi:shield-lock
+                icon_color: amber
+                primary: null
+                secondary: null
+                picture: /local/png/md-lite/alarm.png
+                entity: input_boolean.notify_home4
+                fill_container: false
+                multiline_secondary: false
+                layout: vertical
+                style: |
+                  mushroom-card {
+                   ;
+                    background-size: 42px 42px;
+                    {% if is_state('input_boolean.notify_home4', 'on') %}
+                    {% else %}
+                      filter: grayscale(100%);
+                    {% endif %} 
+                  }
+                  mushroom-shape-icon {
+                    --shape-color: none !important;
+                  }  
+                    ha-card { 
+                    {% if is_state('input_boolean.notify_home4', 'on') %}
+                      background: rgba(252, 3, 28, 0.2);
+                      box-shadow: 0px 0px 4px 2px rgba(245,162,7,0.96) !important;
+                    {% else %}
+                    background: rgba(242, 7, 7, 0.5);
+                    {% endif %}  
+                      width: 76px;
+                      border-radius: 15px;
+                      margin-top: 10px;
+                      margin-left: auto;
+                      margin-right: auto;
+                      margin-bottom: 10px;
+                    }
+                  ha-card:active {
+                    box-shadow: 0 0 90px red;
+                  }
+          - type: horizontal-stack
+            cards:
+              - type: custom:mushroom-template-card
+                icon: mdi:music
+                icon_color: amber
+                primary: null
+                secondary: null
+                picture: /local/png/md-lite/music3.png
+                entity: input_boolean.notify_home7
+                fill_container: false
+                multiline_secondary: false
+                layout: vertical
+                style: |
+                  mushroom-card {
+                   ;
+                    background-size: 42px 42px;
+                    {% if is_state('input_boolean.notify_home7', 'on') %}
+                    {% else %}
+                      filter: grayscale(100%);
+                    {% endif %} 
+                  }
+                  mushroom-shape-icon {
+                    --shape-color: none !important;
+                  }  
+                    ha-card { 
+                    {% if is_state('input_boolean.notify_home7', 'on') %}
+                      background: rgba(7, 242, 50, 0.2);
+                      box-shadow: 0px 0px 4px 2px rgba(245,162,7,0.96) !important;
+                    {% else %}
+                    background: rgba(7, 242, 50, 0.2);
+                    {% endif %}  
+                      width: 76px;
+                      border-radius: 15px;
+                      margin-top: 10px;
+                      margin-left: auto;
+                      margin-right: auto;
+                      margin-bottom: 10px;
+                    }
+                  ha-card:active {
+                    box-shadow: 0 0 90px red;
+                  }
+              - type: custom:mushroom-template-card
+                icon: mdi:face-recognition
+                icon_color: amber
+                primary: null
+                secondary: null
+                picture: /local/png/md-lite/lock.png
+                entity: input_boolean.frigateface_recognize
+                fill_container: false
+                multiline_secondary: false
+                layout: vertical
+                style: |
+                  mushroom-card {
+                   ;
+                    background-size: 42px 42px;
+                    {% if is_state('input_boolean.frigateface_recognize', 'on') %}
+                    {% else %}
+                      filter: grayscale(100%);
+                    {% endif %} 
+                  }
+                  mushroom-shape-icon {
+                    --shape-color: none !important;
+                  }  
+                    ha-card { 
+                    {% if is_state('input_boolean.frigateface_recognize', 'on') %}
+                      background: rgba(7, 15, 242, 0.5);
+                      box-shadow: 0px 0px 4px 2px rgba(245,162,7,0.96) !important;
+                    {% else %}
+                    background: rgba(7, 15, 242, 0.5);
+                    {% endif %}  
+                      width: 76px;
+                      border-radius: 15px;
+                      margin-top: 10px;
+                      margin-left: auto;
+                      margin-right: auto;
+                      margin-bottom: 10px;
+                    }
+                  ha-card:active {
+                    box-shadow: 0 0 90px red;
+                  }
+              - type: custom:mushroom-template-card
+                icon: mdi:map-marker-radius
+                icon_color: amber
+                primary: null
+                secondary: null
+                picture: /local/png/md-lite/traffic3.png
+                entity: input_boolean.trafik_ev_is
+                fill_container: false
+                multiline_secondary: false
+                layout: vertical
+                style: |
+                  mushroom-card {
+                   ;
+                    background-size: 42px 42px;
+                    {% if is_state('input_boolean.trafik_ev_is', 'on') %}
+                    {% else %}
+                      filter: grayscale(100%);
+                    {% endif %} 
+                  }
+                  mushroom-shape-icon {
+                    --shape-color: none !important;
+                  }  
+                    ha-card { 
+                    {% if is_state('input_boolean.trafik_ev_is', 'on') %}
+                      background: rgba(245, 67, 7, 0.2);
+                      box-shadow: 0px 0px 4px 2px rgba(245,162,7,0.96) !important;
+                    {% else %}
+                    background: rgba(245, 67, 7, 0.2);
+                    {% endif %}  
+                      width: 76px;
+                      border-radius: 15px;
+                      margin-top: 10px;
+                      margin-left: auto;
+                      margin-right: auto;
+                      margin-bottom: 10px;
+                    }
+                  ha-card:active {
+                    box-shadow: 0 0 90px red;
+                  }
+              - type: custom:mushroom-template-card
+                icon: mdi:account-multiple-outline
+                icon_color: amber
+                picture: /local/png/md-lite/guest1.png
+                primary: null
+                secondary: null
+                entity: input_boolean.notify_home1
+                fill_container: false
+                multiline_secondary: false
+                layout: vertical
+                style: |
+                  mushroom-card {
+                   ;
+                    background-size: 42px 42px;
+                    {% if is_state('input_boolean.notify_home1', 'on') %}
+                    {% else %}
+                      filter: grayscale(100%);
+                    {% endif %} 
+                  }
+                  mushroom-shape-icon {
+                    --shape-color: none !important;
+                  }  
+                    ha-card { 
+                    {% if is_state('input_boolean.notify_home1', 'on') %}
+                      background: rgba(156, 27, 12, 0.2);
+                      box-shadow: 0px 0px 4px 2px rgba(245,162,7,0.96) !important;
+                    {% else %}
+                    background: rgba(156, 27, 12, 0.2);
+                    {% endif %}  
+                      width: 76px;
+                      border-radius: 15px;
+                      margin-top: 10px;
+                      margin-left: auto;
+                      margin-right: auto;
+                      margin-bottom: 10px;
+                    }
+                  ha-card:active {
+                    box-shadow: 0 0 90px red;
+                  }
+          - type: horizontal-stack
+            cards:
+              - type: custom:mushroom-template-card
+                icon: mdi:air-conditioner
+                icon_color: amber
+                picture: /local/png/md-lite/sleep9.png
+                primary: null
+                secondary: null
+                entity: input_boolean.bedroom_climate_sleep_mode
+                fill_container: false
+                multiline_secondary: false
+                layout: vertical
+                style: |
+                  mushroom-card {
+                   ;
+                    background-size: 42px 42px;
+                    {% if is_state('input_boolean.bedroom_climate_sleep_mode', 'on') %}
+                    {% else %}
+                      filter: grayscale(100%);
+                    {% endif %} 
+                  }
+                  mushroom-shape-icon {
+                    --shape-color: none !important;
+                  }  
+                    ha-card { 
+                    {% if is_state('input_boolean.bedroom_climate_sleep_mode', 'on') %}
+                      background: rgba(156, 27, 12, 0.2);
+                      box-shadow: 0px 0px 4px 2px rgba(245,162,7,0.96) !important;
+                    {% else %}
+                    background: rgba(156, 27, 12, 0.2);
+                    {% endif %}  
+                      width: 76px;
+                      border-radius: 15px;
+                      margin-top: 10px;
+                      margin-left: auto;
+                      margin-right: auto;
+                      margin-bottom: 10px;
+                    }
+                  ha-card:active {
+                    box-shadow: 0 0 90px red;
+                  }
+              - type: custom:mushroom-template-card
+                icon: mdi:beach
+                icon_color: amber
+                picture: /local/png/md-lite/vacation11.png
+                primary: null
+                secondary: null
+                entity: input_boolean.vacation
+                fill_container: false
+                multiline_secondary: false
+                layout: vertical
+                style: |
+                  mushroom-card {
+                   ;
+                    background-size: 42px 42px;
+                    {% if is_state('input_boolean.vacation', 'on') %}
+                    {% else %}
+                      filter: grayscale(100%);
+                    {% endif %} 
+                  }
+                  mushroom-shape-icon {
+                    --shape-color: none !important;
+                  }  
+                    ha-card { 
+                    {% if is_state('input_boolean.vacation', 'on') %}
+                      background: rgba(156, 27, 12, 0.2);
+                      box-shadow: 0px 0px 4px 2px rgba(245,162,7,0.96) !important;
+                    {% else %}
+                    background: rgba(156, 27, 12, 0.2);
+                    {% endif %}  
+                      width: 76px;
+                      border-radius: 15px;
+                      margin-top: 10px;
+                      margin-left: auto;
+                      margin-right: auto;
+                      margin-bottom: 10px;
+                    }
+                  ha-card:active {
+                    box-shadow: 0 0 90px red;
+                  }
+              - type: custom:mushroom-template-card
+                icon: mdi:fast-forward-5
+                icon_color: amber
+                picture: /local/png/md-lite/alexa.png
+                primary: null
+                secondary: null
+                entity: input_button.alexa_media_player_volume_5
+                fill_container: false
+                multiline_secondary: false
+                layout: vertical
+                style: |
+                  mushroom-shape-icon {
+                    --shape-color: none !important;
+                  }  
+                    ha-card { 
+                    {% if is_state('input_button.alexa_media_player_volume_5', 'on') %}
+                      background: rgba(156, 27, 12, 0.2);
+                      box-shadow: 0px 0px 4px 2px rgba(245,162,7,0.96) !important;
+                    {% else %}
+                    background: rgba(156, 27, 12, 0.2);
+                    {% endif %}  
+                      width: 76px;
+                      border-radius: 15px;
+                      margin-top: 10px;
+                      margin-left: auto;
+                      margin-right: auto;
+                      margin-bottom: 10px;
+                    }
+                  ha-card:active {
+                    box-shadow: 0 0 90px red;
+                  }
+              - type: custom:mushroom-template-card
+                icon: mdi:numeric-2-circle
+                icon_color: amber
+                picture: /local/png/md-lite/alexa2.png
+                primary: null
+                secondary: null
+                entity: input_button.alexa_media_player_volume_2
+                fill_container: false
+                multiline_secondary: false
+                layout: vertical
+                style: |
+                  mushroom-shape-icon {
+                    --shape-color: none !important;
+                  }  
+                    ha-card { 
+                    {% if is_state('input_button.alexa_media_player_volume_2', 'on') %}
+                      background: rgba(156, 27, 12, 0.2);
+                      box-shadow: 0px 0px 4px 2px rgba(245,162,7,0.96) !important;
+                    {% else %}
+                    background: rgba(156, 27, 12, 0.2);
+                    {% endif %}  
+                      width: 76px;
+                      border-radius: 15px;
+                      margin-top: 10px;
+                      margin-left: auto;
+                      margin-right: auto;
+                      margin-bottom: 10px;
+                    }
+                  ha-card:active {
+                    box-shadow: 0 0 90px red;
+                  }
+              - type: custom:mushroom-template-card
+                icon: mdi:close
+                icon_color: amber
+                picture: /local/png/md-lite/close.png
+                primary: null
+                secondary: null
+                entity: input_button.zone_leave_home
+                fill_container: false
+                multiline_secondary: false
+                layout: vertical
+                style: |
+                  mushroom-shape-icon {
+                    --shape-color: none !important;
+                  }  
+                    ha-card { 
+                    {% if is_state('input_button.zone_leave_home', 'on') %}
+                      background: rgba(156, 27, 12, 0.2);
+                      box-shadow: 0px 0px 4px 2px rgba(245,162,7,0.96) !important;
+                    {% else %}
+                    background: rgba(156, 27, 12, 0.2);
+                    {% endif %}  
+                      width: 76px;
+                      border-radius: 15px;
+                      margin-top: 10px;
+                      margin-left: auto;
+                      margin-right: auto;
+                      margin-bottom: 10px;
+                    }
+                  ha-card:active {
+                    box-shadow: 0 0 90px red;
+                  }
+    card_mod:
+      style: |
+        ha-card {
+          background: transparent;
+          margin-top: 20px;
+          box-shadow: none;
+        }

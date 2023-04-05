@@ -9,14 +9,14 @@ On this page, you can find the links of the different Home Assistant pages that 
 
 # Modern Dashboard Lite Version
 
-<img src="https://user-images.githubusercontent.com/84282504/229322749-e6c63455-ea04-4f22-9645-208a3b40a62b.png" width="450"><img src="https://user-images.githubusercontent.com/84282504/229322058-5955f1b9-9df2-45aa-9127-eaa443c18337.png" width="350">
+<img src="https://user-images.githubusercontent.com/84282504/230177862-a638a128-f25d-4a0f-ba42-02dc4c5afc3f.png" width="350"><img src="https://user-images.githubusercontent.com/84282504/229322058-5955f1b9-9df2-45aa-9127-eaa443c18337.png" width="350">
 <img src="https://user-images.githubusercontent.com/84282504/229322395-1c4367ae-471b-4a12-b166-954e4857261b.png" width="350">
 <img src="https://user-images.githubusercontent.com/84282504/229322682-f954c151-985b-47f9-89f1-edae6b666650.png" width="350">
 
 
 ## Code and the wiki: 
 
-Coming Soon!!!!
+[Link:](https://github.com/berkansezer77/home-assistant/wiki/Modern-Dashboard-Lite-Version)
 
 # Minimalist Spotify Card for Home Assistant with Room Presence and Ambilight V2.0
 

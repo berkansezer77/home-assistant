@@ -1,0 +1,198 @@
+alias: Room Presence - Lights
+description: ""
+trigger:
+  - platform: state
+    entity_id:
+      - input_button.modern_dashboard_turn_off_lights_in_other_rooms
+    id: "on"
+condition: []
+action:
+  - choose:
+      - conditions:
+          - condition: and
+            conditions:
+              - condition: trigger
+                id: "on"
+              - condition: state
+                state: Ofis Sensör Motion
+                entity_id: sensor.recent_motion1
+        sequence:
+          - service: light.turn_off
+            data: {}
+            target:
+              area_id:
+                - antre
+                - koridor
+                - mutfak
+                - salon
+                - yatak_odasi
+          - service: switch.turn_off
+            data: {}
+            target:
+              area_id:
+                - antre
+                - banyo
+                - koridor
+                - soyunma_odasi
+      - conditions:
+          - condition: and
+            conditions:
+              - condition: trigger
+                id: "on"
+              - condition: state
+                entity_id: sensor.recent_motion1
+                state: Salon Sensör motion
+        sequence:
+          - service: light.turn_off
+            data: {}
+            target:
+              area_id:
+                - antre
+                - koridor
+                - mutfak
+                - yatak_odasi
+                - ofis
+          - service: switch.turn_off
+            data: {}
+            target:
+              area_id:
+                - antre
+                - banyo
+                - koridor
+                - ofis
+                - soyunma_odasi
+      - conditions:
+          - condition: and
+            conditions:
+              - condition: trigger
+                id: "on"
+              - condition: state
+                entity_id: sensor.recent_motion1
+                state: Mutfak Hareket Sensörü motion
+        sequence:
+          - service: light.turn_off
+            data: {}
+            target:
+              area_id:
+                - antre
+                - koridor
+                - salon
+                - yatak_odasi
+                - ofis
+          - service: switch.turn_off
+            data: {}
+            target:
+              area_id:
+                - antre
+                - banyo
+                - koridor
+                - ofis
+                - soyunma_odasi
+      - conditions:
+          - condition: and
+            conditions:
+              - condition: trigger
+                id: "on"
+              - condition: state
+                entity_id: sensor.recent_motion1
+                state: Yatak Odası Sensor Motion
+        sequence:
+          - service: light.turn_off
+            data: {}
+            target:
+              area_id:
+                - antre
+                - koridor
+                - mutfak
+                - salon
+                - ofis
+          - service: switch.turn_off
+            data: {}
+            target:
+              area_id:
+                - antre
+                - banyo
+                - koridor
+                - ofis
+                - soyunma_odasi
+      - conditions:
+          - condition: and
+            conditions:
+              - condition: trigger
+                id: "on"
+              - condition: state
+                entity_id: sensor.recent_motion1
+                state: Antre Sensör Motion
+        sequence:
+          - service: light.turn_off
+            data: {}
+            target:
+              area_id:
+                - koridor
+                - mutfak
+                - salon
+                - yatak_odasi
+                - ofis
+          - service: switch.turn_off
+            data: {}
+            target:
+              area_id:
+                - banyo
+                - koridor
+                - ofis
+                - soyunma_odasi
+      - conditions:
+          - condition: and
+            conditions:
+              - condition: trigger
+                id: "on"
+              - condition: state
+                entity_id: sensor.recent_motion1
+                state: Banyo Sensor Motion
+        sequence:
+          - service: light.turn_off
+            data: {}
+            target:
+              area_id:
+                - antre
+                - koridor
+                - mutfak
+                - salon
+                - yatak_odasi
+                - ofis
+          - service: switch.turn_off
+            data: {}
+            target:
+              area_id:
+                - antre
+                - koridor
+                - ofis
+                - soyunma_odasi
+      - conditions:
+          - condition: and
+            conditions:
+              - condition: trigger
+                id: "on"
+              - condition: state
+                entity_id: sensor.recent_motion1
+                state: Soyunma Odasi Sensor Motion
+        sequence:
+          - service: light.turn_off
+            data: {}
+            target:
+              area_id:
+                - antre
+                - koridor
+                - mutfak
+                - salon
+                - yatak_odasi
+                - ofis
+          - service: switch.turn_off
+            data: {}
+            target:
+              area_id:
+                - antre
+                - koridor
+                - ofis
+    default: []
+mode: single

@@ -80,8 +80,6 @@ cards:
               }  
       - type: conditional
         conditions:
-          - entity: input_boolean.modern_dashboard_spotify_card
-            state: 'off'
           - entity: >-
               input_boolean.modern_dashboard_simple_version_spotify_update_status
             state: 'off'
@@ -358,11 +356,14 @@ cards:
             background-size: 80% 80%;
             position: absolute;
           {% else %}
-            background: url('/local/png/md-lite/art/2.png') center no-repeat;
+            background: url('/local/png/md-lite/red.jpg') center no-repeat;
             animation: Gradient 12s linear infinite;
-            filter: blur(100px) saturate(550%);
+            filter: blur(100px) saturate(300%);
             box-shadow: none; 
             border: none !important;
+            height: 100%;
+            width: 90%;
+            background-size: 80% 80%;
             position: absolute;
           {% endif %}
         }

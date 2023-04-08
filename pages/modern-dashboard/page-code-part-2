@@ -559,13 +559,6 @@ cards:
                                   target:
                                     entity_id: >-
                                       input_boolean.modern_dashboard_spotify_card
-                                double_tap_action:
-                                  action: call-service
-                                  service: input_boolean.toggle
-                                  data: {}
-                                  target:
-                                    entity_id: >-
-                                      input_boolean.modern_dashboard_spotify_card_hide_media_players
                                 card_mod:
                                   style: >
                                     ha-card {

@@ -7,6 +7,16 @@ Welcome to my Home Assistant Custom Setup Page.
 
 On this page, you can find the links of the different Home Assistant pages that I have coded. On these pages you can find not only the necessary codes, but also all the extra software. Everything from necessary special codes to media download links is available. In summary, you can get everything you need here.
 
+# Modern Dashboard Ultra Lite Version (Without any Booleans - East to Setup)
+
+<img src="https://user-images.githubusercontent.com/84282504/232549061-6ab58539-36bf-475e-8a47-17c002a95906.png" width="350"><img src="https://user-images.githubusercontent.com/84282504/232549603-67bea497-d74e-4c99-990c-973e4d01cf3a.png" width="350">
+<img src="https://user-images.githubusercontent.com/84282504/232550168-533f7809-2e7e-416d-ba11-26526b2135b1.png" width="350">
+<img src="https://user-images.githubusercontent.com/84282504/232550473-c6f389fa-ea98-40c7-b7dc-05f718335984.png" width="350">
+
+## Code and the wiki: 
+
+- [Modern Dashboard Ultra Lite Version](https://github.com/berkansezer77/home-assistant/wiki/Modern-Dashboard-Ultra-Lite-Version-(No-Booleans-used))
+
 # Modern Dashboard Lite Version
 
 <img src="https://user-images.githubusercontent.com/84282504/230177862-a638a128-f25d-4a0f-ba42-02dc4c5afc3f.png" width="350"><img src="https://user-images.githubusercontent.com/84282504/229322058-5955f1b9-9df2-45aa-9127-eaa443c18337.png" width="350">

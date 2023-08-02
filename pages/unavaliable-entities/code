@@ -1,0 +1,104 @@
+
+type: custom:mushroom-chips-card
+chips:
+  - type: template
+    entity: group.allhouse
+    content: |
+      {{ states('sensor.unavailable_entities') }} 
+    icon: |-
+      {% set state=states(entity) %}
+      {% if state=='0' %}
+      mdi:audio-video
+      {% else %}
+      mdi:audio-video-off
+      {% endif %}
+    icon_color: |-
+      {% set state=states(entity) %}
+      {% if state=='0' %}
+      grey
+      {% else %}
+      amber
+      {% endif %}
+    tap_action:
+      action: fire-dom-event
+      browser_mod:
+        service: browser_mod.popup
+        data:
+          content:
+            type: custom:vertical-stack-in-card
+            cards:
+              - type: vertical-stack
+                cards:
+                  - type: custom:mushroom-template-card
+                    primary: Offline Devices
+                    picture: /local/png/offline.png
+                    secondary: >
+                      {{ states('sensor.unavailable_entities')
+                      }} 
+                    card_mod:
+                      style: |
+                        ha-card { 
+                          background: none;
+                          margin-left: 0px;
+                          --icon-size: 98px;
+                          --primary-text-color: rgb(var(--rgb-amber));
+                          --secondary-text-color: rgb(var(--rgb-white));
+                          --card-primary-font-weight: 500;
+                          --card-primary-font-size: 15px;
+                          --card-secondary-font-weight: 500;
+                          --card-secondary-font-size: 14px;
+                  - type: custom:hui-element
+                    card_type: markdown
+                    content: >
+                      {%- if
+                      states('sensor.unavailable_entities')|lower
+                      not in ['unknown','unavailable','none']
+                      -%}
+                        {%- if states('sensor.unavailable_entities')|int == 0 -%}
+                          No unavailable entities.
+                        {%- else -%}
+                          {%- for entity in state_attr('sensor.unavailable_entities','entities') -%}
+                          - {{ entity }}{%- if not loop.last -%}{{ '\n' }}{%- endif -%}
+                          {%- endfor -%}
+                        {%- endif -%}
+                      {%- endif -%}
+                    card_mod:
+                      style: |
+                        ha-card { 
+                          background: none;
+                          margin-top: -20px;
+                          margin-left: 0px;
+                          --icon-size: 98px;
+                          --card-primary-font-weight: 500;
+                          --card-primary-font-size: 15px;
+                          --card-secondary-font-weight: 500;
+                          --card-secondary-font-size: 14px;
+            card_mod:
+              style: |
+                ha-card { 
+                  background: black;
+          style: |
+            --popup-background-color: black;
+            --popup-border-radius: 0px;
+            --popup-padding-x: 30px;
+            --popup-padding-y: 30px;
+          right_button: Kapat
+alignment: justify
+card_mod:
+  style: |
+    :host {
+      --ha-card-background: rgba(var(--rgb-primary-text-color), 0.025);
+    }
+        ha-card {
+          --chip-icon-size: 22px;
+         --chip-background: none;
+         --chip-font-size: 12px;                         
+          --chip-spacing: 2px;
+          margin-top: 0px; 
+          padding-right: auto;
+          padding-top: 1px;
+          padding-left: auto;
+          padding-bottom: 1px; 
+        }           
+
+

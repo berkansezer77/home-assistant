@@ -6,19 +6,19 @@ chips:
     content: |
       {{ states('sensor.unavailable_entities') }} 
     icon: |-
-      {% set state=states(entity) %}
-      {% if state=='0' %}
-      mdi:audio-video
+      {% if states('sensor.ev_acik_isiklar')
+      |float > 0  %}
+        mdi:audio-video
       {% else %}
       mdi:audio-video-off
-      {% endif %}
+      {% endif %} 
     icon_color: |-
-      {% set state=states(entity) %}
-      {% if state=='0' %}
-      grey
+      {% if states('sensor.ev_acik_isiklar')
+      |float > 0  %}
+        white
       {% else %}
       amber
-      {% endif %}
+      {% endif %} 
     tap_action:
       action: fire-dom-event
       browser_mod:

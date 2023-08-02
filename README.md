@@ -7,6 +7,14 @@ Welcome to my Home Assistant Custom Setup Page.
 
 On this page, you can find the links of the different Home Assistant pages that I have coded. On these pages you can find not only the necessary codes, but also all the extra software. Everything from necessary special codes to media download links is available. In summary, you can get everything you need here.
 
+# Modern Dashboard Unavailable Devices Chip
+
+![image](https://github.com/berkansezer77/home-assistant/assets/84282504/956529d8-7c15-48ee-ba73-b6a24686a265)
+![image](https://github.com/berkansezer77/home-assistant/assets/84282504/2b16d120-e9f7-4412-b231-a922ac60fd52)
+
+## Code and the wiki: 
+[Unavailable Entities](https://github.com/berkansezer77/home-assistant/wiki/Unavailable-Entities)
+
 # Modern Dashboard Ultra Lite Version (Without any Booleans or Automations - Easy to Setup)
 
 <img src="https://user-images.githubusercontent.com/84282504/232549061-6ab58539-36bf-475e-8a47-17c002a95906.png" width="350"><img src="https://user-images.githubusercontent.com/84282504/232549603-67bea497-d74e-4c99-990c-973e4d01cf3a.png" width="350">
@@ -14,6 +22,8 @@ On this page, you can find the links of the different Home Assistant pages that 
 <img src="https://user-images.githubusercontent.com/84282504/232550473-c6f389fa-ea98-40c7-b7dc-05f718335984.png" width="350">
 
 ## Code and the wiki: 
+
+- To install the page you need this code: [Page Code](https://github.com/berkansezer77/home-assistant/assets/84282504/2b16d120-e9f7-4412-b231-a922ac60fd52)
 
 - [Modern Dashboard Ultra Lite Version](https://github.com/berkansezer77/home-assistant/wiki/Modern-Dashboard-Ultra-Lite-Version-(No-Booleans-used))
 

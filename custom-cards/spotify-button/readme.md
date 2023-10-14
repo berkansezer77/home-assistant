@@ -21,7 +21,7 @@ _**If you like you can support my work.**_
 
 ## Common tags
 
-Element | Tag | Example usage
+Element |  Example usage
 --- | --- | ---
 Mushroom cards | h1 | ```[Jekyll, which is a static site generator that also works on Github pages](https://help.github.com/en/github/working-with-github-pages/setting-up-a-github-pages-site-with-jekyll)```
 Link | a | ```<a href="http://example.com">Check out this link</a>```

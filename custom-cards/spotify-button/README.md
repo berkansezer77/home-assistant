@@ -19,3 +19,8 @@ _**If you like you can support my work.**_
 - Mushroom Cards: [Mushroom Cards](https://github.com/piitaya/lovelace-mushroom)
 - Spotcast : [Spotcast](https://github.com/fondberg/spotcast)
 - Card Mod: [Card-Mode](https://github.com/thomasloven/lovelace-card-mod)
+
+Ofcourse you also need Spotify integration to be installed on Home Assistant
+
+## Code: 
+

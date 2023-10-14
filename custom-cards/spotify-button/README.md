@@ -4,8 +4,7 @@ _**If you like you can support my work.**_
 
 # Spotify Button 
 
-<img src="https://user-images.githubusercontent.com/84282504/204285116-301f9fa1-5ff8-4da6-ad1d-0521cd343b2e.png" width="350">
-<img src="https://user-images.githubusercontent.com/84282504/204288564-e194b83f-32c0-4b83-9bde-a5fe725b2c26.png" width="250">
+<img src="https://user-images.githubusercontent.com/84282504/204285116-301f9fa1-5ff8-4da6-ad1d-0521cd343b2e.png" width="350"> <img src="https://user-images.githubusercontent.com/84282504/204288564-e194b83f-32c0-4b83-9bde-a5fe725b2c26.png" width="250">
 <img src="https://user-images.githubusercontent.com/84282504/204289579-e5407e5c-9e11-43a0-9e0b-9d887b2aeed9.png" width="250">
 
 # Page Properties:

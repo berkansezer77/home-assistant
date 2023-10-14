@@ -3,9 +3,8 @@ _**If you like you can support my work.**_
 <a href="https://www.buymeacoffee.com/berkansezer" target="_blank"><img src="https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png" alt="Buy Me A Coffee" style="height: 41px !important;width: 174px !important;box-shadow: 0px 3px 2px 0px rgba(190, 190, 190, 0.5) !important;-webkit-box-shadow: 0px 3px 2px 0px rgba(190, 190, 190, 0.5) !important;" ></a> 
 
 Unavaliable Entites
-
-![image](https://github.com/berkansezer77/home-assistant/assets/84282504/956529d8-7c15-48ee-ba73-b6a24686a265)
-![image](https://github.com/berkansezer77/home-assistant/assets/84282504/2b16d120-e9f7-4412-b231-a922ac60fd52)
+<img src="https://github.com/berkansezer77/home-assistant/assets/84282504/956529d8-7c15-48ee-ba73-b6a24686a265" width="250">
+<img src="https://github.com/berkansezer77/home-assistant/assets/84282504/2b16d120-e9f7-4412-b231-a922ac60fd52" width="250">
 
 ## Page Properties:
 
@@ -37,20 +36,14 @@ _## Manual_
 
 [Sensor Code ](https://github.com/berkansezer77/home-assistant/blob/main/custom-cards/unavailable-entities/unavailable-entities-sensor.yaml)
 
-2 - You have to create an ignore Group. If you have a seperate group.yaml file copy and paste the code down below to your group.yaml file. 
+2 - You have to create an ignore Group. If you have a seperate "group.yaml" file copy and paste the code down below to your group.yaml file. 
 
-ignored_entities:
-  entities:
-      - button.ewelink_ds01_identify  (Example)
-      - button.banyo_kap_sensoru_identify_3 (Example)
- 
-If you don't have just copy and paste the code to your configuration.yaml
+[Ignored Entites Code ](https://github.com/berkansezer77/home-assistant/blob/main/custom-cards/unavailable-entities/unavailable-entities-sensor.yaml)
 
-group:
-  ignored_entities:
-    entities:
-      - button.ewelink_ds01_identify (Example)
-      - button.banyo_kap_sensoru_identify_3 (Example)
+It should look like this...
+
+<img src="https://github.com/berkansezer77/home-assistant/assets/84282504/7f2f2cf9-142c-45ad-bb82-7bee04c10375" width="250">
+
 
 İmportant Note: When you first create the code you will see that a lot of unavailable devices will be displayed. That sometimes doesn't mean that the integration or device is not working. For example Smartthings integration brings your Samsung TV to home assistance. You control your TV, turn it on and off but some extra enttites such as energy monitoring are unavaliable. 
 

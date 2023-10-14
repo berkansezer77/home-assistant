@@ -25,17 +25,17 @@ Unavaliable Entites
 
 The Wifi icon is located at : 
 
-- Files are located at: [Multimedia files](https://github.com/berkansezer77/home-assistant/blob/main/pages/unavaliable-entities/offline.png)
+- Files are located at: [Multimedia files](https://github.com/berkansezer77/home-assistant/blob/main/custom-cards/unavailable-entities/offline.png)
 
 Page Code: 
 
-- To install the page you need this code: [Page Code](https://github.com/berkansezer77/home-assistant/blob/main/pages/unavaliable-entities/code)
+- To install the page you need this code: [Page Code](https://github.com/berkansezer77/home-assistant/blob/main/custom-cards/unavailable-entities/page-code)
 
 _## Manual_
 
 1 - First we have to create a little template in sensor.yaml(If you didn't seperate it then paste into config.yaml). Just copy and paste the code.
 
-[Sensor Code ](https://github.com/berkansezer77/home-assistant/blob/main/pages/unavaliable-entities/unavailable-entities-sensor.yaml)
+[Sensor Code ](https://github.com/berkansezer77/home-assistant/blob/main/custom-cards/unavailable-entities/unavailable-entities-sensor.yaml)
 
 2 - You have to create and ignore Group. If you have a seperate group.yaml file copy and paste the code down below to your group.yaml file. 
 

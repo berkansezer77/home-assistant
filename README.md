@@ -13,7 +13,7 @@ On this page, you can find the links of the different Home Assistant pages that 
 ![image](https://github.com/berkansezer77/home-assistant/assets/84282504/2b16d120-e9f7-4412-b231-a922ac60fd52)
 
 ## Code and the wiki: 
-[Unavailable Entities](https://github.com/berkansezer77/home-assistant/wiki/Unavailable-Entities)
+[Unavailable Entities](https://github.com/berkansezer77/home-assistant/tree/main/custom-cards/unavailable-entities)
 
 # Modern Dashboard Ultra Lite Version (Without any Booleans or Automations - Easy to Setup)
 

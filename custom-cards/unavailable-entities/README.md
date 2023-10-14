@@ -3,8 +3,11 @@ _**If you like you can support my work.**_
 <a href="https://www.buymeacoffee.com/berkansezer" target="_blank"><img src="https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png" alt="Buy Me A Coffee" style="height: 41px !important;width: 174px !important;box-shadow: 0px 3px 2px 0px rgba(190, 190, 190, 0.5) !important;-webkit-box-shadow: 0px 3px 2px 0px rgba(190, 190, 190, 0.5) !important;" ></a> 
 
 ## Unavaliable Entites:
+![1](https://github.com/berkansezer77/home-assistant/assets/84282504/4539a74d-a228-4213-850f-3d1423fef3e8)
 
-<img src="https://github.com/berkansezer77/home-assistant/assets/84282504/1b0d1059-6c44-49a9-8eb7-62e79c8f8c10> <img src="https://github.com/berkansezer77/home-assistant/assets/84282504/2b16d120-e9f7-4412-b231-a922ac60fd52" width="450">
+<img src="https://github.com/berkansezer77/home-assistant/assets/84282504/4539a74d-a228-4213-850f-3d1423fef3e8" width="450">
+
+<img src="https://github.com/berkansezer77/home-assistant/assets/84282504/2b16d120-e9f7-4412-b231-a922ac60fd52" width="450">
 
 ## Page Properties:
 

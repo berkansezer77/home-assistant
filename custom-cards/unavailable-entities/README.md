@@ -37,7 +37,7 @@ _## Manual_
 
 [Sensor Code ](https://github.com/berkansezer77/home-assistant/blob/main/custom-cards/unavailable-entities/unavailable-entities-sensor.yaml)
 
-2 - You have to create and ignore Group. If you have a seperate group.yaml file copy and paste the code down below to your group.yaml file. 
+2 - You have to create an ignore Group. If you have a seperate group.yaml file copy and paste the code down below to your group.yaml file. 
 
 ignored_entities:
   entities:

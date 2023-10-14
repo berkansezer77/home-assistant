@@ -2,9 +2,10 @@ _**If you like you can support my work.**_
 
 <a href="https://www.buymeacoffee.com/berkansezer" target="_blank"><img src="https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png" alt="Buy Me A Coffee" style="height: 41px !important;width: 174px !important;box-shadow: 0px 3px 2px 0px rgba(190, 190, 190, 0.5) !important;-webkit-box-shadow: 0px 3px 2px 0px rgba(190, 190, 190, 0.5) !important;" ></a> 
 
-Unavaliable Entites
-<img src="https://github.com/berkansezer77/home-assistant/assets/84282504/956529d8-7c15-48ee-ba73-b6a24686a265" width="250">
-<img src="https://github.com/berkansezer77/home-assistant/assets/84282504/2b16d120-e9f7-4412-b231-a922ac60fd52" width="250">
+## Unavaliable Entites:
+
+<img src="https://github.com/berkansezer77/home-assistant/assets/84282504/956529d8-7c15-48ee-ba73-b6a24686a265" width="450">
+<img src="https://github.com/berkansezer77/home-assistant/assets/84282504/2b16d120-e9f7-4412-b231-a922ac60fd52" width="450">
 
 ## Page Properties:
 

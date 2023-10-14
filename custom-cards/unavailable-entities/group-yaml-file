@@ -1,0 +1,5 @@
+ignored_entities:
+  entities:
+      - button.ewelink_ds01_identify
+      - button.banyo_kap_sensoru_identify_3
+      - button.ewelink_ds01_identify_2

@@ -23,7 +23,7 @@ _**If you like you can support my work.**_
 
 Element | Tag | Example usage
 --- | --- | ---
-Header | h1 | ```<h1>Title of page</h1>```
+Mushroom cards | h1 | ```<h1>[Title of page](https://github.com/piitaya/lovelace-mushroom)</h1>```
 Link | a | ```<a href="http://example.com">Check out this link</a>```
 Image | img | ```<img src="http://www.example.com/image.jpg">```
 Paragraph | p | ```<p>This is a new paragraph.</p>```

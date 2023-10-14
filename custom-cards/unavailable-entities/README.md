@@ -4,7 +4,7 @@ _**If you like you can support my work.**_
 
 ## Unavaliable Entites:
 
-<img src="https://github.com/berkansezer77/home-assistant/assets/84282504/956529d8-7c15-48ee-ba73-b6a24686a265" width="550"> <img src="https://github.com/berkansezer77/home-assistant/assets/84282504/2b16d120-e9f7-4412-b231-a922ac60fd52" width="450">
+<img src="https://github.com/berkansezer77/home-assistant/assets/84282504/1b0d1059-6c44-49a9-8eb7-62e79c8f8c10> <img src="https://github.com/berkansezer77/home-assistant/assets/84282504/2b16d120-e9f7-4412-b231-a922ac60fd52" width="450">
 
 ## Page Properties:
 

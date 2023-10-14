@@ -19,7 +19,7 @@ double_tap_action:
 layout: vertical
 picture: |
   {% if is_state('media_player.spotify_berkan_sezer', 'playing') %}
-    /local/png/dot.png
+    /local/png/dot2.png
   {% elif is_state('media_player.spotify_berkan_sezer', 'idle') %}
     /local/png/spotify2.png
   {% elif is_state('media_player.spotify_berkan_sezer', 'paused') %}

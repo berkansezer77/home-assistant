@@ -29,4 +29,5 @@ Ofcourse you also need Spotify integration to be installed on Home Assistant
 Note: transparent dot on line 22 can be downloaded from : 
 
 - Transparent image: [Image](https://github.com/berkansezer77/home-assistant/blob/main/custom-cards/spotify-button/dot2.png)
+
 Note: When you go to above link you will not see any image on the page because it is transparent. Just go to the top right corner an click download image and place it to your image folder.

@@ -24,3 +24,7 @@ Ofcourse you also need Spotify integration to be installed on Home Assistant
 
 ## Code: 
 
+- Button Code: [Mushroom Cards](https://github.com/berkansezer77/home-assistant/blob/main/custom-cards/spotify-button/button-code)
+
+Note: transparent dot on line 22 can be downloaded from : 
+

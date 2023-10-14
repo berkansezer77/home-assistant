@@ -50,7 +50,9 @@ It should look like this...
 
 ![image](https://github.com/berkansezer77/home-assistant/assets/84282504/5b8a2cc7-a90f-43af-a932-17b4b2ccee57)
 
-In that case just add the entity names to the ignored groups you have a created. Also some buttons may seem as offline althought they are completely fine and working. You can also add them to the list.
+In that case just add entity names to the ignored groups you have a created. You can also disable these entites from HA. If you disable an offline entity it will also not appear in your unavailable list as well. 
+
+Some buttons may also seem to be offline although they are completely fine and working. You can also add them to the list.
 
 3) Restart home assistant
 

@@ -5,9 +5,7 @@ _**If you like you can support my work.**_
 ## Unavaliable Entites:
 ![1](https://github.com/berkansezer77/home-assistant/assets/84282504/4539a74d-a228-4213-850f-3d1423fef3e8)
 
-<img src="https://github.com/berkansezer77/home-assistant/assets/84282504/4539a74d-a228-4213-850f-3d1423fef3e8" width="450">
-
-<img src="https://github.com/berkansezer77/home-assistant/assets/84282504/2b16d120-e9f7-4412-b231-a922ac60fd52" width="450">
+<img src="https://github.com/berkansezer77/home-assistant/assets/84282504/1b7a01aa-eed3-4d45-a54c-e044ca5cf5d2" width="450">
 
 ## Page Properties:
 

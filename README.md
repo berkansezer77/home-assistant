@@ -21,7 +21,7 @@ On this page, you can find the links of the different Home Assistant pages that 
 <img src="https://user-images.githubusercontent.com/84282504/232550168-533f7809-2e7e-416d-ba11-26526b2135b1.png" width="350">
 <img src="https://user-images.githubusercontent.com/84282504/232550473-c6f389fa-ea98-40c7-b7dc-05f718335984.png" width="350">
 
-## Code and the wiki: 
+## Code and the Manual: 
 
 - To install the page you need this code: [Page Code](https://github.com/berkansezer77/home-assistant/assets/84282504/2b16d120-e9f7-4412-b231-a922ac60fd52)
 
@@ -101,7 +101,7 @@ https://github.com/berkansezer77/home-assistant/wiki/Home-Assistant-custom-Spoti
 ***
 # ## Home Assistant Spotify Button
 
-https://github.com/berkansezer77/home-assistant/wiki/Home-Assistant-Spotify-Button
+https://github.com/berkansezer77/home-assistant/blob/main/custom-cards/spotify-button/README.md
 
 <img src="https://user-images.githubusercontent.com/84282504/204285116-301f9fa1-5ff8-4da6-ad1d-0521cd343b2e.png" width="350">
 

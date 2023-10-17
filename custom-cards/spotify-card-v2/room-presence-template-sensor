@@ -1,0 +1,13 @@
+{% set x = expand('binary_sensor.hue_motion_sensor')
+            | selectattr('state', 'eq', 'on')
+            | sort(reverse=true, attribute='last_changed')
+            | list %}
+{% if (x | count > 0) and (((as_timestamp(now()) - as_timestamp(x[0].last_changed)) | int) < 1) %}
+  {% if (area_name(x[0].entity_id) != None) %}
+    {{ area_name(x[0].entity_id) }}
+  {% else %}
+    {{ x[0].name }}
+  {% endif %}
+{% else %}
+  {{ states('sensor.last_motion_activated_sensor') }}
+{% endif %}

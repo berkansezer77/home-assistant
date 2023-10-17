@@ -4,6 +4,9 @@ _**If you like you can support my work.**_
 
 # Spotify Card V2
 <img src="https://github.com/berkansezer77/home-assistant/assets/84282504/9a819a43-9cf6-4432-ac2a-9f2297f53cf7" width="350">
+<img src="https://github.com/berkansezer77/home-assistant/assets/84282504/57cfe58a-857c-4060-8e16-01cc52177ed0" width="250">
+<img src="https://github.com/berkansezer77/home-assistant/assets/84282504/22b5f3d2-5b11-4066-8925-08b509d34aa2" width="150">
+<img src="https://github.com/berkansezer77/home-assistant/assets/84282504/437b2d6a-8ab6-4e28-aa8d-81ee23a68ec6" width="150">
 
 
 
@@ -57,7 +60,11 @@ You will also need the Spotify integration to be installed in Home Assistant.
 
 ## Screenshots: 
 
-<img src="https://github.com/berkansezer77/home-assistant/assets/84282504/57cfe58a-857c-4060-8e16-01cc52177ed0" width="250">
+
+https://github.com/berkansezer77/home-assistant/assets/84282504/8a183ed1-f587-4924-957d-b3516d63c15c
+
+
+<img src="https://github.com/berkansezer77/home-assistant/assets/84282504/8a183ed1-f587-4924-957d-b3516d63c15c" width="250">
 <img src="https://github.com/berkansezer77/home-assistant/assets/84282504/22b5f3d2-5b11-4066-8925-08b509d34aa2" width="150">
 <img src="https://github.com/berkansezer77/home-assistant/assets/84282504/437b2d6a-8ab6-4e28-aa8d-81ee23a68ec6" width="150">
 

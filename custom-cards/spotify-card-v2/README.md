@@ -4,9 +4,6 @@ _**If you like you can support my work.**_
 
 # Spotify Card V2
 <img src="https://github.com/berkansezer77/home-assistant/assets/84282504/9a819a43-9cf6-4432-ac2a-9f2297f53cf7" width="350">
-<img src="https://github.com/berkansezer77/home-assistant/assets/84282504/57cfe58a-857c-4060-8e16-01cc52177ed0" width="250">
-<img src="https://github.com/berkansezer77/home-assistant/assets/84282504/22b5f3d2-5b11-4066-8925-08b509d34aa2" width="150">
-<img src="https://github.com/berkansezer77/home-assistant/assets/84282504/437b2d6a-8ab6-4e28-aa8d-81ee23a68ec6" width="150">
 
 
 
@@ -21,22 +18,25 @@ Don't worry. I have a manual for setup. Everything is explained there and it is 
 
 **Where are the codes ? **
 
-Everything you need is in this wiki page. 🎉
+Everything you need including the setup manual is in this page. 🎉
 
 **I don't have the multimedia files you used. ? **
 
 Well they are included as well. Just check below. 🎉
 ## Page Properties:
 
-- Room Presence. Start the music in your last entered room
+- White and Dark Theme.
+- Design changes on white theme.
+- Beatiful artwork design for every song.
+- Room Presence. Start the music in your last entered room (More effective on single occupancy)
 - Media Player controls
 - Music Follow. Let the music follow you around the house automatically. 
 - Spotify Card integrated. Start your playlist from the card.
 - Exclusively designed for Spotify control.
-- Ambilight animations.
+- Ambilight animations. Glowing light in all over the card.
 - Browser Mode integration. 
-- Minimalistic design. You can hide media players and spotify playlist. 
-- See which media player is currentlu playing
+- Minimalistic design. You can hide spotify playlist. 
+- The playing media player is highlighted in a circle.
 - Rewind - Forward your music.
 - Developed on the basis of Amazon Echo devices but you can also use it with any other media player type.
 - Can easily be installed with the given manual
@@ -57,9 +57,9 @@ You will also need the Spotify integration to be installed in Home Assistant.
 
 ## Screenshots: 
 
-<img src="https://user-images.githubusercontent.com/84282504/226496244-d3505e0e-7c88-46b0-aa0d-1681512bb89c.gif" width="250">
-<img src="https://user-images.githubusercontent.com/84282504/226495338-6b36471c-b58d-4911-8d5b-d1ba5b5aa70a.png" width="250">
-<img src="https://user-images.githubusercontent.com/84282504/226581606-1c9a2ec3-d4ae-4171-9b5d-89b61d33fc64.gif" width="250">
+<img src="https://github.com/berkansezer77/home-assistant/assets/84282504/57cfe58a-857c-4060-8e16-01cc52177ed0" width="250">
+<img src="https://github.com/berkansezer77/home-assistant/assets/84282504/22b5f3d2-5b11-4066-8925-08b509d34aa2" width="150">
+<img src="https://github.com/berkansezer77/home-assistant/assets/84282504/437b2d6a-8ab6-4e28-aa8d-81ee23a68ec6" width="150">
 
 
 

@@ -35,7 +35,7 @@ Well they are included as well. Just check below. 🎉
 - Room Presence. Start the music in your last entered room (More effective on single occupancy)
 - Media Player controls
 - Music Follow. Let the music follow you around the house automatically. 
-- Spotify Card integrated. Start your playlist from the card.
+- Hidden playlist. Activate your favorite songs with a single click.
 - Exclusively designed for Spotify control.
 - Ambilight animations. Glowing light in all over the card.
 - Browser Mode integration. 
@@ -72,9 +72,25 @@ https://github.com/berkansezer77/home-assistant/assets/84282504/8a183ed1-f587-49
 
 Page Code: 
 
-- To install the page you need this code: [Page Code](https://github.com/berkansezer77/home-assistant/blob/main/pages/spotify-card-v2/page-code)
+- To install the page you need this code: [Page Code](https://github.com/berkansezer77/home-assistant/blob/main/custom-cards/spotify-card-v2/page-code)
 
 ## Manual:
+
+##Change Theme:
+
+Before we start. To change the theme with a signle click, Browser Mode should be installed and we need to create an input boolean named "input_boolean.theme". Changing the theme from white to dark is quite easy. Just follow the steps. 
+
+1) Download "Google White Theme" from Hacs.
+2) Download Mushroom Shadow from Hacs.
+3) Register your browser. To do that go to browser mode in side menu and click register this browser.
+4) Now we need 2 scripts and 1 automation. After that a single click will change the mode.
+
+[Script White Mode](https://github.com/berkansezer77/home-assistant/blob/main/custom-cards/spotify-card-v2/page-code)
+[Script Dark Mode](https://github.com/berkansezer77/home-assistant/blob/main/custom-cards/spotify-card-v2/theme-google-light-script)
+[Automation](https://github.com/berkansezer77/home-assistant/blob/main/custom-cards/spotify-card-v2/dark-and-white-mode-automation)
+
+Now the boolean we created before(input_boolean.theme) is ready for transformation between themes. The onlu thing you need is you should place tap action into anywhere you like to single click and change the whole theme. 
+
 
 Okay this is a minimalist Spotify Card. Let's start with code explanation and go line by line. 
 

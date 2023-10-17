@@ -114,6 +114,18 @@ Line 3.
 
 I used a swipe card here to navigate between my media players. Media Players are starting at line 71 and going until line 418. 
 
+![image](https://github.com/berkansezer77/home-assistant/assets/84282504/8e8143b8-9754-420d-beeb-428b56dadbfc)
+
+The above first line starts at line 21 with an horizontal stack. 
+
+![image](https://github.com/berkansezer77/home-assistant/assets/84282504/7558e255-81a3-4bf7-9cd0-0791e8cbeb43)
+
+Second media player player list again starts at line 243.
+
+Line 435.
+
+
+
 ### Hide - Show Spotify Card:
 The first one at line 29 activates Spotify Card at the bottom of the page (code starting from line 610). So I used a conditional card for activating the Spotify - Card. 
 

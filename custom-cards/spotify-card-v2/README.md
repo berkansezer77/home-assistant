@@ -152,10 +152,21 @@ The first one at line 29 activates Spotify Card at the bottom of the page (code 
 
 ![image](https://github.com/berkansezer77/home-assistant/assets/84282504/ad5e5430-3ee8-4b46-b413-7b53eb7c8d51)
 
-In order for this to work you also have to create an boolean named "input_boolean.modern_dashboard_spotify_Card and place it under playlist options on line 32 as seen on the picture.
+In order for this to work you also have to create an boolean named "input_boolean.modern_dashboard_spotify_Card and place it under playlist options on line 32 as seen on the picture. With this whenever you click "playlist" section the spotify card will appear on the screen. To close it just single click on "Playlist" again.
 
-<img src="https://user-images.githubusercontent.com/84282504/226583621-412ce6da-f19c-4f49-9c8e-c3dcbadb2980.png" width="250">
+Line 756
 
+All the little cards I used to create this Spotify Card V2 are inside a "custom:stack-in-card: 
+
+![image](https://github.com/berkansezer77/home-assistant/assets/84282504/ed47cae8-4537-49b5-b9dc-7385f9fb8d17)
+
+This stack in card are also modified with card mode starting at line 756. 
+
+![image](https://github.com/berkansezer77/home-assistant/assets/84282504/c56dc28f-7e95-4747-b208-2f186b282618)
+
+As you can see I have used a conditional structure here with "input_boolean.theme". On line 815 I used a red background which lets the card to look uninterrupted while on dark mode. 
+
+![image](https://github.com/berkansezer77/home-assistant/assets/84282504/0242e145-2dbc-4257-b563-11ffb346c248)
 
 
 

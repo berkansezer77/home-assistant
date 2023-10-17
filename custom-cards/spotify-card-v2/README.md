@@ -96,14 +96,23 @@ Before we start. To change the theme with a signle click, Browser Mode should be
 
 Now the boolean we created before(input_boolean.theme) is ready for transformation between themes. The onlu thing you need is you should place tap action into anywhere you like to single click and change the whole theme. 
 
+As shown in above example, changing theme is available with a single click to "Tünaydın" at the upper left corner. The code for that click is: 
 
-Okay this is a minimalist Spotify Card. Let's start with code explanation and go line by line. 
+```ruby
+                tap_action:
+                  action: call-service
+                  service: input_boolean.toggle
+                  target:
+                    entity_id: input_boolean.theme
+```
 
-Line 3. 
+##Code Explanation: 
 
-![image](https://user-images.githubusercontent.com/84282504/226582419-2260de02-d415-4849-af84-77829f65b571.png)
+Line 3.
 
-I used a swipe card here to navigate between my media players. Media Players are starting at line 29 and going until line 336. 
+![image](https://github.com/berkansezer77/home-assistant/assets/84282504/3c6445a8-0989-4ba4-83a0-1fe11db49d13)
+
+I used a swipe card here to navigate between my media players. Media Players are starting at line 71 and going until line 418. 
 
 ### Hide - Show Spotify Card:
 The first one at line 29 activates Spotify Card at the bottom of the page (code starting from line 610). So I used a conditional card for activating the Spotify - Card. 

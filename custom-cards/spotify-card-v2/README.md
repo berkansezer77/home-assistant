@@ -2,12 +2,10 @@ _**If you like you can support my work.**_
 
 <a href="https://www.buymeacoffee.com/berkansezer" target="_blank"><img src="https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png" alt="Buy Me A Coffee" style="height: 41px !important;width: 174px !important;box-shadow: 0px 3px 2px 0px rgba(190, 190, 190, 0.5) !important;-webkit-box-shadow: 0px 3px 2px 0px rgba(190, 190, 190, 0.5) !important;" ></a> 
 
-<img src="https://user-images.githubusercontent.com/84282504/226495334-d192e575-a72f-4218-a733-9d0714e11a46.png" width="450">
+<img src="https://github.com/berkansezer77/home-assistant/assets/84282504/9a819a43-9cf6-4432-ac2a-9f2297f53cf7" width="450">
 <img src="https://user-images.githubusercontent.com/84282504/226495337-b787bd17-de30-48cf-a60b-0829c90062e1.png" width="350">
 
 
-
-https://github.com/berkansezer77/home-assistant/assets/84282504/748c00e9-644d-40f9-98ab-cc1a5c24a18b
 
 
 # Installation

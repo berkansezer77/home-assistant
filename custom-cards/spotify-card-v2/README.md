@@ -29,6 +29,7 @@ Well they are included as well. Just check below. 🎉
 ## Page Properties:
 
 - White and Dark Theme Ready.
+- 2 different card styles for white and dark template in one single card!!
 - Design changes on white theme.
 - Switch between white and dark modes with one click
 - Beatiful artwork design for every song.
@@ -132,7 +133,20 @@ I Used a conditional card here. The aim is very simple. This rihanna picture wil
 
 Spotify and play pictures. Yes Spotify word is a picture here. I used a mushroom chip card and modified it with card mode to place thoese play and spotify pictures under each other. 
 
-Line 561 represents the mushroom media player which only appears when spotify is playing anything. Now there is an important point here. On line 596 I used boolean named theme. If any condition named as "('input_boolean.theme', 'on') " it means that white mode is in action. Other words all template will turn into white. So adjustments made for white mode will only work when white mode is active. So volume controls on 602 and and media controls on line 594 acts different on white and dark themes with this conditions.
+Line 561 
+
+Represents the mushroom media player which only appears when spotify is playing anything. Now there is an important point here. On line 596 I used boolean named theme. If any condition named as "('input_boolean.theme', 'on') " it means that white mode is in action. Other words all template will turn into white. So adjustments made for white mode will only work when white mode is active. So volume controls on 602 and and media controls on line 594 acts different on white and dark themes with this conditions.
+
+The magic actually happens here. When in dark mode:
+
+![image](https://github.com/berkansezer77/home-assistant/assets/84282504/2b856e92-0da7-4d86-a105-b387d7974a2e)
+
+The card will look like above picture while on playing state. But If you pass to dark mode the card will transform into :
+
+![image](https://github.com/berkansezer77/home-assistant/assets/84282504/0a879574-907a-4e3c-90ea-9390aa82a9c6)
+
+So 2 different designs for 2 different templates in just one single code. 
+
 
 Line 678 is for progress bar. 
 
@@ -168,6 +182,15 @@ As you can see I have used a conditional structure here with "input_boolean.them
 
 ![image](https://github.com/berkansezer77/home-assistant/assets/84282504/0242e145-2dbc-4257-b563-11ffb346c248)
 
+But when passed to dark mode. The shining lights coming behind the Rihanna picture creates an effect as if it extends beyond the screen in dark mode.
 
+The trick for glowing light behind the Spotify artwork is actually pretty simple. I just used another hidden card floating around the main artwork. So in theory there are 2 artwork here. But one is covered with blur filter on line 770. 
+
+Normally it will look like this: 
+![image](https://github.com/berkansezer77/home-assistant/assets/84282504/8ff7ebfc-4e9c-44ed-a641-8ef0e45e8396)
+
+As you can see a second artwork is floating around the main artwork. But when we apply " filter: blur(100px) saturate(200%);" command to line 770 the artwork will transform into a light shadow having the same colors with main album art work. 
+
+![Uploading image.png…]()
 
 

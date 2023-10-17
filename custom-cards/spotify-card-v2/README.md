@@ -91,6 +91,8 @@ Before we start. To change the theme with a signle click, Browser Mode should be
 
 [Automation](https://github.com/berkansezer77/home-assistant/blob/main/custom-cards/spotify-card-v2/dark-and-white-mode-automation)
 
+![1](https://github.com/berkansezer77/home-assistant/assets/84282504/9896d152-f556-44ca-91c1-ebd330c144b3)
+
 Now the boolean we created before(input_boolean.theme) is ready for transformation between themes. The onlu thing you need is you should place tap action into anywhere you like to single click and change the whole theme. 
 
 

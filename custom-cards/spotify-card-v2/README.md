@@ -116,18 +116,43 @@ I used a swipe card here to navigate between my media players. Media Players are
 
 ![image](https://github.com/berkansezer77/home-assistant/assets/84282504/8e8143b8-9754-420d-beeb-428b56dadbfc)
 
-The above first line starts at line 21 with an horizontal stack. 
+First swipeable section startas at line 21 with an horizontal stack. 
 
 ![image](https://github.com/berkansezer77/home-assistant/assets/84282504/7558e255-81a3-4bf7-9cd0-0791e8cbeb43)
 
-Second media player player list again starts at line 243.
+Second swipeable area is at line 243.
 
-Line 435.
+Line 435
 
+<img src="[https://github.com/berkansezer77/home-assistant/assets/84282504/437b2d6a-8ab6-4e28-aa8d-81ee23a68ec6](https://github.com/berkansezer77/home-assistant/assets/84282504/1b99596f-83e5-4a05-9d95-d70415eb2d27)" width="150">
 
+I Used a conditional card here. The aim is very simple. This rihanna picture will be shown when nothing is playing on Spotify. On line 456 there is a white solid background circle around rihanna picture. If you like to change the color tone just edit line 457 nad select something different then white. Line 503 and Line 532 also represents :
 
+![image](https://github.com/berkansezer77/home-assistant/assets/84282504/14776086-1d5c-43a0-aea8-a3bcc5545e50)
+
+Spotify and play pictures. Yes Spotify word is a picture here. I used a mushroom chip card and modified it with card mode to place thoese play and spotify pictures under each other. 
+
+Line 561 represents the mushroom media player which only appears when spotify is playing anything. Now there is an important point here. On line 596 I used boolean named theme. If any condition named as "('input_boolean.theme', 'on') " it means that white mode is in action. Other words all template will turn into white. So adjustments made for white mode will only work when white mode is active. So volume controls on 602 and and media controls on line 594 acts different on white and dark themes with this conditions.
+
+Line 678 is for progress bar. 
+
+![image](https://github.com/berkansezer77/home-assistant/assets/84282504/a8fd894c-b9cd-43c1-a693-3416bded2756)
+
+Line 719 Spotify Card. 
+
+![image](https://github.com/berkansezer77/home-assistant/assets/84282504/c611370d-64be-4ca3-96f6-26228ba642d2)
+
+I used a conditional card for Spotify card. It only appears when "Playlist" chip is (at the top)single pressed.
+
+![image](https://github.com/berkansezer77/home-assistant/assets/84282504/dfcbc809-ea86-4ff2-abb9-67007fc4b439)
+
+As you can see if the playlist appears on the screen that means 
 ### Hide - Show Spotify Card:
 The first one at line 29 activates Spotify Card at the bottom of the page (code starting from line 610). So I used a conditional card for activating the Spotify - Card. 
+
+![image](https://github.com/berkansezer77/home-assistant/assets/84282504/ad5e5430-3ee8-4b46-b413-7b53eb7c8d51)
+
+In order for this to work you also have to create an boolean named "input_boolean.modern_dashboard_spotify_Card and place it under playlist options on line 32 as seen on the picture.
 
 <img src="https://user-images.githubusercontent.com/84282504/226583621-412ce6da-f19c-4f49-9c8e-c3dcbadb2980.png" width="250">
 

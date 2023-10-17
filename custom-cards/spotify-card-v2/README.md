@@ -5,8 +5,8 @@ _**If you like you can support my work.**_
 # Spotify Card V2
 <img src="https://github.com/berkansezer77/home-assistant/assets/84282504/9a819a43-9cf6-4432-ac2a-9f2297f53cf7" width="350">
 <img src="https://github.com/berkansezer77/home-assistant/assets/84282504/57cfe58a-857c-4060-8e16-01cc52177ed0" width="250">
-<img src="https://github.com/berkansezer77/home-assistant/assets/84282504/22b5f3d2-5b11-4066-8925-08b509d34aa2" width="150">
-<img src="https://github.com/berkansezer77/home-assistant/assets/84282504/437b2d6a-8ab6-4e28-aa8d-81ee23a68ec6" width="150">
+<img src="https://github.com/berkansezer77/home-assistant/assets/84282504/22b5f3d2-5b11-4066-8925-08b509d34aa2" width="250">
+<img src="https://github.com/berkansezer77/home-assistant/assets/84282504/437b2d6a-8ab6-4e28-aa8d-81ee23a68ec6" width="250">
 
 
 
@@ -193,6 +193,54 @@ As you can see a second artwork is floating around the main artwork. But when we
 
 ![image](https://github.com/berkansezer77/home-assistant/assets/84282504/ad6d5451-33ef-45cf-bef5-7fc561beb335)
 
+## Room Presence Music:
 
+This card has the capacity to play music on the media player of the room you are in.
+
+This feature is activated with an automation. It is a simple and easy one. What it does is when it is activated through a button the automation checks the sensor and finds out the last room you entered. After that, with a help of an automation it starts to play Spotify music on that rooms media player.
+
+To achieve that we need couple of things things: 
+
+- Spotcast integration to be installed.
+- A input Button named "input_button.modern_dashboard_spotify_last_room_music" Create it from helpers section.
+- All motion sensors you are going to use has be grouped under helpers > create group >  binary sensor group
+- Last Room Motion template sensor (You need at least HA 2023.09 to be installed.
+- [Last Room Music Automation](https://github.com/berkansezer77/home-assistant/blob/main/pages/spotify-card-v2/last-room-music-automation)
+
+1) Ceate your button from helpers section of Home Assistant.
+2) Go to helpers section again. Choose "Create Helper" and then click "Template". Click "Template a sensor".
+Copy and paste this code Last Motion Sensor](https://github.com/berkansezer77/home-assistant/blob/main/custom-cards/spotify-card-v2/room-presence-template-sensor)
+
+![image](https://github.com/berkansezer77/home-assistant/assets/84282504/e66260e6-e1d3-4732-9c4e-dc38a066b76e)
+
+So know our sensor for detecting last motion activated room is ready. 
+This sensor will always show you the name of the room where movement was last detected.
+
+3) Now we need the automation. 
+[Last Room Music Automation](https://github.com/berkansezer77/home-assistant/blob/main/custom-cards/spotify-card-v2/room-presence-automation)
+
+In this automation the important thing to change the name of the media player devices. For example for my office I have an echo device named Office Dot. After that you also have to change the name of the Motion Sensors name to like Ofis Sensör Motion) In my example. 
+![image](https://github.com/berkansezer77/home-assistant/assets/84282504/fe636b00-4483-4a1b-b465-bd3a256bf1a9)
+
+So very simple automation 
+
+![image](https://github.com/berkansezer77/home-assistant/assets/84282504/923670d2-f1b2-4eb9-9801-4a27a87a67d5)
+
+When you press the button "input_button.modern_dashboard_spotify_last_room_music" The automation will check the status of "sensor.last_motion_activated_sensor" and if it is "Ofis Sensör Motion" the automation will use Spotcast to start music on "Office Dot"(my echo device in that room)
+
+![image](https://github.com/berkansezer77/home-assistant/assets/84282504/e5d086b3-b2f1-4fb1-8249-b7e885e77753)
+
+![image](https://github.com/berkansezer77/home-assistant/assets/84282504/e7811c04-9281-4d79-b5f8-143276052a4a)
+
+
+Now everything is ready. When we press the play icon on the Play icon the music will automatically start on the last room we entered. Don't forget that we can also start music individually from the topbar media player icons. Just tap any media player icon you want the music to start and it will execute straight away. Double tapping the icon will also stop the media player. 
+
+
+
+
+
+If you enjoy my work check out my other pojects and please star this page on github. I have many more coming
+
+Enjoy....
 
 

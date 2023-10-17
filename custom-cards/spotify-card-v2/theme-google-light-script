@@ -1,0 +1,10 @@
+alias: Theme - Google Light Theme
+sequence:
+  - service: browser_mod.set_theme
+    data:
+      theme: Google Light Theme
+  - service: input_boolean.turn_on
+    data: {}
+    target:
+      entity_id: input_boolean.theme
+mode: single

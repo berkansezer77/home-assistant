@@ -1,0 +1,35 @@
+alias: Live Tiles - Dark and White Mode
+description: ""
+trigger:
+  - platform: state
+    entity_id:
+      - input_boolean.theme
+    to: "on"
+    id: White Mode
+  - platform: state
+    entity_id:
+      - input_boolean.theme
+    to: "off"
+    id: Dark Mode
+condition: []
+action:
+  - choose:
+      - conditions:
+          - condition: trigger
+            id:
+              - White Mode
+        sequence:
+          - service: script.turn_on
+            data: {}
+            target:
+              entity_id: script.theme_google_light_theme
+      - conditions:
+          - condition: trigger
+            id:
+              - Dark Mode
+        sequence:
+          - service: script.turn_on
+            data: {}
+            target:
+              entity_id: script.theme_mushroom_shadow_dark
+mode: single

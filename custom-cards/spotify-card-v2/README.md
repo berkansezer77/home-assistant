@@ -191,6 +191,8 @@ Normally it will look like this:
 
 As you can see a second artwork is floating around the main artwork. But when we apply " filter: blur(100px) saturate(200%);" command to line 770 the artwork will transform into a light shadow having the same colors with main album art work. 
 
-![Uploading image.png…]()
+![image](https://github.com/berkansezer77/home-assistant/assets/84282504/ad6d5451-33ef-45cf-bef5-7fc561beb335)
+
+
 
 

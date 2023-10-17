@@ -106,6 +106,11 @@ As shown in above example, changing theme is available with a single click to "T
                   target:
                     entity_id: input_boolean.theme
 ```
+Important Note: 
+
+I am changing my theme from the main screen not from this Spotify page. So yu won't find the above code inside my main Spotify Page Code. But you can also place it here. For example you can paste the code to Rihanna picture section. So every time you click Rihanna the theme will toggle between dark and white. To do that just place the above code below line 445 just like in this example: 
+
+![image](https://github.com/berkansezer77/home-assistant/assets/84282504/d1135445-3538-498d-a13b-593a91ffd24d)
 
 ##Code Explanation: 
 

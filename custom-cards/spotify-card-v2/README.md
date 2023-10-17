@@ -1,11 +1,9 @@
-![3](https://github.com/berkansezer77/home-assistant/assets/84282504/64bb2619-4faf-478a-a2b2-7b1eb03ebbe5)_**If you like you can support my work.**_
-
 <a href="https://www.buymeacoffee.com/berkansezer" target="_blank"><img src="https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png" alt="Buy Me A Coffee" style="height: 41px !important;width: 174px !important;box-shadow: 0px 3px 2px 0px rgba(190, 190, 190, 0.5) !important;-webkit-box-shadow: 0px 3px 2px 0px rgba(190, 190, 190, 0.5) !important;" ></a> 
 
 <img src="https://github.com/berkansezer77/home-assistant/assets/84282504/9a819a43-9cf6-4432-ac2a-9f2297f53cf7" width="350">
 <img src="https://github.com/berkansezer77/home-assistant/assets/84282504/57cfe58a-857c-4060-8e16-01cc52177ed0" width="250">
-<img src="https://github.com/berkansezer77/home-assistant/assets/84282504/437b2d6a-8ab6-4e28-aa8d-81ee23a68ec6" width="250">
 <img src="https://github.com/berkansezer77/home-assistant/assets/84282504/22b5f3d2-5b11-4066-8925-08b509d34aa2" width="250">
+<img src="https://github.com/berkansezer77/home-assistant/assets/84282504/437b2d6a-8ab6-4e28-aa8d-81ee23a68ec6" width="250">
 
 
 

@@ -68,7 +68,7 @@ https://github.com/berkansezer77/home-assistant/assets/84282504/8a183ed1-f587-49
 ## Download Multimedia files:
 
 
-- Files are located at: [Multimedia files](https://github.com/berkansezer77/home-assistant/blob/main/pages/spotify-card-v2/spotify-card.zip)
+- Files are located at: [Multimedia files](https://github.com/berkansezer77/home-assistant/blob/main/custom-cards/spotify-card-v2/media-files.zip)
 
 Page Code: 
 

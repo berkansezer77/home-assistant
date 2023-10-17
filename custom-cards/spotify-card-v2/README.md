@@ -6,6 +6,10 @@ _**If you like you can support my work.**_
 <img src="https://user-images.githubusercontent.com/84282504/226495337-b787bd17-de30-48cf-a60b-0829c90062e1.png" width="350">
 
 
+
+https://github.com/berkansezer77/home-assistant/assets/84282504/748c00e9-644d-40f9-98ab-cc1a5c24a18b
+
+
 # Installation
 **How do I install this theme?**
 

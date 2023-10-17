@@ -166,7 +166,7 @@ The first one at line 29 activates Spotify Card at the bottom of the page (code 
 
 ![image](https://github.com/berkansezer77/home-assistant/assets/84282504/ad5e5430-3ee8-4b46-b413-7b53eb7c8d51)
 
-In order for this to work you also have to create an boolean named "input_boolean.modern_dashboard_spotify_Card and place it under playlist options on line 32 as seen on the picture. With this whenever you click "playlist" section the spotify card will appear on the screen. To close it just single click on "Playlist" again.
+In order for this to work you also have to create an boolean named "input_boolean.modern_dashboard_spotify_card and place it under playlist options on line 32 as seen on the picture. With this whenever you click "playlist" section the spotify card will appear on the screen. To close it just single click on "Playlist" again.
 
 Line 756
 

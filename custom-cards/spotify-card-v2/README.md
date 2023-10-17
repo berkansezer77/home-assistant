@@ -2,7 +2,7 @@ _**If you like you can support my work.**_
 
 <a href="https://www.buymeacoffee.com/berkansezer" target="_blank"><img src="https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png" alt="Buy Me A Coffee" style="height: 41px !important;width: 174px !important;box-shadow: 0px 3px 2px 0px rgba(190, 190, 190, 0.5) !important;-webkit-box-shadow: 0px 3px 2px 0px rgba(190, 190, 190, 0.5) !important;" ></a> 
 
-# Spotify Card V2
+# Spotify Card V3
 <img src="https://github.com/berkansezer77/home-assistant/assets/84282504/9a819a43-9cf6-4432-ac2a-9f2297f53cf7" width="350">
 <img src="https://github.com/berkansezer77/home-assistant/assets/84282504/57cfe58a-857c-4060-8e16-01cc52177ed0" width="250">
 <img src="https://github.com/berkansezer77/home-assistant/assets/84282504/22b5f3d2-5b11-4066-8925-08b509d34aa2" width="200">
@@ -209,7 +209,7 @@ To achieve that we need couple of things things:
 
 1) Ceate your button from helpers section of Home Assistant.
 2) Go to helpers section again. Choose "Create Helper" and then click "Template". Click "Template a sensor".
-Copy and paste this code Last Motion Sensor](https://github.com/berkansezer77/home-assistant/blob/main/custom-cards/spotify-card-v2/room-presence-template-sensor)
+Copy and paste this code [Last Motion Sensor](https://github.com/berkansezer77/home-assistant/blob/main/custom-cards/spotify-card-v2/room-presence-template-sensor)
 
 ![image](https://github.com/berkansezer77/home-assistant/assets/84282504/e66260e6-e1d3-4732-9c4e-dc38a066b76e)
 

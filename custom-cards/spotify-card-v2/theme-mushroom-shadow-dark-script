@@ -1,0 +1,11 @@
+alias: Theme - Mushroom Shadow Dark
+sequence:
+  - service: browser_mod.set_theme
+    data:
+      theme: Mushroom Shadow
+      dark: dark
+  - service: input_boolean.turn_off
+    data: {}
+    target:
+      entity_id: input_boolean.theme
+mode: single

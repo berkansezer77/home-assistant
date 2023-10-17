@@ -28,8 +28,9 @@ Everything you need including the setup manual is in this page. 🎉
 Well they are included as well. Just check below. 🎉
 ## Page Properties:
 
-- White and Dark Theme.
+- White and Dark Theme Ready.
 - Design changes on white theme.
+- Switch between white and dark modes with one click
 - Beatiful artwork design for every song.
 - Room Presence. Start the music in your last entered room (More effective on single occupancy)
 - Media Player controls
@@ -58,16 +59,10 @@ You will also need the Spotify integration to be installed in Home Assistant.
 [Link: ](https://www.home-assistant.io/integrations/spotify/)
 
 
-## Screenshots: 
+##Video: 
 
 
 https://github.com/berkansezer77/home-assistant/assets/84282504/8a183ed1-f587-4924-957d-b3516d63c15c
-
-
-<img src="https://github.com/berkansezer77/home-assistant/assets/84282504/8a183ed1-f587-4924-957d-b3516d63c15c" width="250">
-<img src="https://github.com/berkansezer77/home-assistant/assets/84282504/22b5f3d2-5b11-4066-8925-08b509d34aa2" width="150">
-<img src="https://github.com/berkansezer77/home-assistant/assets/84282504/437b2d6a-8ab6-4e28-aa8d-81ee23a68ec6" width="150">
-
 
 
 ## Download Multimedia files:

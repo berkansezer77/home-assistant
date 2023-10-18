@@ -10,9 +10,9 @@ On this page, you can find the links of the different Home Assistant pages that 
 ***
 # ## Home Assistant custom Spotify Page with Music Follow
 
-<img src="https://github.com/berkansezer77/home-assistant/assets/84282504/67d21f99-5fcc-4ab5-9c01-db5ccfab2c8a" width="350">
+<img src="https://github.com/berkansezer77/home-assistant/assets/84282504/67d21f99-5fcc-4ab5-9c01-db5ccfab2c8a" width="550">
 
-[Unavailable Entities](https://github.com/berkansezer77/home-assistant/tree/main/custom-cards/spotify-card-v2#spotify-card-v3)
+[Spotify Card V3](https://github.com/berkansezer77/home-assistant/tree/main/custom-cards/spotify-card-v2#spotify-card-v3)
 
 # Modern Dashboard Unavailable Devices Chip
 

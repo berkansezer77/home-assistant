@@ -19,9 +19,8 @@ On this page, you can find the links of the different Home Assistant pages that 
 # ## Modern Dashboard Unavailable Devices Chip
 
 <img src="https://github.com/berkansezer77/home-assistant/assets/84282504/3a1ec93c-b278-4732-b771-39283e091a79" width="250">
-<img src="https://github.com/berkansezer77/home-assistant/assets/84282504/c3b790e2-4681-4859-8742-3a5b36a1d3f4" width="150">
-
-![image](https://github.com/berkansezer77/home-assistant/assets/84282504/956529d8-7c15-48ee-ba73-b6a24686a265)
+<img src="https://github.com/berkansezer77/home-assistant/assets/84282504/c3b790e2-4681-4859-8742-3a5b36a1d3f4" width="250">
+<img src="https://github.com/berkansezer77/home-assistant/assets/84282504/956529d8-7c15-48ee-ba73-b6a24686a265" width="250">
 
 ## Code and the wiki: 
 [Unavailable Entities](https://github.com/berkansezer77/home-assistant/tree/main/custom-cards/unavailable-entities)

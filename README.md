@@ -7,6 +7,13 @@ Welcome to my Home Assistant Custom Setup Page.
 
 On this page, you can find the links of the different Home Assistant pages that I have coded. On these pages you can find not only the necessary codes, but also all the extra software. Everything from necessary special codes to media download links is available. In summary, you can get everything you need here.
 
+***
+# ## Home Assistant custom Spotify Page with Music Follow
+
+<img src="https://github.com/berkansezer77/home-assistant/assets/84282504/67d21f99-5fcc-4ab5-9c01-db5ccfab2c8a" width="350">
+
+[Unavailable Entities](https://github.com/berkansezer77/home-assistant/tree/main/custom-cards/spotify-card-v2#spotify-card-v3)
+
 # Modern Dashboard Unavailable Devices Chip
 
 ![image](https://github.com/berkansezer77/home-assistant/assets/84282504/956529d8-7c15-48ee-ba73-b6a24686a265)
@@ -88,15 +95,6 @@ https://github.com/berkansezer77/home-assistant/wiki/Room-Cards-for-Home-Assista
 ![cloudy](https://user-images.githubusercontent.com/84282504/203037600-5a820acb-6089-479d-adb7-8259b1cbe369.gif)
 
 https://github.com/berkansezer77/home-assistant/wiki/Home-Assistant-Custom-Animated-Weather-Page
-
-***
-# ## Home Assistant custom Spotify Page with Music Follow
-
-https://github.com/berkansezer77/home-assistant/wiki/_new
-
-<img src="https://user-images.githubusercontent.com/84282504/201356400-3db02104-66ea-437d-a2ca-0893cd4ec706.png" width="350">
-
-https://github.com/berkansezer77/home-assistant/wiki/Home-Assistant-custom-Spotify-Page-with-Music-Follow
 
 ***
 # ## Home Assistant Spotify Button

@@ -17,9 +17,6 @@ On this page, you can find the links of the different Home Assistant pages that 
 ***
 
 # ## Modern Dashboard Unavailable Devices Chip
-![IMG_5091](https://github.com/berkansezer77/home-assistant/assets/84282504/3a1ec93c-b278-4732-b771-39283e091a79)
-![IMG_5090](https://github.com/berkansezer77/home-assistant/assets/84282504/c3b790e2-4681-4859-8742-3a5b36a1d3f4)
-
 
 <img src="https://github.com/berkansezer77/home-assistant/assets/84282504/3a1ec93c-b278-4732-b771-39283e091a79" width="450">
 <img src="https://github.com/berkansezer77/home-assistant/assets/84282504/c3b790e2-4681-4859-8742-3a5b36a1d3f4" width="250">

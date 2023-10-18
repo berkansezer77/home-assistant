@@ -14,7 +14,15 @@ On this page, you can find the links of the different Home Assistant pages that 
 
 [Spotify Card V3](https://github.com/berkansezer77/home-assistant/tree/main/custom-cards/spotify-card-v2#spotify-card-v3)
 
+***
+
 # ## Modern Dashboard Unavailable Devices Chip
+![IMG_5091](https://github.com/berkansezer77/home-assistant/assets/84282504/3a1ec93c-b278-4732-b771-39283e091a79)
+![IMG_5090](https://github.com/berkansezer77/home-assistant/assets/84282504/c3b790e2-4681-4859-8742-3a5b36a1d3f4)
+
+
+<img src="https://github.com/berkansezer77/home-assistant/assets/84282504/3a1ec93c-b278-4732-b771-39283e091a79" width="450">
+<img src="https://github.com/berkansezer77/home-assistant/assets/84282504/c3b790e2-4681-4859-8742-3a5b36a1d3f4" width="250">
 
 ![image](https://github.com/berkansezer77/home-assistant/assets/84282504/956529d8-7c15-48ee-ba73-b6a24686a265)
 ![image](https://github.com/berkansezer77/home-assistant/assets/84282504/2b16d120-e9f7-4412-b231-a922ac60fd52)

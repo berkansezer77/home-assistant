@@ -1,0 +1,277 @@
+type: custom:layout-card
+square: false
+columns: 1
+cards:
+  - type: horizontal-stack
+    cards:
+      - type: grid
+        columns: 2
+        square: false
+        cards:
+          - type: custom:stack-in-card
+            cards:
+              - type: custom:mushroom-chips-card
+                card_mod:
+                  style: |
+                    :host {
+                      padding-top: 5px;
+                      padding-left: 10px;
+                      padding-right: 10px;
+                      padding-bottom: 5px;
+                      --ha-card-background: white;
+                    }
+                    ha-card {
+                      --ha-card-border-width: 0;
+                      --chip-icon-size: 20px;
+                     --chip-background: none;  
+                     --chip-border: none !important;
+                     --chip-box-shadow: none;
+                     --chip-font-size: 14px;                         
+                      --chip-spacing: 2px;
+                      --chip-text-color: white;
+                      --primary-text-color: white;
+                    }    
+                chips:
+                  - type: template
+                    icon: mdi:cake
+                    entity: input_boolean.live_tiles_birthday_automation
+                    icon_color: |
+                      {% if is_state(config.entity, 'on')   %}
+                        amber
+                      {% else %}
+                        white
+                      {% endif %}
+                    content: null
+                alignment: justify
+              - type: markdown
+                style: |
+                  ha-card {
+                    box-shadow: none;
+                    padding: 5px 0px;
+                    color: #fff;
+                    background: rgba(var(--rgb-primary-background-color), 0.5);
+                    margin-top: -4px;
+                    border-radius: 0; 
+                    font-weight: bold;
+                    font-size: 12px;
+                content: >
+                  <img src="/local/png/dot2.png" float:left  width="100"
+                  height="100"> 
+                   <h1>{{ state_attr('sensor.calendar_scheduled_events', 'scheduled_events')[0].summary | replace("adlı kişinin doğum günü", "") }}</h1>
+                   <h3><font color="white">{{ states('sensor.calendar_birthday_schedules_date_remain_1')  }}</font>
+            card_mod:
+              style: |
+                :host([dark-mode]) {
+                  background: none;
+                  --card-primary-font-size: 16px;
+                  --card-secondary-font-size: 13px
+                } 
+                :host {
+                  background: none;
+                  --mush-icon-size: 43px;
+                  margin-left: 0px !important; 
+                  margin-right: 0px !important; 
+                  z-index: 1;
+                  width: 260px;
+                  margin-bottom: 0px !important;
+                  padding: 0px !important;
+                }
+                ha-card {
+                  {% set state=states('sensor.calendar_birthday_schedules_msg_1') %}
+                  {% if state=='Hande Horasanlı' %}
+                      background:  url( '/local/png/birthday/hande.png' ) no-repeat center 0px;
+                  {% elif state=='Emre Bora Kiztan' %}
+                    background:  url( '/local/png/birthday/emrebora.png' ) no-repeat center 0px;
+                 {% else %}    
+                 {% endif %} 
+                    background-position: center;
+                    background-repeat: no-repeat;
+                    background-size: cover;
+                    background-blend-mode: soft-light;
+                    background-color: rgba(29,29,34, 0.2);
+                    flex-wrap: wrap !important;
+                    height: 290px !important;
+                    position: relative;
+                    width: auto;
+                    border-radius: 20px;
+                    font-family: 'Georgia';
+                    font-size: 14px;
+                    font-weight: normal;
+                    border: 0px;
+                  }
+          - type: custom:stack-in-card
+            cards:
+              - type: markdown
+                style: |
+                  ha-card {
+                    box-shadow: none;
+                    padding: 5px 0px;
+                    color: #fff;
+                    background: rgba(var(--rgb-primary-background-color), 0.5);
+                    margin-top: -4px;
+                    border-radius: 0; 
+                    font-weight: bold;
+                    font-size: 12px;
+                content: >
+                  <img src="/local/png/dot2.png" float:left  width="100"
+                  height="170"> 
+                   <h1>{{ state_attr('sensor.calendar_scheduled_events', 'scheduled_events')[1].summary | replace("adlı kişinin doğum günü", "") }}</h1>
+                   <h3><font color="white">{{ state_attr('sensor.calendar_scheduled_events', 'scheduled_events')[1].start }}</font>
+            card_mod:
+              style: |
+                :host([dark-mode]) {
+                  background: none;
+                  --card-primary-font-size: 16px;
+                  --card-secondary-font-size: 13px
+                } 
+                :host {
+                  background: none;
+                  --mush-icon-size: 43px;
+                  width: auto;
+                  margin-left: 0px !important; 
+                  margin-right: 0px !important; 
+                  z-index: 1;
+                  margin-bottom: 0px !important;
+                  padding: 0px !important;
+                }
+                ha-card {
+                  {% set state=states('sensor.calendar_birthday_schedules_msg_2') %}
+                  {% if state=='Hande Horasanlı' %}
+                      background:  url( '/local/png/birthday/hande.png' ) no-repeat center 0px;
+                  {% elif state=='Volkan Aksoy' %}
+                    background:  url( ' /local/png/birthday/volkanaksoy1.png' ) no-repeat center 0px;
+
+                 {% else %}    
+                 {% endif %} 
+                  height: 350px !important;
+                  background-position: center;
+                  background-repeat: no-repeat;
+                  background-size: cover;
+                  background-blend-mode: soft-light;
+                  background-color: rgba(29,29,34, 0.3);
+                  flex-wrap: wrap !important;
+                  position: relative;
+                  width: auto;
+                  border-radius: 20px;
+                  font-family: 'Georgia';
+                  font-size: 14px;
+                  font-weight: normal;
+                }
+          - type: custom:stack-in-card
+            cards:
+              - type: markdown
+                style: |
+                  ha-card {
+                    box-shadow: none;
+                    padding: 5px 0px;
+                    color: #fff;
+                    background: rgba(var(--rgb-primary-background-color), 0.5);
+                    margin-top: -4px;
+                    border-radius: 0; 
+                    font-weight: bold;
+                    font-size: 12px;
+                content: >
+                  <img src="/local/png/dot2.png" float:left  width="100"
+                  height="170"> 
+                   <h1>{{ state_attr('sensor.calendar_scheduled_events', 'scheduled_events')[2].summary | replace("adlı kişinin doğum günü", "") }}</h1>
+                   <h3><font color="white">{{ state_attr('sensor.calendar_scheduled_events', 'scheduled_events')[2].start }}</font>
+            card_mod:
+              style: |
+                :host([dark-mode]) {
+                  background: none;
+                  --card-primary-font-size: 16px;
+                  --card-secondary-font-size: 13px
+                } 
+                :host {
+                  background: none;
+                  --mush-icon-size: 43px;
+                  height: auto;
+                  width: auto;
+                  margin-left: 0px !important; 
+                  margin-right: 0px !important; 
+                  margin-top: -80px !important;    
+                  z-index: 0;
+                  margin-bottom: 0px !important;
+                  padding: 0px !important;
+                }
+                ha-card {
+                  {% set state=states('sensor.calendar_birthday_schedules_msg_3') %}
+                  {% if state=='Hande Horasanlı' %}
+                      background:  url( '/local/png/birthday/hande.png' ) no-repeat center 0px;
+                  {% elif state=='Gamze Özçelik' %}
+                    background:  url( '/local/png/birthday/gamzeozcelik.png' ) no-repeat center 0px;
+                 {% else %}    
+                 {% endif %} 
+                  background-position: center;
+                  background-repeat: no-repeat;
+                  background-size: cover;
+                  background-blend-mode: soft-light;
+                    background-color: rgba(29,29,34, 0.3);
+                  flex-wrap: wrap !important;
+                  position: relative;
+                  width: 260px;
+                  border-radius: 20px;
+                  font-family: 'Georgia';
+                  font-size: 14px;
+                  font-weight: normal;
+                }
+          - type: custom:stack-in-card
+            cards:
+              - type: markdown
+                style: |
+                  ha-card {
+                    box-shadow: none;
+                    padding: 5px 0px;
+                    color: #fff;
+                    background: rgba(var(--rgb-primary-background-color), 0.5);
+                    margin-top: -4px;
+                    border-radius: 0; 
+                    font-weight: bold;
+                    font-size: 12px;
+                content: >
+                  <img src="/local/png/dot2.png" float:left  width="100"
+                  height="170"> 
+                   <h1>{{ state_attr('sensor.calendar_scheduled_events', 'scheduled_events')[3].summary | replace("adlı kişinin doğum günü", "") }}</h1>
+                   <h3><font color="white">{{ state_attr('sensor.calendar_scheduled_events', 'scheduled_events')[3].start }}</font>
+            card_mod:
+              style: |
+                :host([dark-mode]) {
+                  background: none;
+                  --card-primary-font-size: 16px;
+                  --card-secondary-font-size: 13px
+                 width: 100px !important;
+                } 
+                :host {
+                  background: none;
+                  --mush-icon-size: 43px;
+                  height: auto;
+                  width: auto;
+                  margin-left: 0px !important; 
+                  margin-right: 0px !important; 
+                  margin-top: -60px !important; 
+                  z-index: 1;
+                  margin-bottom: 0px !important;
+                  padding: 0px !important;
+                }
+                ha-card {
+                  {% set state=states('sensor.calendar_birthday_schedules_msg_4') %}
+                  {% if state=='Hande Horasanlı' %}
+                      background:  url( '/local/png/birthday/hande.png' ) no-repeat center 0px;
+                  {% elif state=='Kaan Arlı' %}
+                    background:  url( '/local/png/birthday/kaanarli1.png' ) no-repeat center 0px;
+                 {% else %}    
+                 {% endif %} 
+                  background-position: center;
+                  background-repeat: no-repeat;
+                  background-size: cover;
+                  background-blend-mode: soft-light;
+                    background-color: rgba(29,29,34, 0.3);
+                  flex-wrap: wrap !important;
+                  position: relative;
+                  border-radius: 20px;
+                  font-family: 'Georgia';
+                  font-size: 14px;
+                  font-weight: normal;
+                  height: 310px;
+                }
+layout_type: custom:vertical-layout

@@ -201,9 +201,56 @@ When you create sensors ıt will display the time. Again as a reminder. "0" is t
 
 ![image](https://github.com/berkansezer77/home-assistant/assets/84282504/75114e16-2a6d-48bb-9961-e4ba779f5ca2)
 
+Do the same process for other three sensors. 
 
+2.
+```ruby
+{{ state_attr('sensor.calendar_scheduled_events', 'scheduled_events')[1].start }}
+```
+3.
+ ```ruby
+{{ state_attr('sensor.calendar_scheduled_events', 'scheduled_events')[2].start }}
+```
+4.
+```ruby
+{{ state_attr('sensor.calendar_scheduled_events', 'scheduled_events')[3].start }}
+```
+So next 4 date sensors is as follows : 
 
+![image](https://github.com/berkansezer77/home-assistant/assets/84282504/7d41dfa5-7175-48e6-8ef1-5aac91fd2977) 
 
+Now and last we need to create date remaing sensors. We do it from the same spot "helpers section".
+
+```ruby
+{% set midnight = now().replace(hour=0, minute=0, second=0, microsecond=0).timestamp() %}
+{% set event = as_timestamp(states('sensor.calendar_birthday_schedules_date_1')) %}
+{% set delta = ((event - midnight) // 86400) | int %}
+{% if delta == 0 %}
+  Today
+{% elif delta == 1 %}
+  Tomorrow
+{% elif delta == 2 %}
+  2 days
+{% elif delta == 3 %}
+  3 days
+{% elif delta == 4 %}
+  4 days 
+{% elif delta == 5 %}
+  5 days 
+{% elif delta == 6 %}
+  6 days
+{% elif delta == 7 %}
+  7 days
+{% elif delta == 8 %}
+  8 days
+{% elif delta == 9 %}
+  9 days
+{% elif delta == 10 %}
+  10 days 
+{% else %}
+ Far Away
+{% endif %}
+```
 
 
 

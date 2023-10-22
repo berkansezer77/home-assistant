@@ -73,4 +73,16 @@ To install the page you need this code: [Page Code](https://github.com/berkansez
 
 ## Manual : 
 
-COMİNG SOON
+Ok let's start. First of all we need to have a google calendar integrtion ready for the birthdays to appear in Home Assistant. You can find various videos on Youtube for the installation. 
+
+If you have installed google calendar a birthday calendar calendar should be visible in your entegrations page. 
+
+![image](https://github.com/berkansezer77/home-assistant/assets/84282504/779ff3a4-0661-484d-807b-c5f57e0ec4e4)
+
+When you enter the integration you will see that a birthday calendar is there. 
+
+![image](https://github.com/berkansezer77/home-assistant/assets/84282504/47d5503c-c21a-4762-9b50-272114e2a5dc)
+
+In my case it is called calendar.dogumgunleri 
+
+

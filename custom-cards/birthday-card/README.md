@@ -134,7 +134,7 @@ We need a template for this. The template is quite simple.
 ```ruby
 {{ state_attr('sensor.calendar_scheduled_events', 'scheduled_events')[0].summary | replace("adlı kişinin doğum günü", "") }}
 ```
-So I will explain this code. It is very simple. sensor.calendar_scheduled_events is the new sensor we just created which displays multiple people's birthday. 
+So I will explain this code. It is very simple. "sensor.calendar_scheduled_events" is the new sensor we just created which displays multiple people's birthday. 
 
 The name we should derive is on state's attribute which is "Summary" so next line in the code "[0].summary" takes the very first person's birthday. 
 
@@ -171,7 +171,37 @@ So now we have created our first birthday card sensor. But we need to display 4 
 ```ruby
 {{ state_attr('sensor.calendar_scheduled_events', 'scheduled_events')[1].summary | replace("adlı kişinin doğum günü", "") }}
 ```
-1 is the second upcoming birthday from the list. 
+1 is the second upcoming birthday from the list which is Volkan Aksoy. 
+
+![image](https://github.com/berkansezer77/home-assistant/assets/84282504/bf6bd738-f326-4c6f-9308-217a4ce669b9)
+
+So second template sould look like this. 
+
+![image](https://github.com/berkansezer77/home-assistant/assets/84282504/bc7b6627-361e-4ccf-9454-1117d5fec041)
+
+Ok now do it for 3rd and the last sensor. Don't forget the change the number to 2 for the third and 3 for the last one. 
+
+![image](https://github.com/berkansezer77/home-assistant/assets/84282504/6f03f43f-bd94-4f13-a66b-fca9eff21655) 
+
+Now we have 4 sensors ready 
+
+![image](https://github.com/berkansezer77/home-assistant/assets/84282504/a731c666-8d1a-4b72-8af6-333189156103)
+
+So now let's move on to date sensors. Again we create 4 sensors from the helpers section. 
+
+```ruby
+{{ state_attr('sensor.calendar_scheduled_events', 'scheduled_events')[0].start }}
+```
+
+This will take the starting date from the very first birthday person. 
+
+![image](https://github.com/berkansezer77/home-assistant/assets/84282504/58f41553-6223-44e0-a545-fc7879f9526f)
+
+When you create sensors ıt will display the time. Again as a reminder. "0" is the first birthday person in our sensor. 
+
+![image](https://github.com/berkansezer77/home-assistant/assets/84282504/75114e16-2a6d-48bb-9961-e4ba779f5ca2)
+
+
 
 
 

@@ -265,10 +265,113 @@ Again place the above sensor into the template sensors as we have done before.
 
 ![image](https://github.com/berkansezer77/home-assistant/assets/84282504/77edb1d3-550c-42d0-bcb0-ff5ba926b242)
 
-This time this template takes the date from previously created "date sensors" and displays the remaing days. 
+This time this template takes the date from previously created "date sensors" and displays the remaing days. Again we need 4 of them and we have onlu created first one. So we have to repeat the same process 3 times. 
 
+Rmeaing sensors are : 
 
+2.
+```ruby
+{% set midnight = now().replace(hour=0, minute=0, second=0, microsecond=0).timestamp() %}
+{% set event = as_timestamp(states('sensor.calendar_birthday_schedules_date_2')) %}
+{% set delta = ((event - midnight) // 86400) | int %}
+{% if delta == 0 %}
+  Today
+{% elif delta == 1 %}
+  Tomorrow
+{% elif delta == 2 %}
+  2 days
+{% elif delta == 3 %}
+  3 days
+{% elif delta == 4 %}
+  4 days 
+{% elif delta == 5 %}
+  5 days 
+{% elif delta == 6 %}
+  6 days
+{% elif delta == 7 %}
+  7 days
+{% elif delta == 8 %}
+  8 days
+{% elif delta == 9 %}
+  9 days
+{% elif delta == 10 %}
+  10 days 
+{% else %}
+ Far Away
+{% endif %}
+```
+3.
+```ruby
+{% set midnight = now().replace(hour=0, minute=0, second=0, microsecond=0).timestamp() %}
+{% set event = as_timestamp(states('sensor.calendar_birthday_schedules_date_2')) %}
+{% set delta = ((event - midnight) // 86400) | int %}
+{% if delta == 0 %}
+  Today
+{% elif delta == 1 %}
+  Tomorrow
+{% elif delta == 2 %}
+  2 days
+{% elif delta == 3 %}
+  3 days
+{% elif delta == 4 %}
+  4 days 
+{% elif delta == 5 %}
+  5 days 
+{% elif delta == 6 %}
+  6 days
+{% elif delta == 7 %}
+  7 days
+{% elif delta == 8 %}
+  8 days
+{% elif delta == 9 %}
+  9 days
+{% elif delta == 10 %}
+  10 days 
+{% else %}
+ Far Away
+{% endif %}
+```
+```ruby
+{% set midnight = now().replace(hour=0, minute=0, second=0, microsecond=0).timestamp() %}
+{% set event = as_timestamp(states('sensor.calendar_birthday_schedules_date_3')) %}
+{% set delta = ((event - midnight) // 86400) | int %}
+{% if delta == 0 %}
+  Today
+{% elif delta == 1 %}
+  Tomorrow
+{% elif delta == 2 %}
+  2 days
+{% elif delta == 3 %}
+  3 days
+{% elif delta == 4 %}
+  4 days 
+{% elif delta == 5 %}
+  5 days 
+{% elif delta == 6 %}
+  6 days
+{% elif delta == 7 %}
+  7 days
+{% elif delta == 8 %}
+  8 days
+{% elif delta == 9 %}
+  9 days
+{% elif delta == 10 %}
+  10 days 
+{% else %}
+ Far Away
+{% endif %}
+```
 
+So everything is set. We have succesfully created the remaing day sensors. 
+
+![image](https://github.com/berkansezer77/home-assistant/assets/84282504/b3ddc0a0-daff-43e8-97f6-10d8c493ca6d)
+
+# Code explanation 
+
+So lets explain our code line by line
+Line 11 - 34 is where the little crown icon stands. With this you can turn on and off notifications for the birthdays. Below you can find the automation code. 
+
+- [Reminder Automation](https://github.com/berkansezer77/home-assistant/blob/main/custom-cards/birthday-card/reminder-automation)
 
 
 

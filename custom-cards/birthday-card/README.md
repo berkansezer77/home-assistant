@@ -62,7 +62,7 @@ Automations:
 
 ## Page Code: 
 
-# Mobile
+#Mobile
   
 To install the page you need this code: [Page Code](https://github.com/berkansezer77/home-assistant/blob/main/custom-cards/birthday-card/page-code-mobile)
 

@@ -1,0 +1,22 @@
+template:
+  - trigger:
+      - platform: time_pattern
+        minutes: /1
+    action:
+      - service: calendar.list_events
+        data:
+          duration:
+            hours: 2191
+            minutes: 0
+            seconds: 0
+          start_date_time: "{{ today_at() }}"
+        target:
+          entity_id: calendar.dogum_gunleri
+        response_variable: scheduled_events
+    sensor:
+      - name: Calendar Scheduled Events
+        unique_id: calendar_scheduled_events
+        state: "{{ scheduled_events.events | count() }}"
+        attributes:
+          scheduled_events: "{{ scheduled_events.events }}"
+        icon: mdi:calendar'

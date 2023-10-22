@@ -94,10 +94,13 @@ You will see that it will only give you on - off state. If you check for the det
 Now we need to create a new sensor which will display next 4 birthdays from this Google Calendar. But before doing I am going to show you how you can create a new birthday info for any person .
 
 1) click on this address
+2) 
 ![image](https://github.com/berkansezer77/home-assistant/assets/84282504/81c8acc1-f445-4323-8c27-11a7909c499b)
-2) Click upper left "Create a new Person" icon.
+
+4) Click upper left "Create a new Person" icon.
 
 ![image](https://github.com/berkansezer77/home-assistant/assets/84282504/635cf2c3-a587-4c7f-894b-36c2765cfd9d)
+
 4) Enter the necessary information and don't forget to complete birthday section.
 5) Now go back to HA integrations page and refresh Google Calendar
 
@@ -117,7 +120,40 @@ Restart Home Assistant. After reboot you will see that a new sensor is being cre
 
 ![image](https://github.com/berkansezer77/home-assistant/assets/84282504/60ff5870-9807-441e-ab18-28efd9df06b8)
 
-Now as you see from the developers menu a bunch of people's newxt birthday information is listed in state attributes.
+Now as you see from the developers menu a bunch of people's next birthday information is listed in state attributes. So we need to extract only 4. If you plan to show more then 4 then there is a way too but I will show you that later. 
+
+Now we need to extract the name of the birthday person first. 
+
+![image](https://github.com/berkansezer77/home-assistant/assets/84282504/ba897083-2021-4ed0-8e85-4cde539d18e1) 
+
+As you can see the name is "Merve Koç adlı kişinin doğumgünü". So this means "Birthday of Merve Koç" Sorry I couldn't find a way to convert it to English and that is because HA is displaying the data from Google in my local language. But I will show you the way to shorten this sentence. 
+
+We need a template for this. The template is quite simple. 
+
+```ruby
+{{ state_attr('sensor.calendar_scheduled_events', 'scheduled_events')[0].summary | replace("adlı kişinin doğum günü", "") }}
+```
+So I will explain this code. It is very simple. sensor.calendar_scheduled_events is the new sensor we just created which displays multiple people's birthday. The name we should derive is on state's attribute which is "Summary" so next line in the code "[0].summary" takes the very first person's birthday. Remember the newly created sensor displays birthdays to date order. So "0" means the first birthday. "| replace("adlı kişinin doğum günü", "")" this code replaces sentence "adlı kişinin doğumgünü" with and empty(""). So as a result, normally the very first birthday atrrbute message was "Merve Koç adlı kişinin doğumgünü" but "| replace("adlı kişinin doğum günü", "")" this little part cuts off "adlı kişinin doğum günü" sentence so the new outcome appears as only the name is displayed which is "Merve Koç". So if in English it is the as "Birthday of Merve Koç" try the replace line like this, "| replace("Birthday of", "")" this will cut the "Birthday of" sentence and only the name will be displayed.
+
+So now we need to create a sensor for that. With Home Assistant 2023.09 wen can now create sensors inside helpers section shortly from the UI. 
+
+So go to helpers menu.
+
+![image](https://github.com/berkansezer77/home-assistant/assets/84282504/8585b644-93fa-441d-bdfd-a63ad19e3a0a)
+
+Click plus icon(Create Helper) on the bottom right and choose "Template" and then "Template a sensor" 
+
+but the above code into "state template*" area and save it. 
+
+![image](https://github.com/berkansezer77/home-assistant/assets/84282504/50991497-3557-4439-aa91-4d088749e757)
+
+the outcome should be like this. If everything is ok our sensor will give you below infotmation. 
+
+![image](https://github.com/berkansezer77/home-assistant/assets/84282504/b83cd394-6116-445e-adde-ace3bbecc3bc)
+
+As you can see only the name is being displayed. 
+
+
 
 
 

@@ -110,6 +110,8 @@ Now we need to create a new sensor which will display next 4 birthdays from this
 
 ![image](https://github.com/berkansezer77/home-assistant/assets/84282504/10a3f496-7a27-42f1-8854-c1be45e93d6d)
 
+# Yaml Template Calendar Sensor
+
 Okay now let's get back to our code. Now as I said we need to create a new template for next 4 upcoming birthdays. So put down below code to your configuration.yaml
 
 - [Yaml Calendar Sensor](https://github.com/berkansezer77/home-assistant/blob/main/custom-cards/birthday-card/yaml-birthday-template)
@@ -122,6 +124,8 @@ Restart Home Assistant. After reboot you will see that a new sensor is being cre
 
 
 Now as you see from the developers menu a bunch of people's next birthday information is listed in state attributes. So we need to extract only 4. If you plan to show more then 4 then there is a way too but I will show you that later. 
+
+# Name Sensors
 
 Now we need to extract the name of the birthday person first. 
 
@@ -187,6 +191,8 @@ Now we have 4 sensors ready
 
 ![image](https://github.com/berkansezer77/home-assistant/assets/84282504/a731c666-8d1a-4b72-8af6-333189156103)
 
+# Date Sensors
+
 So now let's move on to date sensors. Again we create 4 sensors from the helpers section. 
 
 ```ruby
@@ -218,6 +224,8 @@ Do the same process for other three sensors.
 So next 4 date sensors is as follows : 
 
 ![image](https://github.com/berkansezer77/home-assistant/assets/84282504/7d41dfa5-7175-48e6-8ef1-5aac91fd2977) 
+
+# Remaining Time Sensors
 
 Now and last we need to create date remaing sensors. We do it from the same spot "helpers section".
 
@@ -251,8 +259,13 @@ Now and last we need to create date remaing sensors. We do it from the same spot
  Far Away
 {% endif %}
 ```
+This part will give us the remaing days in numbers for the person who has a birthday. 
 
+Again place the above sensor into the template sensors as we have done before. 
 
+![image](https://github.com/berkansezer77/home-assistant/assets/84282504/77edb1d3-550c-42d0-bcb0-ff5ba926b242)
+
+This time this template takes the date from previously created "date sensors" and displays the remaing days. 
 
 
 

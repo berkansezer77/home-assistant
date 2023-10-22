@@ -126,14 +126,20 @@ Now we need to extract the name of the birthday person first.
 
 ![image](https://github.com/berkansezer77/home-assistant/assets/84282504/ba897083-2021-4ed0-8e85-4cde539d18e1) 
 
-As you can see the name is "Merve Koç adlı kişinin doğumgünü". So this means "Birthday of Merve Koç" Sorry I couldn't find a way to convert it to English and that is because HA is displaying the data from Google in my local language. But I will show you the way to shorten this sentence. 
+As you can see the name is "Emre Bora Kiztan adlı kişinin doğum günü". So this means "Birthday of Emre Bora Kiztan " Sorry I couldn't find a way to convert it to English and that is because HA is displaying the data from Google in my local language. But I will show you the way to shorten this sentence. 
 
 We need a template for this. The template is quite simple. 
 
 ```ruby
 {{ state_attr('sensor.calendar_scheduled_events', 'scheduled_events')[0].summary | replace("adlı kişinin doğum günü", "") }}
 ```
-So I will explain this code. It is very simple. sensor.calendar_scheduled_events is the new sensor we just created which displays multiple people's birthday. The name we should derive is on state's attribute which is "Summary" so next line in the code "[0].summary" takes the very first person's birthday. Remember the newly created sensor displays birthdays to date order. So "0" means the first birthday. "| replace("adlı kişinin doğum günü", "")" this code replaces sentence "adlı kişinin doğumgünü" with and empty(""). So as a result, normally the very first birthday atrrbute message was "Merve Koç adlı kişinin doğumgünü" but "| replace("adlı kişinin doğum günü", "")" this little part cuts off "adlı kişinin doğum günü" sentence so the new outcome appears as only the name is displayed which is "Merve Koç". So if in English it is the as "Birthday of Merve Koç" try the replace line like this, "| replace("Birthday of", "")" this will cut the "Birthday of" sentence and only the name will be displayed.
+So I will explain this code. It is very simple. sensor.calendar_scheduled_events is the new sensor we just created which displays multiple people's birthday. 
+
+The name we should derive is on state's attribute which is "Summary" so next line in the code "[0].summary" takes the very first person's birthday. 
+
+Remember the newly created sensor displays birthdays to date order. So "0" means the first birthday. 
+
+"| replace("adlı kişinin doğum günü", "")" this code replaces sentence "adlı kişinin doğumgünü" with and empty(""). So as a result, normally the very first birthday atrrbute message was "Emre Bora Kiztan adlı kişinin doğum günü" but "| replace("adlı kişinin doğum günü", "")" this little part cuts off "adlı kişinin doğum günü" sentence so the new outcome appears as only the name is displayed which is "Emre Bora Kiztan". So if in English it is the as "Birthday of Merve Koç" try the replace line like this, "| replace("Birthday of", "")" this will cut the "Birthday of" sentence and only the name will be displayed.
 
 So now we need to create a sensor for that. With Home Assistant 2023.09 wen can now create sensors inside helpers section shortly from the UI. 
 
@@ -152,6 +158,19 @@ the outcome should be like this. If everything is ok our sensor will give you be
 ![image](https://github.com/berkansezer77/home-assistant/assets/84282504/b83cd394-6116-445e-adde-ace3bbecc3bc)
 
 As you can see only the name is being displayed. 
+
+So now we have created our first birthday card sensor. But we need to display 4 person. So 3 more left. Do the same process above and create 3 more templates. But be careful. you need to change 0 in the code :
+
+![image](https://github.com/berkansezer77/home-assistant/assets/84282504/ece1f676-253c-4701-8f9a-3690154f5e52)
+
+0 here displays the first birthday data from the sensor. But in our second card we should change zero with 1. 
+
+```ruby
+{{ state_attr('sensor.calendar_scheduled_events', 'scheduled_events')[1].summary | replace("adlı kişinin doğum günü", "") }}
+```
+1 is the second upcoming birthday from the list. 
+
+
 
 
 

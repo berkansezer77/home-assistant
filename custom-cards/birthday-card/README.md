@@ -83,6 +83,27 @@ When you enter the integration you will see that a birthday calendar is there.
 
 ![image](https://github.com/berkansezer77/home-assistant/assets/84282504/47d5503c-c21a-4762-9b50-272114e2a5dc)
 
-In my case it is called calendar.dogumgunleri 
+In my case it is called calendar.dogumgunleri. Okay it is in Turkish but generally it is the calendar for the birthdays. When you click the calendar : 
+
+![image](https://github.com/berkansezer77/home-assistant/assets/84282504/9fef4ada-b164-4146-a450-00a4725c50ad)
+
+You will see that it will only give you on - off state. If you check for the details from HA menu developers tools > state you will see that it will give you a single birthday information which is the current or upcoming birthday from your calendar. 
+
+![image](https://github.com/berkansezer77/home-assistant/assets/84282504/5e6976d1-e20e-4807-a98b-0739606fc7b4)
+
+Now we need to create a new sensor which will display next 4 birthdays from this Google Calendar. But before doing I am going to show you how you can create a new birthday info for any person .
+
+1) click on this address
+![image](https://github.com/berkansezer77/home-assistant/assets/84282504/81c8acc1-f445-4323-8c27-11a7909c499b)
+2) Click upper left "Create a new Person" icon.
+![image](https://github.com/berkansezer77/home-assistant/assets/84282504/635cf2c3-a587-4c7f-894b-36c2765cfd9d)
+3) Enter the necessary information and don't forget to complete birthday section.
+4) Now go back to HA integrations page and refresh Google Calendar
+![image](https://github.com/berkansezer77/home-assistant/assets/84282504/c7c5b63a-5d93-4d91-a428-1d451c435568)
+
+
+
+
+
 
 

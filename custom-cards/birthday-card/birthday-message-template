@@ -1,0 +1,1 @@
+{{ state_attr('sensor.calendar_scheduled_events', 'scheduled_events')[0].summary | replace("adlı kişinin doğum günü", "") }}

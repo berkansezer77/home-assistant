@@ -89,7 +89,7 @@ In my case it is called calendar.dogumgunleri. Okay it is in Turkish but general
 
 You will see that it will only give you on - off state. If you check for the details from HA menu developers tools > state you will see that state attributes will give you only a single birthday information which is the current or upcoming birthday from your calendar. 
 
-![image](https://github.com/berkansezer77/home-assistant/assets/84282504/5e6976d1-e20e-4807-a98b-0739606fc7b4)
+![image](https://github.com/berkansezer77/home-assistant/assets/84282504/9b4e8297-9993-46fc-8ddb-f7264915bf9d)
 
 Now we need to create a new sensor which will display next 4 birthdays from this Google Calendar. But before doing I am going to show you how you can create a new birthday info for any person .
 
@@ -118,13 +118,14 @@ Okay now let's get back to our code. Now as I said we need to create a new templ
 
 Restart Home Assistant. After reboot you will see that a new sensor is being created. 
 
-![image](https://github.com/berkansezer77/home-assistant/assets/84282504/60ff5870-9807-441e-ab18-28efd9df06b8)
+![image](https://github.com/berkansezer77/home-assistant/assets/84282504/b0801196-f0e5-407e-8319-b57d79a8491f)
+
 
 Now as you see from the developers menu a bunch of people's next birthday information is listed in state attributes. So we need to extract only 4. If you plan to show more then 4 then there is a way too but I will show you that later. 
 
 Now we need to extract the name of the birthday person first. 
 
-![image](https://github.com/berkansezer77/home-assistant/assets/84282504/ba897083-2021-4ed0-8e85-4cde539d18e1) 
+![image](https://github.com/berkansezer77/home-assistant/assets/84282504/fe041562-61de-4e82-b198-2ad872369621)
 
 As you can see the name is "Emre Bora Kiztan adlı kişinin doğum günü". So this means "Birthday of Emre Bora Kiztan " Sorry I couldn't find a way to convert it to English and that is because HA is displaying the data from Google in my local language. But I will show you the way to shorten this sentence. 
 
@@ -149,13 +150,15 @@ So go to helpers menu.
 
 Click plus icon(Create Helper) on the bottom right and choose "Template" and then "Template a sensor" 
 
-but the above code into "state template*" area and save it. 
+Put the above code into "state template*" area and save it. 
 
-![image](https://github.com/berkansezer77/home-assistant/assets/84282504/50991497-3557-4439-aa91-4d088749e757)
+![image](https://github.com/berkansezer77/home-assistant/assets/84282504/95868daa-aae1-44c2-8265-fa203cd9149c)
+
 
 the outcome should be like this. If everything is ok our sensor will give you below infotmation. 
 
-![image](https://github.com/berkansezer77/home-assistant/assets/84282504/b83cd394-6116-445e-adde-ace3bbecc3bc)
+![image](https://github.com/berkansezer77/home-assistant/assets/84282504/83eb918e-0182-4117-b4f7-ddf246905385)
+
 
 As you can see only the name is being displayed. 
 

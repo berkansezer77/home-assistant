@@ -5,7 +5,7 @@ _**If you like you can support my work.**_
 # Birthday Card
 <img src="https://github.com/berkansezer77/home-assistant/assets/84282504/8f80dd53-c6e7-4815-a72a-473f53650de5" width="350">
 <img src="https://github.com/berkansezer77/home-assistant/assets/84282504/c774ebb4-0398-4f87-9d04-1a0b48febfea" width="350">
-<img src="https://github.com/berkansezer77/home-assistant/assets/84282504/a7502f86-67ea-4680-92bc-f8e68018c261" width="650">
+<img src="https://github.com/berkansezer77/home-assistant/assets/84282504/a7502f86-67ea-4680-92bc-f8e68018c261" width="350">
 
 
 # Installation

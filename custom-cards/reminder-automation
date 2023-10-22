@@ -1,0 +1,24 @@
+alias: "Telegram - Midnight Birthday Reminder "
+description: ""
+trigger:
+  - platform: calendar
+    event: start
+    offset: "-0:30:0"
+    entity_id: calendar.dogum_gunleri
+condition:
+  - condition: state
+    entity_id: input_boolean.live_tiles_birthday_automation
+    state: "on"
+action:
+  - service: notify.colakgenel
+    data:
+      title: Send an images
+      message: That's an example that sends an image.
+      data:
+        photo:
+          - file: www/png/birthday/birthday.png
+            caption: |-
+              Hello Berkan
+               
+              There is a birthday today. You wanted me to remind you. 
+mode: single

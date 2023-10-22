@@ -1,0 +1,28 @@
+{% set midnight = now().replace(hour=0, minute=0, second=0, microsecond=0).timestamp() %}
+{% set event = as_timestamp(states('sensor.calendar_birthday_schedules_date_1')) %}
+{% set delta = ((event - midnight) // 86400) | int %}
+{% if delta == 0 %}
+  Today
+{% elif delta == 1 %}
+  Tomorrow
+{% elif delta == 2 %}
+  2 days
+{% elif delta == 3 %}
+  3 days
+{% elif delta == 4 %}
+  4 days 
+{% elif delta == 5 %}
+  5 days 
+{% elif delta == 6 %}
+  6 days
+{% elif delta == 7 %}
+  7 days
+{% elif delta == 8 %}
+  8 days
+{% elif delta == 9 %}
+  9 days
+{% elif delta == 10 %}
+  10 days 
+{% else %}
+ Far Away
+{% endif %}

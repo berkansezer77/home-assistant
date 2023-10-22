@@ -255,7 +255,7 @@ cards:
                   background:  url( '/local/png/birthday/hande.png' ) no-repeat center 0px;
               {% elif state=='Volkan Aksoy' %}
                 background:  url( ' /local/png/birthday/volkanaksoy1.png' ) no-repeat center 0px;
-              {% set state=states('sensor.calendar_birthday_schedules_date_remain_1') %}
+              {% set state=states('sensor.calendar_birthday_schedules_date_remain_2') %}
               {% if state=='Today' %}
                 box-shadow: 0px 0px 15px 10px rgba(255,255,255, 0.96) !important;  
              {% else %}    
@@ -373,7 +373,7 @@ cards:
                   background:  url( '/local/png/birthday/hande.png' ) no-repeat center 0px;
               {% elif state=='Gamze Özçelik' %}
                 background:  url( '/local/png/birthday/gamzeozcelik.png' ) no-repeat center 0px;
-              {% set state=states('sensor.calendar_birthday_schedules_date_remain_1') %}
+              {% set state=states('sensor.calendar_birthday_schedules_date_remain_3') %}
               {% if state=='Today' %}
                 box-shadow: 0px 0px 15px 10px rgba(255,255,255, 0.96) !important;  
              {% else %}    
@@ -490,7 +490,7 @@ cards:
                   background:  url( '/local/png/birthday/hande.png' ) no-repeat center 0px;
               {% elif state=='Kaan Arlı' %}
                 background:  url( '/local/png/birthday/kaanarli1.png' ) no-repeat center 0px;
-              {% set state=states('sensor.calendar_birthday_schedules_date_remain_1') %}
+              {% set state=states('sensor.calendar_birthday_schedules_date_remain_4') %}
               {% if state=='Today' %}
                 box-shadow: 0px 0px 15px 10px rgba(255,255,255, 0.96) !important;  
              {% else %}    

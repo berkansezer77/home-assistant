@@ -87,7 +87,7 @@ In my case it is called calendar.dogumgunleri. Okay it is in Turkish but general
 
 ![image](https://github.com/berkansezer77/home-assistant/assets/84282504/9fef4ada-b164-4146-a450-00a4725c50ad)
 
-You will see that it will only give you on - off state. If you check for the details from HA menu developers tools > state you will see that it will give you a single birthday information which is the current or upcoming birthday from your calendar. 
+You will see that it will only give you on - off state. If you check for the details from HA menu developers tools > state you will see that state attributes will give you only a single birthday information which is the current or upcoming birthday from your calendar. 
 
 ![image](https://github.com/berkansezer77/home-assistant/assets/84282504/5e6976d1-e20e-4807-a98b-0739606fc7b4)
 
@@ -96,10 +96,29 @@ Now we need to create a new sensor which will display next 4 birthdays from this
 1) click on this address
 ![image](https://github.com/berkansezer77/home-assistant/assets/84282504/81c8acc1-f445-4323-8c27-11a7909c499b)
 2) Click upper left "Create a new Person" icon.
+
 ![image](https://github.com/berkansezer77/home-assistant/assets/84282504/635cf2c3-a587-4c7f-894b-36c2765cfd9d)
-3) Enter the necessary information and don't forget to complete birthday section.
-4) Now go back to HA integrations page and refresh Google Calendar
+4) Enter the necessary information and don't forget to complete birthday section.
+5) Now go back to HA integrations page and refresh Google Calendar
+
 ![image](https://github.com/berkansezer77/home-assistant/assets/84282504/c7c5b63a-5d93-4d91-a428-1d451c435568)
+
+6) When you check your HA calendar(on left menu). The newly created person birthday will be shown there.
+
+![image](https://github.com/berkansezer77/home-assistant/assets/84282504/10a3f496-7a27-42f1-8854-c1be45e93d6d)
+
+Okay now let's get back to our code. Now as I said we need to create a new template for next 4 upcoming birthdays. So put down below code to your configuration.yaml
+
+- [Yaml Calendar Sensor](https://github.com/berkansezer77/home-assistant/blob/main/custom-cards/birthday-card/yaml-birthday-template)
+
+![image](https://github.com/berkansezer77/home-assistant/assets/84282504/cd6612ad-1a3f-4fdd-bf5a-966a3ce26479)
+
+Restart Home Assistant. After reboot you will see that a new sensor is being created. 
+
+![image](https://github.com/berkansezer77/home-assistant/assets/84282504/60ff5870-9807-441e-ab18-28efd9df06b8)
+
+Now as you see from the developers menu a bunch of people's newxt birthday information is listed in state attributes.
+
 
 
 

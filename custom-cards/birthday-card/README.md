@@ -402,7 +402,7 @@ So
 {% elif state=='Emre Bora Kiztan' %}
   background:  url( '/local/png/birthday/emrebora.png' ) no-repeat center 0px;
 ```
-This code is for one person only. Below is the position of that person's photo inside the home assistant. To add a new one you have to create another "elif state" like for example this one. 
+This code is for one person only. Below is the position of that person's photo inside the home assistant. To add a new one you have to create another "elif state" like the this. 
 
 ```ruby
 {% elif state=='Emre Bora Kiztan' %}
@@ -424,7 +424,11 @@ Tips:
 -Try to copy the name from "sensor.calendar_birthday_schedules_msg_1" and paste it into the name area at the code. With this way you won't make any mistake. 
 - To get a persons photo use their social media. Find a proper picture and take a screenshot and save into your HA birthday folder(Or if you gave a different folder name for the photos, put them in that folder.)
 
+Line 145 - 262 is the second card. The process is exactly the same with the first one. You need to add all the names you entered on the first card to the second card. So for a simple way when you finish adding names to the first card copy them and paste into the second card. 
 
+Line 263 - 380 is the third card.
+
+Line 381 - 499 is the last and final card.
 
 
 

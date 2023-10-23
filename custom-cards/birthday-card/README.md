@@ -37,6 +37,11 @@ For this project you do not need any multimedia files. Because it is a birthday 
 - Highlights the birthday person in a white frame. 
 - Birthday icon at the very first card let's HA to remind you the birthday in various ways. In my example a notification through telegram.
 - Full screen tablet version
+- Info on creating a sensor that displays multiple birthdays
+- Info on creating the template sensors from the UI
+- Info on how to shorten state attribute messages.
+- Info on creatşng full screen pages on tablet and pc view.
+- Full code explanation line by line
 
 ## Before we start, we need some third party tools from Hacs:
 

@@ -8,6 +8,13 @@ Welcome to my Home Assistant Custom Setup Page.
 On this page, you can find the links of the different Home Assistant pages that I have coded. On these pages you can find not only the necessary codes, but also all the extra software. Everything from necessary special codes to media download links is available. In summary, you can get everything you need here.
 
 ***
+# ## Home Assistant birthday card
+
+<img src="https://github.com/berkansezer77/home-assistant/assets/84282504/12aff151-07f2-43bc-8d75-22d2030b27f9" width="750">
+
+[Birthday Card](https://github.com/berkansezer77/home-assistant/tree/main/custom-cards/birthday-card)
+
+***
 # ## Home Assistant custom Spotify Page with Music Follow
 
 <img src="https://github.com/berkansezer77/home-assistant/assets/84282504/67d21f99-5fcc-4ab5-9c01-db5ccfab2c8a" width="750">
@@ -23,6 +30,8 @@ On this page, you can find the links of the different Home Assistant pages that 
 
 ## Code and the wiki: 
 [Unavailable Entities](https://github.com/berkansezer77/home-assistant/tree/main/custom-cards/unavailable-entities)
+
+***
 
 # Modern Dashboard Ultra Lite Version (Without any Booleans or Automations - Easy to Setup)
 

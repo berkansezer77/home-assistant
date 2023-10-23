@@ -28,19 +28,19 @@ Everything you need including the setup manual is in this page. 🎉
 
 **I don't have the multimedia files you used. ? **
 
-For this project you do not need any multimedia files. Because it is a birthday card you have to create your own. Instructions are in the manual. 🎉
+For this project you do not need any multimedia files. Since this is a birthday card, you must upload person photos yourself. 🎉
 ## Page Properties:
 
 - Displays 4 upcoming birthdays. The number can also be increased further with the help of a swiper card
 - Shows the remaining time for birthdays. 
 - Ready for White and Dark Theme.
 - Highlights the birthday person in a white frame. 
-- Birthday icon at the very first card let's HA to remind you the birthday in various ways. In my example a notification through telegram.
+- Birthday icon at the very first card, let's HA to remind you the birthday in various ways. In my example a notification through telegram.
 - Full screen tablet version
 - Info on creating a sensor that displays multiple birthdays
 - Info on creating the template sensors from the UI
 - Info on how to shorten state attribute messages.
-- Info on creatşng full screen pages on tablet and pc view.
+- Info on creating full screen content on tablet and pc view.
 - Full code explanation line by line
 
 ## Before we start, we need some third party tools from Hacs:
@@ -56,7 +56,7 @@ You will also need the Google Calendar integration to be installed in Home Assis
 
 ##Templates and Automations: 
 
-Wen need some templates and 1 single automation for the code to function properly. You use yaml to create templates but if you want to use my method which explained in the manual you must have at least Home Assistant version 2023.09.
+Wen need some templates and 1 single automation for the code to function properly. You can also use yaml editing for templates, but you must have at least Home Assistant 2023.9 ​​version for the methods I explain in the user manual.
 
 Templates: 
 - [Remaining Days](https://github.com/berkansezer77/home-assistant/blob/main/custom-cards/birthday-card/remaining-date-template)
@@ -70,17 +70,17 @@ Automations:
 
 #Mobile
   
-To install the page you need this code: [Page Code](https://github.com/berkansezer77/home-assistant/blob/main/custom-cards/birthday-card/page-code-mobile)
+To install the mobile version you need this code: [Page Code](https://github.com/berkansezer77/home-assistant/blob/main/custom-cards/birthday-card/page-code-mobile)
 
 #Tablet
 
-To install the page you need this code: [Page Code](https://github.com/berkansezer77/home-assistant/blob/main/custom-cards/birthday-card/page-code-tablet)
+To install the tablet version you need this code: [Page Code](https://github.com/berkansezer77/home-assistant/blob/main/custom-cards/birthday-card/page-code-tablet)
 
 ## Manual : 
 
-Ok let's start. First of all we need to have a google calendar integrtion ready for the birthdays to appear in Home Assistant. You can find various videos on Youtube for the installation. 
+Ok let's start. First of all we need to have a "Google Calendar" integration ready for the birthdays to appear in Home Assistant. You can find various videos on Youtube for the installation. 
 
-If you have installed google calendar a birthday calendar calendar should be visible in your entegrations page. 
+If you have installed google calendar a birthday calendar should be visible in your integrations page. 
 
 ![image](https://github.com/berkansezer77/home-assistant/assets/84282504/779ff3a4-0661-484d-807b-c5f57e0ec4e4)
 
@@ -88,26 +88,26 @@ When you enter the integration you will see that a birthday calendar is there.
 
 ![image](https://github.com/berkansezer77/home-assistant/assets/84282504/47d5503c-c21a-4762-9b50-272114e2a5dc)
 
-In my case it is called calendar.dogumgunleri. Okay it is in Turkish but generally it is the calendar for the birthdays. When you click the calendar : 
+In my case it is called "calendar.dogumgunleri". The name is Turkish, but its function is to pull the birthday information from your Google contacts and show it to you.
 
 ![image](https://github.com/berkansezer77/home-assistant/assets/84282504/9fef4ada-b164-4146-a450-00a4725c50ad)
 
-You will see that it will only give you on - off state. If you check for the details from HA menu developers tools > state you will see that state attributes will give you only a single birthday information which is the current or upcoming birthday from your calendar. 
+You will see that it will only give you the on - off state. If you check for the details from HA menu developers tools > state, its current structure displays only one single upcoming birthday information.
 
 ![image](https://github.com/berkansezer77/home-assistant/assets/84282504/9b4e8297-9993-46fc-8ddb-f7264915bf9d)
 
-Now we need to create a new sensor which will display next 4 birthdays from this Google Calendar. But before doing I am going to show you how you can create a new birthday info for any person .
+So we need to create a new sensor which will display next 4 birthdays from this Google Calendar. But before doing I am going to show you how you can create a new birthday info for any person .
 
 1) click on this address
-2) 
+
 ![image](https://github.com/berkansezer77/home-assistant/assets/84282504/81c8acc1-f445-4323-8c27-11a7909c499b)
 
-4) Click upper left "Create a new Person" icon.
+2) Click upper left "Create a new Person" icon.
 
 ![image](https://github.com/berkansezer77/home-assistant/assets/84282504/635cf2c3-a587-4c7f-894b-36c2765cfd9d)
 
-4) Enter the necessary information and don't forget to complete birthday section.
-5) Now go back to HA integrations page and refresh Google Calendar
+3) Enter the necessary information and don't forget to complete birthday section.
+4) Now go back to HA integrations page and refresh Google Calendar
 
 ![image](https://github.com/berkansezer77/home-assistant/assets/84282504/c7c5b63a-5d93-4d91-a428-1d451c435568)
 
@@ -128,7 +128,7 @@ Restart Home Assistant. After reboot you will see that a new sensor is being cre
 ![image](https://github.com/berkansezer77/home-assistant/assets/84282504/b0801196-f0e5-407e-8319-b57d79a8491f)
 
 
-Now as you see from the developers menu a bunch of people's next birthday information is listed in state attributes. So we need to extract only 4. If you plan to show more then 4 then there is a way too but I will show you that later. 
+Now as you see from the developers menu a bunch of people's next birthday information is listed in state attributes. So we need to extract only 4. 
 
 # Name Sensors
 
@@ -143,13 +143,17 @@ We need a template for this. The template is quite simple.
 ```ruby
 {{ state_attr('sensor.calendar_scheduled_events', 'scheduled_events')[0].summary | replace("adlı kişinin doğum günü", "") }}
 ```
-So I will explain this code. It is very simple. "sensor.calendar_scheduled_events" is the new sensor we just created which displays multiple people's birthday. 
+This code is pretty simple. "sensor.calendar_scheduled_events" is the name of the new sensor we just created which displays multiple people's birthday. 
 
-The name we should derive is on state's attribute which is "Summary" so next line in the code "[0].summary" takes the very first person's birthday. 
+What we shall seek inside this sensor is the  "Summary" part. So next line in the code "[0].summary" takes the very first person's birthday. 
 
-Remember the newly created sensor displays birthdays to date order. So "0" means the first birthday. 
+Remember that the newly created sensor displays birthdays up to date order. So "0" stands for the first birthday. 
 
-"| replace("adlı kişinin doğum günü", "")" this code replaces sentence "adlı kişinin doğumgünü" with and empty(""). So as a result, normally the very first birthday atrrbute message was "Emre Bora Kiztan adlı kişinin doğum günü" but "| replace("adlı kişinin doğum günü", "")" this little part cuts off "adlı kişinin doğum günü" sentence so the new outcome appears as only the name is displayed which is "Emre Bora Kiztan". So if in English it is the as "Birthday of Merve Koç" try the replace line like this, "| replace("Birthday of", "")" this will cut the "Birthday of" sentence and only the name will be displayed.
+"| replace("adlı kişinin doğum günü", "")" 
+
+The above part erases the words "adlı kişinin doğumgünü" with an empty statement using (""). 
+
+So as a result, while getting and atrrbute message "Emre Bora Kiztan adlı kişinin doğum günü" we cut the sentence with <i>"| replace("adlı kişinin doğum günü", "")"</end> part. This little trick leaves the attribute message as "Emre Bora Kiztan" which is only the name of the person. So if in English it is the as "Birthday of Merve Koç" try the replace line like this, "| replace("Birthday of", "")" this will cut the "Birthday of" sentence and only the name will be displayed.
 
 So now we need to create a sensor for that. With Home Assistant 2023.09 wen can now create sensors inside helpers section shortly from the UI. 
 

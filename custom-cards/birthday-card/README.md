@@ -430,5 +430,42 @@ Line 263 - 380 is the third card.
 
 Line 381 - 499 is the last and final card.
 
+## Tablet view 
 
+I have also added a tablet view with full screen photos. 
+
+[Tablet view](https://github.com/berkansezer77/home-assistant/blob/main/custom-cards/birthday-card/page-code-tablet)
+
+To display the card properly we need "Layout Card" and some adjustments. 
+
+1) Create a separate tab in your dashboard.
+
+![image](https://github.com/berkansezer77/home-assistant/assets/84282504/788c9f9f-8154-4e4a-b79e-fa025774b218)
+
+Enter below code into "Subview section"
+
+```ruby
+grid-template-columns: auto 0px 0%
+grid-template-rows: auto
+grid-template-areas: |
+  "header header header"
+  "main . sidebar"
+  "footer footer footer"
+mediaquery:
+  "(max-width: 600px)":
+    grid-template-columns: 100%
+    grid-template-areas: |
+      "header"
+      "sidebar"
+      "main"
+      "footer"
+  "(max-width: 800px)":
+    grid-template-columns: 50% 50%
+    grid-template-areas: |
+      "header sidebar"
+      "main main"
+      "footer footer"
+
+```
+After that just copy and paste the code into the page. The structure is exactly the same with mobile only some modifications has been made in order to display the photos with full size. 
 

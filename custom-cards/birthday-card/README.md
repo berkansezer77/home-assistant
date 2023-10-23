@@ -331,6 +331,7 @@ Rmeaing sensors are :
  Far Away
 {% endif %}
 ```
+4.
 ```ruby
 {% set midnight = now().replace(hour=0, minute=0, second=0, microsecond=0).timestamp() %}
 {% set event = as_timestamp(states('sensor.calendar_birthday_schedules_date_3')) %}
@@ -372,6 +373,56 @@ So lets explain our code line by line
 Line 11 - 34 is where the little crown icon stands. With this you can turn on and off notifications for the birthdays. Below you can find the automation code. 
 
 - [Reminder Automation](https://github.com/berkansezer77/home-assistant/blob/main/custom-cards/birthday-card/reminder-automation)
+
+In this automation I used telegram notification for reminders. Birthdays are saved as "All day events" so this automation sends a notification 30 minutes before midnight(previous day at 23:30) reminding me that a birthday will be active in 30 minutes. You can use anything you like for the reminder. For example you can let specific lights turn on or get an email. I also used a boolean to be turned on for this automation to work. The boolean is named "input_boolean.live_tiles_birthday_automation". You have to create it from helpers section choosing "Toggle". So when we press the "crown" icon at top left this automation becomes active. 
+
+Line 35 - 94 is for 2 little information on the birthday card. The name of the birthday person and the days left to his birthday in numbers. 
+
+![image](https://github.com/berkansezer77/home-assistant/assets/84282504/2f529cc6-459c-4db0-8e09-e6eaa658f019) 
+
+You can tweak this area by playing ".primary" and ".secondary" settings which is located at line 51 and line 65. For example you can the color background of "Days remaing" at line 73. You can also play with font size at Line 53 and Line 66. Also font family can be changed at Line 58 nad Line 71.
+
+Line 95 - 144 is the part where our first cards inside picture and other properties are written. Now this part is important. For example at Line 114 card takes the birthday person name and checks with the data starting from Line 115. If there is a match it displays the photo on entire card. 
+
+Let's look at our example 
+
+![image](https://github.com/berkansezer77/home-assistant/assets/84282504/cae2cc7d-4c29-48f7-ad8c-551bed399156)
+
+Line 114 checks the state from "sensor.calendar_birthday_schedules_msg_1" and the result of that sensor is :
+
+![image](https://github.com/berkansezer77/home-assistant/assets/84282504/5e93d2fd-80eb-4778-83f2-9235b310b7e9)
+
+Line 117 contains information of a person named Emre Bora Kiztan. So because the sensor "sensor.calendar_birthday_schedules_msg_1" result is "Emre Bora Kiztan", the photo at Line 118 will be used in the card until "sensor.calendar_birthday_schedules_msg_1" displays another name. In other words until the birthday is over. 
+
+Line 119 will also check "time remaining" to the birthday. If the state is "Today" it will highlght entire card. This way you will know that there is a birthday on the current day.
+
+So 
+
+```ruby
+{% elif state=='Emre Bora Kiztan' %}
+  background:  url( '/local/png/birthday/emrebora.png' ) no-repeat center 0px;
+```
+This code is for one person only. Below is the position of that person's photo inside the home assistant. To add a new one you have to create another "elif state" like for example this one. 
+
+```ruby
+{% elif state=='Emre Bora Kiztan' %}
+  background:  url( '/local/png/birthday/emrebora.png' ) no-repeat center 0px;
+{% elif state=='Berkan Sezer' %}
+  background:  url( '/local/png/birthday/berkan.png' ) no-repeat center 0px;
+```
+
+Be careful: 
+
+- The name written here should exactly be the same with "sensor.calendar_birthday_schedules_msg_1" result. Case sensitivity is also important. For example "Emre Bora Kiztan" should not be "Emre Bora kiztan" otherwise the photo will not be displayed.
+
+  ![image](https://github.com/berkansezer77/home-assistant/assets/84282504/06522202-53ef-4b8b-919a-d5c9cea722d7)
+
+- Local characters are also important. like lets say if you use "ı" instead of "i" the photo again won't be displayed.
+
+Tips: 
+
+-Try to copy the name from "sensor.calendar_birthday_schedules_msg_1" and paste it into the name area at the code. With this way you won't make any mistake. 
+- To get a persons photo use their social media. Find a proper picture and take a screenshot and save into your HA birthday folder(Or if you gave a different folder name for the photos, put them in that folder.)
 
 
 

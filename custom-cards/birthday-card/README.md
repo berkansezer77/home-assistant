@@ -153,7 +153,7 @@ Remember that the newly created sensor displays birthdays up to date order. So "
 
 The above part erases the words "adlı kişinin doğumgünü" with an empty statement using (""). 
 
-So as a result, while getting and atrribute message "Emre Bora Kiztan adlı kişinin doğum günü" we cut the sentence with <i><font color=red>"| replace("adlı kişinin doğum günü", "")"</i></font> part. This little trick leaves the attribute message as "Emre Bora Kiztan" which is only the name of the person. So if in English it is the as "Birthday of Merve Koç" try the replace line like this, "| replace("Birthday of", "")" this will cut the "Birthday of" sentence and only the name will be displayed.
+So as a result, while getting and atrribute message "Emre Bora Kiztan adlı kişinin doğum günü" we cut the sentence with <i><font color="red">"| replace("adlı kişinin doğum günü", "")"</i></font> part. This little trick leaves the attribute message as "Emre Bora Kiztan" which is only the name of the person. So if in English it is the as "Birthday of Merve Koç" try the replace line like this, "| replace("Birthday of", "")" this will cut the "Birthday of" sentence and only the name will be displayed.
 
 So now we need to create a sensor for that. With Home Assistant 2023.09 wen can now create sensors inside helpers section shortly from the UI. 
 

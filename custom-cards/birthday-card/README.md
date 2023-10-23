@@ -153,9 +153,19 @@ Remember that the newly created sensor displays birthdays up to date order. So "
 
 The above part erases the words "adlı kişinin doğumgünü" with an empty statement using (""). 
 
-So as a result, while getting and atrribute message "Emre Bora Kiztan adlı kişinin doğum günü" we cut the sentence with <i><font color="red">"| replace("adlı kişinin doğum günü", "")"</i></font> part. This little trick leaves the attribute message as "Emre Bora Kiztan" which is only the name of the person. So if in English it is the as "Birthday of Merve Koç" try the replace line like this, "| replace("Birthday of", "")" this will cut the "Birthday of" sentence and only the name will be displayed.
+So as a result, while getting and atrribute message "Emre Bora Kiztan adlı kişinin doğum günü" we cut the sentence with :
 
-So now we need to create a sensor for that. With Home Assistant 2023.09 wen can now create sensors inside helpers section shortly from the UI. 
+<i><font color="red">| replace("adlı kişinin doğum günü", "")</i></font> part. 
+
+This little trick leaves the attribute message as "Emre Bora Kiztan" which is the name of the person. 
+
+So if in English it is the as "Birthday of Merve Koç" try the replace line like this, 
+
+<i>| replace("Birthday of", "")</i>
+
+this will cut the "Birthday of" from the sentence and only the name will be displayed.
+
+So now we need to create a sensor for that. With Home Assistant 2023.09 wen can now create sensors from helpers section shortly from the UI. 
 
 So go to helpers menu.
 
@@ -168,14 +178,14 @@ Put the above code into "state template*" area and save it.
 ![image](https://github.com/berkansezer77/home-assistant/assets/84282504/95868daa-aae1-44c2-8265-fa203cd9149c)
 
 
-the outcome should be like this. If everything is ok our sensor will give you below infotmation. 
+The outcome should be like this. If everything is ok our new sensor will contain the below information. 
 
 ![image](https://github.com/berkansezer77/home-assistant/assets/84282504/83eb918e-0182-4117-b4f7-ddf246905385)
 
 
 As you can see only the name is being displayed. 
 
-So now we have created our first birthday card sensor. But we need to display 4 person. So 3 more left. Do the same process above and create 3 more templates. But be careful. you need to change 0 in the code :
+So now we have created our first birthday card sensor. But we have 4 person cards. So 3 more left. Do the same process above and create 3 more templates. But be careful. you need to change 0 in the code :
 
 ![image](https://github.com/berkansezer77/home-assistant/assets/84282504/ece1f676-253c-4701-8f9a-3690154f5e52)
 
@@ -188,7 +198,7 @@ So now we have created our first birthday card sensor. But we need to display 4 
 
 ![image](https://github.com/berkansezer77/home-assistant/assets/84282504/bf6bd738-f326-4c6f-9308-217a4ce669b9)
 
-So second template sould look like this. 
+The second template will look like this.....
 
 ![image](https://github.com/berkansezer77/home-assistant/assets/84282504/bc7b6627-361e-4ccf-9454-1117d5fec041)
 
@@ -212,7 +222,7 @@ This will take the starting date from the very first birthday person.
 
 ![image](https://github.com/berkansezer77/home-assistant/assets/84282504/58f41553-6223-44e0-a545-fc7879f9526f)
 
-When you create sensors ıt will display the time. Again as a reminder. "0" is the first birthday person in our sensor. 
+When you create sensors it will display the time. Again as a reminder. "0" is the first birthday person in our sensor. 
 
 ![image](https://github.com/berkansezer77/home-assistant/assets/84282504/75114e16-2a6d-48bb-9961-e4ba779f5ca2)
 
@@ -230,7 +240,7 @@ Do the same process for other three sensors.
 ```ruby
 {{ state_attr('sensor.calendar_scheduled_events', 'scheduled_events')[3].start }}
 ```
-So next 4 date sensors is as follows : 
+So the creation of 4 date sensors is as follows : 
 
 ![image](https://github.com/berkansezer77/home-assistant/assets/84282504/7d41dfa5-7175-48e6-8ef1-5aac91fd2977) 
 
@@ -274,7 +284,7 @@ Again place the above sensor into the template sensors as we have done before.
 
 ![image](https://github.com/berkansezer77/home-assistant/assets/84282504/77edb1d3-550c-42d0-bcb0-ff5ba926b242)
 
-This time this template takes the date from previously created "date sensors" and displays the remaing days. Again we need 4 of them and we have onlu created first one. So we have to repeat the same process 3 times. 
+This time this template takes the date from previously created "date sensors" and displays the remaing days. Again we need 4 of them and we have only created first one. So we have to repeat the same process 3 times. 
 
 Rmeaing sensors are : 
 
@@ -383,7 +393,7 @@ Line 11 - 34 is where the little crown icon stands. With this you can turn on an
 
 - [Reminder Automation](https://github.com/berkansezer77/home-assistant/blob/main/custom-cards/birthday-card/reminder-automation)
 
-In this automation I used telegram notification for reminders. Birthdays are saved as "All day events" so this automation sends a notification 30 minutes before midnight(previous day at 23:30) reminding me that a birthday will be active in 30 minutes. You can use anything you like for the reminder. For example you can let specific lights turn on or get an email. I also used a boolean to be turned on for this automation to work. The boolean is named "input_boolean.live_tiles_birthday_automation". You have to create it from helpers section choosing "Toggle". So when we press the "crown" icon at top left this automation becomes active. 
+In this automation I used  a telegram notification for reminders. Birthdays are saved as "All day events" so this automation sends a notification 30 minutes before midnight(previous day at 23:30) reminding me that a birthday will be active in 30 minutes. You can use anything you like for the reminder. For example you can let specific lights turn on or get an email. I also used a boolean to be turned on for this automation to work. The boolean is named "input_boolean.live_tiles_birthday_automation". You have to create it from helpers section choosing "Toggle". So when we press the "crown" icon at top left this automation becomes active. 
 
 Line 35 - 94 is for 2 little information on the birthday card. The name of the birthday person and the days left to his birthday in numbers. 
 

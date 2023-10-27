@@ -1,0 +1,1985 @@
+type: custom:layout-card
+layout_type: masonry
+layout: {}
+cards:
+  - type: horizontal-stack
+    cards:
+      - type: custom:stack-in-card
+        layout_type: masonry
+        layout: {}
+        cards:
+          - type: horizontal-stack
+            cards:
+              - type: custom:mushroom-template-card
+                icon: null
+                primary: Suadiye
+                picture: null
+                secondary: |
+                  {{ now().strftime('%d %B %Y') }}
+                entity: entity.entity
+                fill_container: false
+                multiline_secondary: true
+                layout: horizontal
+                card_mod:
+                  style:
+                    mushroom-state-info$: |
+                      .primary {
+                        font-size: 34px !important;
+                        font-weight: bold !important;
+                        margin-left: -15px;     
+                        margin-top: 0px;  
+                        width: 80px !important; 
+                        font-family: Georgia, serif;
+                        text-align: left;             
+                        overflow: visible !important;     
+                        z-index:1;        
+                        text-indent: 10px;     
+                      }
+                      .secondary {     
+                        font-size: 14px !important;
+                        margin-top: 0px !important;
+                        margin-left: -15px;  
+                        width: 350px !important;
+                        font-weight: 900 !important;            
+                        text-indent: 10px;         
+                        overflow: hidden !important;  
+                         
+                      } 
+                    .: |
+                      ha-card {       
+                        box-shadow: none !important;
+                        background-color: transparent;     
+                      }       
+                      :host {
+                        height: 100px !important;
+                        --mush-icon-size: 100px;
+                        background: transparent !important;  
+                        margin-left: -1px !important;   
+                        margin-top: 0px !important;  
+                        margin-right: Auto;   
+                      }    
+              - type: custom:mushroom-chips-card
+                card_mod:
+                  style: |
+                    :host {
+                      margin-top: 24px !important;
+                      --ha-card-background: white;
+                    }
+                    ha-card {
+                      --ha-card-border-width: 0;
+                      --chip-icon-size: 35px;
+                     --chip-background: none;  
+                     --chip-border: none !important;
+                     --chip-box-shadow: none;
+                     --chip-font-size: 24px;                         
+                      --chip-spacing: 2px;
+                      --chip-text-color: white;
+                      --primary-text-color: white;
+                    }    
+                chips:
+                  - type: template
+                    icon: mdi:newspaper-variant-multiple
+                    icon_color: |
+                      {% if is_state(config.entity, 'on') %}
+                         amber         
+                      {% else %}  
+                        white
+                      {% endif %}   
+                    content: null
+                    entity: input_boolean.weather_report
+                    tap_action:
+                      action: call-service
+                      service: input_boolean.toggle
+                      target:
+                        entity_id: input_boolean.weather_report
+                  - type: template
+                    icon: mdi:water-percent
+                    icon_color: white
+                    content: '{{ states(''sensor.aqara_outdoor_nem'')  }}'
+                    tap_action:
+                      action: call-service
+                      service: input_boolean.toggle
+                      target:
+                        entity_id: input_boolean.weather_animations
+                alignment: end
+        card_mod:
+          style: |
+            ha-card {
+              box-shadow: none;
+              background: transparent;
+              background-position: center; 
+              background-repeat: no-repeat;
+              background-size: cover;
+              position: relative;
+            }
+  - type: horizontal-stack
+    cards:
+      - type: custom:stack-in-card
+        layout_type: masonry
+        layout: {}
+        cards:
+          - type: conditional
+            conditions:
+              - entity: input_boolean.weather_report
+                state: 'off'
+            card:
+              type: horizontal-stack
+              cards:
+                - type: custom:mushroom-template-card
+                  icon: null
+                  primary: |
+                    {{ states('sensor.aqara_outdoor_temperature')|int }}°
+                  picture: null
+                  secondary: |
+                    {{ states('weather.forecast_home')   }}
+                  entity: entity.entity
+                  fill_container: false
+                  multiline_secondary: true
+                  layout: horizontal
+                  card_mod:
+                    style:
+                      mushroom-state-info$: |
+                        .primary {
+                          font-size: 184px !important;
+                          font-weight: bold !important;
+                          margin-left: 50px;     
+                          margin-top: -50px;         
+                          overflow: visible !important;    
+                          font-weight: 900 !important; 
+                          text-indent: 0px;     
+                          text-align: center;
+                        }
+                        .secondary {     
+                          font-size: 34px !important;
+                          margin-top: -80px !important;
+                          margin-left: 0px;  
+                          width: 350px !important;
+                          font-weight: 900 !important;            
+                          text-indent: 10px;         
+                          overflow: hidden !important;  
+                          --secondary-text-color: orange;
+                          text-align: center;
+                        } 
+                      .: |
+                        ha-card {       
+                          box-shadow: none !important;
+                          background-color: transparent;     
+                        }       
+                        :host {
+                          height: 210px !important;
+                          --mush-icon-size: 100px;
+                          background: transparent !important;  
+                          margin-left: -1px !important;   
+                          margin-top: 0px !important;  
+                          margin-right: Auto;   
+                        }    
+          - type: conditional
+            conditions:
+              - entity: input_boolean.weather_report
+                state: 'on'
+            card:
+              type: horizontal-stack
+              cards:
+                - type: custom:stack-in-card
+                  layout_type: masonry
+                  layout: {}
+                  cards:
+                    - type: markdown
+                      content: >-
+                        <u><h2>Weather Report</h2></u>
+
+                        <h4><p>{% set state =
+                        states('sensor.openweathermap_feels_like_temperature')
+                        %}  {% if state | float > 34 and states | float < 50 %}
+                         It is bloody hot outside
+                        {% elif state  | float > 29 and state  | float < 35 %}
+                         It is very hot outside
+                        {% elif state  | float > 26 and state | float < 30 %}
+                         It is hot outside
+                        {% elif state  | float > 24 and state  | float < 27  %}
+                         Nice weather outside
+                        {% elif state | float > 20 and state | float < 25  %}
+                         There is a lovely weather outside
+                        {% elif state  | float > 16 and state | float < 21 %}
+                         Not hold, not cold weather outside
+                        {% elif state  | float > 11 and state  | float < 17 %}
+                         You might need a jacket
+                        {% elif state  | float > 6 and state  | float < 12 %}
+                         It is cold outside
+                        {% elif state  | float > 4 and state  | float < 7 %}
+                         It is very cold outside
+                        {% elif state  | float > 0 and state  | float < 5 %}
+                         It is freezing outside
+                        {% else %} {%- endif %} with a <font color=
+                        orange>{{states('sensor.aqara_outdoor_temperature')}}°</font>
+                         Feels like is <font color= orange>{{states('sensor.openweathermap_feels_like_temperature')}}°</font> and the wind
+                        speed is <font color= orange>{{
+                        state_attr('weather.forecast_home',
+                        'forecast')[0].wind_speed }}</font>.  {% set
+                        state=states('sensor.weather_next_12_hours_rain_probability')%}
+                        {%if state == '0.0' %}    No rain for the next <u>12
+                        hours</u>.  {% else%}  There is a
+                        {{states('sensor.weather_next_12_hours_rain_probability')}}
+                        Chance of precipitation for the next 12 hours. {% endif
+                        %}</p></h1> <h4><p><u>Tomorrow</u> there will be a <font
+                        color= orange>{{ state_attr('weather.forecast_home',
+                        'forecast')[1].condition }}</font> weather with a <font
+                        color= orange>{{ state_attr('weather.forecast_home',
+                        'forecast')[1].temperature }}°</font>  high and <font
+                        color= orange>{{ state_attr('weather.forecast_home',
+                        'forecast')[1].templow }}°</font>  low. Windspeed will
+                        be {{ state_attr('weather.forecast_home',
+                        'forecast')[0].wind_speed }} </p>  <font color=
+                        orange>{% if
+                        state_attr('weather.forecast_home','forecast')[1].precipitation
+                        == 0   %}</font>
+                          There is <u>no rain</u> visible
+                        {% else %}
+                         There is rain probability with <font color= orange>{{state_attr('weather.forecast_home','forecast')[1].precipitation }}</font>
+                        {% endif %} <p>
+                  card_mod:
+                    style: |
+                      ha-card {
+                      font-size: 16px;
+                        text-align: left;
+                        background: none;
+                        box-shadow: none !important;
+                        margin-top: -20px;
+                      }  
+        card_mod:
+          style: |
+            ha-card {
+               {% if is_state('weather.forecast_home', 'cloudy') and is_state('input_boolean.weather_animations', 'off')  %}
+                background:  url( '/local/png/weather/cloudy.gif' ) no-repeat center 0px;
+                 background-blend-mode: soft-light;
+                 background-color: rgba(29,29,34, 0.5);
+              {% elif is_state('weather.forecast_home', 'clear-night')and is_state('input_boolean.weather_animations', 'off')  %}
+                background:  url( '/local/png/weather/clear-night3.gif' ) no-repeat center 0px;
+                 background-blend-mode: soft-light;
+                 background-color: rgba(29,29,34, 0.5);
+              {% elif is_state('weather.forecast_home', 'exceptional')and is_state('input_boolean.weather_animations', 'off')  %}
+                background:  url( '/local/png/weather/exceptional1.png' ) no-repeat center 0px;
+                 background-blend-mode: soft-light;
+                 background-color: rgba(29,29,34, 0.5);
+              {% elif is_state('weather.forecast_home', 'fog')and is_state('input_boolean.weather_animations', 'off')  %}
+                background:  url( '/local/png/weather/fog3.gif' ) no-repeat center 0px;
+                 background-blend-mode: soft-light;
+                 background-color: rgba(29,29,34, 0.5);
+              {% elif is_state('weather.forecast_home', 'hail')and is_state('input_boolean.weather_animations', 'off')  %}
+                background:  url( '/local/png/weather/hail2.gif' ) no-repeat center 0px;
+                 background-blend-mode: soft-light;
+                 background-color: rgba(29,29,34, 0.5);
+              {% elif is_state('weather.forecast_home', 'lightning') and is_state('input_boolean.weather_animations', 'off') %}
+                background:  url( '/local/png/weather/lightning3.gif' ) no-repeat center 0px;
+                 background-blend-mode: soft-light;
+                 background-color: rgba(29,29,34, 0.5);
+              {% elif is_state('weather.forecast_home', 'lightning-rainy')and is_state('input_boolean.weather_animations', 'off')  %}
+                background:  url( '/local/png/weather/lightning-rainy.jpeg' ) no-repeat center 0px;
+                 background-blend-mode: soft-light;
+                 background-color: rgba(29,29,34, 0.5);
+              {% elif is_state('weather.forecast_home', 'partlycloudy') and is_state('input_boolean.weather_animations', 'off') %}
+                background:  url( '/local/png/weather/partly-cloudy.gif' ) no-repeat center 0px;
+                 background-blend-mode: soft-light;
+                 background-color: rgba(29,29,34, 0.5);
+              {% elif is_state('weather.forecast_home', 'pouring') and is_state('input_boolean.weather_animations', 'off') %}
+                background:  url( '/local/png/weather/pouring.gif' ) no-repeat center 0px;
+                 background-blend-mode: soft-light;
+                 background-color: rgba(29,29,34, 0.5);
+              {% elif is_state('weather.forecast_home', 'rainy')and is_state('input_boolean.weather_animations', 'off')  %}
+                background:  url( '/local/png/weather/rainy.gif' ) no-repeat center 0px;
+                 background-blend-mode: soft-light;
+                 background-color: rgba(29,29,34, 0.5);
+              {% elif is_state('weather.forecast_home', 'snowy') and is_state('input_boolean.weather_animations', 'off') %}
+                background:  url( '/local/png/weather/snowy.gif' ) no-repeat center 0px;
+                 background-blend-mode: soft-light;
+                 background-color: rgba(29,29,34, 0.5);
+              {% elif is_state('weather.forecast_home', 'snowy-rainy') and is_state('input_boolean.weather_animations', 'off') %}
+                background:  url( '/local/png/weather/snowy-rainy.gif' ) no-repeat center 0px;
+                 background-blend-mode: soft-light;
+                 background-color: rgba(29,29,34, 0.5);
+              {% elif is_state('weather.forecast_home', 'sunny') and is_state('input_boolean.weather_animations', 'off') %}
+                background:  url( '/local/png/weather/sunny.gif' ) no-repeat center 0px;
+                 background-blend-mode: soft-light;
+                 background-color: rgba(29,29,34, 0.5);
+              {% elif is_state('weather.forecast_home', 'windy') and is_state('input_boolean.weather_animations', 'off') %}
+                background:  url( '/local/png/weather/windy.gif' ) no-repeat center 0px;
+                 background-blend-mode: soft-light;
+                 background-color: rgba(29,29,34, 0.5);
+              {% elif is_state('weather.forecast_home', 'windy-variant')and is_state('input_boolean.weather_animations', 'off')  %}
+                background:  url( '/local/png/weather/windy.gif' ) no-repeat center 0px;
+                 background-blend-mode: soft-light;
+                 background-color: rgba(29,29,34, 0.5);
+              {% elif is_state('input_boolean.weather_animations', 'on')  %}
+                background:  url( '/local/png/wallpaper1.jpg' ) no-repeat center 0px;
+                background-size: cover;
+               {% else %}
+                none;
+              {% endif %}     
+                height: 290px;
+                text-align: center !important;       
+                border-radius: 30px;
+                background-position: center; 
+                background-repeat: no-repeat;
+                background-size: cover;
+                position: relative;
+                z-index: 0;
+                border: solid;
+            }                    
+              :host {
+                --mush-icon-size: 100px;
+                background: transparent !important;  
+                margin-left: 20px !important;   
+                margin-top: 0px !important;  
+                margin-right: 20px !important;   
+              }  
+  - type: horizontal-stack
+    cards:
+      - type: custom:stack-in-card
+        layout_type: masonry
+        layout: {}
+        cards:
+          - type: horizontal-stack
+            cards:
+              - type: custom:mushroom-template-card
+                icon: null
+                primary: null
+                picture: |
+                  {% if is_state('weather.forecast_home', 'clear-night') %}
+                    /local/png/weather/ikon/clear-night.svg
+                  {% elif is_state('weather.forecast_home', 'cloudy') %}
+                    /local/png/weather/ikon/cloudy.svg
+                  {% elif is_state('weather.forecast_home',
+                  'exceptional') %}
+                    /local/png/weather/ikon/heavy.svg
+                  {% elif is_state('weather.forecast_home', 'fog') %}
+                    /local/png/weather/ikon/fog.svg
+                  {% elif is_state('weather.forecast_home', 'hail') %}
+                    /local/png/weather/ikon/hail.svg
+                  {% elif is_state('weather.forecast_home', 'lightning')
+                  %}
+                    /local/png/weather/ikon/lightning.svg
+                  {% elif is_state('weather.forecast_home',
+                  'lightning-rainy') %}
+                    /local/png/weather/ikon/lightning-rainy.svg
+                  {% elif is_state('weather.forecast_home',
+                  'partlycloudy') %}
+                    /local/png/weather/ikon/partlycloudy.svg
+                  {% elif is_state('weather.forecast_home', 'pouring') %}
+                    /local/png/weather/ikon/pouring.svg
+                  {% elif is_state('weather.forecast_home', 'rainy') %}
+                    /local/png/weather/ikon/rainy.svg
+                  {% elif is_state('weather.forecast_home', 'snowy') %}
+                    /local/png/weather/ikon/snowy.svg
+                  {% elif is_state('weather.forecast_home',
+                  'snowy-rainy') %}
+                    /local/png/weather/ikon/snowy-rainy.svg
+                  {% elif is_state('weather.forecast_home', 'sunny') %}
+                    /local/png/weather/ikon/sunny1.svg
+                  {% elif is_state('weather.forecast_home', 'windy') %}
+                    /local/png/weather/ikon/windy.png
+                  {% elif is_state('weather.forecast_home',
+                  'windy-variant') %}
+                   /local/png/weather/ikon/windy-variant.svg
+                  {% else %}
+                    /local/png/futbol.png
+                  {% endif %}     
+                secondary: |
+                  {{ states('weather.forecast_home')   }}
+                entity: entity.entity
+                fill_container: false
+                multiline_secondary: true
+                layout: horizontal
+                card_mod:
+                  style:
+                    mushroom-state-info$: |
+                      .primary {
+                        font-size: 184px !important;
+                        font-weight: bold !important;
+                        margin-left: 0px;     
+                        margin-top: -450px;  
+                        z-index: 1 !important;
+                        overflow: visible !important;    
+                        font-weight: 900 !important; 
+                        text-indent: 0px;     
+                        text-align: center;
+                      }
+                      .secondary {     
+                        font-size: 34px !important;
+                        margin-top: -80px !important;
+                        margin-left: 0px;  
+                        width: 350px !important;
+                        font-weight: 900 !important;            
+                        text-indent: 10px;         
+                        overflow: hidden !important;  
+                        text-align: center;
+                      } 
+                    mushroom-shape-avatar$: |
+                      .picture {            
+                        border-radius: 0px !important;    
+                        width: auto;
+                        margin-left: 0px;           
+                        margin-bottom: auto;  
+                      }
+                    mushroom-shape-icon$: |
+                      .shape {
+                        position: relative;
+                        border-radius: 0px !important;
+                      }
+                    .: |
+                      ha-card {       
+                        box-shadow: none ;
+                        background-color: transparent;     
+                      }       
+                      :host {
+                        height: 100px !important;
+                        --mush-icon-size: 160px;
+                        background: transparent !important;  
+                        margin-left: 0px !important;   
+                        margin-top: -10px !important;  
+                        margin-right: Auto;  
+                        box-shadow: none ;
+                      }    
+        card_mod:
+          style: |
+            ha-card {
+                 background: transparent !important;
+                height: 150px;
+                text-align: center !important;       
+                border-radius: 30px;
+                background-position: center; 
+                background-repeat: no-repeat;
+                background-size: cover;
+                position: relative;
+                display: block;
+                margin: 0 auto;
+                width: 50%;
+                box-shadow: none ;
+            }                    
+              :host {
+                --mush-icon-size: 100px;
+                background: transparent !important;  
+                margin-left: 20px !important;   
+                margin-top: -80px !important;  
+                margin-right: 20px !important;   
+              }  
+  - type: conditional
+    conditions:
+      - entity: input_boolean.weather_card_details
+        state: 'on'
+    card:
+      type: horizontal-stack
+      cards:
+        - type: custom:stack-in-card
+          layout_type: masonry
+          layout: {}
+          cards:
+            - type: grid
+              columns: 3
+              square: false
+              cards:
+                - type: custom:mushroom-template-card
+                  secondary: >
+                    %{{ 
+                    state_attr('weather.forecast_home','forecast')[0].precipitation 
+                    | int  }}
+                  primary: Rain
+                  entity: input_boolean.weather_card_weekly
+                  icon: mdi:weather-pouring
+                  icon_color: white
+                  fill_container: false
+                  multiline_secondary: false
+                  layout: vertical
+                  picture: null
+                  card_mod:
+                    style:
+                      mushroom-state-info$: |
+                        .primary {
+                          {% if is_state(config.entity, 'on')  %}
+                            --primary-text-color: white;
+                          {% else %}
+                            --primary-text-color: rgba(94, 94, 92, 4.6);
+                          {% endif %}
+                          font-size: 18px !important;
+                          position: relative;
+                          overflow: visible !important;
+                          margin-top: 0px;   
+                          margin-left: 0px;         
+                          font-weight: bold;
+                          text-overflow: ellipsis;  
+                          text-align: center;                 
+                          text-indent: 5px;      
+                          border-radius: 0px;
+                        }
+                        .secondary {
+                          {% if is_state(config.entity, 'on')  %}
+                          {% else %}
+                            visibility: hidden;
+                          {% endif %}
+                          font-size: 16px !important;
+                          position: relative;
+                          margin-top: 0px;  
+                          text-align: center !important;
+                          margin-left: 05px;      
+                          overflow: visible !important;
+                          --secondary-text-color: var(--amber-color); 
+                        } 
+                      mushroom-shape-icon$: |
+                        .shape {
+                          position: relative;
+                          border-radius: 0px !important;
+                        }
+                      .: |
+                        ha-card {
+                          background: transparent;
+                          box-shadow: none !important;
+                          border: none;
+                          background-color: none;
+                          height: auto;      
+                        }       
+                          mushroom-shape-icon {
+                            --shape-color: none !important;  
+                          }  
+                          :host {
+                            --mush-icon-size: 70px;
+                          }   
+                - type: custom:mushroom-template-card
+                  secondary: >
+                    {{ 
+                    state_attr('weather.forecast_home','forecast')[0].temperature 
+                    }}°
+                  primary: Max Temp
+                  entity: input_boolean.weather_card_weekly
+                  icon: mdi:thermometer-plus
+                  icon_color: white
+                  fill_container: false
+                  multiline_secondary: false
+                  layout: vertical
+                  picture: null
+                  card_mod:
+                    style:
+                      mushroom-state-info$: |
+                        .primary {
+                          {% if is_state(config.entity, 'on')  %}
+                            --primary-text-color: white;
+                          {% else %}
+                            --primary-text-color: rgba(94, 94, 92, 4.6);
+                          {% endif %}
+                          font-size: 18px !important;
+                          position: relative;
+                          overflow: visible !important;
+                          margin-top: 0px;   
+                          margin-left: 0px;         
+                          font-weight: bold;
+                          text-overflow: ellipsis;  
+                          text-align: center;                 
+                          text-indent: 5px;      
+                          border-radius: 0px;
+                        }
+                        .secondary {
+                          {% if is_state(config.entity, 'on')  %}
+                          {% else %}
+                            visibility: hidden;
+                          {% endif %}
+                          font-size: 16px !important;
+                          position: relative;
+                          margin-top: 0px;  
+                          text-align: center !important;
+                          margin-left: 05px;      
+                          overflow: visible !important;
+                          --secondary-text-color: var(--amber-color); 
+                        } 
+                      mushroom-shape-icon$: |
+                        .shape {
+                          position: relative;
+                          border-radius: 0px !important;
+                        }
+                      .: |
+                        ha-card {
+                          background: transparent;
+                          box-shadow: none !important;
+                          border: none;
+                          background-color: none;
+                          height: auto;      
+                        }       
+                          mushroom-shape-icon {
+                            --shape-color: none !important;  
+                          }  
+                          :host {
+                            --mush-icon-size: 70px;
+                          }   
+                - type: custom:mushroom-template-card
+                  secondary: >
+                    {{ 
+                    state_attr('weather.forecast_home','forecast')[0].templow 
+                    }}
+                  primary: Low Temp
+                  entity: input_boolean.weather_card_weekly
+                  icon: mdi:thermometer-minus
+                  icon_color: white
+                  fill_container: false
+                  multiline_secondary: false
+                  layout: vertical
+                  picture: null
+                  card_mod:
+                    style:
+                      mushroom-state-info$: |
+                        .primary {
+                          {% if is_state(config.entity, 'on')  %}
+                            --primary-text-color: white;
+                          {% else %}
+                            --primary-text-color: rgba(94, 94, 92, 4.6);
+                          {% endif %}
+                          font-size: 18px !important;
+                          position: relative;
+                          overflow: visible !important;
+                          margin-top: 0px;   
+                          margin-left: 0px;         
+                          font-weight: bold;
+                          text-overflow: ellipsis;  
+                          text-align: center;                 
+                          text-indent: 5px;      
+                          border-radius: 0px;
+                        }
+                        .secondary {
+                          {% if is_state(config.entity, 'on')  %}
+                          {% else %}
+                            visibility: hidden;
+                          {% endif %}
+                          font-size: 16px !important;
+                          position: relative;
+                          margin-top: 0px;  
+                          text-align: center !important;
+                          margin-left: 05px;      
+                          overflow: visible !important;
+                          --secondary-text-color: var(--amber-color); 
+                        } 
+                      mushroom-shape-icon$: |
+                        .shape {
+                          position: relative;
+                          border-radius: 0px !important;
+                        }
+                      .: |
+                        ha-card {
+                          background: transparent;
+                          box-shadow: none !important;
+                          border: none;
+                          background-color: none;
+                          height: auto;      
+                        }       
+                          mushroom-shape-icon {
+                            --shape-color: none !important;  
+                          }  
+                          :host {
+                            --mush-icon-size: 70px;
+                          }   
+                - type: custom:mushroom-template-card
+                  secondary: >
+                    {{ 
+                    state_attr('weather.forecast_home','forecast')[0].humidity 
+                    }}
+                  primary: Humidity
+                  entity: input_boolean.weather_card_weekly
+                  icon: mdi:water-percent
+                  icon_color: white
+                  fill_container: false
+                  multiline_secondary: false
+                  layout: vertical
+                  picture: null
+                  card_mod:
+                    style:
+                      mushroom-state-info$: |
+                        .primary {
+                          {% if is_state(config.entity, 'on')  %}
+                            --primary-text-color: white;
+                          {% else %}
+                            --primary-text-color: rgba(94, 94, 92, 4.6);
+                          {% endif %}
+                          font-size: 18px !important;
+                          position: relative;
+                          overflow: visible !important;
+                          margin-top: 0px;   
+                          margin-left: 0px;         
+                          font-weight: bold;
+                          text-overflow: ellipsis;  
+                          text-align: center;                 
+                          text-indent: 5px;      
+                          border-radius: 0px;
+                        }
+                        .secondary {
+                          {% if is_state(config.entity, 'on')  %}
+                          {% else %}
+                            visibility: hidden;
+                          {% endif %}
+                          font-size: 16px !important;
+                          position: relative;
+                          margin-top: 0px;  
+                          text-align: center !important;
+                          margin-left: 05px;      
+                          overflow: visible !important;
+                          --secondary-text-color: var(--amber-color); 
+                        } 
+                      mushroom-shape-icon$: |
+                        .shape {
+                          position: relative;
+                          border-radius: 0px !important;
+                        }
+                      .: |
+                        ha-card {
+                          background: transparent;
+                          box-shadow: none !important;
+                          border: none;
+                          background-color: none;
+                          height: auto;      
+                        }       
+                          mushroom-shape-icon {
+                            --shape-color: none !important;  
+                          }  
+                          :host {
+                            --mush-icon-size: 70px;
+                          }   
+                - type: custom:mushroom-template-card
+                  secondary: >
+                    {{ 
+                    state_attr('weather.forecast_home','forecast')[0].wind_speed 
+                    }}
+                  primary: Wind
+                  entity: input_boolean.weather_card_weekly
+                  icon: mdi:weather-windy
+                  icon_color: white
+                  fill_container: false
+                  multiline_secondary: false
+                  layout: vertical
+                  picture: null
+                  card_mod:
+                    style:
+                      mushroom-state-info$: |
+                        .primary {
+                          {% if is_state(config.entity, 'on')  %}
+                            --primary-text-color: white;
+                          {% else %}
+                            --primary-text-color: rgba(94, 94, 92, 4.6);
+                          {% endif %}
+                          font-size: 18px !important;
+                          position: relative;
+                          overflow: visible !important;
+                          margin-top: 0px;   
+                          margin-left: 0px;         
+                          font-weight: bold;
+                          text-overflow: ellipsis;  
+                          text-align: center;                 
+                          text-indent: 5px;      
+                          border-radius: 0px;
+                        }
+                        .secondary {
+                          {% if is_state(config.entity, 'on')  %}
+                          {% else %}
+                            visibility: hidden;
+                          {% endif %}
+                          font-size: 16px !important;
+                          position: relative;
+                          margin-top: 0px;  
+                          text-align: center !important;
+                          margin-left: 05px;      
+                          overflow: visible !important;
+                          --secondary-text-color: var(--amber-color); 
+                        } 
+                      mushroom-shape-icon$: |
+                        .shape {
+                          position: relative;
+                          border-radius: 0px !important;
+                        }
+                      .: |
+                        ha-card {
+                          background: transparent;
+                          box-shadow: none !important;
+                          border: none;
+                          background-color: none;
+                          height: auto;      
+                        }       
+                          mushroom-shape-icon {
+                            --shape-color: none !important;  
+                          }  
+                          :host {
+                            --mush-icon-size: 70px;
+                          }   
+                - type: custom:mushroom-template-card
+                  secondary: >
+                    {{ as_timestamp(states.sun.sun.attributes.next_setting) |
+                    timestamp_custom(" %I:%M %p") | replace(" 0", "") }}
+                  primary: Sunset
+                  entity: input_boolean.weather_card_weekly
+                  icon: mdi:weather-sunset
+                  icon_color: white
+                  fill_container: false
+                  multiline_secondary: false
+                  layout: vertical
+                  picture: null
+                  card_mod:
+                    style:
+                      mushroom-state-info$: |
+                        .primary {
+                          {% if is_state(config.entity, 'on')  %}
+                            --primary-text-color: white;
+                          {% else %}
+                            --primary-text-color: rgba(94, 94, 92, 4.6);
+                          {% endif %}
+                          font-size: 18px !important;
+                          position: relative;
+                          overflow: visible !important;
+                          margin-top: 0px;   
+                          margin-left: 0px;         
+                          font-weight: bold;
+                          text-overflow: ellipsis;  
+                          text-align: center;                 
+                          text-indent: 5px;      
+                          border-radius: 0px;
+                        }
+                        .secondary {
+                          {% if is_state(config.entity, 'on')  %}
+                          {% else %}
+                            visibility: hidden;
+                          {% endif %}
+                          font-size: 16px !important;
+                          position: relative;
+                          margin-top: 0px;  
+                          text-align: center !important;
+                          margin-left: 05px;      
+                          overflow: visible !important;
+                          --secondary-text-color: var(--amber-color); 
+                        } 
+                      mushroom-shape-icon$: |
+                        .shape {
+                          position: relative;
+                          border-radius: 0px !important;
+                        }
+                      .: |
+                        ha-card {
+                          background: transparent;
+                          box-shadow: none !important;
+                          border: none;
+                          background-color: none;
+                          height: auto;      
+                        }       
+                          mushroom-shape-icon {
+                            --shape-color: none !important;  
+                          }  
+                          :host {
+                            --mush-icon-size: 70px;
+                          }   
+          card_mod:
+            style: |
+              ha-card {
+                background-color: rgba(40,40,40, 0.7);
+                border-radius: 30px !important;
+              }                    
+              :host {
+                --mush-icon-size: 70px;
+                 margin-left: 20px !important ; 
+                 margin-right: 20px !important; 
+               }
+  - type: grid
+    columns: 5
+    square: false
+    cards:
+      - type: custom:mushroom-template-card
+        secondary: |
+          {% if is_state(config.entity, 'on')  %}
+            .
+          {% else %}
+            de 
+          {% endif %}
+        primary: Weekly
+        entity: input_boolean.weather_card_weekly
+        icon: null
+        icon_color: red
+        fill_container: false
+        multiline_secondary: false
+        tap_action:
+          action: call-service
+          service: input_boolean.turn_on
+          target:
+            entity_id: input_boolean.weather_card_weekly
+        layout: horizontal
+        picture: null
+        card_mod:
+          style:
+            mushroom-state-info$: |
+              .primary {
+                {% if is_state(config.entity, 'on')  %}
+                  --primary-text-color: white;
+                {% else %}
+                  --primary-text-color: rgba(94, 94, 92, 4.6);
+                {% endif %}
+                font-size: 18px !important;
+                position: relative;
+                overflow: visible !important;
+                margin-top: 0px;   
+                margin-left: 0px;         
+                font-weight: bold;
+                text-overflow: ellipsis;  
+                text-align: left;                 
+                text-indent: 5px;      
+                border-radius: 0px;
+              }
+              .secondary {
+                {% if is_state(config.entity, 'on')  %}
+                {% else %}
+                  visibility: hidden;
+                {% endif %}
+                font-size: 16px !important;
+                position: relative;
+                margin-top: -10px;  
+                text-align: left !important;
+                margin-left: 35px;      
+                overflow: visible !important;
+                --secondary-text-color: var(--amber-color); 
+              } 
+            .: |
+              ha-card {
+                background: transparent;
+                box-shadow: none !important;
+                border: none;
+                background-color: none;
+                height: 100px !important;      
+              }       
+      - type: custom:mushroom-template-card
+        secondary: |
+          {% if is_state(config.entity, 'on')  %}
+            .
+          {% else %}
+            .
+          {% endif %}
+        primary: Hourly
+        entity: input_boolean.weather_card_hourly
+        tap_action:
+          action: call-service
+          service: input_boolean.turn_on
+          target:
+            entity_id: input_boolean.weather_card_hourly
+        icon: null
+        icon_color: red
+        fill_container: false
+        multiline_secondary: false
+        layout: horizontal
+        picture: null
+        card_mod:
+          style:
+            mushroom-state-info$: |
+              .primary {
+                {% if is_state(config.entity, 'on')  %}
+                  --primary-text-color: white;
+                {% else %}
+                  --primary-text-color: rgba(94, 94, 92, 4.6);
+                {% endif %}
+                font-size: 18px !important;
+                position: relative;
+                overflow: visible !important;
+                margin-top: 0px;   
+                margin-left: 0px;         
+                font-weight: bold;
+                text-overflow: ellipsis;  
+                text-align: left;           
+                text-indent: 5px;      
+                border-radius: 0px;
+              }
+              .secondary {
+                {% if is_state(config.entity, 'on')  %}
+                {% else %}
+                  visibility: hidden;
+                {% endif %}
+                font-size: 16px !important;
+                position: relative;
+                margin-top: -10px;  
+                text-align: left !important;
+                margin-left: 30px;      
+                overflow: visible !important;
+                --secondary-text-color: var(--amber-color); 
+              } 
+            .: |
+              ha-card {
+                background: none;     
+                box-shadow: none !important;
+                border: none;
+                background-color: none;
+                height: 100px !important;  
+                margin-left: 0px;
+              }   
+      - type: custom:mushroom-template-card
+        secondary: |
+          {% if is_state(config.entity, 'on')  %}
+            .
+          {% else %}
+           . 
+          {% endif %}
+        primary: Details
+        entity: input_boolean.weather_card_details
+        icon: null
+        icon_color: red
+        tap_action:
+          action: call-service
+          service: input_boolean.toggle
+          target:
+            entity_id: input_boolean.weather_card_details
+        fill_container: false
+        multiline_secondary: false
+        layout: horizontal
+        picture: null
+        card_mod:
+          style:
+            mushroom-state-info$: |
+              .primary {
+                {% if is_state(config.entity, 'on')  %}
+                  --primary-text-color: white;
+                {% else %}
+                  --primary-text-color: rgba(94, 94, 92, 4.6);
+                {% endif %}
+                font-size: 18px !important;
+                position: relative;
+                overflow: visible !important;
+                margin-top: 0px;   
+                margin-left: 0px;         
+                font-weight: bold;
+                text-overflow: ellipsis;  
+                text-align: left;           
+                text-indent: 5px;      
+                border-radius: 0px;
+              }
+              .secondary {
+                {% if is_state(config.entity, 'on')  %}
+                {% else %}
+                  visibility: hidden;
+                {% endif %}
+                font-size: 16px !important;
+                position: relative;
+                margin-top: -10px;  
+                text-align: left !important;
+                margin-left: 30px;      
+                overflow: visible !important;
+                --secondary-text-color: var(--amber-color); 
+              } 
+            .: |
+              ha-card {
+                background: none;     
+                box-shadow: none !important;
+                border: none;
+                background-color: none;
+                height: 100px !important;  
+                margin-left: 0px;
+              }   
+  - type: conditional
+    conditions:
+      - entity: input_boolean.weather_card_weekly
+        state: 'on'
+    card:
+      type: horizontal-stack
+      cards:
+        - type: custom:stack-in-card
+          cards:
+            - type: custom:layout-card
+              layout_type: masonry
+              layout: {}
+              cards:
+                - type: horizontal-stack
+                  cards:
+                    - type: custom:mushroom-template-card
+                      primary: >
+                        {{
+                        as_datetime(state_attr('weather.forecast_home','forecast')[0].datetime,).strftime('%a')
+                        }}
+                      secondary: >
+                        {{
+                        state_attr('weather.forecast_home','forecast')[0].temperature
+                        | int  }}
+                      picture: >
+                        {% if 
+                        state_attr('weather.forecast_home','forecast')[0].condition
+                        == 'clear-night' %}
+                          /local/png/weather/ikon/clear-night.svg
+                        {% elif 
+                        state_attr('weather.forecast_home','forecast')[0].condition
+                        == 'cloudy' %}
+                          /local/png/weather/ikon/cloudy.svg
+                        {% elif 
+                        state_attr('weather.forecast_home','forecast')[0].condition
+                        == 'exceptional' %}
+                          /local/png/weather/ikon/heavy.svg
+                        {% elif
+                        state_attr('weather.forecast_home','forecast')[0].condition
+                        == 'fog' %}
+                          /local/png/weather/ikon/fog.svg
+                        {% elif 
+                        state_attr('weather.forecast_home','forecast')[0].condition
+                        == 'hail' %}
+                          /local/png/weather/ikon/hail.svg
+                        {% elif
+                        state_attr('weather.forecast_home','forecast')[0].condition
+                        == 'lightning' %}
+                          /local/png/weather/ikon/lightning.svg
+                        {% elif
+                        state_attr('weather.forecast_home','forecast')[0].condition
+                        == 'lightning-rainy' %}
+                          /local/png/weather/ikon/lightning-rainy.svg
+                        {% elif 
+                        state_attr('weather.forecast_home','forecast')[0].condition
+                        == 'partlycloudy' %}
+                          /local/png/weather/ikon/partlycloudy.svg
+                        {% elif
+                        state_attr('weather.forecast_home','forecast')[0].condition
+                        == 'pouring' %}
+                          /local/png/weather/ikon/pouring.svg
+                        {% elif 
+                        state_attr('weather.forecast_home','forecast')[0].condition
+                        == 'rainy' %}
+                          /local/png/weather/ikon/rainy.svg
+                        {% elif
+                        state_attr('weather.forecast_home','forecast')[0].condition
+                        == 'snowy' %}
+                          /local/png/weather/ikon/snowy.svg
+                        {% elif
+                        state_attr('weather.forecast_home','forecast')[0].condition
+                        == 'snowy-rainy' %}
+                          /local/png/weather/ikon/snowy-rainy.svg
+                        {% elif
+                        state_attr('weather.forecast_home','forecast')[0].condition
+                        == 'sunny' %}
+                          /local/png/weather/ikon/sunny1.svg
+                        {% elif 
+                        state_attr('weather.forecast_home','forecast')[0].condition
+                        == 'windy' %}
+                          /local/png/weather/ikon/windy.png
+                        {% elif
+                        state_attr('weather.forecast_home','forecast')[0].condition
+                        == 'windy-variant' %}
+                          /local/png/weather/ikon/windy-variant.svg
+                        {% else %}
+                          /local/png/futbol.png
+                        {% endif %} 
+                      icon: null
+                      layout: vertical
+                      icon_color: blue
+                      card_mod:
+                        style: |
+                          ha-card { 
+                            background: var(--card-background-color);
+                            width: 66px;
+                            border-radius: 30px;
+                            margin-left: auto;
+                            margin-right: auto;
+                            margin-bottom: 2px;
+                          }
+                    - type: custom:mushroom-template-card
+                      primary: >
+                        {{
+                        as_datetime(state_attr('weather.forecast_home','forecast')[1].datetime,).strftime('%a')
+                        }}
+                      secondary: >
+                        {{
+                        state_attr('weather.forecast_home','forecast')[1].temperature
+                        | int  }}
+                      picture: >
+                        {% if 
+                        state_attr('weather.forecast_home','forecast')[1].condition
+                        == 'clear-night' %}
+                          /local/png/weather/ikon/clear-night.svg
+                        {% elif 
+                        state_attr('weather.forecast_home','forecast')[1].condition
+                        == 'cloudy' %}
+                          /local/png/weather/ikon/cloudy.svg
+                        {% elif 
+                        state_attr('weather.forecast_home','forecast')[1].condition
+                        == 'exceptional' %}
+                          /local/png/weather/ikon/heavy.svg
+                        {% elif
+                        state_attr('weather.forecast_home','forecast')[1].condition
+                        == 'fog' %}
+                          /local/png/weather/ikon/fog.svg
+                        {% elif 
+                        state_attr('weather.forecast_home','forecast')[1].condition
+                        == 'hail' %}
+                          /local/png/weather/ikon/hail.svg
+                        {% elif
+                        state_attr('weather.forecast_home','forecast')[1].condition
+                        == 'lightning' %}
+                          /local/png/weather/ikon/lightning.svg
+                        {% elif
+                        state_attr('weather.forecast_home','forecast')[1].condition
+                        == 'lightning-rainy' %}
+                          /local/png/weather/ikon/lightning-rainy.svg
+                        {% elif 
+                        state_attr('weather.forecast_home','forecast')[1].condition
+                        == 'partlycloudy' %}
+                          /local/png/weather/ikon/partlycloudy.svg
+                        {% elif
+                        state_attr('weather.forecast_home','forecast')[1].condition
+                        == 'pouring' %}
+                          /local/png/weather/ikon/pouring.svg
+                        {% elif 
+                        state_attr('weather.forecast_home','forecast')[1].condition
+                        == 'rainy' %}
+                          /local/png/weather/ikon/rainy.svg
+                        {% elif
+                        state_attr('weather.forecast_home','forecast')[1].condition
+                        == 'snowy' %}
+                          /local/png/weather/ikon/snowy.svg
+                        {% elif
+                        state_attr('weather.forecast_home','forecast')[1].condition
+                        == 'snowy-rainy' %}
+                          /local/png/weather/ikon/snowy-rainy.svg
+                        {% elif
+                        state_attr('weather.forecast_home','forecast')[1].condition
+                        == 'sunny' %}
+                          /local/png/weather/ikon/sunny1.svg
+                        {% elif 
+                        state_attr('weather.forecast_home','forecast')[1].condition
+                        == 'windy' %}
+                          /local/png/weather/ikon/windy.png
+                        {% elif
+                        state_attr('weather.forecast_home','forecast')[1].condition
+                        == 'windy-variant' %}
+                          /local/png/weather/ikon/windy-variant.svg
+                        {% else %}
+                          /local/png/futbol.png
+                        {% endif %} 
+                      icon: null
+                      layout: vertical
+                      icon_color: blue
+                      card_mod:
+                        style: |
+                          ha-card { 
+                            background:  url( '/local/png/wallpaper1.jpg' ) no-repeat center 0px;
+                            background-size: cover;
+                            position: relative;
+                            background-position: center; 
+                            background-repeat: no-repeat;
+                            width: 66px;
+                            border-radius: 30px;
+                            margin-left: auto;
+                            margin-right: auto;
+                            margin-bottom: 2px;
+                          }
+                    - type: custom:mushroom-template-card
+                      primary: >
+                        {{
+                        as_datetime(state_attr('weather.forecast_home','forecast')[2].datetime,).strftime('%a')
+                        }}
+                      secondary: >
+                        {{
+                        state_attr('weather.forecast_home','forecast')[2].temperature
+                        | int  }}
+                      picture: >
+                        {% if 
+                        state_attr('weather.forecast_home','forecast')[2].condition
+                        == 'clear-night' %}
+                          /local/png/weather/ikon/clear-night.svg
+                        {% elif 
+                        state_attr('weather.forecast_home','forecast')[2].condition
+                        == 'cloudy' %}
+                          /local/png/weather/ikon/cloudy.svg
+                        {% elif 
+                        state_attr('weather.forecast_home','forecast')[2].condition
+                        == 'exceptional' %}
+                          /local/png/weather/ikon/heavy.svg
+                        {% elif
+                        state_attr('weather.forecast_home','forecast')[2].condition
+                        == 'fog' %}
+                          /local/png/weather/ikon/fog.svg
+                        {% elif 
+                        state_attr('weather.forecast_home','forecast')[2].condition
+                        == 'hail' %}
+                          /local/png/weather/ikon/hail.svg
+                        {% elif
+                        state_attr('weather.forecast_home','forecast')[2].condition
+                        == 'lightning' %}
+                          /local/png/weather/ikon/lightning.svg
+                        {% elif
+                        state_attr('weather.forecast_home','forecast')[2].condition
+                        == 'lightning-rainy' %}
+                          /local/png/weather/ikon/lightning-rainy.svg
+                        {% elif 
+                        state_attr('weather.forecast_home','forecast')[2].condition
+                        == 'partlycloudy' %}
+                          /local/png/weather/ikon/partlycloudy.svg
+                        {% elif
+                        state_attr('weather.forecast_home','forecast')[2].condition
+                        == 'pouring' %}
+                          /local/png/weather/ikon/pouring.svg
+                        {% elif 
+                        state_attr('weather.forecast_home','forecast')[2].condition
+                        == 'rainy' %}
+                          /local/png/weather/ikon/rainy.svg
+                        {% elif
+                        state_attr('weather.forecast_home','forecast')[2].condition
+                        == 'snowy' %}
+                          /local/png/weather/ikon/snowy.svg
+                        {% elif
+                        state_attr('weather.forecast_home','forecast')[2].condition
+                        == 'snowy-rainy' %}
+                          /local/png/weather/ikon/snowy-rainy.svg
+                        {% elif
+                        state_attr('weather.forecast_home','forecast')[2].condition
+                        == 'sunny' %}
+                          /local/png/weather/ikon/sunny1.svg
+                        {% elif 
+                        state_attr('weather.forecast_home','forecast')[2].condition
+                        == 'windy' %}
+                          /local/png/weather/ikon/windy.png
+                        {% elif
+                        state_attr('weather.forecast_home','forecast')[2].condition
+                        == 'windy-variant' %}
+                          /local/png/weather/ikon/windy-variant.svg
+                        {% else %}
+                          /local/png/futbol.png
+                        {% endif %} 
+                      icon: null
+                      layout: vertical
+                      icon_color: blue
+                      card_mod:
+                        style: |
+                          ha-card { 
+                            --mush-icon-size: 210px;
+                            background: var(--card-background-color);
+                            width: 66px;
+                            border-radius: 30px;
+                            margin-left: auto;
+                            margin-right: auto;
+                            margin-bottom: 2px;
+                          }
+                    - type: custom:mushroom-template-card
+                      primary: >
+                        {{
+                        as_datetime(state_attr('weather.forecast_home','forecast')[3].datetime,).strftime('%a')
+                        }}
+                      secondary: >
+                        {{
+                        state_attr('weather.forecast_home','forecast')[3].temperature
+                        | int  }}
+                      picture: >
+                        {% if 
+                        state_attr('weather.forecast_home','forecast')[3].condition
+                        == 'clear-night' %}
+                          /local/png/weather/ikon/clear-night.svg
+                        {% elif 
+                        state_attr('weather.forecast_home','forecast')[3].condition
+                        == 'cloudy' %}
+                          /local/png/weather/ikon/cloudy.svg
+                        {% elif 
+                        state_attr('weather.forecast_home','forecast')[3].condition
+                        == 'exceptional' %}
+                          /local/png/weather/ikon/heavy.svg
+                        {% elif
+                        state_attr('weather.forecast_home','forecast')[3].condition
+                        == 'fog' %}
+                          /local/png/weather/ikon/fog.svg
+                        {% elif 
+                        state_attr('weather.forecast_home','forecast')[3].condition
+                        == 'hail' %}
+                          /local/png/weather/ikon/hail.svg
+                        {% elif
+                        state_attr('weather.forecast_home','forecast')[3].condition
+                        == 'lightning' %}
+                          /local/png/weather/ikon/lightning.svg
+                        {% elif
+                        state_attr('weather.forecast_home','forecast')[3].condition
+                        == 'lightning-rainy' %}
+                          /local/png/weather/ikon/lightning-rainy.svg
+                        {% elif 
+                        state_attr('weather.forecast_home','forecast')[3].condition
+                        == 'partlycloudy' %}
+                          /local/png/weather/ikon/partlycloudy.svg
+                        {% elif
+                        state_attr('weather.forecast_home','forecast')[3].condition
+                        == 'pouring' %}
+                          /local/png/weather/ikon/pouring.svg
+                        {% elif 
+                        state_attr('weather.forecast_home','forecast')[3].condition
+                        == 'rainy' %}
+                          /local/png/weather/ikon/rainy.svg
+                        {% elif
+                        state_attr('weather.forecast_home','forecast')[3].condition
+                        == 'snowy' %}
+                          /local/png/weather/ikon/snowy.svg
+                        {% elif
+                        state_attr('weather.forecast_home','forecast')[3].condition
+                        == 'snowy-rainy' %}
+                          /local/png/weather/ikon/snowy-rainy.svg
+                        {% elif
+                        state_attr('weather.forecast_home','forecast')[3].condition
+                        == 'sunny' %}
+                          /local/png/weather/ikon/sunny1.svg
+                        {% elif 
+                        state_attr('weather.forecast_home','forecast')[3].condition
+                        == 'windy' %}
+                          /local/png/weather/ikon/windy.png
+                        {% elif
+                        state_attr('weather.forecast_home','forecast')[3].condition
+                        == 'windy-variant' %}
+                          /local/png/weather/ikon/windy-variant.svg
+                        {% else %}
+                          /local/png/futbol.png
+                        {% endif %} 
+                      icon: null
+                      layout: vertical
+                      icon_color: blue
+                      card_mod:
+                        style: |
+                          ha-card { 
+                            background: var(--card-background-color);
+                            width: 66px;
+                            border-radius: 30px;
+                            margin-left: auto;
+                            margin-right: auto;
+                            margin-bottom: 2px;
+                          }
+                    - type: custom:mushroom-template-card
+                      primary: >
+                        {{
+                        as_datetime(state_attr('weather.forecast_home','forecast')[4].datetime,).strftime('%a')
+                        }}
+                      secondary: >
+                        {{
+                        state_attr('weather.forecast_home','forecast')[4].temperature
+                        | int  }}
+                      picture: >
+                        {% if 
+                        state_attr('weather.forecast_home','forecast')[4].condition
+                        == 'clear-night' %}
+                          /local/png/weather/ikon/clear-night.svg
+                        {% elif 
+                        state_attr('weather.forecast_home','forecast')[4].condition
+                        == 'cloudy' %}
+                          /local/png/weather/ikon/cloudy.svg
+                        {% elif 
+                        state_attr('weather.forecast_home','forecast')[4].condition
+                        == 'exceptional' %}
+                          /local/png/weather/ikon/heavy.svg
+                        {% elif
+                        state_attr('weather.forecast_home','forecast')[4].condition
+                        == 'fog' %}
+                          /local/png/weather/ikon/fog.svg
+                        {% elif 
+                        state_attr('weather.forecast_home','forecast')[4].condition
+                        == 'hail' %}
+                          /local/png/weather/ikon/hail.svg
+                        {% elif
+                        state_attr('weather.forecast_home','forecast')[4].condition
+                        == 'lightning' %}
+                          /local/png/weather/ikon/lightning.svg
+                        {% elif
+                        state_attr('weather.forecast_home','forecast')[4].condition
+                        == 'lightning-rainy' %}
+                          /local/png/weather/ikon/lightning-rainy.svg
+                        {% elif 
+                        state_attr('weather.forecast_home','forecast')[4].condition
+                        == 'partlycloudy' %}
+                          /local/png/weather/ikon/partlycloudy.svg
+                        {% elif
+                        state_attr('weather.forecast_home','forecast')[4].condition
+                        == 'pouring' %}
+                          /local/png/weather/ikon/pouring.svg
+                        {% elif 
+                        state_attr('weather.forecast_home','forecast')[4].condition
+                        == 'rainy' %}
+                          /local/png/weather/ikon/rainy.svg
+                        {% elif
+                        state_attr('weather.forecast_home','forecast')[4].condition
+                        == 'snowy' %}
+                          /local/png/weather/ikon/snowy.svg
+                        {% elif
+                        state_attr('weather.forecast_home','forecast')[4].condition
+                        == 'snowy-rainy' %}
+                          /local/png/weather/ikon/snowy-rainy.svg
+                        {% elif
+                        state_attr('weather.forecast_home','forecast')[4].condition
+                        == 'sunny' %}
+                          /local/png/weather/ikon/sunny1.svg
+                        {% elif 
+                        state_attr('weather.forecast_home','forecast')[4].condition
+                        == 'windy' %}
+                          /local/png/weather/ikon/windy.png
+                        {% elif
+                        state_attr('weather.forecast_home','forecast')[4].condition
+                        == 'windy-variant' %}
+                          /local/png/weather/ikon/windy-variant.svg
+                        {% else %}
+                          /local/png/futbol.png
+                        {% endif %} 
+                      icon: null
+                      layout: vertical
+                      icon_color: blue
+                      card_mod:
+                        style: |
+                          ha-card { 
+                            background: var(--card-background-color);
+                            width: 66px;
+                            border-radius: 30px;
+                            margin-left: auto;
+                            margin-right: auto;
+                            margin-bottom: 2px;
+                          }   
+          card_mod:
+            style: |
+              ha-card {
+                padding: 2px;
+                background: none;    
+              }
+              :host {
+                background: transparent !important;  
+                margin-left: -1px !important;  
+                margin-right: Auto;   
+                margin-top: -30px !important;   
+              }  
+  - type: conditional
+    conditions:
+      - entity: input_boolean.weather_card_hourly
+        state: 'on'
+    card:
+      type: horizontal-stack
+      cards:
+        - type: custom:stack-in-card
+          layout_type: masonry
+          layout: {}
+          cards:
+            - type: custom:layout-card
+              layout_type: masonry
+              layout: {}
+              cards:
+                - type: horizontal-stack
+                  cards:
+                    - type: custom:mushroom-template-card
+                      primary: >
+                        {{as_datetime(state_attr('weather.forecast_home_hourly','forecast')[5].datetime,).strftime('%I:%M')}}
+                      secondary: >
+                        {{
+                        state_attr('weather.forecast_home_hourly','forecast')[5].temperature
+                        | int  }}°
+                      picture: >
+                        {% if 
+                        state_attr('weather.forecast_home_hourly','forecast')[5].condition
+                        == 'clear-night' %}
+                          /local/png/weather/ikon/clear-night.svg
+                        {% elif 
+                        state_attr('weather.forecast_home_hourly','forecast')[5].condition
+                        == 'cloudy' %}
+                          /local/png/weather/ikon/cloudy.svg
+                        {% elif 
+                        state_attr('weather.forecast_home_hourly','forecast')[5].condition
+                        == 'exceptional' %}
+                          /local/png/weather/ikon/heavy.svg
+                        {% elif
+                        state_attr('weather.forecast_home_hourly','forecast')[5].condition
+                        == 'fog' %}
+                          /local/png/weather/ikon/fog.svg
+                        {% elif 
+                        state_attr('weather.forecast_home_hourly','forecast')[5].condition
+                        == 'hail' %}
+                          /local/png/weather/ikon/hail.svg
+                        {% elif
+                        state_attr('weather.forecast_home_hourly','forecast')[5].condition
+                        == 'lightning' %}
+                          /local/png/weather/ikon/lightning.svg
+                        {% elif
+                        state_attr('weather.forecast_home_hourly','forecast')[5].condition
+                        == 'lightning-rainy' %}
+                          /local/png/weather/ikon/lightning-rainy.svg
+                        {% elif 
+                        state_attr('weather.forecast_home_hourly','forecast')[5].condition
+                        == 'partlycloudy' %}
+                          /local/png/weather/ikon/partlycloudy.svg
+                        {% elif
+                        state_attr('weather.forecast_home_hourly','forecast')[5].condition
+                        == 'pouring' %}
+                          /local/png/weather/ikon/pouring.svg
+                        {% elif 
+                        state_attr('weather.forecast_home_hourly','forecast')[5].condition
+                        == 'rainy' %}
+                          /local/png/weather/ikon/rainy.svg
+                        {% elif
+                        state_attr('weather.forecast_home_hourly','forecast')[5].condition
+                        == 'snowy' %}
+                          /local/png/weather/ikon/snowy.svg
+                        {% elif
+                        state_attr('weather.forecast_home_hourly','forecast')[5].condition
+                        == 'snowy-rainy' %}
+                          /local/png/weather/ikon/snowy-rainy.svg
+                        {% elif
+                        state_attr('weather.forecast_home_hourly','forecast')[5].condition
+                        == 'sunny' %}
+                          /local/png/weather/ikon/sunny1.svg
+                        {% elif 
+                        state_attr('weather.forecast_home_hourly','forecast')[5].condition
+                        == 'windy' %}
+                          /local/png/weather/ikon/windy.png
+                        {% elif
+                        state_attr('weather.forecast_home_hourly','forecast')[5].condition
+                        == 'windy-variant' %}
+                          /local/png/weather/ikon/windy-variant.svg
+                        {% else %}
+                          /local/png/futbol.png
+                        {% endif %} 
+                      icon: null
+                      layout: vertical
+                      icon_color: blue
+                      card_mod:
+                        style: |
+                          ha-card { 
+                            background: var(--card-background-color);
+                            width: 76px;
+                            border-radius: 30px;
+                            margin-left: auto;
+                            margin-right: auto;
+                            margin-bottom: 2px;
+                          }
+                    - type: custom:mushroom-template-card
+                      primary: >
+                        {{as_datetime(state_attr('weather.forecast_home_hourly','forecast')[8].datetime,).strftime('%H:%M')}}
+                      secondary: >
+                        {{
+                        state_attr('weather.forecast_home_hourly','forecast')[8].temperature
+                        | int  }}
+                      picture: >
+                        {% if 
+                        state_attr('weather.forecast_home_hourly','forecast')[8].condition
+                        == 'clear-night' %}
+                          /local/png/weather/ikon/clear-night.svg
+                        {% elif 
+                        state_attr('weather.forecast_home_hourly','forecast')[8].condition
+                        == 'cloudy' %}
+                          /local/png/weather/ikon/cloudy.svg
+                        {% elif 
+                        state_attr('weather.forecast_home_hourly','forecast')[8].condition
+                        == 'exceptional' %}
+                          /local/png/weather/ikon/heavy.svg
+                        {% elif
+                        state_attr('weather.forecast_home_hourly','forecast')[8].condition
+                        == 'fog' %}
+                          /local/png/weather/ikon/fog.svg
+                        {% elif 
+                        state_attr('weather.forecast_home_hourly','forecast')[8].condition
+                        == 'hail' %}
+                          /local/png/weather/ikon/hail.svg
+                        {% elif
+                        state_attr('weather.forecast_home_hourly','forecast')[8].condition
+                        == 'lightning' %}
+                          /local/png/weather/ikon/lightning.svg
+                        {% elif
+                        state_attr('weather.forecast_home_hourly','forecast')[8].condition
+                        == 'lightning-rainy' %}
+                          /local/png/weather/ikon/lightning-rainy.svg
+                        {% elif 
+                        state_attr('weather.forecast_home_hourly','forecast')[8].condition
+                        == 'partlycloudy' %}
+                          /local/png/weather/ikon/partlycloudy.svg
+                        {% elif
+                        state_attr('weather.forecast_home_hourly','forecast')[8].condition
+                        == 'pouring' %}
+                          /local/png/weather/ikon/pouring.svg
+                        {% elif 
+                        state_attr('weather.forecast_home_hourly','forecast')[8].condition
+                        == 'rainy' %}
+                          /local/png/weather/ikon/rainy.svg
+                        {% elif
+                        state_attr('weather.forecast_home_hourly','forecast')[8].condition
+                        == 'snowy' %}
+                          /local/png/weather/ikon/snowy.svg
+                        {% elif
+                        state_attr('weather.forecast_home_hourly','forecast')[8].condition
+                        == 'snowy-rainy' %}
+                          /local/png/weather/ikon/snowy-rainy.svg
+                        {% elif
+                        state_attr('weather.forecast_home_hourly','forecast')[8].condition
+                        == 'sunny' %}
+                          /local/png/weather/ikon/sunny1.svg
+                        {% elif 
+                        state_attr('weather.forecast_home_hourly','forecast')[8].condition
+                        == 'windy' %}
+                          /local/png/weather/ikon/windy.png
+                        {% elif
+                        state_attr('weather.forecast_home_hourly','forecast')[8].condition
+                        == 'windy-variant' %}
+                          /local/png/weather/ikon/windy-variant.svg
+                        {% else %}
+                          /local/png/futbol.png
+                        {% endif %} 
+                      icon: null
+                      layout: vertical
+                      icon_color: blue
+                      card_mod:
+                        style: |
+                          ha-card { 
+                            background: var(--card-background-color);
+                            width: 66px;
+                            border-radius: 30px;
+                            margin-left: auto;
+                            margin-right: auto;
+                            margin-bottom: 2px;
+                          }
+                    - type: custom:mushroom-template-card
+                      primary: >
+                        {{as_datetime(state_attr('weather.forecast_home_hourly','forecast')[12].datetime,).strftime('%H:%M')}}
+                      secondary: >
+                        {{
+                        state_attr('weather.forecast_home_hourly','forecast')[12].temperature
+                        | int  }}
+                      picture: >
+                        {% if 
+                        state_attr('weather.forecast_home_hourly','forecast')[12].condition
+                        == 'clear-night' %}
+                          /local/png/weather/ikon/clear-night.svg
+                        {% elif 
+                        state_attr('weather.forecast_home_hourly','forecast')[12].condition
+                        == 'cloudy' %}
+                          /local/png/weather/ikon/cloudy.svg
+                        {% elif 
+                        state_attr('weather.forecast_home_hourly','forecast')[12].condition
+                        == 'exceptional' %}
+                          /local/png/weather/ikon/heavy.svg
+                        {% elif
+                        state_attr('weather.forecast_home_hourly','forecast')[12].condition
+                        == 'fog' %}
+                          /local/png/weather/ikon/fog.svg
+                        {% elif 
+                        state_attr('weather.forecast_home_hourly','forecast')[12].condition
+                        == 'hail' %}
+                          /local/png/weather/ikon/hail.svg
+                        {% elif
+                        state_attr('weather.forecast_home_hourly','forecast')[12].condition
+                        == 'lightning' %}
+                          /local/png/weather/ikon/lightning.svg
+                        {% elif
+                        state_attr('weather.forecast_home_hourly','forecast')[12].condition
+                        == 'lightning-rainy' %}
+                          /local/png/weather/ikon/lightning-rainy.svg
+                        {% elif 
+                        state_attr('weather.forecast_home_hourly','forecast')[12].condition
+                        == 'partlycloudy' %}
+                          /local/png/weather/ikon/partlycloudy.svg
+                        {% elif
+                        state_attr('weather.forecast_home_hourly','forecast')[12].condition
+                        == 'pouring' %}
+                          /local/png/weather/ikon/pouring.svg
+                        {% elif 
+                        state_attr('weather.forecast_home_hourly','forecast')[12].condition
+                        == 'rainy' %}
+                          /local/png/weather/ikon/rainy.svg
+                        {% elif
+                        state_attr('weather.forecast_home_hourly','forecast')[12].condition
+                        == 'snowy' %}
+                          /local/png/weather/ikon/snowy.svg
+                        {% elif
+                        state_attr('weather.forecast_home_hourly','forecast')[12].condition
+                        == 'snowy-rainy' %}
+                          /local/png/weather/ikon/snowy-rainy.svg
+                        {% elif
+                        state_attr('weather.forecast_home_hourly','forecast')[12].condition
+                        == 'sunny' %}
+                          /local/png/weather/ikon/sunny1.svg
+                        {% elif 
+                        state_attr('weather.forecast_home_hourly','forecast')[12].condition
+                        == 'windy' %}
+                          /local/png/weather/ikon/windy.png
+                        {% elif
+                        state_attr('weather.forecast_home_hourly','forecast')[12].condition
+                        == 'windy-variant' %}
+                          /local/png/weather/ikon/windy-variant.svg
+                        {% else %}
+                          /local/png/futbol.png
+                        {% endif %} 
+                      icon: null
+                      layout: vertical
+                      icon_color: blue
+                      card_mod:
+                        style: |
+                          ha-card { 
+                            --mush-icon-size: 210px;
+                            background: var(--card-background-color);
+                            width: 66px;
+                            border-radius: 30px;
+                            margin-left: auto;
+                            margin-right: auto;
+                            margin-bottom: 2px;
+                          }
+                    - type: custom:mushroom-template-card
+                      primary: >
+                        {{as_datetime(state_attr('weather.forecast_home_hourly','forecast')[15].datetime,).strftime('%H:%M')}}
+                      secondary: >
+                        {{
+                        state_attr('weather.forecast_home_hourly','forecast')[15].temperature
+                        | int  }}
+                      picture: >
+                        {% if 
+                        state_attr('weather.forecast_home_hourly','forecast')[15].condition
+                        == 'clear-night' %}
+                          /local/png/weather/ikon/clear-night.svg
+                        {% elif 
+                        state_attr('weather.forecast_home_hourly','forecast')[15].condition
+                        == 'cloudy' %}
+                          /local/png/weather/ikon/cloudy.svg
+                        {% elif 
+                        state_attr('weather.forecast_home_hourly','forecast')[15].condition
+                        == 'exceptional' %}
+                          /local/png/weather/ikon/heavy.svg
+                        {% elif
+                        state_attr('weather.forecast_home_hourly','forecast')[15].condition
+                        == 'fog' %}
+                          /local/png/weather/ikon/fog.svg
+                        {% elif 
+                        state_attr('weather.forecast_home_hourly','forecast')[15].condition
+                        == 'hail' %}
+                          /local/png/weather/ikon/hail.svg
+                        {% elif
+                        state_attr('weather.forecast_home_hourly','forecast')[15].condition
+                        == 'lightning' %}
+                          /local/png/weather/ikon/lightning.svg
+                        {% elif
+                        state_attr('weather.forecast_home_hourly','forecast')[15].condition
+                        == 'lightning-rainy' %}
+                          /local/png/weather/ikon/lightning-rainy.svg
+                        {% elif 
+                        state_attr('weather.forecast_home_hourly','forecast')[15].condition
+                        == 'partlycloudy' %}
+                          /local/png/weather/ikon/partlycloudy.svg
+                        {% elif
+                        state_attr('weather.forecast_home_hourly','forecast')[15].condition
+                        == 'pouring' %}
+                          /local/png/weather/ikon/pouring.svg
+                        {% elif 
+                        state_attr('weather.forecast_home_hourly','forecast')[15].condition
+                        == 'rainy' %}
+                          /local/png/weather/ikon/rainy.svg
+                        {% elif
+                        state_attr('weather.forecast_home_hourly','forecast')[15].condition
+                        == 'snowy' %}
+                          /local/png/weather/ikon/snowy.svg
+                        {% elif
+                        state_attr('weather.forecast_home_hourly','forecast')[15].condition
+                        == 'snowy-rainy' %}
+                          /local/png/weather/ikon/snowy-rainy.svg
+                        {% elif
+                        state_attr('weather.forecast_home_hourly','forecast')[15].condition
+                        == 'sunny' %}
+                          /local/png/weather/ikon/sunny1.svg
+                        {% elif 
+                        state_attr('weather.forecast_home_hourly','forecast')[15].condition
+                        == 'windy' %}
+                          /local/png/weather/ikon/windy.png
+                        {% elif
+                        state_attr('weather.forecast_home_hourly','forecast')[15].condition
+                        == 'windy-variant' %}
+                          /local/png/weather/ikon/windy-variant.svg
+                        {% else %}
+                          /local/png/futbol.png
+                        {% endif %} 
+                      icon: null
+                      layout: vertical
+                      icon_color: blue
+                      card_mod:
+                        style: |
+                          ha-card { 
+                            background: var(--card-background-color);
+                            width: 66px;
+                            border-radius: 30px;
+                            margin-left: auto;
+                            margin-right: auto;
+                            margin-bottom: 2px;
+                          }
+                    - type: custom:mushroom-template-card
+                      primary: >
+                        {{as_datetime(state_attr('weather.forecast_home_hourly','forecast')[18].datetime,).strftime('%H:%M')}}
+                      secondary: >
+                        {{
+                        state_attr('weather.forecast_home_hourly','forecast')[18].temperature
+                        | int  }}
+                      picture: >
+                        {% if 
+                        state_attr('weather.forecast_home_hourly','forecast')[18].condition
+                        == 'clear-night' %}
+                          /local/png/weather/ikon/clear-night.svg
+                        {% elif 
+                        state_attr('weather.forecast_home_hourly','forecast')[18].condition
+                        == 'cloudy' %}
+                          /local/png/weather/ikon/cloudy.svg
+                        {% elif 
+                        state_attr('weather.forecast_home_hourly','forecast')[18].condition
+                        == 'exceptional' %}
+                          /local/png/weather/ikon/heavy.svg
+                        {% elif
+                        state_attr('weather.forecast_home_hourly','forecast')[18].condition
+                        == 'fog' %}
+                          /local/png/weather/ikon/fog.svg
+                        {% elif 
+                        state_attr('weather.forecast_home_hourly','forecast')[18].condition
+                        == 'hail' %}
+                          /local/png/weather/ikon/hail.svg
+                        {% elif
+                        state_attr('weather.forecast_home_hourly','forecast')[18].condition
+                        == 'lightning' %}
+                          /local/png/weather/ikon/lightning.svg
+                        {% elif
+                        state_attr('weather.forecast_home_hourly','forecast')[18].condition
+                        == 'lightning-rainy' %}
+                          /local/png/weather/ikon/lightning-rainy.svg
+                        {% elif 
+                        state_attr('weather.forecast_home_hourly','forecast')[18].condition
+                        == 'partlycloudy' %}
+                          /local/png/weather/ikon/partlycloudy.svg
+                        {% elif
+                        state_attr('weather.forecast_home_hourly','forecast')[18].condition
+                        == 'pouring' %}
+                          /local/png/weather/ikon/pouring.svg
+                        {% elif 
+                        state_attr('weather.forecast_home_hourly','forecast')[18].condition
+                        == 'rainy' %}
+                          /local/png/weather/ikon/rainy.svg
+                        {% elif
+                        state_attr('weather.forecast_home_hourly','forecast')[18].condition
+                        == 'snowy' %}
+                          /local/png/weather/ikon/snowy.svg
+                        {% elif
+                        state_attr('weather.forecast_home_hourly','forecast')[18].condition
+                        == 'snowy-rainy' %}
+                          /local/png/weather/ikon/snowy-rainy.svg
+                        {% elif
+                        state_attr('weather.forecast_home_hourly','forecast')[18].condition
+                        == 'sunny' %}
+                          /local/png/weather/ikon/sunny1.svg
+                        {% elif 
+                        state_attr('weather.forecast_home_hourly','forecast')[18].condition
+                        == 'windy' %}
+                          /local/png/weather/ikon/windy.png
+                        {% elif
+                        state_attr('weather.forecast_home_hourly','forecast')[18].condition
+                        == 'windy-variant' %}
+                          /local/png/weather/ikon/windy-variant.svg
+                        {% else %}
+                          /local/png/futbol.png
+                        {% endif %} 
+                      icon: null
+                      layout: vertical
+                      icon_color: blue
+                      card_mod:
+                        style: |
+                          ha-card { 
+                            background: var(--card-background-color);
+                            width: 66px;
+                            border-radius: 30px;
+                            margin-left: auto;
+                            margin-right: auto;
+                            margin-bottom: 2px;
+                          }   
+          card_mod:
+            style: |
+              ha-card {
+                padding: 2px;
+                background: none;    
+              }
+              :host {
+                background: transparent !important;  
+                margin-left: -1px !important;  
+                margin-right: Auto;   
+                margin-top: -20px !important;   
+              }  
+card_mod:
+  style: |
+    ha-card {
+      background: none;
+    }                    

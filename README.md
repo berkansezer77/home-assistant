@@ -8,6 +8,13 @@ Welcome to my Home Assistant Custom Setup Page.
 On this page, you can find the links of the different Home Assistant pages that I have coded. On these pages you can find not only the necessary codes, but also all the extra software. Everything from necessary special codes to media download links is available. In summary, you can get everything you need here.
 
 ***
+# ## Animated Weather Card
+
+<img src="https://github.com/berkansezer77/home-assistant/assets/84282504/d8a15fed-7e72-4be9-a97d-14eda69bdf87" width="750">
+
+[Animated Weather Card](https://github.com/berkansezer77/home-assistant/tree/main/custom-cards/weather-card)
+
+***
 # ## Home Assistant birthday card
 
 <img src="https://github.com/berkansezer77/home-assistant/assets/84282504/12aff151-07f2-43bc-8d75-22d2030b27f9" width="750">

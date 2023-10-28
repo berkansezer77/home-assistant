@@ -51,7 +51,9 @@ You will also need a weather service. In my template I am using weather Met.no a
 [Openweather](https://www.home-assistant.io/integrations/openweathermap/)
 [Met.No](https://www.home-assistant.io/integrations/met/)
 
-
+## Video:
+https://streamable.com/u8wmqj
+<a href="{[video-url](https://streamable.com/u8wmqj)}" title="Link Title"><img src="{image-url}" alt="Alternate Text" /></a>
 ## Download Multimedia files:
 
 

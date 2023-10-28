@@ -1,0 +1,37 @@
+alias: Weather Card - Booleans Automation
+description: ""
+trigger:
+  - platform: state
+    entity_id:
+      - input_boolean.weather_card_weekly
+    to: "on"
+    id: weekly
+  - platform: state
+    entity_id:
+      - input_boolean.weather_card_hourly
+    to: "on"
+    id: hourly
+condition: []
+action:
+  - choose:
+      - conditions:
+          - condition: trigger
+            id:
+              - weekly
+        sequence:
+          - service: input_boolean.turn_off
+            data: {}
+            target:
+              entity_id:
+                - input_boolean.weather_card_hourly
+      - conditions:
+          - condition: trigger
+            id:
+              - hourly
+        sequence:
+          - service: input_boolean.turn_off
+            data: {}
+            target:
+              entity_id:
+                - input_boolean.weather_card_weekly
+mode: single

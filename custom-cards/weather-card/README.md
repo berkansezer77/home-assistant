@@ -3,10 +3,11 @@ _**If you like you can support my work.**_
 <a href="https://www.buymeacoffee.com/berkansezer" target="_blank"><img src="https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png" alt="Buy Me A Coffee" style="height: 41px !important;width: 174px !important;box-shadow: 0px 3px 2px 0px rgba(190, 190, 190, 0.5) !important;-webkit-box-shadow: 0px 3px 2px 0px rgba(190, 190, 190, 0.5) !important;" ></a> 
 
 # Animated Home Assistant Weather Card
-<img src="https://github.com/berkansezer77/home-assistant/assets/84282504/046a2d9c-a678-4d61-803a-fb840eb35826" width="350">
-<img src="https://github.com/berkansezer77/home-assistant/assets/84282504/f8edaaec-0cf0-4e21-afda-dae003306fa7" width="250">
-<img src="https://github.com/berkansezer77/home-assistant/assets/84282504/3f19042d-c711-41a1-81f2-9d617dc59aac" width="200">
-<img src="https://github.com/berkansezer77/home-assistant/assets/84282504/b0694e72-a180-4e8e-a5af-f720f85306e7" width="150">
+<img src="https://github.com/berkansezer77/home-assistant/assets/84282504/b25fa791-609a-4584-b55d-e727a0c40456" width="350">
+<img src="https://github.com/berkansezer77/home-assistant/assets/84282504/3970648e-bc7e-4140-b169-a9a93d2b25a8" width="250">
+<img src="https://github.com/berkansezer77/home-assistant/assets/84282504/ff020cea-6be0-4af6-a95c-81b54297b04b" width="200">
+<img src="https://github.com/berkansezer77/home-assistant/assets/84282504/5ecc44d4-ef6c-4a8d-a8d9-35746f5c3a15" width="150">
+
 
 Before we begin I was very much inspired by the work of "Weather App" design by "Hua". I thought this will be the best design to give life. I added bunch of staff and I hope you will enjoy it.
 
@@ -30,6 +31,7 @@ Well they are included as well. Just check below. 🎉
 
 - Fully animated
 - Can be used with any weather station unless the provide specific weather info. (see manual page for what this card requires)
+- White and Dark Theme Ready
 - 5 day Forecast
 - Hourly Forecast
 - Detailed Weather info
@@ -39,6 +41,7 @@ Well they are included as well. Just check below. 🎉
 - All the multimedia files are included
 - Manual includes information about pulling information from weather attributes. Use any data you like
 - Fully dynamic
+- Single click change from dark to white or vice versa
 
 ## Before we start, we need some third party tools from Hacs:
 
@@ -46,10 +49,28 @@ Well they are included as well. Just check below. 🎉
 - [Mushroom Card](https://github.com/piitaya/lovelace-mushroom)
 - [Card Mod](https://github.com/thomasloven/lovelace-card-mod)
 - [Stack in Card](https://github.com/custom-cards/stack-in-card)
+- [Browser Mode](https://github.com/thomasloven/hass-browser_mod)
 
 You will also need a weather service. In my template I am using weather Met.no and Openweather service.
 [Openweather](https://www.home-assistant.io/integrations/openweathermap/)
 [Met.No](https://www.home-assistant.io/integrations/met/)
+
+## Booleans:
+
+I used 8 booleans and 1 template. Create booleans from helpers section. Don't forget to select "Toggle" in the helpers section. 
+
+- input_boolean.theme
+- input_boolean.weather_report
+- input_boolean.weather_animations
+- input_boolean.weather_card_details
+- input_boolean.weather_card_weekly
+- input_boolean.weather_card_weekly
+- input_boolean.weather_card_hourly
+- input_boolean.weather_card_details
+
+And the sensor is located at : (It will be explained in the manual. 
+
+[12 hour rain probability](https://github.com/berkansezer77/home-assistant/blob/main/custom-cards/weather-card/12-hours-rain-probability)
 
 ## Video:
 
@@ -58,14 +79,104 @@ You will also need a weather service. In my template I am using weather Met.no a
 
 - Files are located at: will be soon ready
 
-Page Code: 
+## Page Code: 
 
 - To install the page you need this code: [Page Code](https://github.com/berkansezer77/home-assistant/blob/main/custom-cards/weather-card/page-code)
 
 ## Manual:
 
-COMING SOON
-Enjoy....
+It is very easy to install this template. First of all we need to learn how to change from dark and white theme. 
+
+##Change Theme:
+
+To change the theme with a signle click, Browser Mode should be installed and we need to create an input boolean named "input_boolean.theme". Changing the theme from white to dark is quite easy. Just follow the steps. 
+
+1) Download "Google White Theme" from Hacs.
+2) Download Mushroom Shadow from Hacs.
+3) Register your browser. To do that go to browser mode in side menu and click register this browser.
+4) Now we need 2 scripts and 1 automation. After that a single click will change the mode.
+
+[Script White Mode](https://github.com/berkansezer77/home-assistant/blob/main/custom-cards/spotify-card-v2/page-code)
+
+[Script Dark Mode](https://github.com/berkansezer77/home-assistant/blob/main/custom-cards/spotify-card-v2/theme-google-light-script)
+
+[Automation](https://github.com/berkansezer77/home-assistant/blob/main/custom-cards/spotify-card-v2/dark-and-white-mode-automation)
+
+![1](https://github.com/berkansezer77/home-assistant/assets/84282504/3f0c795c-f181-467a-9bdc-972f8a1ea812)
+
+
+Now the boolean we created before(input_boolean.theme) is ready for transformation between themes. The onlu thing you need is you should place tap action into anywhere you like to single click and change the whole theme. 
+
+As shown in above example, changing theme is available with a double click to "Suadiye" word at the upper left corner. The code for that click is: 
+
+```ruby
+                tap_action:
+                  action: call-service
+                  service: input_boolean.toggle
+                  target:
+                    entity_id: input_boolean.theme
+```
+In out page code this line is at Line 20
+
+![image](https://github.com/berkansezer77/home-assistant/assets/84282504/a9d8abf7-5a75-456f-a723-5f95b361cc53)
+
+## Code Explanation:
+
+Line 5 - 133 : 
+
+This is the upper part where it is giving location info with date and chips for opening report page and animations at the right. starting from line 92 has the "report icon" which opens reports for today's and tomorrow's weather inside the middle screen. This is tied to a boolean called "report" at line 103 and this boolean opens with a single tap action at line 104.
+![image](https://github.com/berkansezer77/home-assistant/assets/84282504/431e1474-9be9-4257-8f4a-6dfa82fbde8b)
+
+So when you press this icon the screen in the middle will display weather report like this 
+
+![2](https://github.com/berkansezer77/home-assistant/assets/84282504/fc5c174a-3abd-462d-96f8-530796a7388d)
+
+Same process will happen with the "Drop" icon. This time middle screen will start to show animations. A boolean "input_boolean.weather_animations" is used here. 
+
+![3](https://github.com/berkansezer77/home-assistant/assets/84282504/0a80ddd1-b990-4425-971e-9d232f9f3589)
+
+Line 134 - 360: 
+
+This is the place where middle screen is located. 
+
+![image](https://github.com/berkansezer77/home-assistant/assets/84282504/5eb30a1f-2119-4130-a6d4-9ac0ce5887dd)
+
+line 136 to 199 includes the degree information which is taken straight from my outdoor temperature sensor. 
+
+![image](https://github.com/berkansezer77/home-assistant/assets/84282504/62208719-cc7f-4b55-a408-822948bc709e)
+
+If you don't have an outdoor sensor you can use your any weather station sensor. To do that just replace line 150. "|int" is used to round the result coming from the sensor. For example if it is 29.97 the result will be shown as 29. The styling of the degree is located between line 162 and 174. For example you can change the font size at line 167. The second "Sunny" part is the "secondary" part between lines 176-185. If you want to change ffont you can add "font-family: "Formula1-regular";" into primary or secondary parts. 
+
+Line 200 - 273 is where weather report will be shown. As you remember we were activating these cards from the top menu. I used a markdown card for this area. All the details shown in this card can be customized. For the general weather at line 212 I am taking "the real feel" temperature info from openweather app. So you may use your own or if you want to use mine, "Openweather" map should be installed. 
+
+# Retrieve info from attributes:
+Now I will show you have to derive information from a weather attribute. For example Met.no weather integration shows as entites like this : 
+
+![image](https://github.com/berkansezer77/home-assistant/assets/84282504/519e1eca-4348-4a70-af9d-1be505ab0f0b)
+
+So there are lots of info here. The lines starting from "forecast:" are the days info. Today's date is 28.10 so : 
+
+![image](https://github.com/berkansezer77/home-assistant/assets/84282504/6c61ec5e-65cb-42d2-8144-095cc8ef9a1f)
+
+As you can see on line 15 "datetime" it is shown as 28. So it means today. The next one is tomorrow which is 29. And this continues with the other dates. So take the info from today's wind speed we should use a code like this : 
+
+```ruby
+{{ state_attr('weather.forecast_home', 'forecast')[0].wind_speed }}
+```
+
+This will give "20.2" as a result. So "o" is the first day here and the ".wind_speed" is the windspeed data from the first day which is today. So if you want to take let's say tomorrow's wind speed data you should change "0" with "1" like this : 
+```ruby
+{{ state_attr('weather.forecast_home', 'forecast')[1].wind_speed }}
+```
+
+This will give tomorrow's estimated wind speed result. 
+
+So back to our code. As you can see I have taken datas from the list with the above method. Now you know how to do it you can customize it with other weather services. You can use any other with the template. 
+
+At Line 239 I use my own template to retrieve next 12 hour rain probability. So you have to create this at helpers section. Choose create helper>template>template a sensor. The sensor code is here [12 hour ain template](https://github.com/berkansezer77/home-assistant/blob/main/custom-cards/weather-card/12-hours-rain-probability)
+
+
+
 
 
 

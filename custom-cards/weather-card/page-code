@@ -302,7 +302,7 @@ cards:
                 background:  url( '/local/png/weather/lightning-rainy.jpeg' ) no-repeat center 0px;
                  background-blend-mode: soft-light;
                  background-color: rgba(29,29,34, 0.5);
-              {% elif is_state('weather.forecast_home', 'partlycloudy') and is_state('input_boolean.weather_animations', 'ofn') %}
+              {% elif is_state('weather.forecast_home', 'partlycloudy') and is_state('input_boolean.weather_animations', 'on') %}
                 background:  url( '/local/png/weather/partly-cloudy.gif' ) no-repeat center 0px;
                  background-blend-mode: soft-light;
                  background-color: rgba(29,29,34, 0.5);

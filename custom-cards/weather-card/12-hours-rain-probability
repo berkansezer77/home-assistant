@@ -1,0 +1,12 @@
+{{ (states.weather.forecast_home_hourly.attributes.forecast[0].precipitation|float +
+      states.weather.forecast_home_hourly.attributes.forecast[1].precipitation|float +
+      states.weather.forecast_home_hourly.attributes.forecast[2].precipitation|float +
+      states.weather.forecast_home_hourly.attributes.forecast[3].precipitation|float +
+      states.weather.forecast_home_hourly.attributes.forecast[4].precipitation|float +
+      states.weather.forecast_home_hourly.attributes.forecast[5].precipitation|float +
+      states.weather.forecast_home_hourly.attributes.forecast[6].precipitation|float +
+      states.weather.forecast_home_hourly.attributes.forecast[7].precipitation|float +
+      states.weather.forecast_home_hourly.attributes.forecast[8].precipitation|float +
+      states.weather.forecast_home_hourly.attributes.forecast[9].precipitation|float +
+      states.weather.forecast_home_hourly.attributes.forecast[10].precipitation|float +
+      states.weather.forecast_home_hourly.attributes.forecast[11].precipitation|float)|round(1) }}

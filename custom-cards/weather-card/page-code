@@ -468,7 +468,7 @@ cards:
         card_mod:
           style: |
             ha-card {
-                                      --ha-card-border-width: 0;
+                 --ha-card-border-width: 0;
                  background: transparent !important;
                 height: 150px;
                 text-align: center !important;       
@@ -1591,7 +1591,7 @@ cards:
                   cards:
                     - type: custom:mushroom-template-card
                       primary: >
-                        {{as_datetime(state_attr('weather.forecast_home_hourly','forecast')[5].datetime,).strftime('%I:%M')}}
+                        {{as_datetime(state_attr('weather.forecast_home_hourly','forecast')[5].datetime,).strftime('%H:%M')}}
                       secondary: >
                         {{
                         state_attr('weather.forecast_home_hourly','forecast')[5].temperature

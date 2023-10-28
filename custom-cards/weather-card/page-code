@@ -17,6 +17,11 @@ cards:
                 secondary: |
                   {{ now().strftime('%d %B %Y') }}
                 entity: entity.entity
+                double_tap_action:
+                  action: call-service
+                  service: input_boolean.toggle
+                  target:
+                    entity_id: input_boolean.theme
                 fill_container: false
                 multiline_secondary: true
                 layout: horizontal
@@ -29,13 +34,14 @@ cards:
                         margin-left: -15px;     
                         margin-top: 0px;  
                         width: 80px !important; 
-                        font-family: Georgia, serif;
+                        font-family: "Formula1-regular";
                         text-align: left;             
                         overflow: visible !important;     
                         z-index:1;        
                         text-indent: 10px;     
                       }
                       .secondary {     
+                        font-family: "Formula1-regular";
                         font-size: 14px !important;
                         margin-top: 0px !important;
                         margin-left: -15px;  
@@ -66,22 +72,30 @@ cards:
                       --ha-card-background: white;
                     }
                     ha-card {
+                      {% if is_state('input_boolean.theme', 'on') %}
+                      --primary-text-color: black;
+                      --chip-text-color: black;
+                      {% else %}  
+                        white
+                        font-family: "Formula1-regular";
+                      {% endif %}   
+                      font-family: "Formula1-regular";
                       --ha-card-border-width: 0;
-                      --chip-icon-size: 35px;
+                      --chip-icon-size: 30px;
                      --chip-background: none;  
                      --chip-border: none !important;
                      --chip-box-shadow: none;
                      --chip-font-size: 24px;                         
                       --chip-spacing: 2px;
-                      --chip-text-color: white;
-                      --primary-text-color: white;
                     }    
                 chips:
                   - type: template
                     icon: mdi:newspaper-variant-multiple
                     icon_color: |
                       {% if is_state(config.entity, 'on') %}
-                         amber         
+                         amber  
+                      {% elif is_state('input_boolean.theme', 'on') %}
+                        black
                       {% else %}  
                         white
                       {% endif %}   
@@ -94,7 +108,15 @@ cards:
                         entity_id: input_boolean.weather_report
                   - type: template
                     icon: mdi:water-percent
-                    icon_color: white
+                    icon_color: |
+                      {% if is_state(config.entity, 'on') %}
+                         amber  
+                      {% elif is_state('input_boolean.theme', 'on') %}
+                        black
+                      {% else %}  
+                        white
+                      {% endif %}  
+                    entity: input_boolean.weather_animations
                     content: '{{ states(''sensor.aqara_outdoor_nem'')  }}'
                     tap_action:
                       action: call-service
@@ -105,12 +127,9 @@ cards:
         card_mod:
           style: |
             ha-card {
+              --ha-card-border-width: 0;
               box-shadow: none;
               background: transparent;
-              background-position: center; 
-              background-repeat: no-repeat;
-              background-size: cover;
-              position: relative;
             }
   - type: horizontal-stack
     cards:
@@ -140,6 +159,11 @@ cards:
                     style:
                       mushroom-state-info$: |
                         .primary {
+                          {% if is_state('input_boolean.theme', 'on') %}
+                          --primary-text-color: white;
+                          {% else %}  
+                            --primary-text-color: white;
+                          {% endif %}   
                           font-size: 184px !important;
                           font-weight: bold !important;
                           margin-left: 50px;     
@@ -161,7 +185,9 @@ cards:
                           text-align: center;
                         } 
                       .: |
-                        ha-card {       
+                        ha-card {   
+                          background-color: rgba(252, 252, 252, 0.1); 
+                          --ha-card-border-width: 0;
                           box-shadow: none !important;
                           background-color: transparent;     
                         }       
@@ -170,8 +196,6 @@ cards:
                           --mush-icon-size: 100px;
                           background: transparent !important;  
                           margin-left: -1px !important;   
-                          margin-top: 0px !important;  
-                          margin-right: Auto;   
                         }    
           - type: conditional
             conditions:
@@ -180,136 +204,137 @@ cards:
             card:
               type: horizontal-stack
               cards:
-                - type: custom:stack-in-card
-                  layout_type: masonry
-                  layout: {}
-                  cards:
-                    - type: markdown
-                      content: >-
-                        <u><h2>Weather Report</h2></u>
+                - type: markdown
+                  content: >-
+                    <u><h2>Weather Report</h2></u>
 
-                        <h4><p>{% set state =
-                        states('sensor.openweathermap_feels_like_temperature')
-                        %}  {% if state | float > 34 and states | float < 50 %}
-                         It is bloody hot outside
-                        {% elif state  | float > 29 and state  | float < 35 %}
-                         It is very hot outside
-                        {% elif state  | float > 26 and state | float < 30 %}
-                         It is hot outside
-                        {% elif state  | float > 24 and state  | float < 27  %}
-                         Nice weather outside
-                        {% elif state | float > 20 and state | float < 25  %}
-                         There is a lovely weather outside
-                        {% elif state  | float > 16 and state | float < 21 %}
-                         Not hold, not cold weather outside
-                        {% elif state  | float > 11 and state  | float < 17 %}
-                         You might need a jacket
-                        {% elif state  | float > 6 and state  | float < 12 %}
-                         It is cold outside
-                        {% elif state  | float > 4 and state  | float < 7 %}
-                         It is very cold outside
-                        {% elif state  | float > 0 and state  | float < 5 %}
-                         It is freezing outside
-                        {% else %} {%- endif %} with a <font color=
-                        orange>{{states('sensor.aqara_outdoor_temperature')}}°</font>
-                         Feels like is <font color= orange>{{states('sensor.openweathermap_feels_like_temperature')}}°</font> and the wind
-                        speed is <font color= orange>{{
-                        state_attr('weather.forecast_home',
-                        'forecast')[0].wind_speed }}</font>.  {% set
-                        state=states('sensor.weather_next_12_hours_rain_probability')%}
-                        {%if state == '0.0' %}    No rain for the next <u>12
-                        hours</u>.  {% else%}  There is a
-                        {{states('sensor.weather_next_12_hours_rain_probability')}}
-                        Chance of precipitation for the next 12 hours. {% endif
-                        %}</p></h1> <h4><p><u>Tomorrow</u> there will be a <font
-                        color= orange>{{ state_attr('weather.forecast_home',
-                        'forecast')[1].condition }}</font> weather with a <font
-                        color= orange>{{ state_attr('weather.forecast_home',
-                        'forecast')[1].temperature }}°</font>  high and <font
-                        color= orange>{{ state_attr('weather.forecast_home',
-                        'forecast')[1].templow }}°</font>  low. Windspeed will
-                        be {{ state_attr('weather.forecast_home',
-                        'forecast')[0].wind_speed }} </p>  <font color=
-                        orange>{% if
-                        state_attr('weather.forecast_home','forecast')[1].precipitation
-                        == 0   %}</font>
-                          There is <u>no rain</u> visible
-                        {% else %}
-                         There is rain probability with <font color= orange>{{state_attr('weather.forecast_home','forecast')[1].precipitation }}</font>
-                        {% endif %} <p>
+                    <h4><p>{% set state =
+                    states('sensor.openweathermap_feels_like_temperature') %} 
+                    {% if state | float > 34 and states | float < 50 %}
+                     It is bloody hot outside
+                    {% elif state  | float > 29 and state  | float < 35 %}
+                     It is very hot outside
+                    {% elif state  | float > 26 and state | float < 30 %}
+                     It is hot outside
+                    {% elif state  | float > 24 and state  | float < 27  %}
+                     Nice weather outside
+                    {% elif state | float > 20 and state | float < 25  %}
+                     There is a lovely weather outside
+                    {% elif state  | float > 16 and state | float < 21 %}
+                     Not hold, not cold weather outside
+                    {% elif state  | float > 11 and state  | float < 17 %}
+                     You might need a jacket
+                    {% elif state  | float > 6 and state  | float < 12 %}
+                     It is cold outside
+                    {% elif state  | float > 4 and state  | float < 7 %}
+                     It is very cold outside
+                    {% elif state  | float > 0 and state  | float < 5 %}
+                     It is freezing outside
+                    {% else %} {%- endif %} with a <font color=
+                    orange>{{states('sensor.aqara_outdoor_temperature')}}°</font>
+                     Feels like is <font color= orange>{{states('sensor.openweathermap_feels_like_temperature')}}°</font> and the wind
+                    speed is <font color= orange>{{
+                    state_attr('weather.forecast_home',
+                    'forecast')[0].wind_speed }}</font>.  {% set
+                    state=states('sensor.weather_next_12_hours_rain_probability')%}
+                    {%if state == '0.0' %}    No rain for the next <u>12
+                    hours</u>.  {% else%}  There is a
+                    {{states('sensor.weather_next_12_hours_rain_probability')}}
+                    Chance of precipitation for the next 12 hours. {% endif
+                    %}</p></h1> <h4><p><u>Tomorrow</u> there will be a <font
+                    color= orange>{{ state_attr('weather.forecast_home',
+                    'forecast')[1].condition }}</font> weather with a <font
+                    color= orange>{{ state_attr('weather.forecast_home',
+                    'forecast')[1].temperature }}°</font>  high and <font color=
+                    orange>{{ state_attr('weather.forecast_home',
+                    'forecast')[1].templow }}°</font>  low. Windspeed will be {{
+                    state_attr('weather.forecast_home',
+                    'forecast')[0].wind_speed }} </p>  <font color= orange>{% if
+                    state_attr('weather.forecast_home','forecast')[1].precipitation
+                    == 0   %}</font>
+                      There is <u>no rain</u> visible
+                    {% else %}
+                     There is rain probability with <font color= orange>{{state_attr('weather.forecast_home','forecast')[1].precipitation }}</font>
+                    {% endif %} <p>
                   card_mod:
                     style: |
-                      ha-card {
-                      font-size: 16px;
-                        text-align: left;
-                        background: none;
+                      ha-card {  
+                        background-color: rgba(252, 252, 252, 0.1); 
+                        background: none;  
+                        --primary-text-color: white;
+                        font-size: 16px;
                         box-shadow: none !important;
-                        margin-top: -20px;
+                      }  
+                      :host {    
+                        text-align: left;   
+                        --mush-icon-size: 100px;
+                        background: none !important;  
+                        margin-top: -20px !important;  
                       }  
         card_mod:
           style: |
             ha-card {
-               {% if is_state('weather.forecast_home', 'cloudy') and is_state('input_boolean.weather_animations', 'off')  %}
+               {% if is_state('weather.forecast_home', 'cloudy') and is_state('input_boolean.weather_animations', 'on')  %}
                 background:  url( '/local/png/weather/cloudy.gif' ) no-repeat center 0px;
                  background-blend-mode: soft-light;
                  background-color: rgba(29,29,34, 0.5);
-              {% elif is_state('weather.forecast_home', 'clear-night')and is_state('input_boolean.weather_animations', 'off')  %}
+              {% elif is_state('weather.forecast_home', 'clear-night')and is_state('input_boolean.weather_animations', 'on')  %}
                 background:  url( '/local/png/weather/clear-night3.gif' ) no-repeat center 0px;
                  background-blend-mode: soft-light;
                  background-color: rgba(29,29,34, 0.5);
-              {% elif is_state('weather.forecast_home', 'exceptional')and is_state('input_boolean.weather_animations', 'off')  %}
+              {% elif is_state('weather.forecast_home', 'exceptional')and is_state('input_boolean.weather_animations', 'on')  %}
                 background:  url( '/local/png/weather/exceptional1.png' ) no-repeat center 0px;
                  background-blend-mode: soft-light;
                  background-color: rgba(29,29,34, 0.5);
-              {% elif is_state('weather.forecast_home', 'fog')and is_state('input_boolean.weather_animations', 'off')  %}
+              {% elif is_state('weather.forecast_home', 'fog')and is_state('input_boolean.weather_animations', 'on')  %}
                 background:  url( '/local/png/weather/fog3.gif' ) no-repeat center 0px;
                  background-blend-mode: soft-light;
                  background-color: rgba(29,29,34, 0.5);
-              {% elif is_state('weather.forecast_home', 'hail')and is_state('input_boolean.weather_animations', 'off')  %}
+              {% elif is_state('weather.forecast_home', 'hail')and is_state('input_boolean.weather_animations', 'on')  %}
                 background:  url( '/local/png/weather/hail2.gif' ) no-repeat center 0px;
                  background-blend-mode: soft-light;
                  background-color: rgba(29,29,34, 0.5);
-              {% elif is_state('weather.forecast_home', 'lightning') and is_state('input_boolean.weather_animations', 'off') %}
+              {% elif is_state('weather.forecast_home', 'lightning') and is_state('input_boolean.weather_animations', 'on') %}
                 background:  url( '/local/png/weather/lightning3.gif' ) no-repeat center 0px;
                  background-blend-mode: soft-light;
                  background-color: rgba(29,29,34, 0.5);
-              {% elif is_state('weather.forecast_home', 'lightning-rainy')and is_state('input_boolean.weather_animations', 'off')  %}
+              {% elif is_state('weather.forecast_home', 'lightning-rainy')and is_state('input_boolean.weather_animations', 'on')  %}
                 background:  url( '/local/png/weather/lightning-rainy.jpeg' ) no-repeat center 0px;
                  background-blend-mode: soft-light;
                  background-color: rgba(29,29,34, 0.5);
-              {% elif is_state('weather.forecast_home', 'partlycloudy') and is_state('input_boolean.weather_animations', 'off') %}
+              {% elif is_state('weather.forecast_home', 'partlycloudy') and is_state('input_boolean.weather_animations', 'ofn') %}
                 background:  url( '/local/png/weather/partly-cloudy.gif' ) no-repeat center 0px;
                  background-blend-mode: soft-light;
                  background-color: rgba(29,29,34, 0.5);
-              {% elif is_state('weather.forecast_home', 'pouring') and is_state('input_boolean.weather_animations', 'off') %}
+              {% elif is_state('weather.forecast_home', 'pouring') and is_state('input_boolean.weather_animations', 'on') %}
                 background:  url( '/local/png/weather/pouring.gif' ) no-repeat center 0px;
                  background-blend-mode: soft-light;
                  background-color: rgba(29,29,34, 0.5);
-              {% elif is_state('weather.forecast_home', 'rainy')and is_state('input_boolean.weather_animations', 'off')  %}
+              {% elif is_state('weather.forecast_home', 'rainy')and is_state('input_boolean.weather_animations', 'on')  %}
                 background:  url( '/local/png/weather/rainy.gif' ) no-repeat center 0px;
                  background-blend-mode: soft-light;
                  background-color: rgba(29,29,34, 0.5);
-              {% elif is_state('weather.forecast_home', 'snowy') and is_state('input_boolean.weather_animations', 'off') %}
+              {% elif is_state('weather.forecast_home', 'snowy') and is_state('input_boolean.weather_animations', 'on') %}
                 background:  url( '/local/png/weather/snowy.gif' ) no-repeat center 0px;
                  background-blend-mode: soft-light;
                  background-color: rgba(29,29,34, 0.5);
-              {% elif is_state('weather.forecast_home', 'snowy-rainy') and is_state('input_boolean.weather_animations', 'off') %}
+              {% elif is_state('weather.forecast_home', 'snowy-rainy') and is_state('input_boolean.weather_animations', 'on') %}
                 background:  url( '/local/png/weather/snowy-rainy.gif' ) no-repeat center 0px;
                  background-blend-mode: soft-light;
                  background-color: rgba(29,29,34, 0.5);
-              {% elif is_state('weather.forecast_home', 'sunny') and is_state('input_boolean.weather_animations', 'off') %}
+              {% elif is_state('weather.forecast_home', 'sunny') and is_state('input_boolean.weather_animations', 'on') %}
                 background:  url( '/local/png/weather/sunny.gif' ) no-repeat center 0px;
                  background-blend-mode: soft-light;
                  background-color: rgba(29,29,34, 0.5);
-              {% elif is_state('weather.forecast_home', 'windy') and is_state('input_boolean.weather_animations', 'off') %}
+              {% elif is_state('weather.forecast_home', 'windy') and is_state('input_boolean.weather_animations', 'on') %}
                 background:  url( '/local/png/weather/windy.gif' ) no-repeat center 0px;
                  background-blend-mode: soft-light;
                  background-color: rgba(29,29,34, 0.5);
-              {% elif is_state('weather.forecast_home', 'windy-variant')and is_state('input_boolean.weather_animations', 'off')  %}
+              {% elif is_state('weather.forecast_home', 'windy-variant')and is_state('input_boolean.weather_animations', 'on')  %}
                 background:  url( '/local/png/weather/windy.gif' ) no-repeat center 0px;
                  background-blend-mode: soft-light;
                  background-color: rgba(29,29,34, 0.5);
-              {% elif is_state('input_boolean.weather_animations', 'on')  %}
+              {% elif is_state('input_boolean.weather_animations', 'off')  %}
                 background:  url( '/local/png/wallpaper1.jpg' ) no-repeat center 0px;
                 background-size: cover;
                {% else %}
@@ -323,14 +348,15 @@ cards:
                 background-size: cover;
                 position: relative;
                 z-index: 0;
-                border: solid;
+                border: solid 2px;
+                border-color: white;
             }                    
               :host {
                 --mush-icon-size: 100px;
                 background: transparent !important;  
-                margin-left: 20px !important;   
+                margin-left: 10px !important;   
                 margin-top: 0px !important;  
-                margin-right: 20px !important;   
+                margin-right: 10px !important;   
               }  
   - type: horizontal-stack
     cards:
@@ -442,6 +468,7 @@ cards:
         card_mod:
           style: |
             ha-card {
+                                      --ha-card-border-width: 0;
                  background: transparent !important;
                 height: 150px;
                 text-align: center !important;       
@@ -483,7 +510,7 @@ cards:
                     state_attr('weather.forecast_home','forecast')[0].precipitation 
                     | int  }}
                   primary: Rain
-                  entity: input_boolean.weather_card_weekly
+                  entity: input_boolean.weather_card_details
                   icon: mdi:weather-pouring
                   icon_color: white
                   fill_container: false
@@ -548,7 +575,7 @@ cards:
                     state_attr('weather.forecast_home','forecast')[0].temperature 
                     }}°
                   primary: Max Temp
-                  entity: input_boolean.weather_card_weekly
+                  entity: input_boolean.weather_card_details
                   icon: mdi:thermometer-plus
                   icon_color: white
                   fill_container: false
@@ -613,7 +640,7 @@ cards:
                     state_attr('weather.forecast_home','forecast')[0].templow 
                     }}
                   primary: Low Temp
-                  entity: input_boolean.weather_card_weekly
+                  entity: input_boolean.weather_card_details
                   icon: mdi:thermometer-minus
                   icon_color: white
                   fill_container: false
@@ -678,7 +705,7 @@ cards:
                     state_attr('weather.forecast_home','forecast')[0].humidity 
                     }}
                   primary: Humidity
-                  entity: input_boolean.weather_card_weekly
+                  entity: input_boolean.weather_card_details
                   icon: mdi:water-percent
                   icon_color: white
                   fill_container: false
@@ -743,7 +770,7 @@ cards:
                     state_attr('weather.forecast_home','forecast')[0].wind_speed 
                     }}
                   primary: Wind
-                  entity: input_boolean.weather_card_weekly
+                  entity: input_boolean.weather_card_details
                   icon: mdi:weather-windy
                   icon_color: white
                   fill_container: false
@@ -807,7 +834,7 @@ cards:
                     {{ as_timestamp(states.sun.sun.attributes.next_setting) |
                     timestamp_custom(" %I:%M %p") | replace(" 0", "") }}
                   primary: Sunset
-                  entity: input_boolean.weather_card_weekly
+                  entity: input_boolean.weather_card_details
                   icon: mdi:weather-sunset
                   icon_color: white
                   fill_container: false
@@ -883,7 +910,7 @@ cards:
     cards:
       - type: custom:mushroom-template-card
         secondary: |
-          {% if is_state(config.entity, 'on')  %}
+          {% if is_state(config.entity, 'on')   %}
             .
           {% else %}
             de 
@@ -905,17 +932,21 @@ cards:
           style:
             mushroom-state-info$: |
               .primary {
-                {% if is_state(config.entity, 'on')  %}
-                  --primary-text-color: white;
-                {% else %}
-                  --primary-text-color: rgba(94, 94, 92, 4.6);
-                {% endif %}
+                  {% if is_state(config.entity, 'on') and is_state('input_boolean.theme', 'off')  %}
+                    --primary-text-color: white;
+                  {% elif is_state(config.entity, 'on') and is_state('input_boolean.theme', 'on')  %}
+                    --primary-text-color: orange;
+                  {% elif is_state(config.entity, 'off') and is_state('input_boolean.theme', 'on')  %}
+                   --primary-text-color: rgba(94, 94, 92, 0.5);
+                  {% else %}
+                    --primary-text-color: rgba(94, 94, 92, 4.6);
+                  {% endif %}
                 font-size: 18px !important;
                 position: relative;
                 overflow: visible !important;
                 margin-top: 0px;   
                 margin-left: 0px;         
-                font-weight: bold;
+                font-weight: bold !important;
                 text-overflow: ellipsis;  
                 text-align: left;                 
                 text-indent: 5px;      
@@ -966,11 +997,15 @@ cards:
           style:
             mushroom-state-info$: |
               .primary {
-                {% if is_state(config.entity, 'on')  %}
-                  --primary-text-color: white;
-                {% else %}
-                  --primary-text-color: rgba(94, 94, 92, 4.6);
-                {% endif %}
+                  {% if is_state(config.entity, 'on') and is_state('input_boolean.theme', 'off')  %}
+                    --primary-text-color: white;
+                  {% elif is_state(config.entity, 'on') and is_state('input_boolean.theme', 'on')  %}
+                    --primary-text-color: orange;
+                  {% elif is_state(config.entity, 'off') and is_state('input_boolean.theme', 'on')  %}
+                   --primary-text-color: rgba(94, 94, 92, 0.5);
+                  {% else %}
+                    --primary-text-color: rgba(94, 94, 92, 4.6);
+                  {% endif %}
                 font-size: 18px !important;
                 position: relative;
                 overflow: visible !important;
@@ -1028,11 +1063,15 @@ cards:
           style:
             mushroom-state-info$: |
               .primary {
-                {% if is_state(config.entity, 'on')  %}
-                  --primary-text-color: white;
-                {% else %}
-                  --primary-text-color: rgba(94, 94, 92, 4.6);
-                {% endif %}
+                  {% if is_state(config.entity, 'on') and is_state('input_boolean.theme', 'off')  %}
+                    --primary-text-color: #b17ce6;
+                  {% elif is_state(config.entity, 'on') and is_state('input_boolean.theme', 'on')  %}
+                    --primary-text-color: orange;
+                  {% elif is_state(config.entity, 'off') and is_state('input_boolean.theme', 'on')  %}
+                   --primary-text-color: rgba(94, 94, 92, 0.5);
+                  {% else %}
+                    --primary-text-color: rgba(94, 94, 92, 4.6);
+                  {% endif %}
                 font-size: 18px !important;
                 position: relative;
                 overflow: visible !important;
@@ -1246,7 +1285,10 @@ cards:
                       card_mod:
                         style: |
                           ha-card { 
-                            background:  url( '/local/png/wallpaper1.jpg' ) no-repeat center 0px;
+                            {% if is_state('input_boolean.theme', 'on')  %}
+                            {% else %}
+                              background:  url( '/local/png/wallpaper1.jpg' ) no-repeat center 0px;
+                            {% endif %}
                             background-size: cover;
                             position: relative;
                             background-position: center; 
@@ -1519,8 +1561,10 @@ cards:
           card_mod:
             style: |
               ha-card {
+                --ha-card-border-width: 0;
                 padding: 2px;
                 background: none;    
+                box-shadow: none;
               }
               :host {
                 background: transparent !important;  
@@ -1969,8 +2013,10 @@ cards:
           card_mod:
             style: |
               ha-card {
+                --ha-card-border-width: 0;
                 padding: 2px;
                 background: none;    
+                box-shadow: none;
               }
               :host {
                 background: transparent !important;  

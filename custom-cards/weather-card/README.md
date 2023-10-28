@@ -9,7 +9,7 @@ _**If you like you can support my work.**_
 <img src="https://github.com/berkansezer77/home-assistant/assets/84282504/5ecc44d4-ef6c-4a8d-a8d9-35746f5c3a15" width="150">
 
 
-Before we begin I was very much inspired by the work of "Weather App" design by "Hua". I thought this will be the best design to give life. I added bunch of staff and I hope you will enjoy it.
+Before we begin I was very much inspired by the work of "Weather App" design by "Hua". I thought this will be the best design to give life. I coded bunch of details and I hope you will enjoy it.
 
 # Installation
 **How do I install this theme?**

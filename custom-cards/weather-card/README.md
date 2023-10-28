@@ -53,14 +53,7 @@ You will also need a weather service. In my template I am using weather Met.no a
 
 ## Video:
 
- <iframe width="560" height="315" 
-src="[https://www.youtube.com/embed/MUQfKFzIOeU](https://streamable.com/u8wmqj)"  
-frameborder="0"  
-allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"  
-allowfullscreen></iframe> 
-https://streamable.com/u8wmqj
-<a href="{[video-url](https://streamable.com/u8wmqj)}" title="Link Title"><img src="{image-url}" alt="Alternate Text" /></a>
-## Download Multimedia files:
+[Home Assistant Custom Weather Page](https://www.youtube.com/shorts/UCNNxIdTHHg)
 
 
 - Files are located at: will be soon ready

@@ -57,7 +57,7 @@ You will also need a weather service. In my template I am using weather Met.no a
 
 ## Booleans:
 
-I used 8 booleans and 1 template. Create booleans from helpers section. Don't forget to select "Toggle" in the helpers section. 
+I used 8 booleans, 1 template and 1 automation. Create booleans from helpers section. Don't forget to select "Toggle" in the helpers section. 
 
 - input_boolean.theme
 - input_boolean.weather_report
@@ -68,7 +68,7 @@ I used 8 booleans and 1 template. Create booleans from helpers section. Don't fo
 - input_boolean.weather_card_hourly
 - input_boolean.weather_card_details
 
-And the sensor is located at : (It will be explained in the manual. 
+And the sensor is located at : It will be explained in the manual. 
 
 [12 hour rain probability](https://github.com/berkansezer77/home-assistant/blob/main/custom-cards/weather-card/12-hours-rain-probability)
 
@@ -229,6 +229,13 @@ is the place where Weekly - Hourly  and Detais tabs exist.
 ![image](https://github.com/berkansezer77/home-assistant/assets/84282504/7b3fb78c-c347-4958-b062-4584cf8ec96f)
 
 This section will show you the appropriate information for the selected tab. For example if you have selected "Weekly" then upcoming days weather information will be shown. 
+
+Ok these tabs open weekly and hourly data. But when you open them both, both weekly and hourly data will be shown under each other. Normally when weekly tab opens weekly data the hourly tab should close. In order to achieve that we need an automation. 
+
+[Weekly-Hourly Tab Automation](https://github.com/berkansezer77/home-assistant/blob/main/custom-cards/weather-card/weekly-hourly-tab-automation)
+
+Because I used a conditional card for weekly and hourly data, create this automation so that when one tab opens other ones can close. 
+
 
 ![image](https://github.com/berkansezer77/home-assistant/assets/84282504/c5dd2338-ef69-4f8c-bfaf-9d8c6a572e0e)
 

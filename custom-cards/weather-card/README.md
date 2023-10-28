@@ -76,9 +76,6 @@ And the sensor is located at : (It will be explained in the manual.
 
 [Home Assistant Custom Weather Page](https://www.youtube.com/shorts/UCNNxIdTHHg)
 
-
-- Files are located at: will be soon ready
-
 ## Page Code: 
 
 - To install the page you need this code: [Page Code](https://github.com/berkansezer77/home-assistant/blob/main/custom-cards/weather-card/page-code)

@@ -173,7 +173,70 @@ This will give tomorrow's estimated wind speed result.
 
 So back to our code. As you can see I have taken datas from the list with the above method. Now you know how to do it you can customize it with other weather services. You can use any other with the template. 
 
-At Line 239 I use my own template to retrieve next 12 hour rain probability. So you have to create this at helpers section. Choose create helper>template>template a sensor. The sensor code is here [12 hour ain template](https://github.com/berkansezer77/home-assistant/blob/main/custom-cards/weather-card/12-hours-rain-probability)
+At Line 239 I use my own template to retrieve next 12 hour rain probability. So you have to create this at helpers section. Choose create helper>template>template a sensor. The sensor code is here [12 hour ain template](https://github.com/berkansezer77/home-assistant/blob/main/custom-cards/weather-card/12-hours-rain-probability). copy this code and paste it into state template section. 
+
+![image](https://github.com/berkansezer77/home-assistant/assets/84282504/d86671c9-09fe-4880-9029-e45ddaaffc28)
+
+Click submit and now you will have a new sensor with the name "sensor.weather_next_12_hours_rain_probability" 
+
+![image](https://github.com/berkansezer77/home-assistant/assets/84282504/8bb08e4b-0f8f-4808-8ed9-816f38fcc9f3)
+
+Don't forget this function is only available after Home Assistant 2023.09 so if you are using lower versions of Home Assistant you should create this sensor from the yaml.
+
+Line 274 to 360 is where the card mode happends. The animations used in the card is here. If you want to use your own animations change the gif's in this area. For example if you want to use a different "Sunny Weather" gif just go to line 326 and write down your multimedia files local adrress. 
+
+Line 361 - 491 : 
+
+This is where the animation in the middle screen appears. It is dynamic and changes up to the weather conditions. 
+
+![image](https://github.com/berkansezer77/home-assistant/assets/84282504/3ce1b075-7f45-4213-89b7-3e69fd6b8198)
+
+If you want to change the size play with host section starting at line 485.
+
+Line 492 - 906: 
+
+This is where additional weather information can be found. 
+
+![image](https://github.com/berkansezer77/home-assistant/assets/84282504/445d95db-a825-460e-94e8-1a074cc628e3)
+
+This section is hidden and can be activate by pressing to "Details" button 
+
+![image](https://github.com/berkansezer77/home-assistant/assets/84282504/c1d069ee-5da5-42e5-9407-b22f0dd9cbd1)
+
+I already showed you how to take information from attributes so you can customize this section with any inf you like. 
+
+For example 
+
+![image](https://github.com/berkansezer77/home-assistant/assets/84282504/25d60841-4ffe-446f-9e25-447d97129b03)
+
+At line 769 we take wind speed from the above list with the code 
+
+```ruby
+  {{  state_attr('weather.forecast_home','forecast')[0].wind_speed  }}
+```
+
+This is today's wind speed. But you may want to replace this with tomorrow's wind_bearing data. So the new code will be : 
+
+```ruby
+  {{  state_attr('weather.forecast_home','forecast')[1].wind_bearing }}
+```
+So "1" used in the code is for tomorrow and wind bearing is the data for tomorrow's "wind_bearing"
+
+Line 907 - 1107 
+
+is the place where Weekly - Hourly  and Detais tabs exist. 
+
+![image](https://github.com/berkansezer77/home-assistant/assets/84282504/7b3fb78c-c347-4958-b062-4584cf8ec96f)
+
+This section will show you the appropriate information for the selected tab. For example if you have selected "Weekly" then upcoming days weather information will be shown. 
+
+![image](https://github.com/berkansezer77/home-assistant/assets/84282504/c5dd2338-ef69-4f8c-bfaf-9d8c6a572e0e)
+
+
+
+
+
+
 
 
 

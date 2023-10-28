@@ -52,6 +52,12 @@ You will also need a weather service. In my template I am using weather Met.no a
 [Met.No](https://www.home-assistant.io/integrations/met/)
 
 ## Video:
+
+ <iframe width="560" height="315" 
+src="[https://www.youtube.com/embed/MUQfKFzIOeU](https://streamable.com/u8wmqj)"  
+frameborder="0"  
+allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"  
+allowfullscreen></iframe> 
 https://streamable.com/u8wmqj
 <a href="{[video-url](https://streamable.com/u8wmqj)}" title="Link Title"><img src="{image-url}" alt="Alternate Text" /></a>
 ## Download Multimedia files:

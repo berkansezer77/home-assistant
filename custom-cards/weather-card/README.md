@@ -83,6 +83,9 @@ And the sensor is located at : (It will be explained in the manual.
 
 - To install the page you need this code: [Page Code](https://github.com/berkansezer77/home-assistant/blob/main/custom-cards/weather-card/page-code)
 
+## Multimedia Files
+[Download the necessary files from this link](https://www.dropbox.com/scl/fi/9d76daycfro8i3ex85389/Weather.zip?rlkey=ofz0qb4pgkcg530lfwf9d1zoe&dl=0)
+
 ## Manual:
 
 It is very easy to install this template. First of all we need to learn how to change from dark and white theme. 
@@ -232,12 +235,44 @@ This section will show you the appropriate information for the selected tab. For
 
 ![image](https://github.com/berkansezer77/home-assistant/assets/84282504/c5dd2338-ef69-4f8c-bfaf-9d8c6a572e0e)
 
+Line 1108 - 1574 
 
+This section shows you weekly information in a button shaped interface. There is a 5 day's forcast info including the day we are in. This can be extended into more days maybe with a help of "Swipe Card". 
 
+![image](https://github.com/berkansezer77/home-assistant/assets/84282504/98a8f294-c057-42a8-9e38-e99cf50e8da7)
 
+It is very simple. "Primary" is the date conversion from weather attributes. 
 
+```ruby
+{{ as_datetime(state_attr('weather.forecast_home','forecast')[0].datetime,).strftime('%a')  }}
+```
 
+0 Here stands for today. "Secondary" info takes temperature from today's atrributes and the "picture" is the little animated icon at the top. If it is sunny the "SUNNY" icon will shown there. Icons and all other multimedia staff are can be downloaded from the link below. You can also use your own gifs or icons as well. But trust me these are beatiful.
 
+[Download the necessary files from this link](https://www.dropbox.com/scl/fi/9d76daycfro8i3ex85389/Weather.zip?rlkey=ofz0qb4pgkcg530lfwf9d1zoe&dl=0)
+
+Line 1575 - 2026 
+
+Are last section. Like the previous one this one now shows hourly weather info. 
+
+![image](https://github.com/berkansezer77/home-assistant/assets/84282504/441a9dbd-3e4a-4989-84cf-8455c8544f68)
+
+As you can see it show the weather for the coming hours in a three hour interval. 
+
+```ruby
+  {{as_datetime(state_attr('weather.forecast_home_hourly','forecast')[5].datetime,).strftime('%H:%M')}}
+```
+
+Starts with the 5.th section of "weather.forecast_home_hourly" then goes with 3 hours interval. So to show 3 hours ahead we need to use number "8" with the next hour. This way if it is 5pm the for the card "5" to show 8pm we need to move up to "8" because hourly attributes are showing every hour. So next card to show 8pm is : 
+
+```ruby
+  {{as_datetime(state_attr('weather.forecast_home_hourly','forecast')[8].datetime,).strftime('%H:%M')}}
+```
+You can change the look of the time. "('%H:%M')" As you can see with this H and M the time displays as "20:00" but it can also be displayed as "20PM". There is a good information the community written by pedro. 
+
+[Custom Timestamps](https://community.home-assistant.io/t/convert-date-and-time-template/99328)
+
+So this is it. I hope you enjoyed it. If yes please give me a star on github. Thank you very much for reading and showing attention to my projects. 
 
 
 

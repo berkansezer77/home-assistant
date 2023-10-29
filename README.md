@@ -108,13 +108,6 @@ https://github.com/berkansezer77/home-assistant/wiki/Modified-Mushroom-Climate-C
 https://github.com/berkansezer77/home-assistant/wiki/Room-Cards-for-Home-Assistant
 
 ***
-# ## Home Assistant Custom Animated Weather Page
-
-![cloudy](https://user-images.githubusercontent.com/84282504/203037600-5a820acb-6089-479d-adb7-8259b1cbe369.gif)
-
-https://github.com/berkansezer77/home-assistant/wiki/Home-Assistant-Custom-Animated-Weather-Page
-
-***
 # ## Home Assistant Spotify Button
 
 https://github.com/berkansezer77/home-assistant/blob/main/custom-cards/spotify-button/README.md

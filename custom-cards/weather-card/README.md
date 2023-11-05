@@ -81,7 +81,7 @@ And the sensor is located at : It will be explained in the manual.
 - To install the page you need this code: [Page Code](https://github.com/berkansezer77/home-assistant/blob/main/custom-cards/weather-card/page-code)
 
 ## Multimedia Files
-[Download the necessary files from this link](https://www.dropbox.com/scl/fi/9d76daycfro8i3ex85389/Weather.zip?rlkey=ofz0qb4pgkcg530lfwf9d1zoe&dl=0)
+[Download the necessary files from this link](https://www.dropbox.com/scl/fi/gmbp29o5nvjytxnqfw2ly/Weather.zip?rlkey=5brdaa0d4fo95ft06hdwb3mda&dl=0)
 
 ## Manual:
 

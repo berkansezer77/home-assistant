@@ -79,8 +79,35 @@ From Home Assistant:
 This card needs some automations and scripts to function properly and booleans are also important. 
 So for the full list of booleans used in the code are down below. 
 
+- input_boolean.tv_page_shield
+- input_boolean.theme
+- input_boolean.tv_page_shield_radio
+- input_boolean.tv_page_shield_netflix
+- input_boolean.tv_page_shield_remote
+- input_boolean.tv_page_shield_apps
+- input_boolean.tv_page_samsung
+- input_boolean.tv_page_samsung_media
+- input_boolean.tv_page_samsung_remote
+- input_boolean.tv_page_samsung_apps
 
+  These booleans are for the passage between the menus. When a menu is on the other should be closed and this is done with an help of an automation.
 
+  So we need 3 automations for this card:
 
+- [Auto Change Remote on Dashboard](https://github.com/berkansezer77/home-assistant/blob/main/custom-cards/tv-card/auto-change-remote-on-dashboard)
+- [Auto Close Tabs Samsung](https://github.com/berkansezer77/home-assistant/blob/main/custom-cards/tv-card/auto-close-tabs-samsung)
+- [Auto Close Tabs Shield](https://github.com/berkansezer77/home-assistant/blob/main/custom-cards/tv-card/auto-close-tabs-shield)
+
+## Page Code: 
+
+The full code this TV-Card is : 
+
+[Page Code](https://github.com/berkansezer77/home-assistant/blob/main/custom-cards/tv-card/page-code)
+
+## Page Code: 
+
+Multimedia Files are also located at : 
+
+[Download Files](https://github.com/berkansezer77/home-assistant/blob/main/custom-cards/tv-card/tv-card.zip)
 
 

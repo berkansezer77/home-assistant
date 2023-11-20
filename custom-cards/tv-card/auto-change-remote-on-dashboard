@@ -1,0 +1,35 @@
+alias: Tv Page - Auto Change Remote on Dashboard
+description: ""
+trigger:
+  - platform: template
+    value_template: >-
+      {{ is_state_attr('media_player.samsung_q80ba_75_tv', 'app_id', 'TV/HDMI') 
+      }}
+    id: Shield
+  - platform: template
+    value_template: >-
+      {{ not is_state_attr('media_player.samsung_q80ba_75_tv', 'app_id',
+      'TV/HDMI')  }}
+    id: samsung
+condition: []
+action:
+  - choose:
+      - conditions:
+          - condition: trigger
+            id:
+              - Shield
+        sequence:
+          - service: input_boolean.turn_on
+            data: {}
+            target:
+              entity_id: input_boolean.tv_page_shield
+      - conditions:
+          - condition: trigger
+            id:
+              - samsung
+        sequence:
+          - service: input_boolean.turn_on
+            data: {}
+            target:
+              entity_id: input_boolean.tv_page_samsung
+mode: single

@@ -1,0 +1,55 @@
+alias: TV Page - Auto Close Tabs Samsung
+description: ""
+trigger:
+  - platform: state
+    entity_id:
+      - input_boolean.tv_page_samsung_remote
+    to: "on"
+    id: Remote
+  - platform: state
+    entity_id:
+      - input_boolean.tv_page_samsung_apps
+    to: "on"
+    id: Apps
+  - platform: state
+    entity_id:
+      - input_boolean.tv_page_samsung_media
+    to: "on"
+    id: Media
+condition: []
+action:
+  - choose:
+      - conditions:
+          - condition: trigger
+            id:
+              - Remote
+        sequence:
+          - service: input_boolean.turn_off
+            data: {}
+            target:
+              entity_id:
+                - input_boolean.tv_page_samsung_apps
+                - input_boolean.tv_page_samsung_media
+      - conditions:
+          - condition: trigger
+            id:
+              - Apps
+        sequence:
+          - service: input_boolean.turn_off
+            data: {}
+            target:
+              entity_id:
+                - input_boolean.tv_page_samsung_remote
+                - input_boolean.tv_page_samsung_media
+      - conditions:
+          - condition: trigger
+            id:
+              - Media
+        sequence:
+          - service: input_boolean.turn_off
+            data: {}
+            target:
+              entity_id:
+                - input_boolean.tv_page_samsung_remote
+                - input_boolean.tv_page_samsung_apps
+mode: single

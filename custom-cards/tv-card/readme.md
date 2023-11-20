@@ -104,7 +104,7 @@ The full code this TV-Card is :
 
 [Page Code](https://github.com/berkansezer77/home-assistant/blob/main/custom-cards/tv-card/page-code)
 
-## Page Code: 
+## Multimedia Files: 
 
 Multimedia Files are also located at : 
 

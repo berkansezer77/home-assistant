@@ -1,0 +1,105 @@
+alias: TV Page - Auto Close Tabs Shield
+description: ""
+trigger:
+  - platform: state
+    entity_id:
+      - input_boolean.tv_page_shield_netflix
+    to: "on"
+    id: Netflix
+  - platform: state
+    entity_id:
+      - input_boolean.tv_page_shield_remote
+    to: "on"
+    id: Remote
+  - platform: state
+    entity_id:
+      - input_boolean.tv_page_shield_apps
+    to: "on"
+    id: Apps
+  - platform: state
+    entity_id:
+      - input_boolean.tv_page_shield_radio
+    to: "on"
+    id: Radio
+  - platform: state
+    entity_id:
+      - input_boolean.tv_page_samsung
+    to: "on"
+    id: Samsung
+  - platform: state
+    entity_id:
+      - input_boolean.tv_page_shield
+    to: "on"
+    id: Shield
+condition: []
+action:
+  - choose:
+      - conditions:
+          - condition: trigger
+            id:
+              - Netflix
+        sequence:
+          - service: input_boolean.turn_off
+            data: {}
+            target:
+              entity_id:
+                - input_boolean.tv_page_shield_remote
+                - input_boolean.tv_page_shield_apps
+                - input_boolean.tv_page_shield_radio
+      - conditions:
+          - condition: trigger
+            id:
+              - Remote
+        sequence:
+          - service: input_boolean.turn_off
+            data: {}
+            target:
+              entity_id:
+                - input_boolean.tv_page_shield_netflix
+                - input_boolean.tv_page_shield_apps
+                - input_boolean.tv_page_shield_radio
+      - conditions:
+          - condition: trigger
+            id:
+              - Apps
+        sequence:
+          - service: input_boolean.turn_off
+            data: {}
+            target:
+              entity_id:
+                - input_boolean.tv_page_shield_netflix
+                - input_boolean.tv_page_shield_remote
+                - input_boolean.tv_page_shield_radio
+      - conditions:
+          - condition: trigger
+            id:
+              - Radio
+        sequence:
+          - service: input_boolean.turn_off
+            data: {}
+            target:
+              entity_id:
+                - input_boolean.tv_page_shield_netflix
+                - input_boolean.tv_page_shield_remote
+                - input_boolean.tv_page_shield_apps
+      - conditions:
+          - condition: trigger
+            id:
+              - Samsung
+        sequence:
+          - service: input_boolean.turn_off
+            data: {}
+            target:
+              entity_id:
+                - input_boolean.tv_page_shield
+      - conditions:
+          - condition: trigger
+            id:
+              - Shield
+        sequence:
+          - service: input_boolean.turn_off
+            data: {}
+            target:
+              entity_id:
+                - input_boolean.tv_page_samsung
+mode: single

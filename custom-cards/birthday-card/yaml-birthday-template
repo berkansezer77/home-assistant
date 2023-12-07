@@ -3,7 +3,7 @@ template:
       - platform: time_pattern
         minutes: /1
     action:
-      - service: calendar.list_events
+      - service: calendar.get_events
         data:
           duration:
             hours: 2191

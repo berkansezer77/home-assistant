@@ -12,7 +12,9 @@ template:
           start_date_time: "{{ today_at() }}"
         target:
           entity_id: calendar.dogum_gunleri
-        response_variable: scheduled_events
+        response_variable: raw_events
+      - variables:
+          scheduled_events: "{{ raw_events['calendar.dogum_gunleri'] }}"
     sensor:
       - name: Calendar Scheduled Events
         unique_id: calendar_scheduled_events

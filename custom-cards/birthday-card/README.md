@@ -121,7 +121,7 @@ Okay now let's get back to our code. Now as I said we need to create a new templ
 
 - [Yaml Calendar Sensor](https://github.com/berkansezer77/home-assistant/blob/main/custom-cards/birthday-card/yaml-birthday-template)
 
-![image](https://github.com/berkansezer77/home-assistant/assets/84282504/09e45b69-72d5-4962-924b-6d884163b7bf)
+![image](https://github.com/berkansezer77/home-assistant/assets/84282504/06f652c3-b248-4a4f-a607-24de4b94b055)
 
 Restart Home Assistant. After reboot you will see that a new sensor is being created. 
 

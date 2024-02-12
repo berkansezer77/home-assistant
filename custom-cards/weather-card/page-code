@@ -32,7 +32,7 @@ cards:
                         font-size: 34px !important;
                         font-weight: bold !important;
                         margin-left: -15px;     
-                        margin-top: 0px;  
+                        margin-top: 20px;  
                         width: 80px !important; 
                         font-family: "Formula1-regular";
                         text-align: left;             
@@ -43,7 +43,7 @@ cards:
                       .secondary {     
                         font-family: "Formula1-regular";
                         font-size: 14px !important;
-                        margin-top: 0px !important;
+                        margin-top: 10px !important;
                         margin-left: -15px;  
                         width: 350px !important;
                         font-weight: 900 !important;            
@@ -73,7 +73,7 @@ cards:
                     }
                     ha-card {
                       {% if is_state('input_boolean.theme', 'on') %}
-                      --primary-text-color: black;
+                      --card-primary-color: black;
                       --chip-text-color: black;
                       {% else %}  
                         white
@@ -160,14 +160,14 @@ cards:
                       mushroom-state-info$: |
                         .primary {
                           {% if is_state('input_boolean.theme', 'on') %}
-                          --primary-text-color: white;
+                          --card-primary-color: white;
                           {% else %}  
-                            --primary-text-color: white;
+                            --card-primary-color: white;
                           {% endif %}   
                           font-size: 184px !important;
                           font-weight: bold !important;
                           margin-left: 50px;     
-                          margin-top: -50px;         
+                          margin-top: 70px;         
                           overflow: visible !important;    
                           font-weight: 900 !important; 
                           text-indent: 0px;     
@@ -175,13 +175,13 @@ cards:
                         }
                         .secondary {     
                           font-size: 34px !important;
-                          margin-top: -80px !important;
-                          margin-left: 0px;  
+                          margin-top: 70px !important;
+                          margin-left: 20px;  
                           width: 350px !important;
-                          font-weight: 900 !important;            
-                          text-indent: 10px;         
+                          font-weight: 900 !important; 
+                          padding: 9px;
                           overflow: hidden !important;  
-                          --secondary-text-color: orange;
+                          --card-secondary-color: rgb(var(--rgb-amber));
                           text-align: center;
                         } 
                       .: |
@@ -522,16 +522,16 @@ cards:
                       mushroom-state-info$: |
                         .primary {
                           {% if is_state(config.entity, 'on')  %}
-                            --primary-text-color: white;
+                            --card-primary-color: white;
                           {% else %}
-                            --primary-text-color: rgba(94, 94, 92, 4.6);
+                            --card-primary-color: rgba(94, 94, 92, 4.6);
                           {% endif %}
                           font-size: 18px !important;
                           position: relative;
                           overflow: visible !important;
                           margin-top: 0px;   
                           margin-left: 0px;         
-                          font-weight: bold;
+                          font-weight: bold !important;
                           text-overflow: ellipsis;  
                           text-align: center;                 
                           text-indent: 5px;      
@@ -544,11 +544,11 @@ cards:
                           {% endif %}
                           font-size: 16px !important;
                           position: relative;
-                          margin-top: 0px;  
+                          margin-top: 8px;  
                           text-align: center !important;
-                          margin-left: 05px;      
+                          font-weight: bold !important;      
                           overflow: visible !important;
-                          --secondary-text-color: var(--amber-color); 
+                          --card-secondary-color: rgb(var(--rgb-amber));
                         } 
                       mushroom-shape-icon$: |
                         .shape {
@@ -587,16 +587,16 @@ cards:
                       mushroom-state-info$: |
                         .primary {
                           {% if is_state(config.entity, 'on')  %}
-                            --primary-text-color: white;
+                            --card-primary-color: white;
                           {% else %}
-                            --primary-text-color: rgba(94, 94, 92, 4.6);
+                            --card-primary-color: rgba(94, 94, 92, 4.6);
                           {% endif %}
                           font-size: 18px !important;
                           position: relative;
                           overflow: visible !important;
                           margin-top: 0px;   
                           margin-left: 0px;         
-                          font-weight: bold;
+                          font-weight: bold !important;
                           text-overflow: ellipsis;  
                           text-align: center;                 
                           text-indent: 5px;      
@@ -609,11 +609,11 @@ cards:
                           {% endif %}
                           font-size: 16px !important;
                           position: relative;
-                          margin-top: 0px;  
+                          margin-top: 8px;  
                           text-align: center !important;
-                          margin-left: 05px;      
+                          font-weight: bold !important;      
                           overflow: visible !important;
-                          --secondary-text-color: var(--amber-color); 
+                          --card-secondary-color: rgb(var(--rgb-amber));
                         } 
                       mushroom-shape-icon$: |
                         .shape {
@@ -652,16 +652,16 @@ cards:
                       mushroom-state-info$: |
                         .primary {
                           {% if is_state(config.entity, 'on')  %}
-                            --primary-text-color: white;
+                            --card-primary-color: white;
                           {% else %}
-                            --primary-text-color: rgba(94, 94, 92, 4.6);
+                            --card-primary-color: rgba(94, 94, 92, 4.6);
                           {% endif %}
                           font-size: 18px !important;
                           position: relative;
                           overflow: visible !important;
                           margin-top: 0px;   
                           margin-left: 0px;         
-                          font-weight: bold;
+                          font-weight: bold !important;
                           text-overflow: ellipsis;  
                           text-align: center;                 
                           text-indent: 5px;      
@@ -674,11 +674,11 @@ cards:
                           {% endif %}
                           font-size: 16px !important;
                           position: relative;
-                          margin-top: 0px;  
+                          margin-top: 8px;  
                           text-align: center !important;
-                          margin-left: 05px;      
+                          font-weight: bold !important;      
                           overflow: visible !important;
-                          --secondary-text-color: var(--amber-color); 
+                          --card-secondary-color: rgb(var(--rgb-amber));
                         } 
                       mushroom-shape-icon$: |
                         .shape {
@@ -717,16 +717,16 @@ cards:
                       mushroom-state-info$: |
                         .primary {
                           {% if is_state(config.entity, 'on')  %}
-                            --primary-text-color: white;
+                            --card-primary-color: white;
                           {% else %}
-                            --primary-text-color: rgba(94, 94, 92, 4.6);
+                            --card-primary-color: rgba(94, 94, 92, 4.6);
                           {% endif %}
                           font-size: 18px !important;
                           position: relative;
                           overflow: visible !important;
                           margin-top: 0px;   
                           margin-left: 0px;         
-                          font-weight: bold;
+                          font-weight: bold !important;
                           text-overflow: ellipsis;  
                           text-align: center;                 
                           text-indent: 5px;      
@@ -739,11 +739,11 @@ cards:
                           {% endif %}
                           font-size: 16px !important;
                           position: relative;
-                          margin-top: 0px;  
+                          margin-top: 8px;  
                           text-align: center !important;
-                          margin-left: 05px;      
+                          font-weight: bold !important;      
                           overflow: visible !important;
-                          --secondary-text-color: var(--amber-color); 
+                          --card-secondary-color: rgb(var(--rgb-amber));
                         } 
                       mushroom-shape-icon$: |
                         .shape {
@@ -782,16 +782,16 @@ cards:
                       mushroom-state-info$: |
                         .primary {
                           {% if is_state(config.entity, 'on')  %}
-                            --primary-text-color: white;
+                            --card-primary-color: white;
                           {% else %}
-                            --primary-text-color: rgba(94, 94, 92, 4.6);
+                            --card-primary-color: rgba(94, 94, 92, 4.6);
                           {% endif %}
                           font-size: 18px !important;
                           position: relative;
                           overflow: visible !important;
                           margin-top: 0px;   
                           margin-left: 0px;         
-                          font-weight: bold;
+                          font-weight: bold !important;
                           text-overflow: ellipsis;  
                           text-align: center;                 
                           text-indent: 5px;      
@@ -804,11 +804,11 @@ cards:
                           {% endif %}
                           font-size: 16px !important;
                           position: relative;
-                          margin-top: 0px;  
+                          margin-top: 8px;  
                           text-align: center !important;
-                          margin-left: 05px;      
+                          font-weight: bold !important;      
                           overflow: visible !important;
-                          --secondary-text-color: var(--amber-color); 
+                          --card-secondary-color: rgb(var(--rgb-amber));
                         } 
                       mushroom-shape-icon$: |
                         .shape {
@@ -846,16 +846,16 @@ cards:
                       mushroom-state-info$: |
                         .primary {
                           {% if is_state(config.entity, 'on')  %}
-                            --primary-text-color: white;
+                            --card-primary-color: white;
                           {% else %}
-                            --primary-text-color: rgba(94, 94, 92, 4.6);
+                            --card-primary-color: rgba(94, 94, 92, 4.6);
                           {% endif %}
                           font-size: 18px !important;
                           position: relative;
                           overflow: visible !important;
                           margin-top: 0px;   
                           margin-left: 0px;         
-                          font-weight: bold;
+                          font-weight: bold !important;
                           text-overflow: ellipsis;  
                           text-align: center;                 
                           text-indent: 5px;      
@@ -868,11 +868,11 @@ cards:
                           {% endif %}
                           font-size: 16px !important;
                           position: relative;
-                          margin-top: 0px;  
+                          margin-top: 8px;  
                           text-align: center !important;
-                          margin-left: 05px;      
+                          font-weight: bold !important;      
                           overflow: visible !important;
-                          --secondary-text-color: var(--amber-color); 
+                          --card-secondary-color: rgb(var(--rgb-amber));
                         } 
                       mushroom-shape-icon$: |
                         .shape {
@@ -933,13 +933,13 @@ cards:
             mushroom-state-info$: |
               .primary {
                   {% if is_state(config.entity, 'on') and is_state('input_boolean.theme', 'off')  %}
-                    --primary-text-color: white;
+                    --card-primary-color: white;
                   {% elif is_state(config.entity, 'on') and is_state('input_boolean.theme', 'on')  %}
-                    --primary-text-color: orange;
+                    --card-primary-color: orange;
                   {% elif is_state(config.entity, 'off') and is_state('input_boolean.theme', 'on')  %}
-                   --primary-text-color: rgba(94, 94, 92, 0.5);
+                   --card-primary-color: rgba(94, 94, 92, 0.5);
                   {% else %}
-                    --primary-text-color: rgba(94, 94, 92, 4.6);
+                    --card-primary-color: rgba(94, 94, 92, 4.6);
                   {% endif %}
                 font-size: 18px !important;
                 position: relative;
@@ -963,7 +963,7 @@ cards:
                 text-align: left !important;
                 margin-left: 35px;      
                 overflow: visible !important;
-                --secondary-text-color: var(--amber-color); 
+                --card-secondary-color: var(--amber-color); 
               } 
             .: |
               ha-card {
@@ -998,20 +998,20 @@ cards:
             mushroom-state-info$: |
               .primary {
                   {% if is_state(config.entity, 'on') and is_state('input_boolean.theme', 'off')  %}
-                    --primary-text-color: white;
+                    --card-primary-color: white;
                   {% elif is_state(config.entity, 'on') and is_state('input_boolean.theme', 'on')  %}
-                    --primary-text-color: orange;
+                    --card-primary-color: orange;
                   {% elif is_state(config.entity, 'off') and is_state('input_boolean.theme', 'on')  %}
-                   --primary-text-color: rgba(94, 94, 92, 0.5);
+                   --card-primary-color: rgba(94, 94, 92, 0.5);
                   {% else %}
-                    --primary-text-color: rgba(94, 94, 92, 4.6);
+                    --card-primary-color: rgba(94, 94, 92, 4.6);
                   {% endif %}
                 font-size: 18px !important;
                 position: relative;
                 overflow: visible !important;
                 margin-top: 0px;   
                 margin-left: 0px;         
-                font-weight: bold;
+                font-weight: bold !important;
                 text-overflow: ellipsis;  
                 text-align: left;           
                 text-indent: 5px;      
@@ -1028,7 +1028,7 @@ cards:
                 text-align: left !important;
                 margin-left: 30px;      
                 overflow: visible !important;
-                --secondary-text-color: var(--amber-color); 
+                --card-primary-color: var(--amber-color); 
               } 
             .: |
               ha-card {
@@ -1064,20 +1064,20 @@ cards:
             mushroom-state-info$: |
               .primary {
                   {% if is_state(config.entity, 'on') and is_state('input_boolean.theme', 'off')  %}
-                    --primary-text-color: #b17ce6;
+                    --card-primary-color: #b17ce6;
                   {% elif is_state(config.entity, 'on') and is_state('input_boolean.theme', 'on')  %}
-                    --primary-text-color: orange;
+                    --card-primary-color: orange;
                   {% elif is_state(config.entity, 'off') and is_state('input_boolean.theme', 'on')  %}
-                   --primary-text-color: rgba(94, 94, 92, 0.5);
+                   --card-primary-color: rgba(94, 94, 92, 0.5);
                   {% else %}
-                    --primary-text-color: rgba(94, 94, 92, 4.6);
+                    --card-primary-color: rgba(94, 94, 92, 4.6);
                   {% endif %}
                 font-size: 18px !important;
                 position: relative;
                 overflow: visible !important;
                 margin-top: 0px;   
                 margin-left: 0px;         
-                font-weight: bold;
+                font-weight: bold !important;
                 text-overflow: ellipsis;  
                 text-align: left;           
                 text-indent: 5px;      

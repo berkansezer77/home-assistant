@@ -169,6 +169,70 @@ Of course, we need an automation to prevent both cards from appearing on the scr
 
 - [Auto Close Tabs Shield](https://github.com/berkansezer77/home-assistant/blob/main/custom-cards/tv-card/auto-close-tabs-shield)
 
-- 
+Okay let me explain this automation. It might seem a bit complex but at its base it is very simple. I have added 6 automations in to 1 single automation using "Choose". So they are triggers here. 
+For example 
+
+![image](https://github.com/berkansezer77/home-assistant/assets/84282504/85267691-4bb1-4440-b721-8015213038f6)
+
+first one is when tv page shield netflix changes to on. I have given this trigger an id named "Netflix"
+
+![image](https://github.com/berkansezer77/home-assistant/assets/84282504/c2002759-86c1-497e-96b9-4eb1612dbc18)
+
+So if come down at "Action" section. 
+
+![image](https://github.com/berkansezer77/home-assistant/assets/84282504/7b4fc9d0-2e84-4fa3-b8aa-2e4dd4842056)
+
+The first action on "Choose" will be a result of what will happen when you click Netflix section. 
+
+![image](https://github.com/berkansezer77/home-assistant/assets/84282504/2fc9aa83-d7dc-4440-9d4d-5fd35f36779c)
+
+When you click it below actions will execute. 
+
+![image](https://github.com/berkansezer77/home-assistant/assets/84282504/a980461e-d042-41c6-a8dc-4cf67c45433e)
+
+As you can see Shield remote, Shield apps and Shield radio sections will be closed and you can only see "Netflix" part on your Shield Remote Page. 
+
+![image](https://github.com/berkansezer77/home-assistant/assets/84282504/e1382b26-a9a3-4e26-9ace-52608c7c9bff)
+
+Choose 2,3 and 4  are all related to that menu. Very Simple. When you click for example "Remote" section the other 3 booleans will close and only remote will be shown on screen. 
+
+![image](https://github.com/berkansezer77/home-assistant/assets/84282504/2e705ca1-26c3-4d54-9414-9bc2b22d6884)
+
+We will come to that part.
+
+Choose 5 and 6 actions are the transiton part between "Samsung TV" and "Shield TV" cards. So when you press Samsung the whole card will be transformed into Samsung remote. 
+
+
+So Let's get back to the code. 
+
+so Line 20 will show a card when your SHield TV is on 
+
+![image](https://github.com/berkansezer77/home-assistant/assets/84282504/b357251c-bc3e-4499-b6dc-7b24c113ac98)
+
+Line 37 as I explained before will have a double tap function which changes your theme color from black to white or vice versa. If you like you can assign this function to a single tap action with deleting from line 32 to 36 amd change Line 37 from "double_tap_action:" to "tap_action:". So a single press to "Shield TV" section will change the theme. 
+
+Line 45 have the card mode functions. Line 48 is where "Shield TV" sign stands. 
+
+![image](https://github.com/berkansezer77/home-assistant/assets/84282504/7edcfa56-1b7e-4d40-9e82-e7d7b08a8f0b)
+
+You can modify this section from Line 48 to Line 62. For example you can change the font type by editing "font-family: 'Georgia';" on Line 58. You can extend the red box editing its "width: 140px !important;" You can also change the background of the box with "background: rgba(252, 3, 32, 2.6) !important;". To find the right rgba code just search google with "color picker". Then choose your correct color and take rgb values 
+
+![image](https://github.com/berkansezer77/home-assistant/assets/84282504/f6596694-951d-41cf-aa33-9248768d5aaa)
+
+Then paste it into "background: rgba(252, 3, 32, 2.6) !important;" code. For example if you choose the purple color for this box background color the correct code will be as 
+"background: rgba(168, 50, 166, 2.6) !important;"
+
+Line 81 is the place when your "Shield TV is off" 
+
+![image](https://github.com/berkansezer77/home-assistant/assets/84282504/b2fbcb61-d869-486e-b73e-8f041fbb39f7)
+
+I Used a mushroom chips card here to start Shield TV
+
+![image](https://github.com/berkansezer77/home-assistant/assets/84282504/2f0936b3-bf55-4eac-be28-8e0c6fc736f2)
+
+You can again tweak this box settings starting from line 100. For example you make the background color as red with changing "--chip-background: rgba(var(--rgb-blue)," to "--chip-background: rgba(var(--rgb-red),"
+
+![image](https://github.com/berkansezer77/home-assistant/assets/84282504/7a9c10a5-4e0a-4480-a70a-20b570e3c616)
+
 
 

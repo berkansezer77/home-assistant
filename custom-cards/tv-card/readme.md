@@ -133,12 +133,11 @@ To change the theme with a signle click, Browser Mode should be installed and we
 
 [Automation](https://github.com/berkansezer77/home-assistant/blob/main/custom-cards/tv-card/dark-and-white-mode-automation)
 
-![1](https://github.com/berkansezer77/home-assistant/assets/84282504/dd4b41e3-3931-41bb-8df6-d51ed5301533)
+<img src="https://github.com/berkansezer77/home-assistant/assets/84282504/668c6cb5-cee5-4af9-ba7f-c69e3a45cb1f" width="250">
 
+Now the boolean we created before(input_boolean.theme) is ready for transformation between themes. The only thing you need is you should place tap action into anywhere you like to single click(or double click) and change the whole theme. 
 
-Now the boolean we created before(input_boolean.theme) is ready for transformation between themes. The onlu thing you need is you should place tap action into anywhere you like to single click and change the whole theme. 
-
-As shown in above example, changing theme is available with a double click to "Suadiye" word at the upper left corner. The code for that click is: 
+As shown in above example, changing theme is available with a double click to "Samsung" or "Shiwld TV" word at the upper left corner. The code for that click is: 
 
 ```ruby
                 tap_action:
@@ -147,7 +146,29 @@ As shown in above example, changing theme is available with a double click to "S
                   target:
                     entity_id: input_boolean.theme
 ```
-In out page code this line is at Line 20
+In out page code this line is at Line 37
 
-![image](https://github.com/berkansezer77/home-assistant/assets/84282504/a9d8abf7-5a75-456f-a723-5f95b361cc53)
+![image](https://github.com/berkansezer77/home-assistant/assets/84282504/23ac04f1-c330-45b6-9ac8-8eb6926dba83)
+
+## Code Explanation:
+
+Before delving into the code, I mentioned to you that this card consists of two separate sections. Now, in terms of the code, the first section, from line 1 to line 2278, is dedicated to the Shield TV remote. The section from line 2278 to line 4112 contains the necessary codes for controlling the Samsung TV. 
+If you delete the portion from line 2278 to line 4107, you will be left with only the Shield TV remote section. I will share the necessary code for a single remote control with you at the end of this article.
+
+So to seperate 2 sections we need 2 conditional cards boosted with booleans. So in order to do that create 2 booleans named "input_boolean.tv_page_shield" and "input_boolean.tv_page_samsung" from the helpers section. Remember to choose "Toggle" 
+
+![image](https://github.com/berkansezer77/home-assistant/assets/84282504/9705df0b-0344-4b83-ba2c-347ebc99bd75)
+
+So we start with shield TV. Line 5 indicates that only the section related with "Shield TV" will be shown. 
+
+If you want to pass to Samsung remote just press "Shield" at the menu and "input_boolean.tv_page_samsung" will be turned on "input_boolean.tv_page_shield" will be turned off. So you will only see the items related to your TV. 
+
+![source changegif](https://github.com/berkansezer77/home-assistant/assets/84282504/b8d8bcff-dd0b-49c5-81a6-0c3a1f977e0d)
+
+Of course, we need an automation to prevent both cards from appearing on the screen at the same time
+
+- [Auto Close Tabs Shield](https://github.com/berkansezer77/home-assistant/blob/main/custom-cards/tv-card/auto-close-tabs-shield)
+
+- 
+
 

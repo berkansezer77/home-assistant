@@ -110,4 +110,44 @@ Multimedia Files are also located at :
 
 [Download Files](https://github.com/berkansezer77/home-assistant/blob/main/custom-cards/tv-card/tv-card.zip)
 
+## Manual:
+
+Please read the manual before you install this card. Remember, this card provides much more than just a control mechanism. It encompasses numerous automations, scripts, and features. Every detail is provided to you in this user guide.
+
+The card itself contains 2 separate remotes. One for Samsung TV and the other one is for Shield TV. The transition between 2 remotes can be made from one single card. This card also has white and black theme support. Additionally you switch between white and dark theme with a single click (or double click in our example). 
+
+So Let's start with theme change. 
+
+##Change Theme:
+
+To change the theme with a signle click, Browser Mode should be installed and we need to create an input boolean named "input_boolean.theme". Changing the theme from white to dark is quite easy. Just follow the steps. 
+
+1) Download "Google White Theme" from Hacs.
+2) Download Mushroom Shadow from Hacs.
+3) Register your browser. To do that go to browser mode in side menu and click register this browser.
+4) Now we need 2 scripts and 1 automation. After that a single click will change the mode.
+
+[Script White Mode](https://github.com/berkansezer77/home-assistant/blob/main/custom-cards/tv-card/change-to-white-mode-script)
+
+[Script Dark Mode](https://github.com/berkansezer77/home-assistant/blob/main/custom-cards/tv-card/change-to-dark-mode-script)
+
+[Automation](https://github.com/berkansezer77/home-assistant/blob/main/custom-cards/tv-card/dark-and-white-mode-automation)
+
+![1](https://github.com/berkansezer77/home-assistant/assets/84282504/dd4b41e3-3931-41bb-8df6-d51ed5301533)
+
+
+Now the boolean we created before(input_boolean.theme) is ready for transformation between themes. The onlu thing you need is you should place tap action into anywhere you like to single click and change the whole theme. 
+
+As shown in above example, changing theme is available with a double click to "Suadiye" word at the upper left corner. The code for that click is: 
+
+```ruby
+                tap_action:
+                  action: call-service
+                  service: input_boolean.toggle
+                  target:
+                    entity_id: input_boolean.theme
+```
+In out page code this line is at Line 20
+
+![image](https://github.com/berkansezer77/home-assistant/assets/84282504/a9d8abf7-5a75-456f-a723-5f95b361cc53)
 

@@ -234,5 +234,36 @@ You can again tweak this box settings starting from line 100. For example you ma
 
 ![image](https://github.com/berkansezer77/home-assistant/assets/84282504/7a9c10a5-4e0a-4480-a70a-20b570e3c616)
 
+At line 94 there is a little script assigned to this box. It lets the shield TV to turn on. If you have a Samsung TV you can use Smart tizen hacs integration to control your TV. That is what I use. Simply follow the instructions and install the integration and dont forget to give your tv a static ip from your router or modem. 
+
+Here is the script 
+
+```ruby
+alias: Samsung TV - On
+sequence:
+  - service: scene.turn_on
+    data: {}
+    target:
+      entity_id: scene.anfi_ac
+  - delay:
+      hours: 0
+      minutes: 0
+      seconds: 1
+      milliseconds: 0
+  - type: turn_on
+    device_id: a94021e0fe601d5599dd53fad87c10bf
+    entity_id: 7baee18b5d7fc5ebbd8147c8fa3f2c84
+    domain: switch
+mode: single
+icon: mdi:television
+
+```
+
+Just create a simple script for turning on the TV and call it from line 98.
+
+Okay Line 127 shows your android TV screen. I used a custom mini-media player to reflect android screen to this card. "artwork: full-cover" shows what is going on the screen. There is a little lag for the image to refresh at this card. They are some other ways to fasten this process but for me a 20s lag is ok. So the image fits the screen when android TV is on. 
+
+![image](https://github.com/berkansezer77/home-assistant/assets/84282504/60ab26af-8f36-4c71-9ef7-962416d5590a)
+
 
 

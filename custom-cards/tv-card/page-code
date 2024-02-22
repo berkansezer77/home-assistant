@@ -50,8 +50,10 @@ cards:
                                     font-weight: 300px !important;
                                     margin-left: -20px;     
                                     margin-top: 40px;   
-                                    --primary-text-color: white;
+                                    --card-primary-color: white;
                                     width: 140px !important; 
+                                    padding-top:  5px;
+                                    padding-bottom:  5px;
                                     background: rgba(252, 3, 32, 2.6) !important;
                                     font-family: 'Georgia'; 
                                     border-radius: 20px;
@@ -99,7 +101,7 @@ cards:
                               style: |
                                 ha-card {
                                   /* Style Chip like Mushroom button */
-                                  --primary-text-color: white;
+                                  --card-primary-color: rgb(var(--rgb-white));
                                   --chip-font-size: 16px;
                                   --chip-font-weight: 300px;
                                   --chip-background: rgba(var(--rgb-blue), 2.2);
@@ -213,7 +215,7 @@ cards:
                   margin-left: -15px;     
                   margin-top: 0px;         
                   width: 80px !important; 
-                  --primary-text-color: orange;
+                  --card-primary-color: rgb(var(--rgb-orange));
                   font-family: "Georgia";  
                   font-family: "Formula1-regular";
                   vertical-align: text-top !important;         
@@ -225,7 +227,7 @@ cards:
                   font-family: "Formula1-regular";
                   font-size: 12px !important;
                   margin-top: 0px !important;
-                  --secondary-text-color: white;
+                  --card-secondary-color: white;
                   text-align: left !important;
                   margin-left: 0px;  
                   width: 350px !important;
@@ -308,7 +310,7 @@ cards:
             'com.google.android.tvlauncher') and
             is_state_attr('media_player.samsung_q80ba_75_tv', 'app_id',
             'TV/HDMI')  %}
-              You are are on shield main menu
+              You are on shield main menu
             {% elif is_state_attr('media_player.shield', 'app_id',
             'ar.tvplayer.tv') and
             is_state_attr('media_player.samsung_q80ba_75_tv', 'app_id',
@@ -395,7 +397,7 @@ cards:
                   font-size: 18px !important;
                   font-weight: 300 !important;
                   margin-left: -20px;     
-                  margin-top: -25px;         
+                  margin-top: 0px;         
                   width: 80px !important; 
                   font-family: "Arial";
                   vertical-align: text-top !important;         
@@ -411,7 +413,7 @@ cards:
                   font-family: "Formula1-regular";
                   font-size: 12px !important;
                   margin-top: 0px !important;
-                  --secondary-text-color: white;
+                  --card-secondary-color: white;
                   text-align: left !important;
                   margin-left: 0px;  
                   width: 350px !important;
@@ -480,13 +482,13 @@ cards:
               mushroom-state-info$: |
                 .primary {
                     {% if is_state(config.entity, 'on') and is_state('input_boolean.theme', 'off')  %}
-                      --primary-text-color: white;
+                       --card-primary-color: rgb(var(--rgb-white));
                     {% elif is_state(config.entity, 'on') and is_state('input_boolean.theme', 'on')  %}
-                      --primary-text-color: blue;
+                        --card-primary-color: rgb(var(--rgb-blue));
                     {% elif is_state(config.entity, 'off') and is_state('input_boolean.theme', 'on')  %}
-                     --primary-text-color: rgba(94, 94, 92, 0.5);
+                       --card-primary-color: rgba(94, 94, 92, 0.5);
                     {% else %}
-                      --primary-text-color: rgba(94, 94, 92, 4.6);
+                       --card-primary-color: rgba(94, 94, 92, 4.6);
                     {% endif %}
                   font-size: 18px !important;
                   position: relative;
@@ -510,7 +512,7 @@ cards:
                   text-align: left !important;
                   margin-left: 30px;      
                   overflow: visible !important;
-                  --secondary-text-color: var(--amber-color); 
+                  --card-secondary-color: var(--amber-color); 
                 } 
               .: |
                 ha-card {
@@ -551,13 +553,13 @@ cards:
               mushroom-state-info$: |
                 .primary {
                     {% if is_state(config.entity, 'on') and is_state('input_boolean.theme', 'off')  %}
-                      --primary-text-color: white;
+                       --card-primary-color: white;
                     {% elif is_state(config.entity, 'on') and is_state('input_boolean.theme', 'on')  %}
-                      --primary-text-color: blue;
+                      --card-primary-color: blue;
                     {% elif is_state(config.entity, 'off') and is_state('input_boolean.theme', 'on')  %}
-                     --primary-text-color: rgba(94, 94, 92, 0.5);
+                     --card-primary-color: rgba(94, 94, 92, 0.5);
                     {% else %}
-                      --primary-text-color: rgba(94, 94, 92, 4.6);
+                      --card-primary-color: rgba(94, 94, 92, 4.6);
                     {% endif %}
                   font-size: 18px !important;
                   position: relative;
@@ -581,7 +583,7 @@ cards:
                   text-align: left !important;
                   margin-left: 15px;      
                   overflow: visible !important;
-                  --secondary-text-color: var(--amber-color); 
+                  --card-secondary-color: var(--amber-color); 
                 } 
               .: |
                 ha-card {
@@ -616,13 +618,13 @@ cards:
               mushroom-state-info$: |
                 .primary {
                     {% if is_state(config.entity, 'on') and is_state('input_boolean.theme', 'off')  %}
-                      --primary-text-color: white;
+                      --card-primary-color: white;
                     {% elif is_state(config.entity, 'on') and is_state('input_boolean.theme', 'on')  %}
-                      --primary-text-color: blue;
+                      --card-primary-color: blue;
                     {% elif is_state(config.entity, 'off') and is_state('input_boolean.theme', 'on')  %}
-                     --primary-text-color: rgba(94, 94, 92, 0.5);
+                     --card-primary-color: rgba(94, 94, 92, 0.5);
                     {% else %}
-                      --primary-text-color: rgba(94, 94, 92, 4.6);
+                      --card-primary-color: rgba(94, 94, 92, 4.6);
                     {% endif %}
                   font-size: 18px !important;
                   position: relative;
@@ -646,7 +648,7 @@ cards:
                   text-align: left !important;
                   margin-left: 20px;      
                   overflow: visible !important;
-                  --secondary-text-color: var(--amber-color); 
+                  --card-secondary-color: var(--amber-color); 
                 } 
               .: |
                 ha-card {
@@ -682,13 +684,13 @@ cards:
               mushroom-state-info$: |
                 .primary {
                     {% if is_state(config.entity, 'on') and is_state('input_boolean.theme', 'off')  %}
-                      --primary-text-color: #b17ce6;
+                      --card-primary-color: #b17ce6;
                     {% elif is_state(config.entity, 'on') and is_state('input_boolean.theme', 'on')  %}
-                      --primary-text-color: blue;
+                      --card-primary-color: blue;
                     {% elif is_state(config.entity, 'off') and is_state('input_boolean.theme', 'on')  %}
-                     --primary-text-color: rgba(94, 94, 92, 0.5);
+                     --card-primary-color: rgba(94, 94, 92, 0.5);
                     {% else %}
-                      --primary-text-color: rgba(94, 94, 92, 4.6);
+                      --card-primary-color: rgba(94, 94, 92, 4.6);
                     {% endif %}
                   font-size: 18px !important;
                   position: relative;
@@ -712,7 +714,7 @@ cards:
                   text-align: left !important;
                   margin-left: 10px;      
                   overflow: visible !important;
-                  --secondary-text-color: var(--amber-color); 
+                  --card-secondary-color: var(--amber-color); 
                 } 
               .: |
                 ha-card {
@@ -753,13 +755,13 @@ cards:
               mushroom-state-info$: |
                 .primary {
                     {% if is_state(config.entity, 'on') and is_state('input_boolean.theme', 'off')  %}
-                      --primary-text-color: #b17ce6;
+                      --card-primary-color: #b17ce6;
                     {% elif is_state(config.entity, 'on') and is_state('input_boolean.theme', 'on')  %}
-                      --primary-text-color: blue;
+                      --card-primary-color: blue;
                     {% elif is_state(config.entity, 'off') and is_state('input_boolean.theme', 'on')  %}
-                     --primary-text-color: rgba(94, 94, 92, 0.5);
+                     --card-primary-color: rgba(94, 94, 92, 0.5);
                     {% else %}
-                      --primary-text-color: rgba(94, 94, 92, 4.6);
+                      --card-primary-color: rgba(94, 94, 92, 4.6);
                     {% endif %}
                   font-size: 18px !important;
                   position: relative;
@@ -783,7 +785,7 @@ cards:
                   text-align: left !important;
                   margin-left: 30px;      
                   overflow: visible !important;
-                  --secondary-text-color: var(--amber-color); 
+                  --card-secondary-color: var(--amber-color); 
                 } 
               .: |
                 ha-card {
@@ -1358,15 +1360,17 @@ cards:
                             font-weight: 300 !important;
                             margin-top: 20px;    
                             text-align: left;   
-                            --primary-text-color: rgb(var(--rgb-white)); 
+                            padding-top:  10px;
+                            padding-bottom:  10px;
+                            --card-primary-color: rgb(var(--rgb-white)); 
                           } 
                           .secondary {
                             font-weight: 400 !important;
                             font-size: 20px !important;
-                            --secondary-text-color: rgb(var(--rgb-white));  
+                            --card-secondary-color: rgb(var(--rgb-white));  
                             font-weight: bold;
                             text-align: left; 
-                            margin-top: -10px;
+                            margin-top: 0px;
                           } 
                         mushroom-shape-icon$: |
                           .shape {
@@ -1433,15 +1437,17 @@ cards:
                             font-weight: 300 !important;
                             margin-top: 20px;    
                             text-align: left;   
-                            --primary-text-color: rgb(var(--rgb-white)); 
+                            padding-top:  10px;
+                            padding-bottom:  10px;
+                            --card-primary-color: rgb(var(--rgb-white)); 
                           } 
                           .secondary {
                             font-weight: 400 !important;
                             font-size: 20px !important;
-                            --secondary-text-color: rgb(var(--rgb-white));  
+                            --card-secondary-color: rgb(var(--rgb-white));  
                             font-weight: bold;
                             text-align: left; 
-                            margin-top: -10px;
+                            margin-top: 0px;
                           } 
                         mushroom-shape-icon$: |
                           .shape {
@@ -1508,16 +1514,18 @@ cards:
                             font-size: 40px !important;
                             font-weight: 300 !important;
                             margin-top: 20px;    
+                            padding-top:  10px;
+                            padding-bottom:  10px;
                             text-align: left;   
-                            --primary-text-color: rgb(var(--rgb-white)); 
+                            --card-primary-color: rgb(var(--rgb-white)); 
                           } 
                           .secondary {
                             font-weight: 400 !important;
                             font-size: 20px !important;
-                            --secondary-text-color: rgb(var(--rgb-white));  
+                            --card-secondary-color: rgb(var(--rgb-white));  
                             font-weight: bold;
                             text-align: left; 
-                            margin-top: -10px;
+                            margin-top: 0px;
                           } 
                         mushroom-shape-icon$: |
                           .shape {
@@ -1585,15 +1593,17 @@ cards:
                             font-weight: 300 !important;
                             margin-top: 20px;    
                             text-align: left;   
-                            --primary-text-color: rgb(var(--rgb-white)); 
+                            padding-top:  10px;
+                            padding-bottom:  10px;
+                            --card-primary-color: rgb(var(--rgb-white)); 
                           } 
                           .secondary {
                             font-weight: 400 !important;
                             font-size: 20px !important;
-                            --secondary-text-color: rgb(var(--rgb-white));  
+                            --card-secondary-color: rgb(var(--rgb-white));  
                             font-weight: bold;
                             text-align: left; 
-                            margin-top: -10px;
+                            margin-top: 0px;
                           } 
                         mushroom-shape-icon$: |
                           .shape {
@@ -1665,15 +1675,17 @@ cards:
                             font-weight: 300 !important;
                             margin-top: 20px;    
                             text-align: left;   
-                            --primary-text-color: rgb(var(--rgb-white)); 
+                            padding-top:  10px;
+                            padding-bottom:  10px;
+                            --card-primary-color: rgb(var(--rgb-white)); 
                           } 
                           .secondary {
                             font-weight: 400 !important;
                             font-size: 20px !important;
-                            --secondary-text-color: rgb(var(--rgb-white));  
+                            --card-secondary-color: rgb(var(--rgb-white));  
                             font-weight: bold;
                             text-align: left; 
-                            margin-top: -10px;
+                            margin-top: 0px;
                           } 
                         mushroom-shape-icon$: |
                           .shape {
@@ -1741,15 +1753,17 @@ cards:
                             font-weight: 300 !important;
                             margin-top: 20px;    
                             text-align: left;   
-                            --primary-text-color: rgb(var(--rgb-white)); 
+                            padding-top:  10px;
+                            padding-bottom:  10px;
+                            --card-primary-color: rgb(var(--rgb-white)); 
                           } 
                           .secondary {
                             font-weight: 400 !important;
                             font-size: 20px !important;
-                            --secondary-text-color: rgb(var(--rgb-white));  
+                            --card-secondary-color: rgb(var(--rgb-white));  
                             font-weight: bold;
                             text-align: left; 
-                            margin-top: -10px;
+                            margin-top: 0px;
                           } 
                         mushroom-shape-icon$: |
                           .shape {
@@ -1830,12 +1844,12 @@ cards:
                             font-weight: 300 !important;
                             margin-top: 20px;    
                             text-align: left;   
-                            --primary-text-color: rgb(var(--rgb-white)); 
+                            --card-primary-color: rgb(var(--rgb-white)); 
                           } 
                           .secondary {
                             font-weight: 400 !important;
                             font-size: 20px !important;
-                            --secondary-text-color: rgb(var(--rgb-white));  
+                            --card-secondary-color: rgb(var(--rgb-white));  
                             font-weight: bold;
                             text-align: left; 
                             margin-top: -10px;
@@ -1886,12 +1900,12 @@ cards:
                             font-weight: 300 !important;
                             margin-top: 20px;    
                             text-align: left;   
-                            --primary-text-color: rgb(var(--rgb-white)); 
+                            --card-primary-color: rgb(var(--rgb-white)); 
                           } 
                           .secondary {
                             font-weight: 400 !important;
                             font-size: 20px !important;
-                            --secondary-text-color: rgb(var(--rgb-white));  
+                            --card-secondary-color: rgb(var(--rgb-white));  
                             font-weight: bold;
                             text-align: left; 
                             margin-top: -10px;
@@ -1942,12 +1956,12 @@ cards:
                             font-weight: 300 !important;
                             margin-top: 20px;    
                             text-align: left;   
-                            --primary-text-color: rgb(var(--rgb-white)); 
+                            --card-primary-color: rgb(var(--rgb-white)); 
                           } 
                           .secondary {
                             font-weight: 400 !important;
                             font-size: 20px !important;
-                            --secondary-text-color: rgb(var(--rgb-white));  
+                            --card-secondary-color: rgb(var(--rgb-white));  
                             font-weight: bold;
                             text-align: left; 
                             margin-top: -10px;
@@ -1997,12 +2011,12 @@ cards:
                             font-weight: 300 !important;
                             margin-top: 20px;    
                             text-align: left;   
-                            --primary-text-color: rgb(var(--rgb-white)); 
+                            --card-primary-color: rgb(var(--rgb-white)); 
                           } 
                           .secondary {
                             font-weight: 400 !important;
                             font-size: 20px !important;
-                            --secondary-text-color: rgb(var(--rgb-white));  
+                            --card-secondary-color: rgb(var(--rgb-white));  
                             font-weight: bold;
                             text-align: left; 
                             margin-top: -10px;
@@ -2057,12 +2071,12 @@ cards:
                             font-weight: 300 !important;
                             margin-top: 20px;    
                             text-align: left;   
-                            --primary-text-color: rgb(var(--rgb-white)); 
+                            --card-primary-color: rgb(var(--rgb-white)); 
                           } 
                           .secondary {
                             font-weight: 400 !important;
                             font-size: 20px !important;
-                            --secondary-text-color: rgb(var(--rgb-white));  
+                            --card-secondary-color: rgb(var(--rgb-white));  
                             font-weight: bold;
                             text-align: left; 
                             margin-top: -10px;
@@ -2113,12 +2127,12 @@ cards:
                             font-weight: 300 !important;
                             margin-top: 20px;    
                             text-align: left;   
-                            --primary-text-color: rgb(var(--rgb-white)); 
+                            --card-primary-color: rgb(var(--rgb-white)); 
                           } 
                           .secondary {
                             font-weight: 400 !important;
                             font-size: 20px !important;
-                            --secondary-text-color: rgb(var(--rgb-white));  
+                            --card-secondary-color: rgb(var(--rgb-white));  
                             font-weight: bold;
                             text-align: left; 
                             margin-top: -10px;
@@ -2169,12 +2183,12 @@ cards:
                             font-weight: 300 !important;
                             margin-top: 20px;    
                             text-align: left;   
-                            --primary-text-color: rgb(var(--rgb-white)); 
+                            --card-primary-color: rgb(var(--rgb-white)); 
                           } 
                           .secondary {
                             font-weight: 400 !important;
                             font-size: 20px !important;
-                            --secondary-text-color: rgb(var(--rgb-white));  
+                            --card-secondary-color: rgb(var(--rgb-white));  
                             font-weight: bold;
                             text-align: left; 
                             margin-top: -10px;
@@ -2225,12 +2239,12 @@ cards:
                             font-weight: 300 !important;
                             margin-top: 20px;    
                             text-align: left;   
-                            --primary-text-color: rgb(var(--rgb-white)); 
+                            --card-primary-color: rgb(var(--rgb-white)); 
                           } 
                           .secondary {
                             font-weight: 400 !important;
                             font-size: 20px !important;
-                            --secondary-text-color: rgb(var(--rgb-white));  
+                            --card-secondary-color: rgb(var(--rgb-white));  
                             font-weight: bold;
                             text-align: left; 
                             margin-top: -10px;
@@ -2313,9 +2327,11 @@ cards:
                                     position: relative;
                                     font-family: 'Georgia'; 
                                     overflow: visible !important;
+                                    padding-top:  10px;
+                                    padding-bottom:  10px;
                                     margin-top: -30px;  
                                     margin-left: -12px;       
-                                    --primary-text-color: white;  
+                                    --card-primary-color: white;  
                                     text-overflow: ellipsis;  
                                     text-align: left;   
                                     z-index: 1;
@@ -2327,7 +2343,9 @@ cards:
                                   .secondary {
                                     font-size: 27px !important;
                                     height: 40px;
-                                    margin-top: -5px;  
+                                    padding-top:  5px;
+                                    padding-bottom:  0px;
+                                    margin-top: px;  
                                     margin-left: 30px !important; 
                                     font-family: 'Georgia'; 
                                     z-index: 0;
@@ -2337,7 +2355,7 @@ cards:
                                     text-align: center;   
                                     background: rgba(252, 3, 32, 0.9) !important;       
                                     overflow: visible !important;
-                                    --secondary-text-color: var(--white-color); 
+                                    --card-secondary-color: var(--white-color); 
                                     border-bottom-right-radius: 350px;
                                     border-bottom-left-radius: 90px;
                                     text-indent: -10px;        
@@ -2382,7 +2400,7 @@ cards:
                               style: |
                                 ha-card {
                                   /* Style Chip like Mushroom button */
-                                  --primary-text-color: white;
+                                  --card-primary-color: white;
                                   --chip-font-size: 16px;
                                   --chip-font-weight: 300px;
                                   --chip-background: rgba(var(--rgb-blue), 2.2);
@@ -2476,7 +2494,7 @@ cards:
                   margin-left: -15px;     
                   margin-top: 0px;         
                   width: 80px !important; 
-                  --primary-text-color: orange;
+                  --card-primary-color: orange;
                   font-family: "Georgia";  
                   font-family: "Formula1-regular";
                   vertical-align: text-top !important;         
@@ -2488,7 +2506,7 @@ cards:
                   font-family: "Formula1-regular";
                   font-size: 12px !important;
                   margin-top: 0px !important;
-                  --secondary-text-color: white;
+                  --card-secondary-color: white;
                   text-align: left !important;
                   margin-left: 0px;  
                   width: 350px !important;
@@ -2636,7 +2654,7 @@ cards:
                   font-size: 18px !important;
                   font-weight: 300 !important;
                   margin-left: -20px;     
-                  margin-top: -15px;         
+                  margin-top: px;         
                   width: 80px !important; 
                   font-family: "Arial";
                   vertical-align: text-top !important;         
@@ -2652,7 +2670,7 @@ cards:
                   font-family: "Formula1-regular";
                   font-size: 12px !important;
                   margin-top: 0px !important;
-                  --secondary-text-color: white;
+                  --card-secondary-color: white;
                   text-align: left !important;
                   margin-left: 0px;  
                   width: 350px !important;
@@ -2720,13 +2738,13 @@ cards:
               mushroom-state-info$: |
                 .primary {
                     {% if is_state(config.entity, 'on') and is_state('input_boolean.theme', 'off')  %}
-                      --primary-text-color: white;
+                      --card-primary-color: white;
                     {% elif is_state(config.entity, 'on') and is_state('input_boolean.theme', 'on')  %}
-                      --primary-text-color: blue;
+                      --card-primary-color: blue;
                     {% elif is_state(config.entity, 'off') and is_state('input_boolean.theme', 'on')  %}
-                     --primary-text-color: rgba(94, 94, 92, 0.5);
+                     --card-primary-color: rgba(94, 94, 92, 0.5);
                     {% else %}
-                      --primary-text-color: rgba(94, 94, 92, 4.6);
+                      --card-primary-color: rgba(94, 94, 92, 4.6);
                     {% endif %}
                   font-size: 18px !important;
                   position: relative;
@@ -2750,7 +2768,7 @@ cards:
                   text-align: left !important;
                   margin-left: 30px;      
                   overflow: visible !important;
-                  --secondary-text-color: var(--amber-color); 
+                  --card-secondary-color: var(--amber-color); 
                 } 
               .: |
                 ha-card {
@@ -2786,13 +2804,13 @@ cards:
               mushroom-state-info$: |
                 .primary {
                     {% if is_state(config.entity, 'on') and is_state('input_boolean.theme', 'off')  %}
-                      --primary-text-color: white;
+                      --card-primary-color: white;
                     {% elif is_state(config.entity, 'on') and is_state('input_boolean.theme', 'on')  %}
-                      --primary-text-color: blue;
+                      --card-primary-color: blue;
                     {% elif is_state(config.entity, 'off') and is_state('input_boolean.theme', 'on')  %}
-                     --primary-text-color: rgba(94, 94, 92, 0.5);
+                     --card-primary-color: rgba(94, 94, 92, 0.5);
                     {% else %}
-                      --primary-text-color: rgba(94, 94, 92, 4.6);
+                      --card-primary-color: rgba(94, 94, 92, 4.6);
                     {% endif %}
                   font-size: 18px !important;
                   position: relative;
@@ -2816,7 +2834,7 @@ cards:
                   text-align: left !important;
                   margin-left: 30px;      
                   overflow: visible !important;
-                  --secondary-text-color: var(--amber-color); 
+                  --card-secondary-color: var(--amber-color); 
                 } 
               .: |
                 ha-card {
@@ -2852,13 +2870,13 @@ cards:
               mushroom-state-info$: |
                 .primary {
                     {% if is_state(config.entity, 'on') and is_state('input_boolean.theme', 'off')  %}
-                      --primary-text-color: #b17ce6;
+                      --card-primary-color: #b17ce6;
                     {% elif is_state(config.entity, 'on') and is_state('input_boolean.theme', 'on')  %}
-                      --primary-text-color: blue;
+                      --card-primary-color: blue;
                     {% elif is_state(config.entity, 'off') and is_state('input_boolean.theme', 'on')  %}
-                     --primary-text-color: rgba(94, 94, 92, 0.5);
+                     --card-primary-color: rgba(94, 94, 92, 0.5);
                     {% else %}
-                      --primary-text-color: rgba(94, 94, 92, 4.6);
+                      --card-primary-color: rgba(94, 94, 92, 4.6);
                     {% endif %}
                   font-size: 18px !important;
                   position: relative;
@@ -2882,7 +2900,7 @@ cards:
                   text-align: left !important;
                   margin-left: 30px;      
                   overflow: visible !important;
-                  --secondary-text-color: var(--amber-color); 
+                  --card-secondary-color: var(--amber-color); 
                 } 
               .: |
                 ha-card {
@@ -2923,13 +2941,13 @@ cards:
               mushroom-state-info$: |
                 .primary {
                     {% if is_state(config.entity, 'on') and is_state('input_boolean.theme', 'off')  %}
-                      --primary-text-color: #b17ce6;
+                      --card-primary-color: #b17ce6;
                     {% elif is_state(config.entity, 'on') and is_state('input_boolean.theme', 'on')  %}
-                      --primary-text-color: blue;
+                      --card-primary-color: blue;
                     {% elif is_state(config.entity, 'off') and is_state('input_boolean.theme', 'on')  %}
-                     --primary-text-color: rgba(94, 94, 92, 0.5);
+                     --card-primary-color: rgba(94, 94, 92, 0.5);
                     {% else %}
-                      --primary-text-color: rgba(94, 94, 92, 4.6);
+                      --card-primary-color: rgba(94, 94, 92, 4.6);
                     {% endif %}
                   font-size: 18px !important;
                   position: relative;
@@ -2953,7 +2971,7 @@ cards:
                   text-align: left !important;
                   margin-left: 30px;      
                   overflow: visible !important;
-                  --secondary-text-color: var(--amber-color); 
+                  --card-secondary-color: var(--amber-color); 
                 } 
               .: |
                 ha-card {
@@ -3021,12 +3039,14 @@ cards:
                             font-weight: 300 !important;
                             margin-top: 90px;    
                             text-align: left;   
-                            --primary-text-color: rgb(var(--rgb-white)); 
+                            padding-top:  10px;
+                            padding-bottom:  10px;
+                            --card-primary-color: rgb(var(--rgb-white)); 
                           } 
                           .secondary {
                             font-weight: 400 !important;
                             font-size: 20px !important;
-                            --secondary-text-color: rgb(var(--rgb-white));  
+                            --card-secondary-color: rgb(var(--rgb-white));  
                             font-weight: bold;
                             text-align: left; 
                             margin-top: -10px;
@@ -3075,13 +3095,15 @@ cards:
                             font-size: 40px !important;
                             font-weight: 300 !important;
                             margin-top: 90px;    
+                            padding-top:  10px;
+                            padding-bottom:  10px;
                             text-align: left;   
-                            --primary-text-color: rgb(var(--rgb-white)); 
+                            --card-primary-color: rgb(var(--rgb-white)); 
                           } 
                           .secondary {
                             font-weight: 400 !important;
                             font-size: 20px !important;
-                            --secondary-text-color: rgb(var(--rgb-white));  
+                            --card-secondary-color: rgb(var(--rgb-white));  
                             font-weight: bold;
                             text-align: left; 
                             margin-top: -10px;
@@ -3130,13 +3152,15 @@ cards:
                             font-size: 40px !important;
                             font-weight: 300 !important;
                             margin-top: 90px;    
+                            padding-top:  10px;
+                            padding-bottom:  10px;
                             text-align: left;   
-                            --primary-text-color: rgb(var(--rgb-white)); 
+                            --card-primary-color: rgb(var(--rgb-white)); 
                           } 
                           .secondary {
                             font-weight: 400 !important;
                             font-size: 20px !important;
-                            --secondary-text-color: rgb(var(--rgb-white));  
+                            --card-secondary-color: rgb(var(--rgb-white));  
                             font-weight: bold;
                             text-align: left; 
                             margin-top: -10px;
@@ -3186,12 +3210,14 @@ cards:
                             font-weight: 300 !important;
                             margin-top: 90px;    
                             text-align: left;   
-                            --primary-text-color: rgb(var(--rgb-white)); 
+                            padding-top:  10px;
+                            padding-bottom:  10px;
+                            --card-primary-color: rgb(var(--rgb-white)); 
                           } 
                           .secondary {
                             font-weight: 400 !important;
                             font-size: 20px !important;
-                            --secondary-text-color: rgb(var(--rgb-white));  
+                            --card-secondary-color: rgb(var(--rgb-white));  
                             font-weight: bold;
                             text-align: left; 
                             margin-top: -10px;
@@ -3245,12 +3271,14 @@ cards:
                             font-weight: 300 !important;
                             margin-top: 90px;    
                             text-align: left;   
-                            --primary-text-color: rgb(var(--rgb-white)); 
+                            padding-top:  10px;
+                            padding-bottom:  10px;
+                            --card-primary-color: rgb(var(--rgb-white)); 
                           } 
                           .secondary {
                             font-weight: 400 !important;
                             font-size: 20px !important;
-                            --secondary-text-color: rgb(var(--rgb-white));  
+                            --card-secondary-color: rgb(var(--rgb-white));  
                             font-weight: bold;
                             text-align: left; 
                             margin-top: -10px;
@@ -3299,13 +3327,15 @@ cards:
                             font-size: 40px !important;
                             font-weight: 300 !important;
                             margin-top: 90px;    
+                            padding-top:  10px;
+                            padding-bottom:  10px;
                             text-align: left;   
-                            --primary-text-color: rgb(var(--rgb-white)); 
+                            --card-primary-color: rgb(var(--rgb-white)); 
                           } 
                           .secondary {
                             font-weight: 400 !important;
                             font-size: 20px !important;
-                            --secondary-text-color: rgb(var(--rgb-white));  
+                            --card-secondary-color: rgb(var(--rgb-white));  
                             font-weight: bold;
                             text-align: left; 
                             margin-top: -10px;
@@ -3354,13 +3384,15 @@ cards:
                             font-size: 40px !important;
                             font-weight: 300 !important;
                             margin-top: 90px;    
+                            padding-top:  10px;
+                            padding-bottom:  10px;
                             text-align: left;   
-                            --primary-text-color: rgb(var(--rgb-white)); 
+                            --card-primary-color: rgb(var(--rgb-white)); 
                           } 
                           .secondary {
                             font-weight: 400 !important;
                             font-size: 20px !important;
-                            --secondary-text-color: rgb(var(--rgb-white));  
+                            --card-secondary-color: rgb(var(--rgb-white));  
                             font-weight: bold;
                             text-align: left; 
                             margin-top: -10px;
@@ -3562,16 +3594,18 @@ cards:
                             font-size: 40px !important;
                             font-weight: 300 !important;
                             margin-top: 20px;    
+                            padding-top:  10px;
+                            padding-bottom:  10px;
                             text-align: left;   
-                            --primary-text-color: rgb(var(--rgb-white)); 
+                            --card-primary-color: rgb(var(--rgb-white)); 
                           } 
                           .secondary {
                             font-weight: 400 !important;
                             font-size: 20px !important;
-                            --secondary-text-color: rgb(var(--rgb-white));  
+                            --card-secondary-color: rgb(var(--rgb-white));  
                             font-weight: bold;
                             text-align: left; 
-                            margin-top: -10px;
+                            margin-top: 0px;
                           } 
                         mushroom-shape-icon$: |
                           .shape {
@@ -3639,15 +3673,17 @@ cards:
                             font-weight: 300 !important;
                             margin-top: 20px;    
                             text-align: left;   
-                            --primary-text-color: rgb(var(--rgb-white)); 
+                            padding-top:  10px;
+                            padding-bottom:  10px;
+                            --card-primary-color: rgb(var(--rgb-white)); 
                           } 
                           .secondary {
                             font-weight: 400 !important;
                             font-size: 20px !important;
-                            --secondary-text-color: rgb(var(--rgb-white));  
+                            --card-secondary-color: rgb(var(--rgb-white));  
                             font-weight: bold;
                             text-align: left; 
-                            margin-top: -10px;
+                            margin-top: 0px;
                           } 
                         mushroom-shape-icon$: |
                           .shape {
@@ -3714,16 +3750,18 @@ cards:
                             font-size: 40px !important;
                             font-weight: 300 !important;
                             margin-top: 20px;    
+                            padding-top:  10px;
+                            padding-bottom:  10px;
                             text-align: left;   
-                            --primary-text-color: rgb(var(--rgb-white)); 
+                            --card-primary-color: rgb(var(--rgb-white)); 
                           } 
                           .secondary {
                             font-weight: 400 !important;
                             font-size: 20px !important;
-                            --secondary-text-color: rgb(var(--rgb-white));  
+                            --card-secondary-color: rgb(var(--rgb-white));  
                             font-weight: bold;
                             text-align: left; 
-                            margin-top: -10px;
+                            margin-top: 0px;
                           } 
                         mushroom-shape-icon$: |
                           .shape {
@@ -3791,15 +3829,17 @@ cards:
                             font-weight: 300 !important;
                             margin-top: 20px;    
                             text-align: left;   
-                            --primary-text-color: rgb(var(--rgb-white)); 
+                            padding-top:  10px;
+                            padding-bottom:  10px;
+                            --card-primary-color: rgb(var(--rgb-white)); 
                           } 
                           .secondary {
                             font-weight: 400 !important;
                             font-size: 20px !important;
-                            --secondary-text-color: rgb(var(--rgb-white));  
+                            --card-secondary-color: rgb(var(--rgb-white));  
                             font-weight: bold;
                             text-align: left; 
-                            margin-top: -10px;
+                            margin-top: 0px;
                           } 
                         mushroom-shape-icon$: |
                           .shape {
@@ -3871,15 +3911,17 @@ cards:
                             font-weight: 300 !important;
                             margin-top: 20px;    
                             text-align: left;   
-                            --primary-text-color: rgb(var(--rgb-white)); 
+                            padding-top:  10px;
+                            padding-bottom:  10px;
+                            --card-primary-color: rgb(var(--rgb-white)); 
                           } 
                           .secondary {
                             font-weight: 400 !important;
                             font-size: 20px !important;
-                            --secondary-text-color: rgb(var(--rgb-white));  
+                            --card-secondary-color: rgb(var(--rgb-white));  
                             font-weight: bold;
                             text-align: left; 
-                            margin-top: -10px;
+                            margin-top: 0px;
                           } 
                         mushroom-shape-icon$: |
                           .shape {
@@ -3947,15 +3989,17 @@ cards:
                             font-weight: 300 !important;
                             margin-top: 20px;    
                             text-align: left;   
-                            --primary-text-color: rgb(var(--rgb-white)); 
+                            padding-top:  10px;
+                            padding-bottom:  10px;
+                            --card-primary-color: rgb(var(--rgb-white)); 
                           } 
                           .secondary {
                             font-weight: 400 !important;
                             font-size: 20px !important;
-                            --secondary-text-color: rgb(var(--rgb-white));  
+                            --card-secondary-color: rgb(var(--rgb-white));  
                             font-weight: bold;
                             text-align: left; 
-                            margin-top: -10px;
+                            margin-top: 0px;
                           } 
                         mushroom-shape-icon$: |
                           .shape {
@@ -4023,15 +4067,17 @@ cards:
                             font-weight: 300 !important;
                             margin-top: 20px;    
                             text-align: left;   
-                            --primary-text-color: rgb(var(--rgb-white)); 
+                            padding-top:  10px;
+                            padding-bottom:  10px;
+                            --card-primary-color: rgb(var(--rgb-white)); 
                           } 
                           .secondary {
                             font-weight: 400 !important;
                             font-size: 20px !important;
-                            --secondary-text-color: rgb(var(--rgb-white));  
+                            --card-secondary-color: rgb(var(--rgb-white));  
                             font-weight: bold;
                             text-align: left; 
-                            margin-top: -10px;
+                            margin-top: 0px;
                           } 
                         mushroom-shape-icon$: |
                           .shape {

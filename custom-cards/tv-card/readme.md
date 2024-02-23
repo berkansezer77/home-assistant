@@ -597,6 +597,25 @@ sequence:
 mode: single
 
 ```
-Line 3324 displays my door camera on my Samsung TV. 
+Line 3324 displays my front door camera to my android Tv. Okay this section is normally for Samsung TV but I put the script into this section. 
+
+```ruby
+alias: "Radio - Number One Lounge "
+sequence:
+  - service: media_player.play_media
+    target:
+      entity_id: media_player.shield_cast
+    data:
+      media_content_id: https://n10101m.mediatriple.net/lounge
+      media_content_type: audio/mpeg
+      extra:
+        metadata:
+          metadataType: 3
+          title: Number 1 Lounge
+          subtitle: Lounge
+          images:
+            - url: https://static.mytuner.mobi/media/tvos_radios/xxktxztcxsy5.png
+mode: single
+```
 
 

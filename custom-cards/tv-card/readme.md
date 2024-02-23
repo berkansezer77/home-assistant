@@ -388,7 +388,88 @@ I used a 2 column grid layout here(line 1320). So that means 2 cards in each row
 
 ![image](https://github.com/berkansezer77/home-assistant/assets/84282504/95f68ec6-105e-4fd0-bff8-823d6d848d0c)
 
-The first one is Netflix which is starting at line 1323. Now the card needs to understand if Netflix is running, on menu or closed. In order to do that I have created a if statement.i 
+The first one is Netflix which is starting at line 1323. Now the card needs to understand if Netflix is running, on menu or closed. In order to do that I have created an if statement. But in order to let this statement work properly we need to create virtual switches for netflix. To do that go to your configuration.yaml file and add below line.
+
+```ruby
+  - platform: template
+    switches:
+      netflix_on_menu:
+        value_template: "{{ not is_state('media_player.shield', 'playing') and is_state_attr('media_player.shield', 'app_id', 'com.netflix.ninja') }}"
+        turn_on:
+          service: switch.turn_on
+          target:
+            entity_id: switch.target
+        turn_off:
+          service: switch.turn_off
+          target:
+            entity_id: switch.target
+
+```
+
+The above menu will be shown at the secondary info on Netflix card. It will show you as you are on the main menu for Netflix app. 
+
+![image](https://github.com/berkansezer77/home-assistant/assets/84282504/7de2cb8c-310d-4569-99ee-e6206d03abdf)
+
+We now have to create another switch for Netflix which will be active when anything is playing on Netflix. Again add these lines to your configuration menu.
+
+```ruby
+  - platform: template
+    switches:
+      netflix_usage:
+        value_template: "{{ is_state('media_player.shield', 'playing') and is_state_attr('media_player.shield', 'app_id', 'com.netflix.ninja') }}"
+        turn_on:
+          service: switch.turn_on
+          target:
+            entity_id: switch.target
+        turn_off:
+          service: switch.turn_off
+          target:
+            entity_id: switch.target
+
+```
+After adding above codes to your configuration.yaml file restart your home assistant. After that your virtual switches are now ready. 
+
+![image](https://github.com/berkansezer77/home-assistant/assets/84282504/704ac861-b702-44fb-b367-635fb067845f)
+
+As you can see there is an icon at the top of the Netflix button. The position of this button is at line 1378. margin-top: -20px; and margin-left: -120px; positions the icon at the very top left. And when Netflix is active it turns the icon as green stating it is "on". Netflix logo is at line 1389 as "netflixlogo7.png" you can also change it with anything you like. 
+
+The rest is the same method Line 1402 where Disney starts. Line 1482 is Prime, Line 1562 is Tivimate codes. On line 1642 we move to the second page.
+
+![image](https://github.com/berkansezer77/home-assistant/assets/84282504/560f4286-d73a-418e-8272-cf855cc7e9bd)
+
+Line 1646 is Spotify and finally Line 1727 is Youtube. 
+
+You can find the configuration files required for all the cards I created here in the link below. Among these, there are also application ids for important applications. All you have to do is copy them directly, paste them into the configuration.yaml file, and then restart.
+
+https://github.com/berkansezer77/home-assistant/blob/main/custom-cards/tv-card/on-menu-and-playing-template-switch
+
+Finally we have the page for Radio Tab starting at line 1806. We also have a swipe card present here for displaying multiple stations. Out first radio stations start at Line 1839. 
+
+Same method here. Tapping the card will immediately start the radio stream on Shield. An example script for virgin radio is down below : 
+
+
+```ruby
+alias: "Radio - Virgin Radio Turkey "
+sequence:
+  - service: media_player.play_media
+    target:
+      entity_id: media_player.shield_cast
+    data:
+      media_content_id: http://20133.live.streamtheworld.com:80/VIRGIN_RADIO_SC
+      media_content_type: audio/mpeg
+mode: single
+
+
+```
+So we use service "media_player.play_media. The Radio adress is at "media_content_id". You can find many radio station addresses on google and place it here. All you have to do left is to find an image for that radio. In our example I used "virginfm.png" at line 1881. If you want the background image to look more faded change "background-color: rgba(29,29,34, 0.2);" 0.2 something higher. For example setting it to 3.2 will result like this: 
+
+![image](https://github.com/berkansezer77/home-assistant/assets/84282504/fcd6c285-09bb-45b5-b785-2502047e42f0)
+
+The script above uses the cast service on Shield TV. Not many android Tv's have cast integration. Shield TV is integrated with google cast so it is very easy to cast audio to it. The above script will not show any metdata while the radio is playing on Android TV. If you want the metdata in other words some information about what is being played you need a more enhanced script like the one below : 
+
+
+
+
 
 
 

@@ -323,6 +323,10 @@ Line 733 is the tab where you can change the whole card view from Shield TV to A
 
 As I mentioned before ".primary" and ".secondary" parts in each tab code will let you play with the tab appearance(color,style,font etx..)
 
+So when you press "Samsung" here you are now viewing the Samsung Remote card. 
+
+<img src="https://github.com/berkansezer77/home-assistant/assets/84282504/09bb7ed0-b174-485d-8df6-6d33069085b0" width="200">
+
 
 
 

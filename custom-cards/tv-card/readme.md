@@ -327,6 +327,62 @@ So when you press "Samsung" here you are now viewing the Samsung Remote card.
 
 <img src="https://github.com/berkansezer77/home-assistant/assets/84282504/09bb7ed0-b174-485d-8df6-6d33069085b0" width="200">
 
+From line 804 now we start to create content under these tab menus. First we start with "Netflix" Section. I used a swipe card here at line 818 and all the posters extends into second and third page. You can swipe between pages.
+
+So Our first show is "Raising Dion" which starts at line 839. This show is activated with a script. Script is simple : 
+
+```ruby
+alias: Start Blacklist
+sequence:
+  - service: androidtv.adb_command
+    data:
+      command: >-
+        am start -n com.netflix.ninja/.MainActivity -a
+        android.intent.action.VIEW -e amzn_deeplink_data 80143529
+    target:
+      entity_id: media_player.shield
+mode: single
+icon: mdi:television
+
+```
+Okay now everything is very simple. Open Netflix on your pc browser. Find your favorite show. 
+
+![image](https://github.com/berkansezer77/home-assistant/assets/84282504/5ddffa13-0cf5-4962-be5f-03b098138a15)
+
+As you can see in the picture "80143529" is the code for TV Show "Blacklist". So your script is ready. Let's get back to the code 
+
+Line 839 is where you put blacklist or any other show. with a tap action on line 842 you are calling the script you created for your favorite show. Whenever you press the poster the show will automatically start on your Android TV. One good benefit of this script is it bypasses the netflix account page and starting the show immediately from where you have left. And for the final part you need the poster for the show. That is the easiest thing. Just find a poster from the internet and replace line 841 with that. Remember you need to copy the image link from the picture. You don't even have to store the image locally.  
+
+So I used a grid layout with 3 posters next to each other (Line 836). Next page starts at line 977. And the last page is at Line 1121. 
+
+Line 1243 is the closure of this section. If you don't like the blue color between the posters just replace line 1246 with for example "background: none;" so no color will be shown here. 
+
+Line 1249 is where the remote for Shield TV stands. I used a firemote card which is quite useful. 
+
+![image](https://github.com/berkansezer77/home-assistant/assets/84282504/20303d1a-79b9-45d8-a611-0487be5e21f1)
+
+Firemote card has basic controls for Shield Tv, Apple Tv and many others. It is fully customizable. As you can see in the code I have also customized the remote controls. Line 1275 is the place where my button overrides starts. that means my buttons are customized and don't have the original codes with firemote card. I used my own scripts to over ride these cards. For example I used my own script for "Mute Button". The benefit here is, if you have an ir controller such as Tuya or Broadlink you can use those ir buttons on this remote. 
+
+```ruby
+alias: Samsung TV - On
+sequence:
+  - service: scene.turn_on
+    data: {}
+    target:
+      entity_id: scene.anfi_ac
+  - delay:
+      hours: 0
+      minutes: 0
+      seconds: 1
+      milliseconds: 0
+  - type: turn_on
+    device_id: a94021e0fe601d5599dd53fad87c10bf
+    entity_id: 7baee18b5d7fc5ebbd8147c8fa3f2c84
+    domain: switch
+mode: single
+icon: mdi:television
+
+```
 
 
 

@@ -364,30 +364,31 @@ Line 1249 is where the remote for Shield TV stands. I used a firemote card which
 Firemote card has basic controls for Shield Tv, Apple Tv and many others. It is fully customizable. As you can see in the code I have also customized the remote controls. Line 1275 is the place where my button overrides starts. that means my buttons are customized and don't have the original codes with firemote card. I used my own scripts to over ride these cards. For example I used my own script for "Mute Button". The benefit here is, if you have an ir controller such as Tuya or Broadlink you can use those ir buttons on this remote. 
 
 ```ruby
-alias: Samsung TV - On
+alias: Anfi Aç
 sequence:
   - service: scene.turn_on
-    data: {}
+    metadata: {}
     target:
       entity_id: scene.anfi_ac
-  - delay:
-      hours: 0
-      minutes: 0
-      seconds: 1
-      milliseconds: 0
-  - type: turn_on
-    device_id: a94021e0fe601d5599dd53fad87c10bf
-    entity_id: 7baee18b5d7fc5ebbd8147c8fa3f2c84
-    domain: switch
 mode: single
-icon: mdi:television
 
 ```
 
+Okay this script is named "script.anfi_ac" it opens my amplifier when it is turned off. So I overrided the voleme-up-botton with this script. 
 
+![image](https://github.com/berkansezer77/home-assistant/assets/84282504/bb8b7952-742a-4b5c-86ee-2f7c6f5ad960)
 
+So whenever I press volume up button on the remote it activates my script and turns on my amplifier. Remember the script name is "script.anfi_ac" but you have to cut "script." part and only leave script name as shown in the above picture. 
 
+Line 1290 is the "Apps" part. 
 
+Again I used a swipe card here because I had 6 apps or functions that I want to control on my Shield TV. 
+
+I used a 2 column grid layout here(line 1320). So that means 2 cards in each row.
+
+![image](https://github.com/berkansezer77/home-assistant/assets/84282504/95f68ec6-105e-4fd0-bff8-823d6d848d0c)
+
+The first one is Netflix which is starting at line 1323. Now the card needs to understand if Netflix is running, on menu or closed. In order to do that I have created a if statement.i 
 
 
 

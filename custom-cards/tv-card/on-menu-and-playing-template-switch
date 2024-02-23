@@ -1,0 +1,158 @@
+#ON MENU SHIELD
+  - platform: template
+    switches:
+      netflix_on_menu:
+        value_template: "{{ not is_state('media_player.shield', 'playing') and is_state_attr('media_player.shield', 'app_id', 'com.netflix.ninja') }}"
+        turn_on:
+          service: switch.turn_on
+          target:
+            entity_id: switch.target
+        turn_off:
+          service: switch.turn_off
+          target:
+            entity_id: switch.target
+  - platform: template
+    switches:
+      prime_on_menu:
+        value_template: "{{ not is_state('media_player.shield', 'playing') and is_state_attr('media_player.shield', 'source', 'Prime Video') }}"
+        turn_on:
+          service: switch.turn_on
+          target:
+            entity_id: switch.target
+        turn_off:
+          service: switch.turn_off
+          target:
+            entity_id: switch.target
+  - platform: template
+    switches:
+      prime1_on_menu:
+        value_template: "{{ not is_state('media_player.shield', 'playing') and is_state_attr('media_player.shield', 'app_id', 'com.amazon.amazonvideo.livingroom') }}"
+        turn_on:
+          service: switch.turn_on
+          target:
+            entity_id: switch.target
+        turn_off:
+          service: switch.turn_off
+          target:
+            entity_id: switch.target
+  - platform: template
+    switches:
+      disney_on_menu:
+        value_template: "{{ not is_state('media_player.shield', 'playing') and is_state_attr('media_player.shield', 'app_id', 'com.disney.disneyplus') }}"
+        turn_on:
+          service: switch.turn_on
+          target:
+            entity_id: switch.target
+        turn_off:
+          service: switch.turn_off
+          target:
+            entity_id: switch.target
+  - platform: template
+    switches:
+      tivimate_on_menu:
+        value_template: "{{ not is_state('media_player.shield', 'playing') and is_state_attr('media_player.shield', 'app_id', 'ar.tvplayer.tv') }}"
+        turn_on:
+          service: switch.turn_on
+          target:
+            entity_id: switch.target
+        turn_off:
+          service: switch.turn_off
+          target:
+            entity_id: switch.target
+  - platform: template
+    switches:
+      youtube_on_menu:
+        value_template: "{{ not is_state('media_player.shield', 'playing') and is_state_attr('media_player.shield', 'app_id', 'com.google.android.youtube.tv') }}"
+        turn_on:
+          service: switch.turn_on
+          target:
+            entity_id: switch.target
+        turn_off:
+          service: switch.turn_off
+          target:
+            entity_id: switch.target
+  - platform: template
+    switches:
+      shield_home_on_menu:
+        value_template: "{{ is_state_attr('media_player.shield', 'app_id', 'com.google.android.tvlauncher')  }}"
+        turn_on:
+          service: switch.turn_on
+          target:
+            entity_id: switch.target
+        turn_off:
+          service: switch.turn_off
+          target:
+            entity_id: switch.target
+  - platform: template
+    switches:
+      spotify_on_menu:
+        value_template: "{{ not is_state('media_player.shield', 'playing') and is_state_attr('media_player.shield', 'app_id', 'com.spotify.tv.android') }}"
+        turn_on:
+          service: switch.turn_on
+          target:
+            entity_id: switch.target
+        turn_off:
+          service: switch.turn_off
+          target:
+            entity_id: switch.target
+#USAGE MENU SHIELD
+  - platform: template
+    switches:
+      amazon_prime_usage:
+        value_template: "{{ is_state('media_player.shield', 'playing') and is_state_attr('media_player.shield', 'source', 'Prime Video') }}"
+        turn_on:
+          service: switch.turn_on
+          target:
+            entity_id: switch.target
+        turn_off:
+          service: switch.turn_off
+          target:
+            entity_id: switch.target
+  - platform: template
+    switches:
+      tivimate_usage:
+        value_template: "{{ is_state('media_player.shield', 'playing') and is_state_attr('media_player.shield', 'app_id', 'ar.tvplayer.tv') }}"
+        turn_on:
+          service: switch.turn_on
+          target:
+            entity_id: switch.target
+        turn_off:
+          service: switch.turn_off
+          target:
+            entity_id: switch.target
+  - platform: template
+    switches:
+      youtube_usage:
+        value_template: "{{ is_state('media_player.shield', 'playing') and is_state_attr('media_player.shield', 'app_id', 'com.google.android.youtube.tv') }}"
+        turn_on:
+          service: switch.turn_on
+          target:
+            entity_id: switch.target
+        turn_off:
+          service: switch.turn_off
+          target:
+            entity_id: switch.target
+  - platform: template
+    switches:
+      disney_usage:
+        value_template: "{{ is_state('media_player.shield', 'playing') and is_state_attr('media_player.shield', 'app_id', 'com.disney.disneyplus') }}"
+        turn_on:
+          service: switch.turn_on
+          target:
+            entity_id: switch.target
+        turn_off:
+          service: switch.turn_off
+          target:
+            entity_id: switch.target
+  - platform: template
+    switches:
+      netflix_usage:
+        value_template: "{{ is_state('media_player.shield', 'playing') and is_state_attr('media_player.shield', 'app_id', 'com.netflix.ninja') }}"
+        turn_on:
+          service: switch.turn_on
+          target:
+            entity_id: switch.target
+        turn_off:
+          service: switch.turn_off
+          target:
+            entity_id: switch.target

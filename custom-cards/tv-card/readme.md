@@ -234,8 +234,7 @@ You can again tweak this box settings starting from line 100. For example you ma
 
 ![image](https://github.com/berkansezer77/home-assistant/assets/84282504/7a9c10a5-4e0a-4480-a70a-20b570e3c616)
 
-At line 94 there is a little script assigned to this box. It lets the shield TV to turn on. If you have a Samsung TV you can use Smart tizen hacs integration to control your TV. That is what I use. Simply follow the instructions and install the integration and dont forget to give your tv a static ip from your router or modem. 
-
+At line 94 there is a little script assigned to this box. It lets the shield TV to turn on. I am using Android Debug Bridge to control Shield TV on Home Assistant. So to turn on Shield just use a little script. The script below also turns on my amplifier. 
 Here is the script 
 
 ```ruby
@@ -264,6 +263,34 @@ Just create a simple script for turning on the TV and call it from line 98.
 Okay Line 127 shows your android TV screen. I used a custom mini-media player to reflect android screen to this card. "artwork: full-cover" shows what is going on the screen. There is a little lag for the image to refresh at this card. They are some other ways to fasten this process but for me a 20s lag is ok. So the image fits the screen when android TV is on. 
 
 ![image](https://github.com/berkansezer77/home-assistant/assets/84282504/60ab26af-8f36-4c71-9ef7-962416d5590a)
+
+There is one important thing here. You cannot get live screen views from streaming services like Netflix. This is due to copyright issues. Netflix even does not allow to show its menu. This means when you click and start Netflix app on Android TV a blank screen will appear as cover. It will also stay black until you exit Netflix. Disney and Prime Video lets you get screenshots while you are in their menu but they do also block image whenever a video is played. So in order to bypass the screen to be empty at line 176 I used a little if statement to fill the screen with picture while Netflix is "ON". You can find this if state at Line 177 "background: url('/local/png/tv-card/cover.png') center no-repeat;" and can change the screenshot with your own by changing "cover.png" On line 182 you see "box-shadow: 0px 0px 10px 5px rgba(255,255,255, 0.96) !important;" little box shadow which covers the screen area. You can change the color here from white to any color you like. Just play around with numbers. 
+
+Line 188 is the place where little icon box stands.
+
+![image](https://github.com/berkansezer77/home-assistant/assets/84282504/2e21017d-e571-4f45-9ccb-eaa3774170c5)
+
+This box contains the icons of the apps and changes according to the app that is active on screen. It is controlled by an if state starting from line 248. So if you want to change or add something just edit lines between 248 and 286.
+
+Line 306 is the template for the info screen. 
+
+![image](https://github.com/berkansezer77/home-assistant/assets/84282504/c039c8b9-fee6-4fc6-b26a-5bc02eccc76d)
+
+This little info part gives you exact info of the app and hdmi port. For example if your TV is on it's smart menu, lets say Samsung TV is currently showing Tizen Smart Apps, then this little info screen will warn you about what the screen is currently showing. But if you change to hdmi to android tv, this info screen will warn you that you are currently on hdmi showing Android Menu. Also other apps like Netflix or Disney will also be shown on this info screen. Unfortunately because Samsung TV integration does not display playing or pause status but only on or off, streaming information won't be available for Samsung TV. You will only see "Currentlu on TV Screen" information whenever you are on Samsung Menu. 
+
+This information part exist in the codes between the lines 309 and 376
+
+Line 393 to 450 will have the changes for this info screen. You can play a little bit and change style. For example changing "font-family: "Arial";" to something else will change fontstyle. Again you can play a little bit with the values here to your liking.  
+
+Line 451 is the place where 5 main headers start. 
+
+![image](https://github.com/berkansezer77/home-assistant/assets/84282504/97ab7d15-1428-4dd5-a65f-37bce0a32991)
+
+
+
+
+
+
 
 
 

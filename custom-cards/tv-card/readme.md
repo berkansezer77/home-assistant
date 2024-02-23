@@ -314,6 +314,7 @@ Line 596 will show "Remote" tab.
 ![image](https://github.com/berkansezer77/home-assistant/assets/84282504/4af7ee3f-e533-422e-b485-72be3a3c89bd)
 
 Line 662 will show you "Apps" tab.
+
 ![image](https://github.com/berkansezer77/home-assistant/assets/84282504/e3fee516-5209-4028-ae37-aa6aacb4430c)
 
 Once again in order for these tabs to work properly you need to have the automation as I previously mentioned before. Try to create the booleans with the same names I have given to them. 

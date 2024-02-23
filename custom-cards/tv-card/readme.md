@@ -467,11 +467,136 @@ So we use service "media_player.play_media. The Radio adress is at "media_conten
 
 The script above uses the cast service on Shield TV. Not many android Tv's have cast integration. Shield TV is integrated with google cast so it is very easy to cast audio to it. The above script will not show any metdata while the radio is playing on Android TV. If you want the metdata in other words some information about what is being played you need a more enhanced script like the one below : 
 
+```ruby
+alias: "Radio - Number One Lounge "
+sequence:
+  - service: media_player.play_media
+    target:
+      entity_id: media_player.shield_cast
+    data:
+      media_content_id: https://n10101m.mediatriple.net/lounge
+      media_content_type: audio/mpeg
+      extra:
+        metadata:
+          metadataType: 3
+          title: Number 1 Lounge
+          subtitle: Lounge
+          images:
+            - url: https://static.mytuner.mobi/media/tvos_radios/xxktxztcxsy5.png
+mode: single
+```
+This will add a picture and title to your screen. You can create your scripts like that if you like. 
+ 
+Second page of the radio list starts at line 2062. In total I have added 8 stations but as I told you before you can add as many as you like.
 
+So we have now finished Android TV remote card and now on Line 2290 Samsung TV card begins. The basics are simple and same with Android TV card so I will not go in deeply again. 
 
+Line 2305 shows a the title Samsung TV when TV is turned on. 
 
+![image](https://github.com/berkansezer77/home-assistant/assets/84282504/484ee3a9-ff2d-4180-b83b-08a6f9006eb9)
 
+An addition to android TV this section shows volume of the TV. The code for the volume is at Line 2317
 
+![image](https://github.com/berkansezer77/home-assistant/assets/84282504/f843a77b-c1db-49eb-9a99-08b1e5d6fb8c)
 
+Again double clicking this area will also change the active theme of the page(Line 2325). 
+
+You can tweak the style at line 2336 to 2373
+
+Line 2392 shows a card when the TV is "off"
+
+Watch Samsung sign will be presented and the TV can be turned on with a single click. Modifications such as color and other adjustments to this area can be made between lines 2411 and line 2437. 
+
+Codes starting at Line 2438 will display various apps when the TV is turned on. For example when netflix plays the picture in the box changes as well. If the source is HDMI an HDMI cable picture will be shown stating that it not on main Samsung launcher. 
+
+![image](https://github.com/berkansezer77/home-assistant/assets/84282504/acb3af73-9d94-4f0b-8dac-b6495b750de9)
+
+Line 2479 to Line 2583 is where app icons appear. 
+
+![image](https://github.com/berkansezer77/home-assistant/assets/84282504/919f9d2a-00e2-4658-ac51-8f23a60b3f0f)
+
+Line 2585 to 2717 is the place where you read information about what is going on your TV. Because "Samsung Tizen TV" has not any playing or paused status display I can not show whether is someone is on Netflix menu or watching something. Instead this card can only comment on open applicaiton like "Watching Netflix on TV"
+
+![image](https://github.com/berkansezer77/home-assistant/assets/84282504/94f6a5cf-f8b9-4625-a7cd-36b56bbc483b)
+
+Line 2719 to Line 3000 is the tab section. 
+
+![image](https://github.com/berkansezer77/home-assistant/assets/84282504/f66492a2-c31e-4215-ba1b-eb6b3e22d1f3)
+
+Just like the Android Tv section it is very much the same so I will not go deep on this one. 
+
+From line 3002 is the part where contents of the tabs start. First we have media section for the TV. Again I used a swipe card here because there are 7 essential media functions that I have created for my multimedia control. 
+
+First one is Optic starting at line 3035. I used a grid view here displaying 2 columns in each row. If you are going to use this code for a tablet or anything larger just change line 3032.
+
+Okay now Optic changes the sound source from TV to the amplifier. But because the integration does not have a feature like this I achieved this by mimicing the samsung remote control. 
+
+The script I used here at line 3045 mimics the remote and changes the sound soruce.
+
+```ruby
+alias: Samsung - Sound Mode Optic
+sequence:
+  - service: media_player.play_media
+    data:
+      media_content_type: send_key
+      media_content_id: >-
+        1000+KEY_MENU+1000+KEY_DOWN+1000+KEY_RIGHT+1000+KEY_ENTER+1000+KEY_UP+1000+KEY_DOWN+1000+KEY_ENTER+1000+KEY_MENU+1000+KEY_RETURN
+    target:
+      entity_id: media_player.samsung_q80ba_75_tv
+mode: single
+```
+media content id is the path of the remote. At the end your sound source will change. But remember this is for Samsung TV only. But if you use a different TV you can use your own script or create a new one to use in the card. 
+
+Line 3149 is the place where the button puts the TV into ambient mode. 
+
+```ruby
+alias: KeysTV -Ambient
+sequence:
+  - service: media_player.play_media
+    data:
+      media_content_type: send_key
+      media_content_id: KEY_AMBIENT
+    target:
+      entity_id: media_player.samsung_q80ba_75_tv
+mode: single
+
+```
+With a single click to this button you can start the ambient mode on your Samsung TV such as a fireplace. 
+
+line 3206 changes to hdmi channel which in my example where the Android TV stands. 
+
+```ruby
+alias: KeysTV -HDMI
+sequence:
+  - service: media_player.play_media
+    data:
+      media_content_type: send_key
+      media_content_id: KEY_HDMI
+    target:
+      entity_id: media_player.samsung_q80ba_75_tv
+mode: single
+
+```
+
+With this button you can easily change source from Samsung tizen screen to Android TV
+
+Line 3263 is the place where second page starts 
+
+Line 3267 is where the intelligent mode of the TV activates. With this you can use auto settings for picture quality on your Samsung TV. Again here I mimiced the remote control of Samsung TV. 
+
+```ruby
+alias: Samsung - Intelligence Mode Toogle
+sequence:
+  - service: media_player.play_media
+    data:
+      media_content_type: send_key
+      media_content_id: >-
+        1000+KEY_HOME+KEY_LEFT+1000+KEY_DOWN+KEY_DOWN+1000+KEY_RIGHT+KEY_RIGHT+1000+KEY_ENTER+KEY_ENTER+1000+KEY_MENU+1000+KEY_RETURN
+    target:
+      entity_id: media_player.samsung_q80ba_75_tv
+mode: single
+
+```
+Line 3324 displays my door camera on my Samsung TV. 
 
 

@@ -286,6 +286,44 @@ Line 451 is the place where 5 main headers start.
 
 ![image](https://github.com/berkansezer77/home-assistant/assets/84282504/97ab7d15-1428-4dd5-a65f-37bce0a32991)
 
+Line 460 is the Radio part. 
+
+On line 471 tapping into Radio word will activate radios section of Android TV. 
+
+![image](https://github.com/berkansezer77/home-assistant/assets/84282504/60adadf5-a008-4b7c-bd80-bcff1bfb008f)
+
+When tapped other parts such as Netflix, Remote and Apps will be closed. This is done by an automation I explained before. 
+
+To understand which tab you are currently in the section will be highligted and others will be grayed out. Line 484 to 491 will determine the conditions of this section under white and dark modes. On white mode the color will be blue which is at line 486. 
+
+![image](https://github.com/berkansezer77/home-assistant/assets/84282504/f9f12d9b-0c04-432a-8848-4059a1962d7a)
+
+On line 461 is the place where little dot appears. 
+![image](https://github.com/berkansezer77/home-assistant/assets/84282504/2ffc54ed-b040-4036-bfbf-87f1239ded67)
+
+The styling and position of this dot is at line 504. For example if you want the dot to be a little bigger you have to tweak Line 509 and line 511. Remember this dot will only be shown for the active tab at that moment. For others the visibility will be hiddden. This is stated at line 507 "visibility: hidden;"
+
+Line 531 is the "Netflix" tab. 
+
+![image](https://github.com/berkansezer77/home-assistant/assets/84282504/2c8a9c72-2ce5-4a61-89e2-18e7a033b734)
+
+Line 554 is the place where you can tweak "Netflix" word and line 575 is again the little dot. 
+
+Line 596 will show "Remote" tab.
+
+![image](https://github.com/berkansezer77/home-assistant/assets/84282504/4af7ee3f-e533-422e-b485-72be3a3c89bd)
+
+Line 662 will show you "Apps" tab.
+![image](https://github.com/berkansezer77/home-assistant/assets/84282504/e3fee516-5209-4028-ae37-aa6aacb4430c)
+
+Once again in order for these tabs to work properly you need to have the automation as I previously mentioned before. Try to create the booleans with the same names I have given to them. 
+
+Line 733 is the tab where you can change the whole card view from Shield TV to Android TV. 
+
+As I mentioned before ".primary" and ".secondary" parts in each tab code will let you play with the tab appearance(color,style,font etx..)
+
+
+
 
 
 

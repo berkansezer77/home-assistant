@@ -101,7 +101,7 @@ cards:
                               style: |
                                 ha-card {
                                   /* Style Chip like Mushroom button */
-                                  --card-primary-color: rgb(var(--rgb-white));
+                                  --primary-text-color: white;
                                   --chip-font-size: 16px;
                                   --chip-font-weight: 300px;
                                   --chip-background: rgba(var(--rgb-blue), 2.2);
@@ -2412,7 +2412,7 @@ cards:
                               style: |
                                 ha-card {
                                   /* Style Chip like Mushroom button */
-                                  --card-primary-color: white;
+                                  --primary-text-color: white;
                                   --chip-font-size: 16px;
                                   --chip-font-weight: 300px;
                                   --chip-background: rgba(var(--rgb-blue), 2.2);

@@ -12,7 +12,7 @@ Hello everyone. I've launched a new channel on YouTube. On this channel, you'll 
 <img src="https://github.com/berkansezer77/home-assistant/assets/84282504/6c47923e-129d-4c6d-a942-4ad2e69b410c" width="250">
 <img src="https://github.com/berkansezer77/home-assistant/assets/84282504/68c2d146-cb62-451a-873e-27166ed75dce" width="200">
 <img src="https://github.com/berkansezer77/home-assistant/assets/84282504/2b7715c7-f8d6-418a-9523-841843bc85ca" width="200">
-<img src="https://github.com/berkansezer77/home-assistant/assets/84282504/2a6e3b9d-daeb-417a-a32f-7d5988ffc1ce" width="150">
+<img src="https://github.com/berkansezer77/home-assistant/assets/84282504/390bf587-78f8-4367-afe3-e5fec6169f0e" width="150">
 
 # Installation
 **How do I install this theme?**

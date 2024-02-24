@@ -2,6 +2,12 @@ _**If you like you can support my work.**_
 
 <a href="https://www.buymeacoffee.com/berkansezer" target="_blank"><img src="https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png" alt="Buy Me A Coffee" style="height: 41px !important;width: 174px !important;box-shadow: 0px 3px 2px 0px rgba(190, 190, 190, 0.5) !important;-webkit-box-shadow: 0px 3px 2px 0px rgba(190, 190, 190, 0.5) !important;" ></a> 
 
+Hello everyone. I've launched a new channel on YouTube. On this channel, you'll find all kinds of tutorials and information about Technology, Smart Living, Home Assistant, and Dashboards. Starting from scratch, everyone will be able to create projects similar to mine. If you'd like to follow me, here's my address:
+
+##Youtube:
+
+[Teach me Smart Life](https://www.youtube.com/@teachmesmartlife "Living the Life Smart")
+
 # Home Assistant TV Card 
 <img src="https://github.com/berkansezer77/home-assistant/assets/84282504/6c47923e-129d-4c6d-a942-4ad2e69b410c" width="250">
 <img src="https://github.com/berkansezer77/home-assistant/assets/84282504/68c2d146-cb62-451a-873e-27166ed75dce" width="200">
@@ -50,6 +56,9 @@ I don't actually know from where to start. This card has tons of features.
 - Dark and White theme compatible
 - You can use your Own IR device and bring any button to your remote control. You are not only tied to the Samsung integration.
 
+## Video: Watch it on YouTUBE
+
+[Home Assistant TV Card](https://www.youtube.com/shorts/K185BnCtiC4)
 
 ## Before we start, we need some third party tools from Hacs:
 

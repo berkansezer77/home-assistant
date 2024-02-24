@@ -1,4 +1,4 @@
-_**If you like you can support my work.**_
+**If you like you can support my work.**_
 
 <a href="https://www.buymeacoffee.com/berkansezer" target="_blank"><img src="https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png" alt="Buy Me A Coffee" style="height: 41px !important;width: 174px !important;box-shadow: 0px 3px 2px 0px rgba(190, 190, 190, 0.5) !important;-webkit-box-shadow: 0px 3px 2px 0px rgba(190, 190, 190, 0.5) !important;" ></a> 
 
@@ -13,7 +13,7 @@ Hello everyone. I've launched a new channel on YouTube. On this channel, you'll 
 ***
 # ## Home Assistant TV Card
 
-<img src="https://github.com/berkansezer77/home-assistant/assets/84282504/90345f68-daa6-4e0d-9ecc-d7674c7b2f3a" width="750">
+<img src="https://github.com/berkansezer77/home-assistant/assets/84282504/112ce707-bf67-4f3e-97fe-88f1dabddaff" width="750">
 
 [Home Assistant TV Card](https://github.com/berkansezer77/home-assistant/edit/main/custom-cards/tv-card/readme.md)
 

@@ -15,7 +15,7 @@ Hello everyone. I've launched a new channel on YouTube. On this channel, you'll 
 
 <img src="https://github.com/berkansezer77/home-assistant/assets/84282504/112ce707-bf67-4f3e-97fe-88f1dabddaff" width="750">
 
-[Home Assistant TV Card](https://github.com/berkansezer77/home-assistant/edit/main/custom-cards/tv-card/readme.md)
+[Home Assistant TV Card](https://github.com/berkansezer77/home-assistant/tree/main/custom-cards/tv-card)
 
 ***
 # ## Animated Weather Card

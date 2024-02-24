@@ -58,7 +58,7 @@ I don't actually know from where to start. This card has tons of features.
 
 ## Video: Watch it on YouTUBE
 
-[Home Assistant TV Card](https://www.youtube.com/shorts/K185BnCtiC4)
+[Home Assistant TV Card](https://www.youtube.com/shorts/t7Np3HeVlt0)
 
 ## Before we start, we need some third party tools from Hacs:
 

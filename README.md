@@ -5,7 +5,17 @@ _**If you like you can support my work.**_
 Welcome to my Home Assistant Custom Setup Page. 
 
 
-On this page, you can find the links of the different Home Assistant pages that I have coded. On these pages you can find not only the necessary codes, but also all the extra software. Everything from necessary special codes to media download links is available. In summary, you can get everything you need here.
+Hello everyone. I've launched a new channel on YouTube. On this channel, you'll find all kinds of tutorials and information about Technology, Smart Living, Home Assistant, and Dashboards. Starting from scratch, everyone will be able to create projects similar to mine. If you'd like to follow me, here's my address:
+
+##Youtube:
+
+[Teach me Smart Life](https://www.youtube.com/@teachmesmartlife "Living the Life Smart")
+***
+# ## Home Assistant TV Card
+
+<img src="https://github.com/berkansezer77/home-assistant/assets/84282504/90345f68-daa6-4e0d-9ecc-d7674c7b2f3a" width="750">
+
+[Home Assistant TV Card](https://github.com/berkansezer77/home-assistant/edit/main/custom-cards/tv-card/readme.md)
 
 ***
 # ## Animated Weather Card

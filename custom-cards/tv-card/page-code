@@ -1278,7 +1278,7 @@ cards:
               volume-down-button:
                 script: remote_volume_down
               volume-up-button:
-                script: remote_volume_up
+                script: anfi_ac
         card_mod:
           style: |
             ha-card {
@@ -1368,6 +1368,8 @@ cards:
                             font-weight: 400 !important;
                             font-size: 20px !important;
                             --card-secondary-color: rgb(var(--rgb-white));  
+                            padding-top:  0px;
+                            padding-bottom:  10px;
                             font-weight: bold;
                             text-align: left; 
                             margin-top: 0px;
@@ -1448,6 +1450,8 @@ cards:
                             font-weight: bold;
                             text-align: left; 
                             margin-top: 0px;
+                            padding-top:  0px;
+                            padding-bottom:  10px;
                           } 
                         mushroom-shape-icon$: |
                           .shape {
@@ -1526,6 +1530,8 @@ cards:
                             font-weight: bold;
                             text-align: left; 
                             margin-top: 0px;
+                            padding-top:  0px;
+                            padding-bottom:  10px;
                           } 
                         mushroom-shape-icon$: |
                           .shape {
@@ -1604,6 +1610,8 @@ cards:
                             font-weight: bold;
                             text-align: left; 
                             margin-top: 0px;
+                            padding-top:  0px;
+                            padding-bottom:  10px;
                           } 
                         mushroom-shape-icon$: |
                           .shape {
@@ -1686,6 +1694,8 @@ cards:
                             font-weight: bold;
                             text-align: left; 
                             margin-top: 0px;
+                            padding-top:  0px;
+                            padding-bottom:  10px;
                           } 
                         mushroom-shape-icon$: |
                           .shape {
@@ -1764,6 +1774,8 @@ cards:
                             font-weight: bold;
                             text-align: left; 
                             margin-top: 0px;
+                            padding-top:  0px;
+                            padding-bottom:  10px;
                           } 
                         mushroom-shape-icon$: |
                           .shape {

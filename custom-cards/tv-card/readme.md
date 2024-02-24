@@ -597,25 +597,130 @@ sequence:
 mode: single
 
 ```
-Line 3324 displays my front door camera to my android Tv. Okay this section is normally for Samsung TV but I put the script into this section. 
-
+Line 3324 displays my front door camera to my android Tv. The script normally works for Android Tv but I placed the card into Samsung TV remote.
 ```ruby
-alias: "Radio - Number One Lounge "
+alias: Tv Page - Suadiye Doorbell
 sequence:
   - service: media_player.play_media
+    data:
+      media_content_id: ST_HDMI3
+      media_content_type: send_key
+    target:
+      entity_id: media_player.samsung_q80ba_75_tv
+  - delay:
+      hours: 0
+      minutes: 0
+      seconds: 1
+      milliseconds: 0
+  - service: media_player.turn_off
+    data: {}
     target:
       entity_id: media_player.shield_cast
+  - delay:
+      hours: 0
+      minutes: 0
+      seconds: 3
+      milliseconds: 0
+  - service: media_player.turn_on
+    data: {}
+    target:
+      entity_id: media_player.shield_cast
+  - delay:
+      hours: 0
+      minutes: 0
+      seconds: 2
+      milliseconds: 0
+  - service: camera.play_stream
     data:
-      media_content_id: https://n10101m.mediatriple.net/lounge
-      media_content_type: audio/mpeg
-      extra:
-        metadata:
-          metadataType: 3
-          title: Number 1 Lounge
-          subtitle: Lounge
-          images:
-            - url: https://static.mytuner.mobi/media/tvos_radios/xxktxztcxsy5.png
+      media_player: media_player.shield_cast
+    target:
+      entity_id: camera.ev_kamera_sd_stream
 mode: single
+icon: mdi:account-group
+
 ```
 
+Line 3381 is the part where I cast my office camera to my Samsung TV through my Android TV.
+
+Line 3438 is the start point of Remote Tabı section.
+
+![image](https://github.com/berkansezer77/home-assistant/assets/84282504/913d87fe-c0c7-41b6-9eb1-3c56fb5eff26)
+
+The integration I used(Firemote Card) does not have a straight out of the box Samsung Tv remote so instead I used an Apple Tv Remote and overrided the buttons with scripts. Button overrides starts at line 3462. As I explained in Shşeld TV Remote section scripts have to be place here without the "script." part, only the name is requires. The codes for Samsung TV can be found on the Smart Tizen integration page but I do also share a sample for "Power Button".
+
+
+```ruby
+alias: KeysTV - Power
+sequence:
+  - service: media_player.play_media
+    data:
+      media_content_type: send_key
+      media_content_id: KEY_POWER
+    target:
+      entity_id: media_player.samsung_q80ba_75_tv
+mode: single
+
+```
+Line 3529 is the place where "Apps" section codes start. Again I used a swipe card here. With 2 grid columns in a row our first card is "Hue" at Line 3564. This is for starting Hue Light sync with Tv through "Hue Sync TV App". This app normally does not have any voice command or auto start support but I can start the app again by copying the remote codes. 
+
+![image](https://github.com/berkansezer77/home-assistant/assets/84282504/15f09989-6d2a-4168-bbaf-e890cf091014)
+
+This button is again controlled with a script. 
+```ruby
+alias: Samsung TV - Sync Start
+sequence:
+  - service: media_player.play_media
+    data:
+      media_content_type: app
+      media_content_id: kupCeIdDkX.HueSync
+    target:
+      entity_id: media_player.samsung_q80ba_75_tv
+  - delay:
+      hours: 0
+      minutes: 0
+      seconds: 10
+      milliseconds: 0
+  - service: media_player.play_media
+    data:
+      media_content_type: send_key
+      media_content_id: KEY_ENTER
+    target:
+      entity_id: media_player.samsung_q80ba_75_tv
+  - delay:
+      hours: 0
+      minutes: 0
+      seconds: 5
+      milliseconds: 0
+  - service: media_player.play_media
+    data:
+      media_content_type: send_key
+      media_content_id: KEY_RETURN
+    target:
+      entity_id: media_player.samsung_q80ba_75_tv
+  - delay:
+      hours: 0
+      minutes: 0
+      seconds: 5
+      milliseconds: 0
+  - service: media_player.play_media
+    data:
+      media_content_type: send_key
+      media_content_id: KEY_ENTER
+    target:
+      entity_id: media_player.samsung_q80ba_75_tv
+mode: single
+
+
+```
+The button also shows if the synchronization is active or not. This is done through a sensor provided by hue integration(Line3564-3596). 
+
+Line 3648 - 3725 : Disney+
+Line 3726 - 3803: Prime
+Line 3804 - 3880: Netflix
+
+Line 3882 : Start of the second page.
+
+Line 3886 - 3963: Spotify
+Line 3964 - 4041: Youtube
+Line 4042 - 4119: AppleTV+
 

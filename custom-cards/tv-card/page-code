@@ -1382,7 +1382,7 @@ cards:
                            --icon-size: 80px !important;
                            --shape-color: none !important;   
                            margin-top: -20px;
-                           margin-left: -120px;
+                           margin-left: -90% !important;
                           }
                         .: |
                           ha-card { 
@@ -1461,7 +1461,7 @@ cards:
                            --icon-size: 80px !important;
                            --shape-color: none !important;   
                            margin-top: -20px;
-                           margin-left: -120px;
+                           margin-left: -90% !important;
                           }
                         .: |
                           ha-card { 
@@ -1541,7 +1541,7 @@ cards:
                            --icon-size: 80px !important;
                            --shape-color: none !important;   
                            margin-top: -20px;
-                           margin-left: -120px;
+                           margin-left: -90% !important;
                           }
                         .: |
                           ha-card { 
@@ -1621,7 +1621,7 @@ cards:
                            --icon-size: 80px !important;
                            --shape-color: none !important;   
                            margin-top: -20px;
-                           margin-left: -120px;
+                           margin-left: -90% !important;
                           }
                         .: |
                           ha-card { 
@@ -1705,7 +1705,7 @@ cards:
                            --icon-size: 80px !important;
                            --shape-color: none !important;   
                            margin-top: -20px;
-                           margin-left: -120px;
+                           margin-left: -90% !important;
                           }
                         .: |
                           ha-card { 
@@ -1785,7 +1785,7 @@ cards:
                            --icon-size: 80px !important;
                            --shape-color: none !important;   
                            margin-top: -20px;
-                           margin-left: -120px;
+                           margin-left: -90% !important;
                           }
                         .: |
                           ha-card { 
@@ -3627,7 +3627,7 @@ cards:
                            --icon-size: 80px !important;
                            --shape-color: none !important;   
                            margin-top: -20px;
-                           margin-left: -120px;
+                           margin-left: -90% !important;
                           }
                         .: |
                           ha-card { 
@@ -3705,7 +3705,7 @@ cards:
                            --icon-size: 80px !important;
                            --shape-color: none !important;   
                            margin-top: -20px;
-                           margin-left: -120px;
+                           margin-left: -90% !important;
                           }
                         .: |
                           ha-card { 
@@ -3783,7 +3783,7 @@ cards:
                            --icon-size: 80px !important;
                            --shape-color: none !important;   
                            margin-top: -20px;
-                           margin-left: -120px;
+                           margin-left: -90% !important;
                           }
                         .: |
                           ha-card { 
@@ -3861,7 +3861,7 @@ cards:
                            --icon-size: 80px !important;
                            --shape-color: none !important;   
                            margin-top: -20px;
-                           margin-left: -120px;
+                           margin-left: -90% !important;
                           }
                         .: |
                           ha-card { 
@@ -3943,7 +3943,7 @@ cards:
                            --icon-size: 80px !important;
                            --shape-color: none !important;   
                            margin-top: -20px;
-                           margin-left: -120px;
+                           margin-left: -90% !important;
                           }
                         .: |
                           ha-card { 
@@ -4021,7 +4021,7 @@ cards:
                            --icon-size: 80px !important;
                            --shape-color: none !important;   
                            margin-top: -20px;
-                           margin-left: -120px;
+                           margin-left: -90% !important;
                           }
                         .: |
                           ha-card { 
@@ -4099,7 +4099,7 @@ cards:
                            --icon-size: 80px !important;
                            --shape-color: none !important;   
                            margin-top: -20px;
-                           margin-left: -120px;
+                           margin-left: -90% !important;
                           }
                         .: |
                           ha-card { 

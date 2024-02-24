@@ -148,22 +148,22 @@ As shown in above example, changing theme is available with a double click to "S
 ```
 In out page code this line is at Line 37
 
-![image](https://github.com/berkansezer77/home-assistant/assets/84282504/23ac04f1-c330-45b6-9ac8-8eb6926dba83)
+<img src="https://github.com/berkansezer77/home-assistant/assets/84282504/23ac04f1-c330-45b6-9ac8-8eb6926dba83" width="400">
 
 ## Code Explanation:
 
 Before delving into the code, I mentioned to you that this card consists of two separate sections. Now, in terms of the code, the first section, from line 1 to line 2278, is dedicated to the Shield TV remote. The section from line 2278 to line 4112 contains the necessary codes for controlling the Samsung TV. 
-If you delete the portion from line 2278 to line 4107, you will be left with only the Shield TV remote section. I will share the necessary code for a single remote control with you at the end of this article.
+If you delete the portion from line 2278 to line 4107, you will be left with only the Shield TV remote section. I will also share one single remote card for Android TV later on.
 
 So to seperate 2 sections we need 2 conditional cards boosted with booleans. So in order to do that create 2 booleans named "input_boolean.tv_page_shield" and "input_boolean.tv_page_samsung" from the helpers section. Remember to choose "Toggle" 
 
-![image](https://github.com/berkansezer77/home-assistant/assets/84282504/9705df0b-0344-4b83-ba2c-347ebc99bd75)
+<img src="https://github.com/berkansezer77/home-assistant/assets/84282504/9705df0b-0344-4b83-ba2c-347ebc99bd75" width="400">
 
 So we start with shield TV. Line 5 indicates that only the section related with "Shield TV" will be shown. 
 
 If you want to pass to Samsung remote just press "Shield" at the menu and "input_boolean.tv_page_samsung" will be turned on "input_boolean.tv_page_shield" will be turned off. So you will only see the items related to your TV. 
 
-![source changegif](https://github.com/berkansezer77/home-assistant/assets/84282504/b8d8bcff-dd0b-49c5-81a6-0c3a1f977e0d)
+<img src="https://github.com/berkansezer77/home-assistant/assets/84282504/b8d8bcff-dd0b-49c5-81a6-0c3a1f977e0d" width="400">
 
 Of course, we need an automation to prevent both cards from appearing on the screen at the same time
 
@@ -172,7 +172,7 @@ Of course, we need an automation to prevent both cards from appearing on the scr
 Okay let me explain this automation. It might seem a bit complex but at its base it is very simple. I have added 6 automations in to 1 single automation using "Choose". So they are triggers here. 
 For example 
 
-![image](https://github.com/berkansezer77/home-assistant/assets/84282504/85267691-4bb1-4440-b721-8015213038f6)
+<img src="https://github.com/berkansezer77/home-assistant/assets/84282504/85267691-4bb1-4440-b721-8015213038f6" width="400">
 
 first one is when tv page shield netflix changes to on. I have given this trigger an id named "Netflix"
 
@@ -180,59 +180,64 @@ first one is when tv page shield netflix changes to on. I have given this trigge
 
 So if come down at "Action" section. 
 
-![image](https://github.com/berkansezer77/home-assistant/assets/84282504/7b4fc9d0-2e84-4fa3-b8aa-2e4dd4842056)
+<img src="https://github.com/berkansezer77/home-assistant/assets/84282504/7b4fc9d0-2e84-4fa3-b8aa-2e4dd4842056" width="400">
 
 The first action on "Choose" will be a result of what will happen when you click Netflix section. 
 
-![image](https://github.com/berkansezer77/home-assistant/assets/84282504/2fc9aa83-d7dc-4440-9d4d-5fd35f36779c)
+<img src="https://github.com/berkansezer77/home-assistant/assets/84282504/2fc9aa83-d7dc-4440-9d4d-5fd35f36779c" width="400">
 
 When you click it below actions will execute. 
 
-![image](https://github.com/berkansezer77/home-assistant/assets/84282504/a980461e-d042-41c6-a8dc-4cf67c45433e)
+<img src="https://github.com/berkansezer77/home-assistant/assets/84282504/a980461e-d042-41c6-a8dc-4cf67c45433e" width="400">
 
 As you can see Shield remote, Shield apps and Shield radio sections will be closed and you can only see "Netflix" part on your Shield Remote Page. 
 
-![image](https://github.com/berkansezer77/home-assistant/assets/84282504/e1382b26-a9a3-4e26-9ace-52608c7c9bff)
+<img src="https://github.com/berkansezer77/home-assistant/assets/84282504/e1382b26-a9a3-4e26-9ace-52608c7c9bff" width="400">
 
 Choose 2,3 and 4  are all related to that menu. Very Simple. When you click for example "Remote" section the other 3 booleans will close and only remote will be shown on screen. 
 
-![image](https://github.com/berkansezer77/home-assistant/assets/84282504/2e705ca1-26c3-4d54-9414-9bc2b22d6884)
+<img src="https://github.com/berkansezer77/home-assistant/assets/84282504/2e705ca1-26c3-4d54-9414-9bc2b22d6884" width="400">
 
 We will come to that part.
 
 Choose 5 and 6 actions are the transiton part between "Samsung TV" and "Shield TV" cards. So when you press Samsung the whole card will be transformed into Samsung remote. 
 
+There is also 1 more automation but a very nice one. My remote card has 2 remotes in one single card. One for Samsung Tv and the other one for Shield TV. So you can pass through cards with a single click but there is also another great automatic way of achieving this. The little automation down below automatically changes the card according to the TV. For example if you used the original TV remote and changed to HDMI to watch something on your Android TV then this card also automatically changes to Android TV as well . Shortly this card will follow you whereever you go on your TV.
+
+Here is the automation : 
+
+- [Auto Change Remotes](https://github.com/berkansezer77/home-assistant/blob/main/custom-cards/tv-card/auto-change-remote-on-dashboard)
 
 So Let's get back to the code. 
 
 so Line 20 will show a card when your SHield TV is on 
 
-![image](https://github.com/berkansezer77/home-assistant/assets/84282504/b357251c-bc3e-4499-b6dc-7b24c113ac98)
+<img src="https://github.com/berkansezer77/home-assistant/assets/84282504/b357251c-bc3e-4499-b6dc-7b24c113ac98" width="400">
 
 Line 37 as I explained before will have a double tap function which changes your theme color from black to white or vice versa. If you like you can assign this function to a single tap action with deleting from line 32 to 36 amd change Line 37 from "double_tap_action:" to "tap_action:". So a single press to "Shield TV" section will change the theme. 
 
 Line 45 have the card mode functions. Line 48 is where "Shield TV" sign stands. 
 
-![image](https://github.com/berkansezer77/home-assistant/assets/84282504/7edcfa56-1b7e-4d40-9e82-e7d7b08a8f0b)
+<img src="https://github.com/berkansezer77/home-assistant/assets/84282504/7edcfa56-1b7e-4d40-9e82-e7d7b08a8f0b" width="400">
 
 You can modify this section from Line 48 to Line 62. For example you can change the font type by editing "font-family: 'Georgia';" on Line 58. You can extend the red box editing its "width: 140px !important;" You can also change the background of the box with "background: rgba(252, 3, 32, 2.6) !important;". To find the right rgba code just search google with "color picker". Then choose your correct color and take rgb values 
 
-![image](https://github.com/berkansezer77/home-assistant/assets/84282504/f6596694-951d-41cf-aa33-9248768d5aaa)
+<img src="https://github.com/berkansezer77/home-assistant/assets/84282504/f6596694-951d-41cf-aa33-9248768d5aaa" width="400">
 
 Then paste it into "background: rgba(252, 3, 32, 2.6) !important;" code. For example if you choose the purple color for this box background color the correct code will be as 
 "background: rgba(168, 50, 166, 2.6) !important;"
 
 Line 81 is the place when your "Shield TV is off" 
 
-![image](https://github.com/berkansezer77/home-assistant/assets/84282504/b2fbcb61-d869-486e-b73e-8f041fbb39f7)
+<img src="https://github.com/berkansezer77/home-assistant/assets/84282504/b2fbcb61-d869-486e-b73e-8f041fbb39f7" width="400">
 
 I Used a mushroom chips card here to start Shield TV
 
-![image](https://github.com/berkansezer77/home-assistant/assets/84282504/2f0936b3-bf55-4eac-be28-8e0c6fc736f2)
+<img src="https://github.com/berkansezer77/home-assistant/assets/84282504/2f0936b3-bf55-4eac-be28-8e0c6fc736f2" width="400">
 
 You can again tweak this box settings starting from line 100. For example you make the background color as red with changing "--chip-background: rgba(var(--rgb-blue)," to "--chip-background: rgba(var(--rgb-red),"
 
-![image](https://github.com/berkansezer77/home-assistant/assets/84282504/7a9c10a5-4e0a-4480-a70a-20b570e3c616)
+<img src="https://github.com/berkansezer77/home-assistant/assets/84282504/7a9c10a5-4e0a-4480-a70a-20b570e3c616" width="400">
 
 At line 94 there is a little script assigned to this box. It lets the shield TV to turn on. I am using Android Debug Bridge to control Shield TV on Home Assistant. So to turn on Shield just use a little script. The script below also turns on my amplifier. 
 Here is the script 
@@ -262,19 +267,19 @@ Just create a simple script for turning on the TV and call it from line 98.
 
 Okay Line 127 shows your android TV screen. I used a custom mini-media player to reflect android screen to this card. "artwork: full-cover" shows what is going on the screen. There is a little lag for the image to refresh at this card. They are some other ways to fasten this process but for me a 20s lag is ok. So the image fits the screen when android TV is on. 
 
-![image](https://github.com/berkansezer77/home-assistant/assets/84282504/60ab26af-8f36-4c71-9ef7-962416d5590a)
+<img src="https://github.com/berkansezer77/home-assistant/assets/84282504/60ab26af-8f36-4c71-9ef7-962416d5590a" width="400">
 
 There is one important thing here. You cannot get live screen views from streaming services like Netflix. This is due to copyright issues. Netflix even does not allow to show its menu. This means when you click and start Netflix app on Android TV a blank screen will appear as cover. It will also stay black until you exit Netflix. Disney and Prime Video lets you get screenshots while you are in their menu but they do also block image whenever a video is played. So in order to bypass the screen to be empty at line 176 I used a little if statement to fill the screen with picture while Netflix is "ON". You can find this if state at Line 177 "background: url('/local/png/tv-card/cover.png') center no-repeat;" and can change the screenshot with your own by changing "cover.png" On line 182 you see "box-shadow: 0px 0px 10px 5px rgba(255,255,255, 0.96) !important;" little box shadow which covers the screen area. You can change the color here from white to any color you like. Just play around with numbers. 
 
 Line 188 is the place where little icon box stands.
 
-![image](https://github.com/berkansezer77/home-assistant/assets/84282504/2e21017d-e571-4f45-9ccb-eaa3774170c5)
+<img src="https://github.com/berkansezer77/home-assistant/assets/84282504/2e21017d-e571-4f45-9ccb-eaa3774170c5" width="400">
 
 This box contains the icons of the apps and changes according to the app that is active on screen. It is controlled by an if state starting from line 248. So if you want to change or add something just edit lines between 248 and 286.
 
 Line 306 is the template for the info screen. 
 
-![image](https://github.com/berkansezer77/home-assistant/assets/84282504/c039c8b9-fee6-4fc6-b26a-5bc02eccc76d)
+<img src="https://github.com/berkansezer77/home-assistant/assets/84282504/c039c8b9-fee6-4fc6-b26a-5bc02eccc76d" width="400">
 
 This little info part gives you exact info of the app and hdmi port. For example if your TV is on it's smart menu, lets say Samsung TV is currently showing Tizen Smart Apps, then this little info screen will warn you about what the screen is currently showing. But if you change to hdmi to android tv, this info screen will warn you that you are currently on hdmi showing Android Menu. Also other apps like Netflix or Disney will also be shown on this info screen. Unfortunately because Samsung TV integration does not display playing or pause status but only on or off, streaming information won't be available for Samsung TV. You will only see "Currentlu on TV Screen" information whenever you are on Samsung Menu. 
 
@@ -284,19 +289,19 @@ Line 393 to 450 will have the changes for this info screen. You can play a littl
 
 Line 451 is the place where 5 main headers start. 
 
-![image](https://github.com/berkansezer77/home-assistant/assets/84282504/97ab7d15-1428-4dd5-a65f-37bce0a32991)
+<img src="https://github.com/berkansezer77/home-assistant/assets/84282504/97ab7d15-1428-4dd5-a65f-37bce0a32991" width="400">
 
 Line 460 is the Radio part. 
 
 On line 471 tapping into Radio word will activate radios section of Android TV. 
 
-![image](https://github.com/berkansezer77/home-assistant/assets/84282504/60adadf5-a008-4b7c-bd80-bcff1bfb008f)
+<img src="https://github.com/berkansezer77/home-assistant/assets/84282504/60adadf5-a008-4b7c-bd80-bcff1bfb008f" width="400">
 
 When tapped other parts such as Netflix, Remote and Apps will be closed. This is done by an automation I explained before. 
 
 To understand which tab you are currently in the section will be highligted and others will be grayed out. Line 484 to 491 will determine the conditions of this section under white and dark modes. On white mode the color will be blue which is at line 486. 
 
-![image](https://github.com/berkansezer77/home-assistant/assets/84282504/f9f12d9b-0c04-432a-8848-4059a1962d7a)
+<img src="https://github.com/berkansezer77/home-assistant/assets/84282504/f9f12d9b-0c04-432a-8848-4059a1962d7a" width="400">
 
 On line 461 is the place where little dot appears. 
 ![image](https://github.com/berkansezer77/home-assistant/assets/84282504/2ffc54ed-b040-4036-bfbf-87f1239ded67)
@@ -305,13 +310,13 @@ The styling and position of this dot is at line 504. For example if you want the
 
 Line 531 is the "Netflix" tab. 
 
-![image](https://github.com/berkansezer77/home-assistant/assets/84282504/2c8a9c72-2ce5-4a61-89e2-18e7a033b734)
+<img src="https://github.com/berkansezer77/home-assistant/assets/84282504/2c8a9c72-2ce5-4a61-89e2-18e7a033b734" width="400">
 
 Line 554 is the place where you can tweak "Netflix" word and line 575 is again the little dot. 
 
 Line 596 will show "Remote" tab.
 
-![image](https://github.com/berkansezer77/home-assistant/assets/84282504/4af7ee3f-e533-422e-b485-72be3a3c89bd)
+<img src="https://github.com/berkansezer77/home-assistant/assets/84282504/4af7ee3f-e533-422e-b485-72be3a3c89bd" width="400">
 
 Line 662 will show you "Apps" tab.
 
@@ -347,7 +352,7 @@ icon: mdi:television
 ```
 Okay now everything is very simple. Open Netflix on your pc browser. Find your favorite show. 
 
-![image](https://github.com/berkansezer77/home-assistant/assets/84282504/5ddffa13-0cf5-4962-be5f-03b098138a15)
+<img src="https://github.com/berkansezer77/home-assistant/assets/84282504/5ddffa13-0cf5-4962-be5f-03b098138a15" width="400">
 
 As you can see in the picture "80143529" is the code for TV Show "Blacklist". So your script is ready. Let's get back to the code 
 
@@ -359,7 +364,7 @@ Line 1243 is the closure of this section. If you don't like the blue color betwe
 
 Line 1249 is where the remote for Shield TV stands. I used a firemote card which is quite useful. 
 
-![image](https://github.com/berkansezer77/home-assistant/assets/84282504/20303d1a-79b9-45d8-a611-0487be5e21f1)
+<img src="https://github.com/berkansezer77/home-assistant/assets/84282504/20303d1a-79b9-45d8-a611-0487be5e21f1" width="400">
 
 Firemote card has basic controls for Shield Tv, Apple Tv and many others. It is fully customizable. As you can see in the code I have also customized the remote controls. Line 1275 is the place where my button overrides starts. that means my buttons are customized and don't have the original codes with firemote card. I used my own scripts to over ride these cards. For example I used my own script for "Mute Button". The benefit here is, if you have an ir controller such as Tuya or Broadlink you can use those ir buttons on this remote. 
 
@@ -376,7 +381,7 @@ mode: single
 
 Okay this script is named "script.anfi_ac" it opens my amplifier when it is turned off. So I overrided the voleme-up-botton with this script. 
 
-![image](https://github.com/berkansezer77/home-assistant/assets/84282504/bb8b7952-742a-4b5c-86ee-2f7c6f5ad960)
+<img src="https://github.com/berkansezer77/home-assistant/assets/84282504/bb8b7952-742a-4b5c-86ee-2f7c6f5ad960" width="400">
 
 So whenever I press volume up button on the remote it activates my script and turns on my amplifier. Remember the script name is "script.anfi_ac" but you have to cut "script." part and only leave script name as shown in the above picture. 
 
@@ -386,7 +391,7 @@ Again I used a swipe card here because I had 6 apps or functions that I want to 
 
 I used a 2 column grid layout here(line 1320). So that means 2 cards in each row.
 
-![image](https://github.com/berkansezer77/home-assistant/assets/84282504/95f68ec6-105e-4fd0-bff8-823d6d848d0c)
+<img src="https://github.com/berkansezer77/home-assistant/assets/84282504/95f68ec6-105e-4fd0-bff8-823d6d848d0c" width="400">
 
 The first one is Netflix which is starting at line 1323. Now the card needs to understand if Netflix is running, on menu or closed. In order to do that I have created an if statement. But in order to let this statement work properly we need to create virtual switches for netflix. To do that go to your configuration.yaml file and add below line.
 
@@ -408,7 +413,7 @@ The first one is Netflix which is starting at line 1323. Now the card needs to u
 
 The above menu will be shown at the secondary info on Netflix card. It will show you as you are on the main menu for Netflix app. 
 
-![image](https://github.com/berkansezer77/home-assistant/assets/84282504/7de2cb8c-310d-4569-99ee-e6206d03abdf)
+<img src="https://github.com/berkansezer77/home-assistant/assets/84282504/7de2cb8c-310d-4569-99ee-e6206d03abdf" width="400">
 
 We now have to create another switch for Netflix which will be active when anything is playing on Netflix. Again add these lines to your configuration menu.
 
@@ -429,13 +434,13 @@ We now have to create another switch for Netflix which will be active when anyth
 ```
 After adding above codes to your configuration.yaml file restart your home assistant. After that your virtual switches are now ready. 
 
-![image](https://github.com/berkansezer77/home-assistant/assets/84282504/704ac861-b702-44fb-b367-635fb067845f)
+<img src="https://github.com/berkansezer77/home-assistant/assets/84282504/704ac861-b702-44fb-b367-635fb067845f" width="400">
 
 As you can see there is an icon at the top of the Netflix button. The position of this button is at line 1378. margin-top: -20px; and margin-left: -120px; positions the icon at the very top left. And when Netflix is active it turns the icon as green stating it is "on". Netflix logo is at line 1389 as "netflixlogo7.png" you can also change it with anything you like. 
 
 The rest is the same method Line 1402 where Disney starts. Line 1482 is Prime, Line 1562 is Tivimate codes. On line 1642 we move to the second page.
 
-![image](https://github.com/berkansezer77/home-assistant/assets/84282504/560f4286-d73a-418e-8272-cf855cc7e9bd)
+<img src="https://github.com/berkansezer77/home-assistant/assets/84282504/560f4286-d73a-418e-8272-cf855cc7e9bd" width="400">
 
 Line 1646 is Spotify and finally Line 1727 is Youtube. 
 
@@ -463,7 +468,7 @@ mode: single
 ```
 So we use service "media_player.play_media. The Radio adress is at "media_content_id". You can find many radio station addresses on google and place it here. All you have to do left is to find an image for that radio. In our example I used "virginfm.png" at line 1881. If you want the background image to look more faded change "background-color: rgba(29,29,34, 0.2);" 0.2 something higher. For example setting it to 3.2 will result like this: 
 
-![image](https://github.com/berkansezer77/home-assistant/assets/84282504/fcd6c285-09bb-45b5-b785-2502047e42f0)
+<img src="https://github.com/berkansezer77/home-assistant/assets/84282504/fcd6c285-09bb-45b5-b785-2502047e42f0" width="400">
 
 The script above uses the cast service on Shield TV. Not many android Tv's have cast integration. Shield TV is integrated with google cast so it is very easy to cast audio to it. The above script will not show any metdata while the radio is playing on Android TV. If you want the metdata in other words some information about what is being played you need a more enhanced script like the one below : 
 
@@ -493,11 +498,11 @@ So we have now finished Android TV remote card and now on Line 2290 Samsung TV c
 
 Line 2305 shows a the title Samsung TV when TV is turned on. 
 
-![image](https://github.com/berkansezer77/home-assistant/assets/84282504/484ee3a9-ff2d-4180-b83b-08a6f9006eb9)
+<img src="https://github.com/berkansezer77/home-assistant/assets/84282504/484ee3a9-ff2d-4180-b83b-08a6f9006eb9" width="400">
 
 An addition to android TV this section shows volume of the TV. The code for the volume is at Line 2317
 
-![image](https://github.com/berkansezer77/home-assistant/assets/84282504/f843a77b-c1db-49eb-9a99-08b1e5d6fb8c)
+<img src="https://github.com/berkansezer77/home-assistant/assets/84282504/f843a77b-c1db-49eb-9a99-08b1e5d6fb8c" width="400">
 
 Again double clicking this area will also change the active theme of the page(Line 2325). 
 
@@ -509,19 +514,19 @@ Watch Samsung sign will be presented and the TV can be turned on with a single c
 
 Codes starting at Line 2438 will display various apps when the TV is turned on. For example when netflix plays the picture in the box changes as well. If the source is HDMI an HDMI cable picture will be shown stating that it not on main Samsung launcher. 
 
-![image](https://github.com/berkansezer77/home-assistant/assets/84282504/acb3af73-9d94-4f0b-8dac-b6495b750de9)
+<img src="https://github.com/berkansezer77/home-assistant/assets/84282504/acb3af73-9d94-4f0b-8dac-b6495b750de9" width="400">
 
 Line 2479 to Line 2583 is where app icons appear. 
 
-![image](https://github.com/berkansezer77/home-assistant/assets/84282504/919f9d2a-00e2-4658-ac51-8f23a60b3f0f)
+<img src="https://github.com/berkansezer77/home-assistant/assets/84282504/919f9d2a-00e2-4658-ac51-8f23a60b3f0f" width="400">
 
 Line 2585 to 2717 is the place where you read information about what is going on your TV. Because "Samsung Tizen TV" has not any playing or paused status display I can not show whether is someone is on Netflix menu or watching something. Instead this card can only comment on open applicaiton like "Watching Netflix on TV"
 
-![image](https://github.com/berkansezer77/home-assistant/assets/84282504/94f6a5cf-f8b9-4625-a7cd-36b56bbc483b)
+<img src="https://github.com/berkansezer77/home-assistant/assets/84282504/94f6a5cf-f8b9-4625-a7cd-36b56bbc483b" width="400">
 
 Line 2719 to Line 3000 is the tab section. 
 
-![image](https://github.com/berkansezer77/home-assistant/assets/84282504/f66492a2-c31e-4215-ba1b-eb6b3e22d1f3)
+<img src="https://github.com/berkansezer77/home-assistant/assets/84282504/f66492a2-c31e-4215-ba1b-eb6b3e22d1f3" width="400">
 
 Just like the Android Tv section it is very much the same so I will not go deep on this one. 
 
@@ -644,7 +649,7 @@ Line 3381 is the part where I cast my office camera to my Samsung TV through my 
 
 Line 3438 is the start point of Remote Tabı section.
 
-![image](https://github.com/berkansezer77/home-assistant/assets/84282504/913d87fe-c0c7-41b6-9eb1-3c56fb5eff26)
+<img src="https://github.com/berkansezer77/home-assistant/assets/84282504/913d87fe-c0c7-41b6-9eb1-3c56fb5eff26" width="400">
 
 The integration I used(Firemote Card) does not have a straight out of the box Samsung Tv remote so instead I used an Apple Tv Remote and overrided the buttons with scripts. Button overrides starts at line 3462. As I explained in Shşeld TV Remote section scripts have to be place here without the "script." part, only the name is requires. The codes for Samsung TV can be found on the Smart Tizen integration page but I do also share a sample for "Power Button".
 
@@ -663,7 +668,7 @@ mode: single
 ```
 Line 3529 is the place where "Apps" section codes start. Again I used a swipe card here. With 2 grid columns in a row our first card is "Hue" at Line 3564. This is for starting Hue Light sync with Tv through "Hue Sync TV App". This app normally does not have any voice command or auto start support but I can start the app again by copying the remote codes. 
 
-![image](https://github.com/berkansezer77/home-assistant/assets/84282504/15f09989-6d2a-4168-bbaf-e890cf091014)
+<img src="https://github.com/berkansezer77/home-assistant/assets/84282504/15f09989-6d2a-4168-bbaf-e890cf091014" width="400">
 
 This button is again controlled with a script. 
 ```ruby

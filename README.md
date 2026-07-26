@@ -11,6 +11,19 @@ Hello everyone. I've launched a new channel on YouTube. On this channel, you'll 
 
 [Teach me Smart Life](https://www.youtube.com/@teachmesmartlife "Living the Life Smart")
 ***
+# ## Sentinel Alarm — a full alarm system for Home Assistant
+
+<img src="https://raw.githubusercontent.com/berkansezer77/sentinel-alarm/main/docs/images/card.gif" width="750">
+
+A complete alarm system with its own sidebar panel — alarm zones, four modes, a visual
+action editor, automatic arming, night lights and holiday simulation. Installable
+through HACS. No YAML, no helpers.
+
+**This one lives in its own repository:**
+
+[Sentinel Alarm](https://github.com/berkansezer77/sentinel-alarm) · [User guide](https://github.com/berkansezer77/sentinel-alarm/wiki)
+
+***
 # ## Home Assistant TV Card
 
 <img src="https://github.com/berkansezer77/home-assistant/assets/84282504/112ce707-bf67-4f3e-97fe-88f1dabddaff" width="750">
